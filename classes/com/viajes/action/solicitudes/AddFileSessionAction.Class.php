@@ -20,9 +20,11 @@ class AddFileSessionAction extends CdtAction{
 		if(isset($_SESSION[$this->getVariableSessionName()]))
 			$archivos = unserialize( $_SESSION[$this->getVariableSessionName()] );
 		else 
-			$archivos = array();	
+			$archivos = array();
 		foreach ($_FILES as $key => $value) {
 			if ($value["size"]<=CYT_FILE_MAX_SIZE) {
+                $extenciones_permitidas = CYT_EXTENSIONES_PERMITIDAS;
+                $mostrar = 0;
 				switch ($key) {
             		case 'ds_curriculum':
             		$nombre = CYT_LBL_SOLICITUD_A_CURRICULUM;
@@ -40,12 +42,18 @@ class AddFileSessionAction extends CdtAction{
                     $nombre = CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO;
                     $sigla = CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SIGLA;
                     break;
+                    case 'ds_foto':
+                        $nombre = CYT_LBL_SOLICITUD_FOTO;
+                        $sigla = CYT_LBL_SOLICITUD_FOTO_SIGLA;
+                        $extenciones_permitidas = CYT_EXTENSIONES_PERMITIDAS_IMG;
+                        $mostrar = 1;
+                        break;
 
             	}
 				$explode_name = explode('.', $value['name']);
 	            //Se valida así y no con el mime type porque este no funciona par algunos programas
 	            $pos_ext = count($explode_name) - 1;
-	            if (in_array(strtolower($explode_name[$pos_ext]), explode(",",CYT_EXTENSIONES_PERMITIDAS))) {
+	            if (in_array(strtolower($explode_name[$pos_ext]), explode(",",$extenciones_permitidas))) {
 	            	//CdtUtils::log("FILE: "   . $key.' - '.$value['name']);
 	            	$dir = CYT_PATH_PDFS.'/';
 					if (!file_exists($dir)) mkdir($dir, 0777); 
@@ -79,7 +87,13 @@ class AddFileSessionAction extends CdtAction{
 						$error .='<span style="color:#FF0000; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_ERROR.$nombre.'</span>';
 			        }
 			        else{
-			        	$error = '<span style="color:#009900; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_EXITO.$value["name"]."(".$value["size"].")".'</span>';
+			        	if ($mostrar){
+                            $error = '<img style="width:100px;border-radius:50%;" src="'.$dir.$nuevo.'">';
+                        }
+                        else{
+                            $error = '<span style="color:#009900; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_EXITO.$value["name"]."(".$value["size"].")".'</span>';
+                        }
+
 			        }
 					
 	            }

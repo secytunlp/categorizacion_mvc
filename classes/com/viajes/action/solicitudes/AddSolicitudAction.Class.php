@@ -53,7 +53,7 @@ class AddSolicitudAction extends AddEntityAction{
 			$archivos = unserialize( $_SESSION['archivos'] );
 			
 			foreach ($archivos as $key => $archivo) {
-
+                $extenciones_permitidas = CYT_EXTENSIONES_PERMITIDAS;
                 switch ($key) {
                     case 'ds_curriculum':
                         $nombre = CYT_LBL_SOLICITUD_A_CURRICULUM;
@@ -73,13 +73,18 @@ class AddSolicitudAction extends AddEntityAction{
                         $nombre = CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO;
                         $sigla = CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SIGLA;
                         break;
+                    case 'ds_foto':
+                        $nombre = CYT_LBL_SOLICITUD_FOTO;
+                        $sigla = CYT_LBL_SOLICITUD_FOTO_SIGLA;
+                        $extenciones_permitidas = CYT_EXTENSIONES_PERMITIDAS_IMG;
+                        break;
 
                 }
             		
 				$explode_name = explode('.', $archivo['name']);
 	            //Se valida así y no con el mime type porque este no funciona par algunos programas
 	            $pos_ext = count($explode_name) - 1;
-	            if (in_array(strtolower($explode_name[$pos_ext]), explode(",",CYT_EXTENSIONES_PERMITIDAS))) {
+	            if (in_array(strtolower($explode_name[$pos_ext]), explode(",",$extenciones_permitidas))) {
 	            	CdtUtils::log("FILE: "   . $key.' - '.$archivo['name']);
 	            	if (is_file($dir.$archivo['nuevo'])){
 	            		rename ($dir.$archivo['nuevo'],$dir.str_replace('TMP_'.$sigla, $sigla, $archivo['nuevo'])); 

@@ -69,26 +69,45 @@ define('CYT_CD_OTROS', 'Otros');
 
 define('CYT_CD_GROUPS_MOSTRAR', '3,18');
 
+define('CYT_EXTENSIONES_PERMITIDAS_IMG', 'png,jpeg,jpg,bmp,gif');
+
 define('CYT_EQUIVALENCIA_SPU', 1);
 
 define('CYT_EQUIVALENCIA_SUPERIOR', 2);
 define('CYT_EQUIVALENCIA_INDEPENDIENTE', 3);
 
 
-define('CYT_EQUIVALENCIA_PRINCIPAL', 4);
-define('CYT_EQUIVALENCIA_POSTDOCTORAL', 5);
+define('CYT_EQUIVALENCIA_ADJUNTO', 4);
+define('CYT_EQUIVALENCIA_ASISTENTE_3', 5);
+define('CYT_EQUIVALENCIA_ASISTENTE_CPA', 6);
+define('CYT_EQUIVALENCIA_BECARIO_POSTDOCTORAL', 7);
+define('CYT_EQUIVALENCIA_BECARIO_DOCTORAL', 8);
+define('CYT_EQUIVALENCIA_EMERITO', 9);
 
-define('CYT_EQUIVALENCIA_DS_SPU', 'Incentivos SPU');
-define('CYT_EQUIVALENCIA_DS_PRINCIPAL', 'Investigador Principal');
+define('CYT_EQUIVALENCIA_DS_SPU', 'DI-PRINUAR');
+define('CYT_EQUIVALENCIA_DS_PRINCIPAL', 'Investigador/a Principal o Superior');
 define('CYT_EQUIVALENCIA_DS_SUPERIOR', 'Investigador Superior');
-define('CYT_EQUIVALENCIA_DS_INDEPENDIENTE', 'Investigador Independiente');
-define('CYT_EQUIVALENCIA_DS_POSTODOCTORAL', 'Becario Postoctoral');
+define('CYT_EQUIVALENCIA_DS_INDEPENDIENTE', 'Investigador/a Independiente');
+define('CYT_EQUIVALENCIA_DS_POSTDOCTORAL', 'Becario/a Posdoctoral');
+define('CYT_EQUIVALENCIA_DS_ADJUNTO', 'Investigador/a Adjunto/a');
+define('CYT_EQUIVALENCIA_DS_ASISTENTE', 'Investigador/a Asistente 3+ informes');
+define('CYT_EQUIVALENCIA_DS_CPA', 'Investigador/a Asistente o CPA');
+define('CYT_EQUIVALENCIA_DS_DOCTORAL', 'Becario/a Doctoral');
+define('CYT_EQUIVALENCIA_DS_EMERITO', 'Profesor emérito');
+
+
 
 define('CYT_CATS_SPU', '6,7,8,9,10');
-define('CYT_CATS_INDEPENDIENTE', '6,7');
-define('CYT_CATS_POSTDOCTORAL', '8');
-define('CYT_EQUIVALENCIA_CATS_INDEPENDIENTE', 'I ó II');
-define('CYT_EQUIVALENCIA_CATS_POSTDOCTORAL', 'III');
+define('CYT_CATS_SUPERIOR', '6');
+define('CYT_CATS_INDEPENDIENTE', '7');
+define('CYT_CATS_ADJUNTO', '8');
+define('CYT_CATS_ASISTENTE', '9');
+define('CYT_CATS_POSTDOCTORAL', '10');
 
+define('CYT_EQUIVALENCIA_CATS_SUPERIOR', 'I');
+define('CYT_EQUIVALENCIA_CATS_INDEPENDIENTE', 'II');
+define('CYT_EQUIVALENCIA_CATS_ADJUNTO', 'III');
+define('CYT_EQUIVALENCIA_CATS_ASISTENTE', 'IV');
+define('CYT_EQUIVALENCIA_CATS_POSTDOCTORAL', 'V');
 
 ?>

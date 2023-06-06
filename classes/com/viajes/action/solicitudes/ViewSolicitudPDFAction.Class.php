@@ -47,7 +47,7 @@ class ViewSolicitudPDFAction extends CdtAction{
 		
 		
 		$pdf->setDs_investigador($oSolicitud->getDocente()->getDs_apellido().', '.$oSolicitud->getDocente()->getDs_nombre());
-		$pdf->setNu_cuil($oSolicitud->getDocente()->getNu_precuil().'-'.$oSolicitud->getDocente()->getNu_documento().'-'.$oSolicitud->getDocente()->getNu_postcuil());
+		$pdf->setNu_cuil($oSolicitud->getDocente()->getNu_precuil().'-'.str_pad($oSolicitud->getDocente()->getNu_documento(), 8, "0", STR_PAD_LEFT).'-'.$oSolicitud->getDocente()->getNu_postcuil());
 		
 		$pdf->setDs_calle($oSolicitud->getDs_calle());
 		$pdf->setNu_nro($oSolicitud->getNu_nro());

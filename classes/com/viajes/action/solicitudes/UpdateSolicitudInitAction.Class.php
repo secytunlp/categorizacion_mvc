@@ -95,8 +95,9 @@ class UpdateSolicitudInitAction extends UpdateEntityInitAction {
 		
 		$entity->setDs_investigador($oDocente->getDs_apellido().', '.$oDocente->getDs_nombre());
         
-		$oUser = CdtSecureUtils::getUserLogged();
-		$entity->setNu_cuil($oUser->getDs_username());
+		/*$oUser = CdtSecureUtils::getUserLogged();
+		$entity->setNu_cuil($oUser->getDs_username());*/
+        $entity->setNu_cuil($oDocente->getNu_precuil().'-'.str_pad($oDocente->getNu_documento(), 8, "0", STR_PAD_LEFT).'-'.$oDocente->getNu_postcuil());
 		
 		return $entity;
 	}

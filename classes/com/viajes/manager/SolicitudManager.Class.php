@@ -249,7 +249,7 @@ class SolicitudManager extends EntityManager{
     	if ((in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))) &&(!$entity->getBl_becario())&&(!$entity->getBl_carrera())){
 			$error .= CYT_MSG_SIMPLE_SIN_BECA.'<br>';
 		}
-		if (in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))){
+		/*if (in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))){
 			if ($entity->getLugarTrabajoBeca()->getOid()) {
 				if ($entity->getBl_becario()) {
 					$managerLugarTrabajo = CYTSecureManagerFactory::getLugarTrabajoManager();
@@ -289,7 +289,7 @@ class SolicitudManager extends EntityManager{
 			}
 			
 	    	
-		}
+		}*/
     	
 		if (($entity->getDt_becadesde())||($entity->getDt_becahasta())) {
 			
@@ -341,7 +341,7 @@ class SolicitudManager extends EntityManager{
 
 			}
 
-			if(((CYTSecureUtils::formatDateToPersist($entity->getDt_becadesde())>CYT_FECHA_CIERRE)||(CYTSecureUtils::formatDateToPersist($entity->getDt_becahasta())<CYT_FECHA_CIERRE))){
+			if(((CYTSecureUtils::formatDateToPersist($entity->getDt_proyectodesde())>CYT_FECHA_CIERRE)||(CYTSecureUtils::formatDateToPersist($entity->getDt_proyectohasta())<CYT_FECHA_CIERRE))){
 				$error .= CYT_MSG_PROYECTOS_FUERA_RANGO.'<br>';
 			}
 
@@ -364,7 +364,7 @@ class SolicitudManager extends EntityManager{
 		if ((in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))) &&(!$entity->getBl_becario())&&(!$entity->getBl_carrera())){
 			$error .= CYT_MSG_SIMPLE_SIN_BECA.'<br>';
 		}
-		if (in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))){
+		/*if (in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))){
 			if ($entity->getLugarTrabajoBeca()->getOid()) {
 				if ($entity->getBl_becario()) {
 					$managerLugarTrabajo = CYTSecureManagerFactory::getLugarTrabajoManager();
@@ -402,7 +402,7 @@ class SolicitudManager extends EntityManager{
 				
 			}
 	    	
-		}
+		}*/
 		if (($entity->getDt_becadesde())||($entity->getDt_becahasta())) {
 			
 			if(CYTSecureUtils::formatDateToPersist($entity->getDt_becadesde())>CYTSecureUtils::formatDateToPersist($entity->getDt_becahasta())){
@@ -649,7 +649,7 @@ class SolicitudManager extends EntityManager{
 	
 		$error='';
 		
-		if ((!$entity->getDs_calle())||(!$entity->getNu_nro())||(!$entity->getNu_cp())||(!$entity->getDs_mail())) {
+		if ((!$entity->getDs_calle())||(!$entity->getNu_nro())||(!$entity->getNu_cp())||(!$entity->getDs_mail())||(!$entity->getNu_telefono())||(!$entity->getDt_nacimiento())||(!$entity->getDs_orcid())||(!$entity->getDs_sedici())||(!$entity->getDs_scholar())) {
 			$error .= CYT_MSG_CAMPOS_REQUERIDOS.' '.CYT_MSG_SOLICITUD_TAB_DOMICILIO.'<br>';
 		}
 		if ((!$entity->getDs_titulogrado())||(!$entity->getDt_egresogrado())||(!$entity->getLugarTrabajo()->getOid())||(!$entity->getFacultad()->getOid())) {
@@ -792,22 +792,60 @@ class SolicitudManager extends EntityManager{
 						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
 					}
 					break;
-				case CYT_EQUIVALENCIA_PRINCIPAL:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_INDEPENDIENTE))){
-						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_PRINCIPAL_MENOR.'<br>';
-					}
 
-					if ($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_PRINCIPAL) {
-						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
-					}
-					break;
 				case CYT_EQUIVALENCIA_SUPERIOR:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_INDEPENDIENTE))){
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_SUPERIOR))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_SUPERIOR_MENOR.'<br>';
 					}
 
-					if ($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_SUPERIOR) {
+					if (($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_SUPERIOR)&&($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_PRINCIPAL)) {
 						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
+					}
+					break;
+				case CYT_EQUIVALENCIA_ADJUNTO:
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ADJUNTO))){
+						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_ADJUNTO_MENOR.'<br>';
+					}
+
+					if ($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_ADJUNTO) {
+						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
+					}
+					break;
+				case CYT_EQUIVALENCIA_ASISTENTE_3:
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ADJUNTO))){
+						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_ASISTENTE_MENOR.'<br>';
+					}
+
+					if (($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_ADJUNTO)&&($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_ASISTENTE)) {
+						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
+					}
+					break;
+				case CYT_EQUIVALENCIA_ASISTENTE_CPA:
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
+						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_P_ASISTENTE_MENOR.'<br>';
+					}
+
+					if (($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_P_ADJUNTO)&&($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_P_ASISTENTE)&&($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_ASISTENTE)) {
+						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
+					}
+					if ($entity->getLugarTrabajoCarrera()->getOid()) {
+						if ($entity->getBl_carrera()) {
+							$managerLugarTrabajo = CYTSecureManagerFactory::getLugarTrabajoManager();
+							$oLugarTrabajo = $managerLugarTrabajo->getObjectByCode($entity->getLugarTrabajoCarrera()->getOid());
+							$encontre = 0;
+							while((!$encontre)&&($oLugarTrabajo->getPadre()->getOid()!=0)){
+								if ((!$encontre)&&(($oLugarTrabajo->getPadre()->getOid()==CYT_CD_LUGAR_TRABAJO_UNLP_CONICET)||($oLugarTrabajo->getPadre()->getOid()==CYT_CD_LUGAR_TRABAJO_UNLP))){
+
+									$encontre = 1;
+								}
+								$oLugarTrabajo = $managerLugarTrabajo->getObjectByCode($oLugarTrabajo->getPadre()->getOid());
+							}
+							if (!$encontre) {
+								$error .= CYT_MSG_SOLICITUD_LUGAR_TRABAJO_CARRERA_NO_UNLP.'<br>';
+							}
+
+						}
+
 					}
 					break;
 				case CYT_EQUIVALENCIA_POSTDOCTORAL:
@@ -817,6 +855,24 @@ class SolicitudManager extends EntityManager{
 
 					if (!(strchr($entity->getDs_tipobeca(),'postdoc'))) {
 						$error .= CYT_MSG_SOLICITUD_CAT_BECA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_BECARIO.'<br>';
+					}
+					if ($entity->getLugarTrabajoBeca()->getOid()) {
+						if ($entity->getBl_becario()) {
+							$managerLugarTrabajo = CYTSecureManagerFactory::getLugarTrabajoManager();
+							$oLugarTrabajo = $managerLugarTrabajo->getObjectByCode($entity->getLugarTrabajoBeca()->getOid());
+							$encontre = 0;
+							while((!$encontre)&&($oLugarTrabajo->getPadre()->getOid()!=0)){
+								if ((!$encontre)&&(($oLugarTrabajo->getPadre()->getOid()==CYT_CD_LUGAR_TRABAJO_UNLP_CONICET)||($oLugarTrabajo->getPadre()->getOid()==CYT_CD_LUGAR_TRABAJO_UNLP))){
+
+									$encontre = 1;
+								}
+								$oLugarTrabajo = $managerLugarTrabajo->getObjectByCode($oLugarTrabajo->getPadre()->getOid());
+							}
+							if (!$encontre) {
+								$error .= CYT_MSG_SOLICITUD_LUGAR_TRABAJO_BECA_NO_UNLP.'<br>';
+							}
+						}
+
 					}
 					break;
 

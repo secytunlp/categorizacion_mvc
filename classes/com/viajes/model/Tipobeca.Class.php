@@ -62,7 +62,12 @@ class Tipobeca {
     								   Tipobeca::UNLP7=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP7,
     								   Tipobeca::UNLP8=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP8,
     								   Tipobeca::UNLP9=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP9,
-    								   );	
+    								   );
+	private static $itemsOtra = array(
+		Tipobeca::CIC2=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC2,
+		Tipobeca::CIC3=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC3,
+
+	);
    	private static $items = array(  
     								   
     								''=> "--seleccionar--",
@@ -102,6 +107,9 @@ class Tipobeca {
 			case 'UNLP':
 				return self::$itemsUNLP;
 			break;
+			case 'OTRA':
+				return self::$itemsOtra;
+				break;
 			default:
 				return self::$items;
 			break;

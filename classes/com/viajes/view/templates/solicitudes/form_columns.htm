@@ -12,6 +12,115 @@
     padding: 1.5em;
     text-shadow: 0 1px 0 #FFFFFF;
 }
+
+#upload-file-container {
+	width: 90px;
+	height: 90px;
+	position: relative;
+	border:2px solid;
+	border-radius:20px;
+	border-color:rgb(58,147,231);
+	color:rgb(58,147,231);
+	overflow: hidden;
+	float:right;
+}
+
+#upload-file-container input[type="file"] {
+	margin: 0;
+	opacity: 0;
+	font-size: 100px;
+}
+.tooltip {
+	position: relative;
+}
+.tooltip:before,
+.tooltip:after {
+	display: block;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+}
+.tooltip:after {
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid rgba(0,0,0,.75);
+	border-left: 6px solid transparent;
+	content: '';
+	height: 0;
+	top: 20px;
+	left: 20px;
+	width: 0;
+}
+.tooltip:before {
+	background: rgba(0,0,0,.75);
+	border-radius: 2px;
+	color: #fff;
+	content: attr(data-title);
+	font-size: 14px;
+	padding: 6px 10px;
+	top: 26px;
+	white-space: nowrap;
+}
+
+/* the animations */
+/* fade */
+.tooltip.fade:after,
+.tooltip.fade:before {
+	transform: translate3d(0,-10px,0);
+	transition: all .15s ease-in-out;
+}
+.tooltip.fade:hover:after,
+.tooltip.fade:hover:before {
+	opacity: 1;
+	transform: translate3d(0,0,0);
+}
+
+/* expand */
+.tooltip.expand:before {
+	transform: scale3d(.2,.2,1);
+	transition: all .2s ease-in-out;
+}
+.tooltip.expand:after {
+	transform: translate3d(0,6px,0);
+	transition: all .1s ease-in-out;
+}
+.tooltip.expand:hover:before,
+.tooltip.expand:hover:after {
+	opacity: 1;
+	transform: scale3d(1,1,1);
+}
+.tooltip.expand:hover:after {
+	transition: all .2s .1s ease-in-out;
+}
+
+/* swing */
+.tooltip.swing:before,
+.tooltip.swing:after {
+	transform: translate3d(0,30px,0) rotate3d(0,0,1,60deg);
+	transform-origin: 0 0;
+	transition: transform .15s ease-in-out, opacity .2s;
+}
+.tooltip.swing:after {
+	transform: translate3d(0,60px,0);
+	transition: transform .15s ease-in-out, opacity .2s;
+}
+.tooltip.swing:hover:before,
+.tooltip.swing:hover:after {
+	opacity: 1;
+	transform: translate3d(0,0,0) rotate3d(1,1,1,0deg);
+}
+
+/* basic styling: has nothing to do with tooltips: */
+h1 {
+	padding-left: 50px;
+}
+ul {
+	margin-bottom: 40px;
+}
+li {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 10px;
+}
 </style>
 <script type="text/javascript">
 
@@ -160,11 +269,10 @@ function successDefault_{form_id}(data ){
 	    <!-- BEGIN: legend -->
 		<legend>{value}</legend>
 		<!-- END: legend -->
+			<div style="position:relative;display: flex;align-items: center;">
 
-		<table width="100%">
-			<tr>
 				<!-- BEGIN:column -->
-				<td>
+			<div style="position: relative; float: left; width: 30%;">
 					<!-- BEGIN: ds_investigador -->
 					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -187,12 +295,31 @@ function successDefault_{form_id}(data ){
 					    <!-- END: input -->
 					</div>
 					<!-- END: nu_cuil -->
-					
-				</td>
+			</div>
+			<div style="position: relative; float: left; width: 50%;">
+				<!-- BEGIN: ds_foto -->
+
+				<div class="item" style="min-width: {minWidth};display:{display};text-align: right;"  id="item-div-ds_foto">
+
+
+					<br>
+					<span id="ds_foto_cargado" >
+						  <!-- Aqui van los archivos cargados -->
+						  {ds_foto_cargado}
+						</span>
+					<!-- BEGIN: input -->
+					<br>
+					<input id="ds_foto" type="file" placeholder="Foto" value="" size="32" name="ds_foto" onChange="uploadAjax(this,'{actionFile}','ds_foto')">
+					<!-- END: input -->
+
+					<div style="color:#A43B3B; font-weight:bold">{label_foto}</div>
+				</div>
+				<!-- END: ds_foto -->
+
+			</div>
 				<!-- END:column -->
-			</tr>
-		</table>
-		
+
+			</div>
 	</fieldset>
 	<!-- END: fieldset -->
 	<!-- BEGIN: field_hidden -->
@@ -211,44 +338,10 @@ function successDefault_{form_id}(data ){
 	</ul>
 <div id="formTabs">
 <fieldset>	
-	<!-- BEGIN: legend -->
-		<legend>{value}</legend>
-		<!-- END: legend -->
 
-		<table width="100%">
-			<tr>
-				<!-- BEGIN:column -->
-				<td>
-					
-					<!-- BEGIN: ds_investigador -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-					    
-					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
-					    <!-- END: label -->
-					    <!-- BEGIN: input -->
-					    {input}
-					    <!-- END: input -->
-					</div>
-					<!-- END: ds_investigador -->
-					<!-- BEGIN: nu_cuil -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-					    
-					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
-					    <!-- END: label -->
-					    <!-- BEGIN: input -->
-					    {input}
-					    <!-- END: input -->
-					</div>
-					<!-- END: nu_cuil -->
-					
-				</td>
-				<!-- END:column -->
-			</tr>
-		</table>
 	
 	<div id="tabs-1" style="position:relative;">
+
 		{titulo_domicilio}
 		<!-- BEGIN: ds_calle -->
 					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
@@ -262,7 +355,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: ds_calle -->
 		<!-- BEGIN: nu_nro -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} *:</label>
@@ -270,6 +363,7 @@ function successDefault_{form_id}(data ){
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+
 					</div>
 		<!-- END: nu_nro -->
 		<!-- BEGIN: nu_piso -->
@@ -327,11 +421,35 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: bl_notificacion -->
+		<!-- BEGIN: ds_otromail -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_otromail -->
+		<!-- BEGIN: ds_genero -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_genero -->
+
+
 		<!-- BEGIN: nu_telefono -->
 					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value} *:</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -342,18 +460,99 @@ function successDefault_{form_id}(data ){
 					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}:</label>
+					    <label for="{input_name}">{value} *:</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</div>
 		<!-- END: dt_nacimiento -->
-		
+		<!-- BEGIN: ds_orcid -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value} *:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_orcid -->
+		<!-- BEGIN: ds_sedici -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value} *:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_sedici -->
+		<!-- BEGIN: ds_scholar -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value} *:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_scholar -->
+		<!-- BEGIN: ds_scopus -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_scopus -->
+		<!-- BEGIN: ds_instagram -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_instagram -->
+			<!-- BEGIN: ds_twitter -->
+			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+				<!-- BEGIN: label -->
+				<label for="{input_name}">{value}:</label>
+				<!-- END: label -->
+				<!-- BEGIN: input -->
+				{input}
+				<!-- END: input -->
+			</div>
+			<!-- END: ds_twitter -->
+			<!-- BEGIN: ds_facebook -->
+			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+				<!-- BEGIN: label -->
+				<label for="{input_name}">{value}:</label>
+				<!-- END: label -->
+				<!-- BEGIN: input -->
+				{input}
+				<!-- END: input -->
+			</div>
+			<!-- END: ds_facebook -->
+
+
+
+
 	</div>
 	<div id="tabs-2" style="position:relative;">
 		<!-- BEGIN: solicitud_filter_titulo_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="item tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
+
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} *:</label>
@@ -364,7 +563,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: solicitud_filter_titulo_oid -->
 		<!-- BEGIN: dt_egresogrado -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} *:</label>
@@ -375,7 +574,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: dt_egresogrado -->
 		<!-- BEGIN: solicitud_filter_tituloposgrado_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="item tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value}:</label>
@@ -410,7 +609,7 @@ function successDefault_{form_id}(data ){
 		
 		
 		<!-- BEGIN: cargo_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="item tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -442,17 +641,7 @@ function successDefault_{form_id}(data ){
 					    <!-- END: input -->
 					</div>
 		<!-- END: facultad_oid -->
-		<!-- BEGIN: ds_disciplina -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-					    
-					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}:</label>
-					    <!-- END: label -->
-					    <!-- BEGIN: input -->
-					    {input}
-					    <!-- END: input -->
-					</div>
-		<!-- END: ds_disciplina -->
+
 		<br><br>
 		<!-- BEGIN: solicitud_filter_lugarTrabajo_oid -->
 					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
@@ -465,11 +654,61 @@ function successDefault_{form_id}(data ){
 					    <!-- END: input -->
 					</div>
 		<!-- END: solicitud_filter_lugarTrabajo_oid -->
+
+		<!-- BEGIN: ds_experticiaD -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			<br><br>{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_experticiaD -->
+
+
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<label for="claves">Palabras claves:</label>
+			<br>
+			<!-- BEGIN: ds_claveD1 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveD1 -->
+			<!-- BEGIN: ds_claveD2 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveD2 -->
+			<!-- BEGIN: ds_claveD3 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveD3 -->
+			<!-- BEGIN: ds_claveD4 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveD4 -->
+			<!-- BEGIN: ds_claveD5 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveD5 -->
+			<!-- BEGIN: ds_claveD6 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveD6 -->
+
+		</div>
+
 		
 	</div>
-	
+
 	<div id="tabs-3" style="position:relative;">
-		
+		<div style="color:#A43B3B; font-weight:bold">{titulo_becario}</div>
 		<!-- BEGIN: ds_orgbeca -->
 					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -557,6 +796,55 @@ function successDefault_{form_id}(data ){
 			<div style="color:#A43B3B; font-weight:bold">{label_resbeca}</div>
 		</div>
 		<!-- END: ds_resbeca -->
+
+		<!-- BEGIN: ds_experticiaB -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			<br><br>{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_experticiaB -->
+
+
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<label for="claves">Palabras claves:</label>
+			<br>
+			<!-- BEGIN: ds_claveB1 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveB1 -->
+			<!-- BEGIN: ds_claveB2 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveB2 -->
+			<!-- BEGIN: ds_claveB3 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveB3 -->
+			<!-- BEGIN: ds_claveB4 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveB4 -->
+			<!-- BEGIN: ds_claveB5 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveB5 -->
+			<!-- BEGIN: ds_claveB6 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveB6 -->
+
+		</div>
 		
 	</div>
 	<div id="tabs-4" style="position:relative;">
@@ -634,10 +922,59 @@ function successDefault_{form_id}(data ){
 			<div style="color:#A43B3B; font-weight:bold">{label_rescarrera}</div>
 		</div>
 		<!-- END: ds_rescarrera -->
+
+		<!-- BEGIN: ds_experticiaC -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			<br><br>{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: ds_experticiaC -->
+
+
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<label for="claves">Palabras claves:</label>
+			<br>
+			<!-- BEGIN: ds_claveC1 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveC1 -->
+			<!-- BEGIN: ds_claveC2 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveC2 -->
+			<!-- BEGIN: ds_claveC3 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveC3 -->
+			<!-- BEGIN: ds_claveC4 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveC4 -->
+			<!-- BEGIN: ds_claveC5 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveC5 -->
+			<!-- BEGIN: ds_claveC6 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: ds_claveC6 -->
+
+		</div>
 		
 	</div>
 	<div id="tabs-5" style="position:relative;">
-
+		<div style="color:#A43B3B; font-weight:bold">{titulo_proyectos}</div>
 		{HTMLProyectos}
 		{fieldsetopen}
 		{otrosProyectos_title}
@@ -746,6 +1083,7 @@ function successDefault_{form_id}(data ){
 	</div>
 	<div id="tabs-6" style="position:relative;">
 		{titulo_tipo_investigador}
+		<div style="position: relative; float: left; width: 70%;">
 		<!-- BEGIN: facultadplanilla_oid -->
 		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
@@ -769,7 +1107,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: categoria_oid -->
 		<!-- BEGIN: equivalencia_oid -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} *:</label>
@@ -810,9 +1148,11 @@ function successDefault_{form_id}(data ){
 		<!-- END: ds_curriculum -->
 		
 		
-		
-		
-		
+		</div>
+
+		<div style="position: relative; float: left; width: 30%;">
+			<div style="color:#A43B3B; font-weight:bold">{label_equivalencia_help}</div>
+		</div>
 		
 	</div>
 </fieldset>	

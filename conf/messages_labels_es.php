@@ -18,23 +18,41 @@ define('CYT_LBL_SOLICITUD_CALLE_NRO', 'Nro.', true);
 define('CYT_LBL_SOLICITUD_PISO', 'Piso', true);
 define('CYT_LBL_SOLICITUD_DEPTO', 'Depto.', true);
 define('CYT_LBL_SOLICITUD_CP', 'C.P.', true);
-define('CYT_LBL_SOLICITUD_MAIL', 'E-mail', true);
+define('CYT_LBL_SOLICITUD_MAIL', 'E-mail institucional', true);
+define('CYT_LBL_SOLICITUD_OTRO_MAIL', 'E-mail alternativo', true);
 define('CYT_LBL_SOLICITUD_MAIL_ACEPTO', 'Acepto recibir toda notificación relativa a la presente solicitud <br>en la dirección de correo electrónico declarada precedentemente', true);
+define('CYT_LBL_SOLICITUD_GENERO', 'Género', true);
 define('CYT_LBL_SOLICITUD_TELEFONO', 'Teléfono', true);
 define('CYT_LBL_SOLICITUD_NACIMIENTO', 'F. Nacimiento', true);
+define('CYT_LBL_SOLICITUD_ORCID', 'Nro. ORCID', true);
+define('CYT_LBL_SOLICITUD_SEDICI', 'Perfil SEDICI (link)', true);
+define('CYT_LBL_SOLICITUD_SCHOLAR', 'Google Scholar (link)', true);
+define('CYT_LBL_SOLICITUD_SCOPUS', 'Perfil Scopus (link)', true);
+define('CYT_LBL_SOLICITUD_INSTAGRAM', 'Instagram (link)', true);
+define('CYT_LBL_SOLICITUD_TWITTER', 'Twitter (link)', true);
+define('CYT_LBL_SOLICITUD_FACEBOOK', 'Facebook (link)', true);
+define('CYT_LBL_SOLICITUD_FOTO', 'Foto', true);
+define('CYT_LBL_SOLICITUD_FOTO_SPEECH', 'Adjuntar foto tipo carnet', true);
+
+define('CYT_LBL_SOLICITUD_FOTO_SIGLA', 'FOTO', true);
+
 define('CYT_LBL_SOLICITUD_TITULO', 'Título de grado', true);
 define('CYT_LBL_SOLICITUD_EGRESO_GRADO', 'F. Egreso', true);
 define('CYT_LBL_SOLICITUD_TITULO_POSGRADO', 'Título de posgrado', true);
 define('CYT_LBL_SOLICITUD_EGRESO_POSGRADO', 'F. Egreso', true);
 define('CYT_LBL_SOLICITUD_DOCTORADO', 'Obtuvo el doctorado?', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO', 'L. de Trab. en la UNLP', true);
-define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO', 'Lugar de Trabajo en la UNLP (Unidad de Investigación: Laboratorio, Centro, Instituto, etc.)', true);
+define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO', 'Lugar de trabajo en la UNLP en donde realiza sus tareas de investigación y por la cual desea ser categorizado/a (Instituto, Centro de Investigación, Laboratorio, etc.). 
+', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_DIRECCION', 'Dirección', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_TELEFONO', 'Teléfono', true);
 define('CYT_LBL_SOLICITUD_CARGO', 'Cargo docente', true);
 define('CYT_LBL_SOLICITUD_DEDICACION', 'Dedicación', true);
 define('CYT_LBL_SOLICITUD_FACULTAD', 'U. Académica', true);
-define('CYT_LBL_SOLICITUD_FACULTAD_PLANILLA', 'Facultad por la que presenta la solicitud', true);
+define('CYT_LBL_SOLICITUD_FACULTAD_PLANILLA', 'Unidad Académica por la que presenta la solicitud', true);
+
+define('CYT_LBL_SOLICITUD_EXPERTICIA_DOCENTE', 'Experticia en Docencia', true);
+
 define('CYT_LBL_SOLICITUD_CATEGORIA', 'Cat. Actual - SPU', true);
 
 define('CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA', 'Cat. Solicitada', true);
@@ -45,6 +63,7 @@ define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_ANPCyT', 'ANPCyT', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_CIC', 'CIC', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_CONICET', 'CONICET', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_UNLP', 'UNLP', true);
+define('CYT_LBL_SOLICITUD_INSTITUCION_PROYECTO_OTRA', 'OTRA', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA', 'Nivel beca', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA1', 'Beca incial', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA2', 'Beca superior', true);
@@ -66,16 +85,23 @@ define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP9', 'Programa de retención de Doctores'
 define('CYT_LBL_SOLICITUD_BECA_DESDE', 'F. desde', true);
 define('CYT_LBL_SOLICITUD_BECA_HASTA', 'F. hasta', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA', 'Lugar de Trabajo', true);
-define('CYT_LBL_SOLICITUD_BECA_RESOLUCION', 'Res. Beca', true);
+define('CYT_LBL_SOLICITUD_BECA_RESOLUCION', 'Cert. Beca', true);
 define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SIGLA', 'RES', true);
-define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SPEECH', 'IMPORTANTE: mensaje resolución beca', true);
+define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SPEECH', 'IMPORTANTE: los becarios/as que no son U.N.L.P. deberán adjuntar una certificación de tareas como becario/a emitida por la entidad otorgante de la beca.<br>
+No se aceptarán:<br>
+Recibo de estipendio<br>
+Resolución de la beca', true);
+define('CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION', 'Experticia en Investigación', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_CARRERAINV', 'Institución', true);
 define('CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV', 'Categoría', true);
 define('CYT_LBL_SOLICITUD_INGRESO_CARRERAINV', 'Ingreso', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_CARRERAINV', 'Lugar de Trabajo', true);
 define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION', 'Cert. Carrera', true);
 define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SIGLA', 'CARR', true);
-define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SPEECH', 'IMPORTANTE: mensaje certificación carrera', true);
+define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SPEECH', 'IMPORTANTE: Se deberá adjuntar una certificación de tareas como Investigador/a o CPA, emitida por la entidad otorgante.<br>
+No se aceptarán:<br>
+Recibo de sueldo<br>
+Resolución de ingreso', true);
 define('CYT_LBL_SOLICITUD_DISCIPLINA', 'Disciplina', true);
 
 define('CYT_LBL_SOLICITUD_ARCHIVO_SIZE', 'IMPORTANTE: los archivos a subir no deben superar los 8 Mb de tamaño', true);
@@ -135,7 +161,8 @@ define('CYT_LBL_SOLICITUD_PROYECTOS_ESPECIALIDAD', 'Especialidad', true);
 define('CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD', 'Institución', true);
 define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO', 'Certificación', true);
 define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SIGLA', 'PROY', true);
-define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SPEECH', 'IMPORTANTE: mensaje de certificación', true);
+define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SPEECH', 'IMPORTANTE: Si se ingresó un proyecto externo a la UNLP, se deberá adjuntar una certificación de participación en proyecto indicado, emitida por la entidad administradora del proyecto a la fecha de la corriente presentación.No se aceptará resolución de otorgamiento del proyecto.<br>
+No se aceptará resolución de otorgamiento', true);
 
 
 
@@ -146,7 +173,7 @@ define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SPEECH', 'IMPORTANTE: mensaje de cer
 //evaluación
 define('CYT_LBL_EVALUACION', 'Evaluación', true);
 define('CYT_LBL_EVALUACION_SOLICITANTE', 'Solicitante', true);
-define('CYT_LBL_EVALUACION_FACULTAD', 'Facultad', true);
+define('CYT_LBL_EVALUACION_FACULTAD', 'Unidad Académica', true);
 define('CYT_LBL_EVALUACION_EVALUADOR', 'Evaluador', true);
 define('CYT_LBL_EVALUACION_PUNTAJE', 'Puntaje', true);
 define('CYT_LBL_EVALUACION_OBSERVACIONES', 'Observaciones', true);

@@ -16,6 +16,9 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
 	protected function renderFieldset(CMPForm $form, XTemplate $xtpl){
 		$xtpl->assign("titulo_domicilio", CYT_MSG_SOLICITUD_DOMICILIO_TITULO);
+        $xtpl->assign("titulo_becario", CYT_MSG_SOLICITUD_BECARIO_TITULO);
+        $xtpl->assign("titulo_proyectos", CYT_MSG_SOLICITUD_PROYECTOS_TITULO);
+        $xtpl->assign("label_equivalencia_help", CYT_MSG_SOLICITUD_EQUIVALENCIA_HELP);
 		//$xtpl->assign("titulo_tipo_investigador", CYT_MSG_SOLICITUD_TIPO_INVESTIGADOR_TITULO);
 		foreach ($form->getFieldsets() as $fieldset) {
 
@@ -58,7 +61,34 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
 			$xtpl->parse("main.fieldset.column.nu_cuil");
 
+            $xtpl->assign("value", CYT_LBL_SOLICITUD_FOTO );
+            $xtpl->parse("main.fieldset.column.ds_foto.label");
+            $xtpl->assign("actionFile", "doAction?action=add_file_session" );
+            $xtpl->parse("main.fieldset.column.ds_foto.input");
+            $xtpl->assign("display", 'block');
+            $xtpl->assign("label_foto", CYT_LBL_SOLICITUD_FOTO_SPEECH);
 
+            $hiddens = $form->getHiddens();
+            $hiddenDs_foto = $hiddens['ds_foto'];
+
+            if ($hiddenDs_foto->getInputValue()) {
+                $dir = CYT_PATH_PDFS.'/';
+                if (!file_exists($dir)) mkdir($dir, 0777);
+                $dir .= CYT_PERIODO_YEAR.'/';
+                if (!file_exists($dir)) mkdir($dir, 0777);
+                //$oUser = CdtSecureUtils::getUserLogged();
+                $separarCUIL = explode('-',trim($fieldCUIL->getInput()->getProperties()['value']));
+                $dir .= $separarCUIL[1].'/';
+                if (!file_exists($dir)) mkdir($dir, 0777);
+
+
+                $xtpl->assign("ds_foto_cargado", '<img style="width:100px;border-radius:50%;" src="'.$dir.$hiddenDs_foto->getInputValue().'">');
+            }
+            else{
+                $xtpl->assign("ds_foto_cargado", '<img style="width:100px;border-radius:50%;" src="css/images/user-icon-jpg-11.jpg">');
+            }
+
+            $xtpl->parse("main.fieldset.column.ds_foto");
 
 			$xtpl->parse("main.fieldset.column");
 
@@ -167,6 +197,34 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 			else $xtpl->assign("display", 'none');
 
 			$xtpl->parse("main.bl_notificacion");
+            $fieldOtromail = $fields['ds_otromail'];
+            $input = $fieldOtromail->getInput();
+            $label = $fieldOtromail->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldOtromail->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_otromail");
+            $fieldGenero = $fields['ds_genero'];
+            $input = $fieldGenero->getInput();
+            $label = $fieldGenero->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldGenero->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_genero");
 			$fieldTelefono = $fields['nu_telefono'];
 			$input = $fieldTelefono->getInput();
 			$label = $fieldTelefono->getLabel();
@@ -197,6 +255,109 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
 			$xtpl->parse("main.dt_nacimiento");
 
+            $fieldOrcid = $fields['ds_orcid'];
+            $input = $fieldOrcid->getInput();
+            $label = $fieldOrcid->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldOrcid->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_orcid");
+            $fieldSedici = $fields['ds_sedici'];
+            $input = $fieldSedici->getInput();
+            $label = $fieldSedici->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldSedici->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_sedici");
+            $fieldScholar = $fields['ds_scholar'];
+            $input = $fieldScholar->getInput();
+            $label = $fieldScholar->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldScholar->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_scholar");
+
+            $fieldScopus = $fields['ds_scopus'];
+            $input = $fieldScopus->getInput();
+            $label = $fieldScopus->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldScopus->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_scopus");
+
+            $fieldInstagram = $fields['ds_instagram'];
+            $input = $fieldInstagram->getInput();
+            $label = $fieldInstagram->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldInstagram->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_instagram");
+            $fieldTwitter = $fields['ds_twitter'];
+            $input = $fieldTwitter->getInput();
+            $label = $fieldTwitter->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldTwitter->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_twitter");
+            $fieldFacebook = $fields['ds_facebook'];
+            $input = $fieldFacebook->getInput();
+            $label = $fieldFacebook->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldFacebook->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_facebook");
+
+
+
 			$xtpl->assign("universidad_tab", CYT_MSG_SOLICITUD_TAB_UNIVERSIDAD);
 
 
@@ -206,7 +367,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 			$this->renderLabelTab( $label, $input, $xtpl );
 			$this->renderInputTab( $input, $xtpl );
 			$xtpl->assign("minWidth", $field->getMinWidth());
-
+            $xtpl->assign("input_help", CYT_MSG_SOLICITUD_TITULO_HELP);
 			if( $input->getIsVisible() ){
 				$xtpl->assign("display", 'block');
 
@@ -235,7 +396,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 			$this->renderLabelTab( $label, $input, $xtpl );
 			$this->renderInputTab( $input, $xtpl );
 			$xtpl->assign("minWidth", $field->getMinWidth());
-
+            $xtpl->assign("input_help", CYT_MSG_SOLICITUD_TITULO_POST_HELP);
 			if( $input->getIsVisible() ){
 				$xtpl->assign("display", 'block');
 
@@ -281,7 +442,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 			$this->renderLabelTab( $label, $input, $xtpl );
 			$this->renderInputTab( $input, $xtpl );
 			$xtpl->assign("minWidth", $fieldCargo->getMinWidth());
-
+            $xtpl->assign("input_help", CYT_MSG_SOLICITUD_CARGO_HELP);
 			if( $input->getIsVisible() ){
 				$xtpl->assign("display", 'block');
 
@@ -319,6 +480,106 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 			else $xtpl->assign("display", 'none');
 
 			$xtpl->parse("main.facultad_oid");
+
+            $fieldExperticiaD = $fields['ds_experticiaD'];
+            $input = $fieldExperticiaD->getInput();
+            $label = $fieldExperticiaD->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldExperticiaD->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_experticiaD");
+
+            $fieldClaveD1 = $fields['ds_claveD1'];
+            $input = $fieldClaveD1->getInput();
+            $label = $fieldClaveD1->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveD1->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveD1");
+            $fieldClaveD2 = $fields['ds_claveD2'];
+            $input = $fieldClaveD2->getInput();
+            $label = $fieldClaveD2->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveD2->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveD2");
+            $fieldClaveD3 = $fields['ds_claveD3'];
+            $input = $fieldClaveD3->getInput();
+            $label = $fieldClaveD3->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveD3->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveD3");
+            $fieldClaveD4 = $fields['ds_claveD4'];
+            $input = $fieldClaveD4->getInput();
+            $label = $fieldClaveD4->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveD4->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveD4");
+            $fieldClaveD5 = $fields['ds_claveD5'];
+            $input = $fieldClaveD5->getInput();
+            $label = $fieldClaveD5->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveD5->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveD5");
+            $fieldClaveD6 = $fields['ds_claveD6'];
+            $input = $fieldClaveD6->getInput();
+            $label = $fieldClaveD6->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveD6->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveD6");
 
 			$fieldDisciplina = $fields['ds_disciplina'];
 			$input = $fieldDisciplina->getInput();
@@ -432,6 +693,108 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
 
             $xtpl->parse("main.ds_resbeca");
+
+            $fieldExperticiaB = $fields['ds_experticiaB'];
+            $input = $fieldExperticiaB->getInput();
+            $label = $fieldExperticiaB->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldExperticiaB->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_experticiaB");
+
+            $fieldClaveB1 = $fields['ds_claveB1'];
+            $input = $fieldClaveB1->getInput();
+            $label = $fieldClaveB1->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveB1->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveB1");
+            $fieldClaveB2 = $fields['ds_claveB2'];
+            $input = $fieldClaveB2->getInput();
+            $label = $fieldClaveB2->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveB2->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveB2");
+            $fieldClaveB3 = $fields['ds_claveB3'];
+            $input = $fieldClaveB3->getInput();
+            $label = $fieldClaveB3->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveB3->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveB3");
+            $fieldClaveB4 = $fields['ds_claveB4'];
+            $input = $fieldClaveB4->getInput();
+            $label = $fieldClaveB4->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveB4->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveB4");
+            $fieldClaveB5 = $fields['ds_claveB5'];
+            $input = $fieldClaveB5->getInput();
+            $label = $fieldClaveB5->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveB5->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveB5");
+            $fieldClaveB6 = $fields['ds_claveB6'];
+            $input = $fieldClaveB6->getInput();
+            $label = $fieldClaveB6->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveB6->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveB6");
+
+
 			$xtpl->assign("carrerainv_tab", CYT_MSG_SOLICITUD_TAB_CARRERAINV);
 
 			$fieldInstitucion = $fields['organismo_oid'];
@@ -511,6 +874,106 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_rescarrera");
 
+            $fieldExperticiaC = $fields['ds_experticiaC'];
+            $input = $fieldExperticiaC->getInput();
+            $label = $fieldExperticiaC->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldExperticiaC->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_experticiaC");
+
+            $fieldClaveC1 = $fields['ds_claveC1'];
+            $input = $fieldClaveC1->getInput();
+            $label = $fieldClaveC1->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveC1->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveC1");
+            $fieldClaveC2 = $fields['ds_claveC2'];
+            $input = $fieldClaveC2->getInput();
+            $label = $fieldClaveC2->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveC2->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveC2");
+            $fieldClaveC3 = $fields['ds_claveC3'];
+            $input = $fieldClaveC3->getInput();
+            $label = $fieldClaveC3->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveC3->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveC3");
+            $fieldClaveC4 = $fields['ds_claveC4'];
+            $input = $fieldClaveC4->getInput();
+            $label = $fieldClaveC4->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveC4->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveC4");
+            $fieldClaveC5 = $fields['ds_claveC5'];
+            $input = $fieldClaveC5->getInput();
+            $label = $fieldClaveC5->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveC5->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveC5");
+            $fieldClaveC6 = $fields['ds_claveC6'];
+            $input = $fieldClaveC6->getInput();
+            $label = $fieldClaveC6->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldClaveC6->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.ds_claveC6");
+
 			$xtpl->assign("proyectos_tab", CYT_MSG_SOLICITUD_TAB_PROYECTOS);
 
 			$HTMLProyectos = $this->getHTMLProyectos($form, $xtpl);
@@ -554,6 +1017,21 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
                 else $xtpl->assign("display", 'none');
 
                 $xtpl->parse("main.ds_codigoproyecto");
+
+                $fieldDirectorproyecto = $fields['ds_directorproyecto'];
+                $input = $fieldDirectorproyecto->getInput();
+                $label = $fieldDirectorproyecto->getLabel();
+                $this->renderLabelTab( $label, $input, $xtpl );
+                $this->renderInputTab( $input, $xtpl );
+                $xtpl->assign("minWidth", $fieldDirectorproyecto->getMinWidth());
+
+                if( $input->getIsVisible() ){
+                    $xtpl->assign("display", 'block');
+
+                }
+                else $xtpl->assign("display", 'none');
+
+                $xtpl->parse("main.ds_directorproyecto");
 
                 $fieldTituloproyecto = $fields['ds_tituloproyecto'];
                 $input = $fieldTituloproyecto->getInput();
@@ -685,38 +1163,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
 
 
-			/*$fieldObjetivo = $fields['ds_objetivo'];
-			$input = $fieldObjetivo->getInput();
-			$label = $fieldObjetivo->getLabel();
-			$this->renderLabelTab( $label, $input, $xtpl );
-			$this->renderInputTab( $input, $xtpl );
-			$xtpl->assign("minWidth", $fieldObjetivo->getMinWidth());
 
-			if( $input->getIsVisible() ){
-				$xtpl->assign("display", 'block');
-
-			}
-			else $xtpl->assign("display", 'none');
-
-			$xtpl->parse("main.ds_objetivo");
-
-			//$xtpl->assign("minWidth", $fieldObjetivo->getMinWidth());
-
-
-
-
-
-			$field = $fields['ds_justificacion'];
-			$input = $field->getInput();
-			$label = $field->getLabel();
-			$this->renderLabelTab( $label, $input, $xtpl );
-			$this->renderInputTab( $input, $xtpl );
-			$xtpl->assign("minWidth", $field->getMinWidth());
-			if( $input->getIsVisible() ){
-				$xtpl->assign("display", 'block');
-			}
-			else $xtpl->assign("display", 'none');
-			$xtpl->parse("main.ds_justificacion");*/
 
 			$xtpl->assign("value", CYT_LBL_SOLICITUD_A_CURRICULUM );
 			$xtpl->assign("required", "*" );

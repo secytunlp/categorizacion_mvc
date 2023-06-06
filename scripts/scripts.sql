@@ -230,7 +230,7 @@ AUTO_INCREMENT=0
 
 CREATE TABLE `equivalencia` (
                                 `cd_equivalencia` INT(11) NOT NULL AUTO_INCREMENT,
-                                `ds_equivalencia` VARCHAR(30) NOT NULL,
+                                `ds_equivalencia` VARCHAR(50) NOT NULL,
                                 PRIMARY KEY (`cd_equivalencia`)
 )
     COLLATE='utf8_general_ci'
@@ -239,11 +239,69 @@ AUTO_INCREMENT=0
 ;
 
 INSERT INTO `equivalencia` (`cd_equivalencia`, `ds_equivalencia`) VALUES
-                                                                      (1, 'Incentivos SPU'),
-                                                                      (2, 'Investigador Superior'),
-                                                                      (3, 'Investigador Independiente'),
-                                                                      (4, 'Investigador Principal'),
-                                                                      (5, 'Becario Postdoctoral')
+                                                                      (1, 'DI-PRINUAR'),
+                                                                      (2, 'Investigador/a Principal o Superior'),
+                                                                      (3, 'Investigador/a Independiente'),
+                                                                      (4, 'Investigador/a Adjunto/a'),
+                                                                      (5, 'Investigador/a Asistente 3+ informes'),
+                                                                      (6, 'Investigador/a Asistente o CPA'),
+                                                                      (7, 'Becario/a Postdoctoral'),
+                                                                      (8, 'Becario/a Doctoral'),
+                                                                      (9, 'Profesor emérito');
+
+ALTER TABLE `solicitudcategorizacion`
+
+	ADD COLUMN `ds_genero` VARCHAR(2) NULL DEFAULT NULL,
+    ADD COLUMN `ds_otromail` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_foto` VARCHAR(255) NULL DEFAULT NULL,
+	ADD COLUMN `ds_orcid` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_sedici` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_scholar` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_instagram` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_twitter` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_facebook` VARCHAR(255) NULL DEFAULT NULL;
+
+ALTER TABLE `solicitudcategorizacion`
+
+
+    ADD COLUMN `ds_scopus` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_experticiaD` TEXT NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveD1` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveD2` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveD3` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveD4` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveD5` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveD6` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_experticiaB` TEXT NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveB1` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveB2` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveB3` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveB4` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveB5` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveB6` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_experticiaC` TEXT NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveC1` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveC2` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveC3` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveC4` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveC5` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_claveC6` VARCHAR(255) NULL DEFAULT NULL;
+
+CREATE TABLE `categoriasicadi` (
+                            `cd_categoria` INT(11) NOT NULL AUTO_INCREMENT,
+                            `ds_categoria` VARCHAR(30) NOT NULL,
+                            PRIMARY KEY (`cd_categoria`)
+)
+    COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
 ;
+
+INSERT INTO `categoriasicadi` (`cd_categoria`, `ds_categoria`) VALUES
+                                                                      (1, 'DI1'),
+                                                                      (2, 'DI2'),
+                                                                      (3, 'DI3'),
+                                                                      (4, 'DI4'),
+                                                                      (5, 'DI5');
 
 

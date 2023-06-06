@@ -92,6 +92,39 @@ class Solicitud extends Entity{
 
     private $ds_archivo;
 
+    private $ds_otromail;
+    private $ds_genero;
+    private $ds_foto;
+    private $ds_orcid;
+    private $ds_sedici;
+    private $ds_scholar;
+    private $ds_instagram;
+    private $ds_twitter;
+    private $ds_facebook;
+
+
+private $ds_scopus;
+private $ds_experticiaD;
+private $ds_claveD1;
+private $ds_claveD2;
+private $ds_claveD3;
+private $ds_claveD4;
+private $ds_claveD5;
+private $ds_claveD6;
+private $ds_experticiaB;
+private $ds_claveB1;
+private $ds_claveB2;
+private $ds_claveB3;
+private $ds_claveB4;
+private $ds_claveB5;
+private $ds_claveB6;
+private $ds_experticiaC;
+private $ds_claveC1;
+private $ds_claveC2;
+private $ds_claveC3;
+private $ds_claveC4;
+private $ds_claveC5;
+private $ds_claveC6;
 
 
     public function __construct(){
@@ -897,6 +930,502 @@ class Solicitud extends Entity{
     {
         //CYTSecureUtils::logObject($categoriasolicitada);
         $this->categoriasolicitada = $categoriasolicitada;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_genero()
+    {
+        return $this->ds_genero;
+    }
+
+    /**
+     * @param mixed $ds_genero
+     */
+    public function setDs_genero($ds_genero)
+    {
+        $this->ds_genero = $ds_genero;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_foto()
+    {
+        return $this->ds_foto;
+    }
+
+    /**
+     * @param mixed $ds_foto
+     */
+    public function setDs_foto($ds_foto)
+    {
+        $this->ds_foto = $ds_foto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_orcid()
+    {
+        return $this->ds_orcid;
+    }
+
+    /**
+     * @param mixed $ds_orcid
+     */
+    public function setDs_orcid($ds_orcid)
+    {
+        $this->ds_orcid = $ds_orcid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_scholar()
+    {
+        return $this->ds_scholar;
+    }
+
+    /**
+     * @param mixed $ds_scholar
+     */
+    public function setDs_scholar($ds_scholar)
+    {
+        $this->ds_scholar = $ds_scholar;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_instagram()
+    {
+        return $this->ds_instagram;
+    }
+
+    /**
+     * @param mixed $ds_instagram
+     */
+    public function setDs_instagram($ds_instagram)
+    {
+        $this->ds_instagram = $ds_instagram;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_twitter()
+    {
+        return $this->ds_twitter;
+    }
+
+    /**
+     * @param mixed $ds_twitter
+     */
+    public function setDs_twitter($ds_twitter)
+    {
+        $this->ds_twitter = $ds_twitter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_facebook()
+    {
+        return $this->ds_facebook;
+    }
+
+    /**
+     * @param mixed $ds_facebook
+     */
+    public function setDs_facebook($ds_facebook)
+    {
+        $this->ds_facebook = $ds_facebook;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_otromail()
+    {
+        return $this->ds_otromail;
+    }
+
+    /**
+     * @param mixed $ds_otromail
+     */
+    public function setDs_otromail($ds_otromail)
+    {
+        $this->ds_otromail = $ds_otromail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_sedici()
+    {
+        return $this->ds_sedici;
+    }
+
+    /**
+     * @param mixed $ds_sedici
+     */
+    public function setDs_sedici($ds_sedici)
+    {
+        $this->ds_sedici = $ds_sedici;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_scopus()
+    {
+        return $this->ds_scopus;
+    }
+
+    /**
+     * @param mixed $ds_scopus
+     */
+    public function setDs_scopus($ds_scopus)
+    {
+        $this->ds_scopus = $ds_scopus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_experticiaD()
+    {
+        return $this->ds_experticiaD;
+    }
+
+    /**
+     * @param mixed $ds_experticiaD
+     */
+    public function setDs_experticiaD($ds_experticiaD)
+    {
+        $this->ds_experticiaD = $ds_experticiaD;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveD1()
+    {
+        return $this->ds_claveD1;
+    }
+
+    /**
+     * @param mixed $ds_claveD1
+     */
+    public function setDs_claveD1($ds_claveD1)
+    {
+        $this->ds_claveD1 = $ds_claveD1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveD2()
+    {
+        return $this->ds_claveD2;
+    }
+
+    /**
+     * @param mixed $ds_claveD2
+     */
+    public function setDs_claveD2($ds_claveD2)
+    {
+        $this->ds_claveD2 = $ds_claveD2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveD3()
+    {
+        return $this->ds_claveD3;
+    }
+
+    /**
+     * @param mixed $ds_claveD3
+     */
+    public function setDs_claveD3($ds_claveD3)
+    {
+        $this->ds_claveD3 = $ds_claveD3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveD4()
+    {
+        return $this->ds_claveD4;
+    }
+
+    /**
+     * @param mixed $ds_claveD4
+     */
+    public function setDs_claveD4($ds_claveD4)
+    {
+        $this->ds_claveD4 = $ds_claveD4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveD5()
+    {
+        return $this->ds_claveD5;
+    }
+
+    /**
+     * @param mixed $ds_claveD5
+     */
+    public function setDs_claveD5($ds_claveD5)
+    {
+        $this->ds_claveD5 = $ds_claveD5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveD6()
+    {
+        return $this->ds_claveD6;
+    }
+
+    /**
+     * @param mixed $ds_claveD6
+     */
+    public function setDs_claveD6($ds_claveD6)
+    {
+        $this->ds_claveD6 = $ds_claveD6;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_experticiaB()
+    {
+        return $this->ds_experticiaB;
+    }
+
+    /**
+     * @param mixed $ds_experticiaB
+     */
+    public function setDs_experticiaB($ds_experticiaB)
+    {
+        $this->ds_experticiaB = $ds_experticiaB;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveB1()
+    {
+        return $this->ds_claveB1;
+    }
+
+    /**
+     * @param mixed $ds_claveB1
+     */
+    public function setDs_claveB1($ds_claveB1)
+    {
+        $this->ds_claveB1 = $ds_claveB1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveB2()
+    {
+        return $this->ds_claveB2;
+    }
+
+    /**
+     * @param mixed $ds_claveB2
+     */
+    public function setDs_claveB2($ds_claveB2)
+    {
+        $this->ds_claveB2 = $ds_claveB2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveB3()
+    {
+        return $this->ds_claveB3;
+    }
+
+    /**
+     * @param mixed $ds_claveB3
+     */
+    public function setDs_claveB3($ds_claveB3)
+    {
+        $this->ds_claveB3 = $ds_claveB3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveB4()
+    {
+        return $this->ds_claveB4;
+    }
+
+    /**
+     * @param mixed $ds_claveB4
+     */
+    public function setDs_claveB4($ds_claveB4)
+    {
+        $this->ds_claveB4 = $ds_claveB4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveB5()
+    {
+        return $this->ds_claveB5;
+    }
+
+    /**
+     * @param mixed $ds_claveB5
+     */
+    public function setDs_claveB5($ds_claveB5)
+    {
+        $this->ds_claveB5 = $ds_claveB5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveB6()
+    {
+        return $this->ds_claveB6;
+    }
+
+    /**
+     * @param mixed $ds_claveB6
+     */
+    public function setDs_claveB6($ds_claveB6)
+    {
+        $this->ds_claveB6 = $ds_claveB6;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_experticiaC()
+    {
+        return $this->ds_experticiaC;
+    }
+
+    /**
+     * @param mixed $ds_experticiaC
+     */
+    public function setDs_experticiaC($ds_experticiaC)
+    {
+        $this->ds_experticiaC = $ds_experticiaC;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveC1()
+    {
+        return $this->ds_claveC1;
+    }
+
+    /**
+     * @param mixed $ds_claveC1
+     */
+    public function setDs_claveC1($ds_claveC1)
+    {
+        $this->ds_claveC1 = $ds_claveC1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveC2()
+    {
+        return $this->ds_claveC2;
+    }
+
+    /**
+     * @param mixed $ds_claveC2
+     */
+    public function setDs_claveC2($ds_claveC2)
+    {
+        $this->ds_claveC2 = $ds_claveC2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveC3()
+    {
+        return $this->ds_claveC3;
+    }
+
+    /**
+     * @param mixed $ds_claveC3
+     */
+    public function setDs_claveC3($ds_claveC3)
+    {
+        $this->ds_claveC3 = $ds_claveC3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveC4()
+    {
+        return $this->ds_claveC4;
+    }
+
+    /**
+     * @param mixed $ds_claveC4
+     */
+    public function setDs_claveC4($ds_claveC4)
+    {
+        $this->ds_claveC4 = $ds_claveC4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveC5()
+    {
+        return $this->ds_claveC5;
+    }
+
+    /**
+     * @param mixed $ds_claveC5
+     */
+    public function setDs_claveC5($ds_claveC5)
+    {
+        $this->ds_claveC5 = $ds_claveC5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_claveC6()
+    {
+        return $this->ds_claveC6;
+    }
+
+    /**
+     * @param mixed $ds_claveC6
+     */
+    public function setDs_claveC6($ds_claveC6)
+    {
+        $this->ds_claveC6 = $ds_claveC6;
     }
 }
 ?>
