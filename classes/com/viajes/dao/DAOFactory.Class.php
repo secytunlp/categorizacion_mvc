@@ -124,7 +124,9 @@ class DAOFactory{
 	public static function getEquivalenciaDAO(){
 		return new EquivalenciaDAO();
 	}
-	
-	
+
+	public static function getCategoriasicadiDAO(){
+		return new CategoriasicadiDAO();
+	}
 }
 ?>

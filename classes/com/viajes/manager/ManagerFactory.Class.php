@@ -19,8 +19,12 @@ class ManagerFactory{
 	public static function getOtrosProyectoManager(){
 		return new OtrosProyectoManager();
 	}
-	
-	
+
+
+    public static function getCategoriasicadiManager(){
+        return new CategoriasicadiManager();
+    }
+
 	public static function getPresupuestoManager(){
 		return new PresupuestoManager();
 	}

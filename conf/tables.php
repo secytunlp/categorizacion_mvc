@@ -17,6 +17,8 @@ define('CYT_TABLE_SOLICITUD', 'solicitudcategorizacion');
 define('CYT_TABLE_EQUIVALENCIA', 'equivalencia');
 define('CYT_TABLE_SOLICITUD_ESTADO', 'cyt_solicitudcategorizacion_estado');
 
+define('CYT_TABLE_CATEGORIA_SICADI', 'categoriasicadi');
+
 /*define('CYT_TABLE_EVALUACION', 'evaluacionjovenes');*/
 define('CYT_TABLE_SOLICITUD_PROYECTO', 'solicitudcategorizacionproyecto');
 /*define('CYT_TABLE_JOVENES_BECA', 'solicitudjovenesbeca');

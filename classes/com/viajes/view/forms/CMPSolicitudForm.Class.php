@@ -120,13 +120,14 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldCategoria->getInput()->setIsEditable(false);
 		$fieldset->addField( $fieldCategoria );
 
-		$fieldCategoriasolicitada = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, "categoriasolicitada.oid", CYTSecureUtils::getCategoriasItems('6,7,8,9,10'), "", null, null, "--seleccionar--", "categoriasolicitada_oid" );
+		$fieldCategoriasolicitada = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, "categoriasolicitada.oid", CYTUtils::getCategoriasItems(), "", null, null, "--seleccionar--", "categoriasolicitada_oid" );
 		//$fieldCategoria->getInput()->setIsEditable(false);
 
 		$fieldset->addField( $fieldCategoriasolicitada );
 
 		$fieldEquivalencia = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_EQUIVALENCIA, "equivalencia.oid",CYTUtils::getEquivalenciasItems(), "", null, null, "--seleccionar--", "equivalencia_oid" );
 		//$fieldCategoria->getInput()->setIsEditable(false);
+		$fieldEquivalencia->getInput()->addProperty( 'onChange', 'seleccionarEquivalencia(this)' );
 		$fieldset->addField( $fieldEquivalencia );
 		
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_ORGANISMO_BECA, "ds_orgbeca") );

@@ -217,6 +217,7 @@ class SolicitudDAO extends EntityDAO {
 		$tCategoria = CYTSecureDAOFactory::getCategoriaDAO()->getTableName();
         $tEquivalencia = DAOFactory::getEquivalenciaDAO()->getTableName();
         $tCategoria = CYTSecureDAOFactory::getCategoriaDAO()->getTableName();
+        $tCategoriasicadi = DAOFactory::getCategoriasicadiDAO()->getTableName();
 		
 		$tTitulo = CYTSecureDAOFactory::getTituloDAO()->getTableName();
 		
@@ -241,7 +242,7 @@ class SolicitudDAO extends EntityDAO {
        	$sql .= " LEFT JOIN " . $tCarrerainv . " ON($tSolicitud.cd_carrerainv = $tCarrerainv.cd_carrerainv)";
        	$sql .= " LEFT JOIN " . $tCategoria . " ON($tSolicitud.cd_categoria = $tCategoria.cd_categoria)";
         $sql .= " LEFT JOIN " . $tEquivalencia . " ON($tSolicitud.cd_equivalencia = $tEquivalencia.cd_equivalencia)";
-        $sql .= " LEFT JOIN " . $tCategoria . " Categoriasolicitada ON($tSolicitud.cd_categoriasolicitada = Categoriasolicitada.cd_categoria)";
+        $sql .= " LEFT JOIN " . $tCategoriasicadi . " ON($tSolicitud.cd_categoriasolicitada = $tCategoriasicadi.cd_categoria)";
        
         $sql .= " LEFT JOIN " . $tTitulo . " ON($tSolicitud.cd_titulogrado = $tTitulo.cd_titulo)";
         $sql .= " LEFT JOIN " . $tTitulo . " Tituloposgrado ON($tSolicitud.cd_tituloposgrado = Tituloposgrado.cd_titulo)";
@@ -335,8 +336,9 @@ class SolicitudDAO extends EntityDAO {
         $fields[] = "$tEquivalencia.cd_equivalencia as " . $tEquivalencia . "_oid ";
         $fields[] = "$tEquivalencia.ds_equivalencia as " . $tEquivalencia . "_ds_equivalencia ";
 
-        $fields[] = "Categoriasolicitada.cd_categoria as Categoriasolicitada_oid ";
-        $fields[] = "Categoriasolicitada.ds_categoria as Categoriasolicitada_ds_categoria ";
+        $tCategoriasicadi = DAOFactory::getCategoriasicadiDAO()->getTableName();
+        $fields[] = "$tCategoriasicadi.cd_categoria as " . $tCategoriasicadi . "_oid ";
+        $fields[] = "$tCategoriasicadi.ds_categoria as " . $tCategoriasicadi . "_ds_categoria ";
         
         $tTitulo = CYTSecureDAOFactory::getTituloDAO()->getTableName();
         $fields[] = "$tTitulo.cd_titulo as " . $tTitulo . "_oid ";

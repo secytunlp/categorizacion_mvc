@@ -279,7 +279,8 @@
 
 	<action name='add_otrosProyecto_session' class='AddOtrosProyectoSessionAction' />
 	<action name='delete_otrosProyecto_session' class='DeleteOtrosProyectoSessionAction' />
-	
+
+	<action name='add_solicitud_categoria_equivalencia' class='AddSolicitudCategoriaEquivalenciaAction' />
 
 		
 	<action name='update_solicitud' class='UpdateSolicitudAction' />

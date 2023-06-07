@@ -298,10 +298,10 @@ AUTO_INCREMENT=0
 ;
 
 INSERT INTO `categoriasicadi` (`cd_categoria`, `ds_categoria`) VALUES
-                                                                      (1, 'DI1'),
-                                                                      (2, 'DI2'),
-                                                                      (3, 'DI3'),
-                                                                      (4, 'DI4'),
-                                                                      (5, 'DI5');
+                                                                      (6, 'DI1'),
+                                                                      (7, 'DI2'),
+                                                                      (8, 'DI3'),
+                                                                      (9, 'DI4'),
+                                                                      (10, 'DI5');
 
 

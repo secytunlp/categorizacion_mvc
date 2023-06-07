@@ -193,6 +193,35 @@ function  seleccionarInstitucion(ds_institucion){
 
 }
 
+function  seleccionarEquivalencia(cd_equivalencia){
+	$("#item-div-ds_orgbeca").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
+	jQuery.ajax({
+		url:"doAction?action=add_solicitud_categoria_equivalencia&cd_equivalencia=" + cd_equivalencia.value+"&cd_categoria=" + $("#categoria_oid").val(),
+		dataType:"json",
+		success: function(data){
+
+			if( data != null && data["error"]!=null){
+				showMessageError( data["error"], true );
+				//inhabilitar el submit.
+				$("#edit_solicitud_input_submit_ajax").hide();
+			}
+
+			else{
+				$("#edit_solicitud_input_submit_ajax").show();
+				var categoriasolicitada_oid = $("#categoriasolicitada_oid").val();
+				$("#categoriasolicitada_oid").empty();
+				$.each(data, function(k,v){
+					$("#categoriasolicitada_oid").append("<option value=\""+k+"\">"+v+"</option>");
+				});
+				$("#categoriasolicitada_oid").val(categoriasolicitada_oid);
+			}
+			$("#iconoLoading").remove();
+		}
+	});
+
+
+}
+
 function uploadAjax(file, action, name){
 	var file = file.files[0];
 	var data = new FormData();

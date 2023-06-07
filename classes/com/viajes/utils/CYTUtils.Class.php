@@ -26,6 +26,17 @@ class CYTUtils {
         return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getEquivalenciaManager(), "oid", "ds_equivalencia");
 
     }
-	
-	
+
+
+    public static function getCategoriasItems($mostradas="") {
+        if ($mostradas) {
+            $oCriteria = new CdtSearchCriteria();
+            $filter = new CdtSimpleExpression("cd_categoria in (".$mostradas.")");
+            $oCriteria->setExpresion($filter);
+        }
+
+        return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getCategoriasicadiManager(), "oid", "ds_categoria","","","","cd_categoria",$oCriteria);
+
+    }
+
 }
