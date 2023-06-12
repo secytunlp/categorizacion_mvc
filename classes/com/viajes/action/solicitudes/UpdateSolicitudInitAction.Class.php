@@ -38,10 +38,19 @@ class UpdateSolicitudInitAction extends UpdateEntityInitAction {
 			throw new GenericException( CYT_MSG_SOLICITUD_MODIFICAR_PROHIBIDO_1);
 		}
 		
-		$oCriteria = new CdtSearchCriteria();
-		$oCriteria->addFilter('cd_solicitud', $entity->getOid(), '=');
-		
+		//cargos
+        $oCriteria = new CdtSearchCriteria();
+        $oCriteria->addFilter('cd_solicitud', $entity->getOid(), '=');
 
+        $oCargoManager =  ManagerFactory::getSolicitudCargoManager();
+        $oCargos = $oCargoManager->getEntities($oCriteria);
+        $cargosArray = new ItemCollection();
+        foreach ($oCargos as $oCargo) {
+
+
+            $cargosArray->addItem($oCargo);
+        }
+        $entity->setCargos( $cargosArray );
 				
 		//proyectos.
 		$oCriteria = new CdtSearchCriteria();
@@ -110,8 +119,9 @@ class UpdateSolicitudInitAction extends UpdateEntityInitAction {
 		
 		$manager = new SolicitudProyectoSessionManager();
 		$manager->setEntities( $entity->getProyectos());
-		
 
+        $manager = new SolicitudCargoSessionManager();
+        $manager->setEntities( $entity->getCargos());
 		
 		
 		parent::parseEntity($entity, $xtpl);

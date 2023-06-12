@@ -47,10 +47,19 @@ class SendSolicitudAction extends CdtEditAsyncAction {
 			throw new GenericException( CYT_MSG_SOLICITUD_ENVIAR_PROHIBIDO_1);
 		}
 		
-		$oCriteria = new CdtSearchCriteria();
-		$oCriteria->addFilter('cd_solicitud', $entity->getOid(), '=');
-		
+		//cargos
+        $oCriteria = new CdtSearchCriteria();
+        $oCriteria->addFilter('cd_solicitud', $entity->getOid(), '=');
 
+        $oCargoManager =  ManagerFactory::getSolicitudCargoManager();
+        $oCargos = $oCargoManager->getEntities($oCriteria);
+        $cargosArray = new ItemCollection();
+        foreach ($oCargos as $oCargo) {
+
+
+            $cargosArray->addItem($oCargo);
+        }
+        $entity->setCargos( $cargosArray );
 				
 		//proyectos.
 		$oCriteria = new CdtSearchCriteria();

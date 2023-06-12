@@ -128,5 +128,13 @@ class DAOFactory{
 	public static function getCategoriasicadiDAO(){
 		return new CategoriasicadiDAO();
 	}
+
+	public static function getAlfabeticoDAO(){
+		return new AlfabeticoDAO();
+	}
+
+	public static function getSolicitudCargoDAO(){
+		return new SolicitudCargoDAO();
+	}
 }
 ?>

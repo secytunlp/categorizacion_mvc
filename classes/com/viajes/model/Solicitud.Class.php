@@ -76,6 +76,8 @@ class Solicitud extends Entity{
 
     private $proyectos;
 
+    private $cargos;
+
     private $becas;
 
     private $otrosProyectos;
@@ -204,7 +206,25 @@ private $ds_claveC6;
         $this->becas= new ItemCollection();
         $this->otrosProyectos= new ItemCollection();
 
+        $this->cargos= new ItemCollection();
+
         $this->ds_disciplina = "";
+    }
+
+    /**
+     * @return ItemCollection
+     */
+    public function getCargos()
+    {
+        return $this->cargos;
+    }
+
+    /**
+     * @param ItemCollection $cargos
+     */
+    public function setCargos($cargos)
+    {
+        $this->cargos = $cargos;
     }
 
 

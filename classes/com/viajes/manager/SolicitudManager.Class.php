@@ -55,7 +55,22 @@ class SolicitudManager extends EntityManager{
 			
 		}*/
 
+		//cargos
+		$cargos = $entity->getCargos();
 
+
+		foreach ($cargos as $oCargo) {
+			$oSolicitudCargo = new SolicitudCargo();
+			$oSolicitudCargo->setSolicitud( $entity );
+			$oSolicitudCargo->setCargo($oCargo->getCargo());
+			$oSolicitudCargo->setDeddoc($oCargo->getDeddoc());
+			$oSolicitudCargo->setFacultad($oCargo->getFacultad());
+			$oSolicitudCargo->setDt_fecha($oCargo->getDt_fecha());
+
+			$managerCargo = ManagerFactory::getSolicitudCargoManager();
+			$managerCargo->add($oSolicitudCargo);
+
+		}
 		
 
 		//proyectos
@@ -111,8 +126,27 @@ class SolicitudManager extends EntityManager{
 				$oLugarTrabajo->setDs_telefono($entity->getDs_telefono());
 				$managerLugarTrabajo->update($oLugarTrabajo);	
 		}*/
-    	
 
+		//cargos
+		$cargoDAO =  DAOFactory::getSolicitudCargoDAO();
+		$cargoDAO->deleteSolicitudCargoPorSolicitud($entity->getOid());
+
+		//cargos
+		$cargos = $entity->getCargos();
+
+
+		foreach ($cargos as $oCargo) {
+			$oSolicitudCargo = new SolicitudCargo();
+			$oSolicitudCargo->setSolicitud( $entity );
+			$oSolicitudCargo->setCargo($oCargo->getCargo());
+			$oSolicitudCargo->setDeddoc($oCargo->getDeddoc());
+			$oSolicitudCargo->setFacultad($oCargo->getFacultad());
+			$oSolicitudCargo->setDt_fecha($oCargo->getDt_fecha());
+
+			$managerCargo = ManagerFactory::getSolicitudCargoManager();
+			$managerCargo->add($oSolicitudCargo);
+
+		}
 		
     	//proyectos
     	$proyectoDAO =  DAOFactory::getOtrosProyectoDAO();
@@ -209,10 +243,12 @@ class SolicitudManager extends EntityManager{
 		
 	    	$oSolicitudEstadoDAO =  CYTSecureDAOFactory::getSolicitudEstadoDAO();
 	        $oSolicitudEstadoDAO->deleteSolicitudEstadoPorSolicitud($id);
-	        
 
-	        
-	       
+
+
+			//cargos
+			$cargoDAO =  DAOFactory::getSolicitudCargoDAO();
+			$cargoDAO->deleteSolicitudCargoPorSolicitud($id);
 	        
 
 	        
@@ -658,7 +694,7 @@ class SolicitudManager extends EntityManager{
 		/*if (($entity->getBl_becario())&&($entity->getBl_carrera())){
 			$error .= CYT_MSG_BECARIO_CARRERA_PROHIBIDO.'<br>';
 		}*/
-		if ((in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))) &&(!$entity->getBl_becario())&&(!$entity->getBl_carrera())){
+		/*if ((in_array($entity->getDeddoc()->getOid(),explode(",",CYT_DEDICACIONES_SIMPLES))) &&(!$entity->getBl_becario())&&(!$entity->getBl_carrera())){
 			$error .= CYT_MSG_SIMPLE_SIN_BECA.'<br>';
 		}
 		$sinCargo = 0;
@@ -679,7 +715,7 @@ class SolicitudManager extends EntityManager{
 		}
 		if (($sinCargo)&&($sinDeddoc)&&(!$entity->getBl_unlp())) {
 			$error .= CYT_MSG_SIN_CARGO_SIN_BECA.'<br>';
-		}
+		}*/
 
 
 		$dir = CYT_PATH_PDFS.'/';
@@ -751,6 +787,14 @@ class SolicitudManager extends EntityManager{
 				$error .=CYT_MSG_SOLICITUD_CARR_PROBLEMA.'<br />';
 			}
 			
+		}
+
+		if ($entity->getCargos()->size()>0) {
+
+
+		}
+		else{
+			$error .=CYT_MSG_SOLICITUD_SIN_CARGOS.'<br />';
 		}
 
 		if ($entity->getOtrosproyectos()->size()>0) {

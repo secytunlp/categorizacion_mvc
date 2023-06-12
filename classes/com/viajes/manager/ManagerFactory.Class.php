@@ -25,6 +25,14 @@ class ManagerFactory{
         return new CategoriasicadiManager();
     }
 
+    public static function getAlfabeticoManager(){
+        return new AlfabeticoManager();
+    }
+
+    public static function getSolicitudCargoManager(){
+        return new SolicitudCargoManager();
+    }
+
 	public static function getPresupuestoManager(){
 		return new PresupuestoManager();
 	}

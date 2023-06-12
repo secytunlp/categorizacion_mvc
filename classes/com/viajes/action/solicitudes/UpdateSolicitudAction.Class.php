@@ -111,7 +111,19 @@ class UpdateSolicitudAction extends UpdateEntityAction{
 		if ($error) {
 			throw new GenericException( $error );
 		}
-		
+
+        $oCriteria = new CdtSearchCriteria();
+        $oCriteria->addFilter('cd_solicitud', $entity->getOid(), '=');
+
+        $oCargoManager =  ManagerFactory::getSolicitudCargoManager();
+        $oCargos = $oCargoManager->getEntities($oCriteria);
+        $cargosArray = new ItemCollection();
+        foreach ($oCargos as $oCargo) {
+
+
+            $cargosArray->addItem($oCargo);
+        }
+        $entity->setCargos( $cargosArray );
 
 		
 		$oCriteria = new CdtSearchCriteria();

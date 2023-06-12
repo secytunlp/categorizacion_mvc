@@ -108,7 +108,19 @@ class AddSolicitudAction extends AddEntityAction{
 		if ($error) {
 			throw new GenericException( $error );
 		}
-		
+
+        $oCriteria = new CdtSearchCriteria();
+        $oCriteria->addFilter('dni', $oDocente->getNu_documento(), '=');
+        //$oCriteria->addFilter('dt_hasta', CYT_PERIODO_YEAR.CYT_DIA_MES_BECA, '>', new CdtCriteriaFormatStringValue());
+        $oCargoManager =  ManagerFactory::getAlfabeticoManager();
+        $oCargos = $oCargoManager->getEntities($oCriteria);
+        $cargosArray = new ItemCollection();
+        foreach ($oCargos as $oCargo) {
+
+
+            $cargosArray->addItem($oCargo);
+        }
+        $entity->setCargos( $cargosArray );
 		
 
 		

@@ -32,6 +32,8 @@ define('CYT_MSG_SOLICITUD_CARGO_HELP', 'En caso de poseer más de un cargo docen
 define('CYT_MSG_SOLICITUD_DEDICACION_REQUIRED', CYT_LBL_SOLICITUD_DEDICACION . ' es requerido', true);
 define('CYT_MSG_SOLICITUD_FACULTAD_REQUIRED', CYT_LBL_SOLICITUD_FACULTAD . ' es requerido', true);
 
+define('CYT_MSG_SOLICITUD_SIN_CARGOS', 'Según nuestros registros no cuenta con cargos docentes vigentes, envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
+
 define('CYT_MSG_SOLICITUD_RESUMEN_PALABRAS_REQUIRED', 'El texto del resumen en la pestaña motivo debe tener al menos', true);
 define('CYT_MSG_SOLICITUD_RESUMEN_PALABRAS', 'Palabras', true);
 

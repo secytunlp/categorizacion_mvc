@@ -305,3 +305,23 @@ INSERT INTO `categoriasicadi` (`cd_categoria`, `ds_categoria`) VALUES
                                                                       (10, 'DI5');
 
 
+CREATE TABLE `solicitudcategorizacioncargo` (
+                                                   `cd_solicitudcategorizacioncargo` INT(11) NOT NULL AUTO_INCREMENT,
+                                                   `cd_solicitud` INT(11) NOT NULL,
+                                                   `cd_cargo` INT(11) NULL DEFAULT 0,
+                                                   `cd_deddoc` INT(11) NULL DEFAULT 0,
+                                                   `dt_fecha` DATE NULL DEFAULT NULL,
+                                                   `cd_facultad` INT(11) NULL DEFAULT NULL,
+                                                   `bl_seleccionado` BINARY(1) NULL DEFAULT '0',
+                                                   `ds_archivo` VARCHAR(255) NULL DEFAULT NULL,
+                                                   `bl_agregado` BINARY(1) NOT NULL,
+                                                   PRIMARY KEY (`cd_solicitudcategorizacioncargo`),
+                                                   INDEX `cd_solicitud` (`cd_solicitud`, `cd_cargo`),
+                                                   INDEX `cd_deddoc` (`cd_deddoc`),
+                                                   INDEX `cd_facultad` (`cd_facultad`),
+                                                   CONSTRAINT `solicitudcategorizacioncargo_ibfk_1` FOREIGN KEY (`cd_solicitud`) REFERENCES `solicitudcategorizacion` (`cd_solicitud`)
+)
+    COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
