@@ -32,7 +32,7 @@ define('CYT_LBL_SOLICITUD_INSTAGRAM', 'Instagram (link)', true);
 define('CYT_LBL_SOLICITUD_TWITTER', 'Twitter (link)', true);
 define('CYT_LBL_SOLICITUD_FACEBOOK', 'Facebook (link)', true);
 define('CYT_LBL_SOLICITUD_FOTO', 'Foto', true);
-define('CYT_LBL_SOLICITUD_FOTO_SPEECH', 'Adjuntar foto tipo carnet', true);
+define('CYT_LBL_SOLICITUD_FOTO_SPEECH', 'Adjuntar foto personal', true);
 
 define('CYT_LBL_SOLICITUD_FOTO_SIGLA', 'FOTO', true);
 
@@ -59,38 +59,36 @@ define('CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA', 'Cat. Solicitada', true);
 define('CYT_LBL_SOLICITUD_EQUIVALENCIA', 'Equivalencia por', true);
 define('CYT_LBL_SOLICITUD_BECARIO_UNLP', 'UNLP', true);
 define('CYT_LBL_SOLICITUD_ORGANISMO_BECA', 'Institución', true);
-define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_ANPCyT', 'ANPCyT', true);
-define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_CIC', 'CIC', true);
+define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_ANPCyT', 'Agencia I+D+i', true);
+define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_CIC', 'CIC-PBA', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_CONICET', 'CONICET', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_BECA_UNLP', 'UNLP', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_PROYECTO_OTRA', 'OTRA', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA', 'Nivel beca', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA1', 'Beca incial', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA2', 'Beca superior', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA1', 'Beca Inicial', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA2', 'Beca Superior', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_CIC1', 'Beca de entrenamiento', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_CIC2', 'Beca doctoral', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_CIC3', 'Beca posdoctoral', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_CONICET1', 'Beca doctoral', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_CONICET2', 'Beca finalización del doctorado', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_CONICET3', 'Beca posdoctoral', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_CIC2', 'Beca Doctoral', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_CIC3', 'Beca Posdoctoral', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_CONICET1', 'Beca Doctoral', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_CONICET2', 'Beca Finalización del Doctorado', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_CONICET3', 'Beca Posdoctoral', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP1', 'TIPO A', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP2', 'TIPO B-MAESTRIA', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP3', 'TIPO B-DOCTORADO', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP4', 'RETENCION DE POSTGRADUADO', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP5', 'Beca Cofinanciada (UNLP-CIC)', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP6', 'Beca doctoral', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP7', 'Beca maestría', true);
-define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP8', 'Beca posdoctoral', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP6', 'Beca Doctoral', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP7', 'Beca Maestría', true);
+define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP8', 'Beca Posdoctoral', true);
 define('CYT_LBL_SOLICITUD_TIPO_BECA_UNLP9', 'Programa de retención de Doctores', true);
 define('CYT_LBL_SOLICITUD_BECA_DESDE', 'F. desde', true);
 define('CYT_LBL_SOLICITUD_BECA_HASTA', 'F. hasta', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA', 'Lugar de Trabajo', true);
 define('CYT_LBL_SOLICITUD_BECA_RESOLUCION', 'Cert. Beca', true);
 define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SIGLA', 'RES', true);
-define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SPEECH', 'IMPORTANTE: los becarios/as que no son U.N.L.P. deberán adjuntar una certificación de tareas como becario/a emitida por la entidad otorgante de la beca.<br>
-No se aceptarán:<br>
-Recibo de estipendio<br>
-Resolución de la beca', true);
+define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SPEECH', 'IMPORTANTE: Las/los Becarias/os que no son UNLP deberán adjuntar una certificación de tareas como becaria/o emitida por la entidad otorgante de la beca correspondiente al mes de la convocatoria. Alternativamente se aceptará el recibo de estipendio de la beca correspondiente al mes de la convocatoria.<br>
+No se aceptará una Resolución de adjudicación de la beca', true);
 define('CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION', 'Experticia en Investigación', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_CARRERAINV', 'Institución', true);
 define('CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV', 'Categoría', true);
@@ -102,6 +100,26 @@ define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SPEECH', 'IMPORTANTE: Se deberá ad
 No se aceptarán:<br>
 Recibo de sueldo<br>
 Resolución de ingreso', true);
+
+
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ASISTENTE_CONICET', 'Investigador Asistente');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ADJUNTO_CONICET', 'Investigador Adjunto');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_INDEPENDIENTE_CONICET', 'Investigador Independiente');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_PRINCIPAL_CONICET', 'Investigador Principal');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_SUPERIOR_CONICET', 'Investigador Superior');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFECIONAL_ASISTENTE_CONICET', 'Profesional Asistente');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFECIONAL_ADJUNTO_CONICET', 'Profesional Adjunto');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFECIONAL_PRINCIPAL_CONICET', 'Profesional Principal');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ASISTENTE_CIC', 'Investigador Asistente');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ADJUNTO_CIC', 'Investigador Adjunto');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_INDEPENDIENTE_CIC', 'Investigador Independiente');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_PRINCIPAL_CIC', 'Investigador Principal');
+define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_SUPERIOR_CIC', 'Investigador Superior');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFESIONAL_ASISTENTE_CIC', 'Profesional Asistente');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFESIONAL_ADJUNTO_CIC', 'Profesional Adjunto');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFESIONAL_PRINCIPAL_CIC', 'Profesional Principal');
+
+
 define('CYT_LBL_SOLICITUD_DISCIPLINA', 'Disciplina', true);
 
 define('CYT_LBL_SOLICITUD_ARCHIVO_SIZE', 'IMPORTANTE: los archivos a subir no deben superar los 8 Mb de tamaño', true);

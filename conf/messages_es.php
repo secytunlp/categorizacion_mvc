@@ -38,7 +38,7 @@ define('CYT_MSG_SOLICITUD_RESUMEN_PALABRAS_REQUIRED', 'El texto del resumen en l
 define('CYT_MSG_SOLICITUD_RESUMEN_PALABRAS', 'Palabras', true);
 
 
-define('CYT_MSG_SOLICITUD_TAB_DOMICILIO', "Personales", true);
+define('CYT_MSG_SOLICITUD_TAB_DOMICILIO', "Datos Personales", true);
 define('CYT_MSG_SOLICITUD_DOMICILIO_TITULO', "Domicilio de notificación (Dentro del Radio Urbano de La Plata, Art. 20 Ord. 101)", true);
 define('CYT_MSG_SOLICITUD_TAB_UNIVERSIDAD', "Datos Académicos", true);
 define('CYT_MSG_SOLICITUD_TAB_BECARIO', "Becario/a", true);

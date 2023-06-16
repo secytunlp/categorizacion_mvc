@@ -193,6 +193,35 @@ function  seleccionarInstitucion(ds_institucion){
 
 }
 
+function  seleccionarOrganismo(cd_organismo){
+	$("#item-div-ds_orgbeca").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
+	jQuery.ajax({
+		url:"doAction?action=add_solicitud_carrera&cd_organismo=" + cd_organismo.value,
+		dataType:"json",
+		success: function(data){
+
+			if( data != null && data["error"]!=null){
+				showMessageError( data["error"], true );
+				//inhabilitar el submit.
+				$("#edit_solicitud_input_submit_ajax").hide();
+			}
+
+			else{
+				$("#edit_solicitud_input_submit_ajax").show();
+				var carrera = $("#carrerainv_oid").val();
+				$("#carrerainv_oid").empty();
+				$.each(data, function(k,v){
+					$("#carrerainv_oid").append("<option value=\""+k+"\">"+v+"</option>");
+				});
+				$("#carrerainv_oid").val(carrera);
+			}
+			$("#iconoLoading").remove();
+		}
+	});
+
+
+}
+
 function  seleccionarEquivalencia(cd_equivalencia){
 	$("#item-div-ds_orgbeca").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
 	jQuery.ajax({

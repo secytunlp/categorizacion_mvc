@@ -271,6 +271,7 @@
 	<action name='add_solicitud_chequear_tipo_evento' class='AddSolicitudChequearTipoEventoAction' />
 
 	<action name='add_solicitud_tipo_beca' class='AddSolicitudTipoBecaAction' />
+	<action name='add_solicitud_carera' class='AddSolicitudCarreraAction' />
 	
 	<action name='add_solicitud_direccion_lugarTrabajo' class='AddSolicitudDireccionLugarTrabajoAction' />
 		

@@ -56,24 +56,32 @@ class CMPSolicitudFilter extends CMPFilter{
 		
 		$this->setCat( new Cat() );
 		$this->setEstado( new Estado() );
-		
-		//formamos el form de búsqueda.
-		$fieldCodigo = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SOLICITANTE, "solicitante"  );
-		$this->addField( $fieldCodigo );
-		
-		$fieldCat = FieldBuilder::buildFieldSelect (CYT_LBL_CAT, "cat.oid", CYTSecureUtils::getCatsItems(), '', null, null, "--seleccionar--", "cat_oid" );
-		$this->addField( $fieldCat );
-		
-		
-		$fieldFacultad = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD, "facultad.oid", CYTSecureUtils::getFacultadesItems(), '', null, null, "--seleccionar--", "facultad_oid" );
-		$fieldFacultad->getInput()->addProperty('style','width:250px;');
-		$this->addField( $fieldFacultad );
-		
-		$fieldEstado = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_ESTADO, "estado.oid", CYTSecureUtils::getEstadosItems(), '', null, null, "--seleccionar--", "estado_oid" );
-		$this->addField( $fieldEstado,2 );
-	
-		$fieldPeriodo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_PERIODO, "periodo.oid", CYTSecureUtils::getPeriodosItems(), '', null, null, "--seleccionar--", "periodo_oid" );
-		$this->addField( $fieldPeriodo,2 );
+
+        $oUser = CdtSecureUtils::getUserLogged();
+        if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_ENVIAR_SOLICITUD )) {
+            $fieldPeriodo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_PERIODO, "periodo.oid", CYTSecureUtils::getPeriodosItems(), '', null, null, "--seleccionar--", "periodo_oid" );
+            $this->addField( $fieldPeriodo);
+        }
+        else{
+            //formamos el form de búsqueda.
+            $fieldCodigo = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SOLICITANTE, "solicitante"  );
+            $this->addField( $fieldCodigo );
+
+            $fieldCat = FieldBuilder::buildFieldSelect (CYT_LBL_CAT, "cat.oid", CYTSecureUtils::getCatsItems(), '', null, null, "--seleccionar--", "cat_oid" );
+            $this->addField( $fieldCat );
+
+
+            $fieldFacultad = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD, "facultad.oid", CYTSecureUtils::getFacultadesItems(), '', null, null, "--seleccionar--", "facultad_oid" );
+            $fieldFacultad->getInput()->addProperty('style','width:250px;');
+            $this->addField( $fieldFacultad );
+
+            $fieldEstado = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_ESTADO, "estado.oid", CYTSecureUtils::getEstadosItems(), '', null, null, "--seleccionar--", "estado_oid" );
+            $this->addField( $fieldEstado,2 );
+
+            $fieldPeriodo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_PERIODO, "periodo.oid", CYTSecureUtils::getPeriodosItems(), '', null, null, "--seleccionar--", "periodo_oid" );
+            $this->addField( $fieldPeriodo,2 );
+        }
+
 			
 		$this->fillForm();
 

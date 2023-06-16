@@ -11,23 +11,19 @@
 class Tipobeca {
     
  
-	const AGENCIA1 = 'Beca incial';
-	const AGENCIA2 = 'Beca superior';
-	const CIC1 = 'Beca de entrenamiento';
-	const CIC2 = 'Beca doctoral';
-	const CIC3 = 'Beca posdoctoral';
-	const CONICET1 = 'Beca doctoral';
-	const CONICET2 = 'Beca finalizacion del doctorado';
-	const CONICET3 = 'Beca posdoctoral';
-	const UNLP1 = "TIPO A";
-	const UNLP2 = 'TIPO B-MAESTRIA';
-	const UNLP3 = 'TIPO B-DOCTORADO';
-	const UNLP4 = 'RETENCION DE POSTGRADUADO';
-	const UNLP5 = 'Beca Cofinanciada (UNLP-CIC)';
-	const UNLP6 = "Beca doctoral";
-	const UNLP7 = 'Beca maestria';
-	const UNLP8 = 'Beca posdoctoral';
-	const UNLP9 = 'Programa de retencion de Doctores';
+	const AGENCIA1 = 'Beca Inicial';
+	const AGENCIA2 = 'Beca Superior';
+
+	const CIC2 = 'Beca Doctoral';
+	const CIC3 = 'Beca Posdoctoral';
+	const CONICET1 = 'Beca Doctoral';
+	const CONICET2 = 'Beca Finalizacion del Doctorado';
+	const CONICET3 = 'Beca Posdoctoral';
+
+	const UNLP6 = "Beca Doctoral";
+	const UNLP7 = 'Beca Maestria';
+	const UNLP8 = 'Beca Posdoctoral';
+
 
     
    
@@ -40,7 +36,6 @@ class Tipobeca {
     								   );
     								   
     private static $itemsCIC = array(  
-    								   Tipobeca::CIC1=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC1,
     								   Tipobeca::CIC2=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC2,
     								   Tipobeca::CIC3=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC3,
     								  
@@ -53,15 +48,11 @@ class Tipobeca {
     								   );								   
     
     private static $itemsUNLP = array(  
-    								   Tipobeca::UNLP1=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP1,
-    								   Tipobeca::UNLP2=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP2,
-    								   Tipobeca::UNLP3=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP3,
-    								   Tipobeca::UNLP4=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP4,
-    								   Tipobeca::UNLP5=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP5,
+
     								   Tipobeca::UNLP6=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP6,
     								   Tipobeca::UNLP7=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP7,
     								   Tipobeca::UNLP8=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP8,
-    								   Tipobeca::UNLP9=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP9,
+
     								   );
 	private static $itemsOtra = array(
 		Tipobeca::CIC2=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC2,
@@ -75,7 +66,7 @@ class Tipobeca {
     								   Tipobeca::AGENCIA2=> CYT_LBL_SOLICITUD_TIPO_BECA_AGENCIA2,
     								  
     								  
-    								   Tipobeca::CIC1=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC1,
+
     								   Tipobeca::CIC2=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC2,
     								  Tipobeca::CIC3=> CYT_LBL_SOLICITUD_TIPO_BECA_CIC3,
     								  
@@ -83,15 +74,11 @@ class Tipobeca {
     								   Tipobeca::CONICET2=> CYT_LBL_SOLICITUD_TIPO_BECA_CONICET2,
     								  Tipobeca::CONICET3=> CYT_LBL_SOLICITUD_TIPO_BECA_CONICET3,
     								
-    								   Tipobeca::UNLP1=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP1,
-    								   Tipobeca::UNLP2=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP2,
-    								   Tipobeca::UNLP3=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP3,
-    								   Tipobeca::UNLP4=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP4,
-    								   Tipobeca::UNLP5=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP5,
+
     								   Tipobeca::UNLP6=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP6,
     								   Tipobeca::UNLP7=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP7,
     								   Tipobeca::UNLP8=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP8,
-    								   Tipobeca::UNLP9=> CYT_LBL_SOLICITUD_TIPO_BECA_UNLP9,
+
     								   );									   
 	public static function getItems($institucion=''){
 		switch ($institucion) {

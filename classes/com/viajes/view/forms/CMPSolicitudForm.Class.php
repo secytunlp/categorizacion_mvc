@@ -72,13 +72,13 @@ class CMPSolicitudForm extends CMPForm{
 		
 		//$fieldTitulo = FieldBuilder::buildFieldEntityAutocomplete(CYT_LBL_SOLICITUD_TITULO, new CMPTituloAutocomplete(),"ds_titulogrado",CYT_MSG_SOLICITUD_TITULO_REQUIRED,"",60);
 		
-		$fieldTitulo = CYTSecureComponentsFactory::getFindTitulo(new Titulo(), CYT_LBL_SOLICITUD_TITULO, "", "solicitud_filter_titulo_oid", "titulo.oid","solicitud_filter_titulo_change");
+		$fieldTitulo = CYTSecureComponentsFactory::getFindTituloWithAdd(new Titulo(), CYT_LBL_SOLICITUD_TITULO, "", "solicitud_filter_titulo_oid", "titulo.oid","solicitud_filter_titulo_change");
 		$fieldTitulo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $fieldTitulo );
 		
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_EGRESO_GRADO, "dt_egresogrado") );
 		
-		$fieldTitulo = CYTSecureComponentsFactory::getFindTituloPosgrado(new Titulo(), CYT_LBL_SOLICITUD_TITULO_POSGRADO, "", "solicitud_filter_tituloposgrado_oid", "tituloposgrado.oid","solicitud_filter_tituloposgrado_change");
+		$fieldTitulo = CYTSecureComponentsFactory::getFindTituloPosgradoWithAdd(new Titulo(), CYT_LBL_SOLICITUD_TITULO_POSGRADO, "", "solicitud_filter_tituloposgrado_oid", "tituloposgrado.oid","solicitud_filter_tituloposgrado_change");
 		$fieldTitulo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $fieldTitulo );
 		
@@ -106,7 +106,7 @@ class CMPSolicitudForm extends CMPForm{
 	  	$fieldFacultad = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD, "facultad.oid", CYTSecureUtils::getFacultadesItems('165,167,168,169,170,171,172,173,174,175,176,177,179,180,181,187,1220'), "", null, null, "--seleccionar--", "facultad_oid" );
 		$fieldset->addField( $fieldFacultad );
 
-		$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_DOCENTE, "ds_experticiaD","","",8,110);
+		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_DOCENTE, "ds_experticiaD","","",8,110);
 		$fieldset->addField( $input );
 
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveD1", "","",20) );
@@ -114,7 +114,7 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveD3", "","",20) );
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveD4", "","",20) );
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveD5", "","",20) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveD6", "","",20) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveD6", "","",20) );*/
 
 		$fieldCategoria = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA, "categoria.oid", CYTSecureUtils::getCategoriasItems(CYT_CATEGORIA_MOSTRADAS), "", null, null, "--seleccionar--", "categoria_oid" );
 		$fieldCategoria->getInput()->setIsEditable(false);
@@ -149,7 +149,7 @@ class CMPSolicitudForm extends CMPForm{
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $findLugarTrabajo );
 
-		$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaB","","",8,110);
+		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaB","","",8,110);
 		$fieldset->addField( $input );
 
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveB1", "","",20) );
@@ -157,12 +157,15 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveB3", "","",20) );
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveB4", "","",20) );
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveB5", "","",20) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveB6", "","",20) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveB6", "","",20) );*/
 
-		
+
 		$fieldOrganismo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_INSTITUCION_CARRERAINV, "organismo.oid", CYTSecureUtils::getOrganismosItems(CYT_ORGANISMO_MOSTRADAS), "", null, null, "--seleccionar--", "organismo_oid" );
+		$fieldOrganismo->getInput()->addProperty( 'onChange', 'seleccionarOrganismon(this)' );
 		$fieldset->addField( $fieldOrganismo );
-		
+
+		//$fieldCarreraInv = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV, "carrerainv.oid", Carrera::getItems('2'), "", null, null, "--seleccionar--", "carrerainv.oid" );
+
 		$fieldCarreraInv = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV, "carrerainv.oid", CYTSecureUtils::getCarreraInvsItems(CYT_CARRERAINV_MOSTRADAS), "", null, null, "--seleccionar--", "carrerainv_oid" );
 		$fieldset->addField( $fieldCarreraInv );
 		
@@ -172,7 +175,7 @@ class CMPSolicitudForm extends CMPForm{
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $findLugarTrabajo );
 
-		$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaC","","",8,110);
+		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaC","","",8,110);
 		$fieldset->addField( $input );
 
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC1", "","",20) );
@@ -180,7 +183,7 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC3", "","",20) );
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC4", "","",20) );
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC5", "","",20) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC6", "","",20) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC6", "","",20) );*/
 
 		
 		$fieldFacultadplanilla = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD_PLANILLA, "facultadplanilla.oid", CYTSecureUtils::getFacultadesItems(), "", null, null, "--seleccionar--", "facultadplanilla_oid" );
