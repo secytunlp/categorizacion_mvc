@@ -194,7 +194,7 @@ function  seleccionarInstitucion(ds_institucion){
 }
 
 function  seleccionarOrganismo(cd_organismo){
-	$("#item-div-ds_orgbeca").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
+	$("#item-div-organismo_oid").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
 	jQuery.ajax({
 		url:"doAction?action=add_solicitud_carrera&cd_organismo=" + cd_organismo.value,
 		dataType:"json",
@@ -210,8 +210,10 @@ function  seleccionarOrganismo(cd_organismo){
 				$("#edit_solicitud_input_submit_ajax").show();
 				var carrera = $("#carrerainv_oid").val();
 				$("#carrerainv_oid").empty();
+				console.log(data);
 				$.each(data, function(k,v){
-					$("#carrerainv_oid").append("<option value=\""+k+"\">"+v+"</option>");
+
+					$("#carrerainv_oid").append("<option value=\""+v+"\">"+k+"</option>");
 				});
 				$("#carrerainv_oid").val(carrera);
 			}
@@ -223,7 +225,7 @@ function  seleccionarOrganismo(cd_organismo){
 }
 
 function  seleccionarEquivalencia(cd_equivalencia){
-	$("#item-div-ds_orgbeca").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
+	$("#item-div-equivalencia_oid").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
 	jQuery.ajax({
 		url:"doAction?action=add_solicitud_categoria_equivalencia&cd_equivalencia=" + cd_equivalencia.value+"&cd_categoria=" + $("#categoria_oid").val(),
 		dataType:"json",
@@ -243,6 +245,79 @@ function  seleccionarEquivalencia(cd_equivalencia){
 					$("#categoriasolicitada_oid").append("<option value=\""+k+"\">"+v+"</option>");
 				});
 				$("#categoriasolicitada_oid").val(categoriasolicitada_oid);
+				if (cd_equivalencia.value==5){
+					$("#informes").show();
+				}
+				else{
+					$("#informes").hide();
+				}
+			}
+			$("#iconoLoading").remove();
+		}
+	});
+
+
+}
+
+function  seleccionarAreaBeca(cd_area){
+
+	$("#item-div-areabeca_oid").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
+	jQuery.ajax({
+		url:"doAction?action=add_solicitud_area_subarea&cd_area=" + cd_area.value,
+		dataType:"json",
+		success: function(data){
+
+			if( data != null && data["error"]!=null){
+				showMessageError( data["error"], true );
+				//inhabilitar el submit.
+				$("#edit_solicitud_input_submit_ajax").hide();
+			}
+
+			else{
+				$("#edit_solicitud_input_submit_ajax").show();
+				var subareabeca_oid = $("#subareabeca_oid").val();
+				$("#subareabeca_oid").empty();
+				$("#subareabeca_oid").append("<option value=\"0\">--seleccionar--</option>");
+				if(cd_area.value){
+					$.each(data, function(k,v){
+						$("#subareabeca_oid").append("<option value=\""+k+"\">"+v+"</option>");
+					});
+				}
+				$("#subareabeca_oid").val(subareabeca_oid);
+
+			}
+			$("#iconoLoading").remove();
+		}
+	});
+
+
+}
+
+function  seleccionarAreaCarrera(cd_area){
+	$("#item-div-areacarrera_oid").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
+	jQuery.ajax({
+		url:"doAction?action=add_solicitud_area_subarea&cd_area=" + cd_area.value,
+		dataType:"json",
+		success: function(data){
+
+			if( data != null && data["error"]!=null){
+				showMessageError( data["error"], true );
+				//inhabilitar el submit.
+				$("#edit_solicitud_input_submit_ajax").hide();
+			}
+
+			else{
+				$("#edit_solicitud_input_submit_ajax").show();
+				var subareacarrera_oid = $("#subareacarrera_oid").val();
+				$("#subareacarrera_oid").empty();
+				$("#subareacarrera_oid").append("<option value=\"0\">--seleccionar--</option>");
+				if(cd_area.value){
+					$.each(data, function(k,v){
+						$("#subareacarrera_oid").append("<option value=\""+k+"\">"+v+"</option>");
+					});
+				}
+				$("#subareacarrera_oid").val(subareacarrera_oid);
+
 			}
 			$("#iconoLoading").remove();
 		}
@@ -729,8 +804,8 @@ function successDefault_{form_id}(data ){
 
 
 		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-			<label for="claves">Palabras claves:</label>
-			<br>
+			<!-- <label for="claves">Palabras claves:</label>
+			<br> -->
 			<!-- BEGIN: ds_claveD1 -->
 			<!-- BEGIN: input -->
 			{input}
@@ -857,6 +932,30 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: ds_resbeca -->
 
+		<!-- BEGIN: areabeca_oid -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: areabeca_oid -->
+
+		<!-- BEGIN: subareabeca_oid -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: subareabeca_oid -->
+
 		<!-- BEGIN: ds_experticiaB -->
 		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
@@ -871,8 +970,8 @@ function successDefault_{form_id}(data ){
 
 
 		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-			<label for="claves">Palabras claves:</label>
-			<br>
+			<!-- <label for="claves">Palabras claves:</label>
+			<br>-->
 			<!-- BEGIN: ds_claveB1 -->
 			<!-- BEGIN: input -->
 			{input}
@@ -983,6 +1082,30 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: ds_rescarrera -->
 
+		<!-- BEGIN: areacarrera_oid -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: areacarrera_oid -->
+
+		<!-- BEGIN: subareacarrera_oid -->
+		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+
+			<!-- BEGIN: label -->
+			<label for="{input_name}">{value}:</label>
+			<!-- END: label -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+		</div>
+		<!-- END: subareacarrera_oid -->
+
 		<!-- BEGIN: ds_experticiaC -->
 		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
@@ -997,7 +1120,7 @@ function successDefault_{form_id}(data ){
 
 
 		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-			<label for="claves">Palabras claves:</label>
+			<!--<label for="claves">Palabras claves:</label>-->
 			<br>
 			<!-- BEGIN: ds_claveC1 -->
 			<!-- BEGIN: input -->
@@ -1206,12 +1329,88 @@ function successDefault_{form_id}(data ){
 					   <div style="color:#A43B3B; font-weight:bold">{label_curriculum}</div> 
 					</div>
 		<!-- END: ds_curriculum -->
-		
-		
+		<div id="informes">
+			<fieldset>
+
+				<legend>3 informes</legend>
+				<div>
+			<!-- BEGIN: nu_year1 -->
+			<!-- BEGIN: input -->
+			{input}
+			<!-- END: input -->
+			<!-- END: nu_year1 -->
+			<!-- BEGIN: ds_informe1 -->
+
+
+
+				<!-- BEGIN: label -->
+				<label for="ds_informe1">{value}:</label>
+				<!-- END: label -->
+				<!-- BEGIN: input -->
+				<input id="ds_informe1" type="file" value="" size="32" name="ds_informe1" onChange="uploadAjax(this,'{actionFile}','ds_informe1')">
+				<!-- END: input -->
+				<span id="ds_informe1_cargado" >
+						  <!-- Aqui van los archivos cargados -->
+						  {ds_informe1_cargado}
+						</span>
+
+
+			<!-- END: ds_informe1 -->
+				</div>
+				<div>
+				<!-- BEGIN: nu_year2 -->
+				<!-- BEGIN: input -->
+				{input}
+				<!-- END: input -->
+				<!-- END: nu_year2 -->
+				<!-- BEGIN: ds_informe2 -->
+
+
+
+				<!-- BEGIN: label -->
+				<label for="ds_informe2">{value}:</label>
+				<!-- END: label -->
+				<!-- BEGIN: input -->
+				<input id="ds_informe2" type="file" value="" size="32" name="ds_informe2" onChange="uploadAjax(this,'{actionFile}','ds_informe2')">
+				<!-- END: input -->
+				<span id="ds_informe2_cargado" >
+						  <!-- Aqui van los archivos cargados -->
+						  {ds_informe2_cargado}
+						</span>
+
+
+				<!-- END: ds_informe2 -->
+					</div>
+						<div>
+				<!-- BEGIN: nu_year3 -->
+				<!-- BEGIN: input -->
+				{input}
+				<!-- END: input -->
+				<!-- END: nu_year3 -->
+				<!-- BEGIN: ds_informe3 -->
+
+
+
+				<!-- BEGIN: label -->
+				<label for="ds_informe3">{value}:</label>
+				<!-- END: label -->
+				<!-- BEGIN: input -->
+				<input id="ds_informe3" type="file" value="" size="32" name="ds_informe3" onChange="uploadAjax(this,'{actionFile}','ds_informe3')">
+				<!-- END: input -->
+				<span id="ds_informe3_cargado" >
+						  <!-- Aqui van los archivos cargados -->
+						  {ds_informe3_cargado}
+						</span>
+
+
+				<!-- END: ds_informe3 -->
+						</div>
+			</fieldset>
+		</div>
 		</div>
 
 		<div style="position: relative; float: left; width: 30%;">
-			<div style="color:#A43B3B; font-weight:bold">{label_equivalencia_help}</div>
+			<div style="color:gray">{label_equivalencia_help}</div>
 		</div>
 		
 	</div>
@@ -1221,7 +1420,7 @@ function successDefault_{form_id}(data ){
 
 </form>
 
-
+{customHTML}
 
 
 

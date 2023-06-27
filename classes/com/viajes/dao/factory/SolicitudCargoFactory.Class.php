@@ -22,6 +22,7 @@ class SolicitudCargoFactory extends CdtGenericFactory {
         $factory->setAlias( CYT_TABLE_CARGO . "_" );
         $solicitudCargo->setCargo( $factory->build($next) );
 
+
         $factory = new DeddocFactory();
         $factory->setAlias( CYT_TABLE_DEDDOC . "_" );
         $solicitudCargo->setDeddoc( $factory->build($next) );

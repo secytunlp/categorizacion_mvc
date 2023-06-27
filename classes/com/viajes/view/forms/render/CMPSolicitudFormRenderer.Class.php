@@ -603,7 +603,35 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_resbeca");
 
+            $fieldAreabeca = $fields['areabeca_oid'];
+            $input = $fieldAreabeca->getInput();
+            $label = $fieldAreabeca->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldAreabeca->getMinWidth());
 
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.areabeca_oid");
+
+            $fieldSubareabeca = $fields['subareabeca_oid'];
+            $input = $fieldSubareabeca->getInput();
+            $label = $fieldSubareabeca->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldSubareabeca->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.subareabeca_oid");
 
 
             $xtpl->assign("carrerainv_tab", CYT_MSG_SOLICITUD_TAB_CARRERAINV);
@@ -685,7 +713,35 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_rescarrera");
 
+            $fieldAreacarrera = $fields['areacarrera_oid'];
+            $input = $fieldAreacarrera->getInput();
+            $label = $fieldAreacarrera->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldAreacarrera->getMinWidth());
 
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.areacarrera_oid");
+
+            $fieldSubareacarrera = $fields['subareacarrera_oid'];
+            $input = $fieldSubareacarrera->getInput();
+            $label = $fieldSubareacarrera->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldSubareacarrera->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.subareacarrera_oid");
 
             $xtpl->assign("proyectos_tab", CYT_MSG_SOLICITUD_TAB_PROYECTOS);
 
@@ -893,8 +949,96 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             $xtpl->parse("main.ds_curriculum");
 
+            $fieldYear1 = $fields['nu_year1'];
+            $input = $fieldYear1->getInput();
+            $label = $fieldYear1->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldYear1->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.nu_year1");
+
+            $xtpl->assign("value", CYT_LBL_SOLICITUD_A_INFORME1 );
+            $xtpl->parse("main.ds_informe1.label");
+            $xtpl->assign("actionFile", "doAction?action=add_file_session" );
+            $xtpl->parse("main.ds_informe1.input");
+            $xtpl->assign("display", 'block');
+            $xtpl->assign("label_informe1", CYT_LBL_SOLICITUD_A_INFORME1_SIGEVA);
+            $hiddens = $form->getHiddens();
+            $hiddenDs_informe1 = $hiddens['ds_informe1'];
+
+            if ($hiddenDs_informe1->getInputValue()) {
+                $xtpl->assign("ds_informe1_cargado", '<span style="color:#009900; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_EXITO.$hiddenDs_informe1->getInputValue().'</span>');
+            }
+            $xtpl->parse("main.ds_informe1");
+
+            $fieldYear2 = $fields['nu_year2'];
+            $input = $fieldYear2->getInput();
+            $label = $fieldYear2->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldYear2->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.nu_year2");
+
+            $xtpl->assign("value", CYT_LBL_SOLICITUD_A_INFORME2 );
+            $xtpl->parse("main.ds_informe2.label");
+            $xtpl->assign("actionFile", "doAction?action=add_file_session" );
+            $xtpl->parse("main.ds_informe2.input");
+            $xtpl->assign("display", 'block');
+            $xtpl->assign("label_informe2", CYT_LBL_SOLICITUD_A_INFORME2_SIGEVA);
+            $hiddens = $form->getHiddens();
+            $hiddenDs_informe2 = $hiddens['ds_informe2'];
+
+            if ($hiddenDs_informe2->getInputValue()) {
+                $xtpl->assign("ds_informe2_cargado", '<span style="color:#009900; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_EXITO.$hiddenDs_informe2->getInputValue().'</span>');
+            }
+            $xtpl->parse("main.ds_informe2");
+
+            $fieldYear3 = $fields['nu_year3'];
+            $input = $fieldYear3->getInput();
+            $label = $fieldYear3->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldYear3->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.nu_year3");
+
+            $xtpl->assign("value", CYT_LBL_SOLICITUD_A_INFORME3 );
+            $xtpl->parse("main.ds_informe3.label");
+            $xtpl->assign("actionFile", "doAction?action=add_file_session" );
+            $xtpl->parse("main.ds_informe3.input");
+            $xtpl->assign("display", 'block');
+            $xtpl->assign("label_informe3", CYT_LBL_SOLICITUD_A_INFORME3_SIGEVA);
+            $hiddens = $form->getHiddens();
+            $hiddenDs_informe3 = $hiddens['ds_informe3'];
+
+            if ($hiddenDs_informe3->getInputValue()) {
+                $xtpl->assign("ds_informe3_cargado", '<span style="color:#009900; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_EXITO.$hiddenDs_informe3->getInputValue().'</span>');
+            }
+            $xtpl->parse("main.ds_informe3");
+
 
         }
+        $xtpl->assign( "customHTML",$form->getCustomHTML());
     }
 
 
@@ -1081,7 +1225,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
         $oCriteria->addFilter('DIR.cd_tipoinvestigador', CYT_INTEGRANTE_DIRECTOR, '=');
         $managerProyecto =  CYTSecureManagerFactory::getProyectoManager();
         $oProyecto = $managerProyecto->getEntity($oCriteria);*/
-
+        $array_proyecto["ds_organismo"] = 'UNLP';
         $array_proyecto["ds_codigo"] = $solicitudProyecto->getDs_codigo();
         $array_proyecto["ds_director"] = $solicitudProyecto->getDirector()->getDs_apellido().', '.$solicitudProyecto->getDirector()->getDs_nombre();
         $array_proyecto["ds_titulo"] = $solicitudProyecto->getDs_titulo();
@@ -1097,7 +1241,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @return multitype:string
      */
     public function getProyectoColumns(){
-        return array( "ds_codigo","ds_titulo","ds_director","dt_inicio","dt_fin");
+        return array( "ds_organismo","ds_codigo","ds_titulo","ds_director","dt_inicio","dt_fin");
     }
 
     /**
@@ -1105,7 +1249,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @return multitype:string
      */
     public function getProyectoColumnsLabels(){
-        return array( CYT_LBL_SOLICITUD_PROYECTOS_CODIGO,CYT_LBL_SOLICITUD_PROYECTOS_TITULO,CYT_LBL_SOLICITUD_PROYECTOS_DIRECTOR,CYT_LBL_SOLICITUD_PROYECTOS_INICIO,CYT_LBL_SOLICITUD_PROYECTOS_FIN);
+        return array( CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD,CYT_LBL_SOLICITUD_PROYECTOS_CODIGO,CYT_LBL_SOLICITUD_PROYECTOS_TITULO,CYT_LBL_SOLICITUD_PROYECTOS_DIRECTOR,CYT_LBL_SOLICITUD_PROYECTOS_INICIO,CYT_LBL_SOLICITUD_PROYECTOS_FIN);
     }
 
     /**
@@ -1113,7 +1257,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @return multitype:string
      */
     public function getProyectoColumnsAlign(){
-        return array( "center","left","left","center","center");
+        return array( "left","center","left","left","center","center");
     }
 
     /**
@@ -1370,12 +1514,12 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
 
 
-        $array_cargo["ds_cargo"] = $solicitudCargo->getCargo()->getDs_cargo();
+        $array_cargo["ds_cargo"] = str_replace(" Ordinario","",$solicitudCargo->getCargo()->getDs_cargo());
         $array_cargo["ds_deddoc"] = $solicitudCargo->getDeddoc()->getDs_deddoc();
         $array_cargo["ds_facultad"] = $solicitudCargo->getFacultad()->getDs_facultad();
 
         $array_cargo["dt_fecha"] = CYTSecureUtils::formatDateToView($solicitudCargo->getDt_fecha());
-
+        $array_cargo["situacion"] = $solicitudCargo->getSituacion();
 
         return $array_cargo;
 
@@ -1385,7 +1529,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @return multitype:string
      */
     public function getCargoColumns(){
-        return array( "ds_cargo","ds_deddoc","ds_facultad","dt_fecha");
+        return array( "ds_cargo","ds_deddoc","ds_facultad","dt_fecha","situacion");
     }
 
     /**
@@ -1393,7 +1537,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @return multitype:string
      */
     public function getCargoColumnsLabels(){
-        return array( CYT_LBL_SOLICITUD_CARGO,CYT_LBL_SOLICITUD_DEDICACION,CYT_LBL_SOLICITUD_FACULTAD,CYT_LBL_SOLICITUD_FECHA);
+        return array( CYT_LBL_SOLICITUD_CARGO,CYT_LBL_SOLICITUD_DEDICACION,CYT_LBL_SOLICITUD_FACULTAD,CYT_LBL_SOLICITUD_FECHA,CYT_LBL_SOLICITUD_CARGO_SITUACION);
     }
 
     /**
@@ -1401,7 +1545,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @return multitype:string
      */
     public function getCargoColumnsAlign(){
-        return array( "left","left","left","center");
+        return array( "left","left","left","center","left");
     }
 
     /**

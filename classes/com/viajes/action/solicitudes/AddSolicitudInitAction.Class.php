@@ -188,7 +188,9 @@ class AddSolicitudInitAction extends EditEntityInitAction {
 
             $oCriteria = new CdtSearchCriteria();
             $oCriteria->addFilter('dni', $oDocente->getNu_documento(), '=');
-            //$oCriteria->addFilter('dt_hasta', CYT_PERIODO_YEAR.CYT_DIA_MES_BECA, '>', new CdtCriteriaFormatStringValue());
+            $oCriteria->addFilter('escalafon', 'Docente', '=', new CdtCriteriaFormatStringValue());
+            $filter = new CdtSimpleExpression("(clase in ('05X','05S','05E','06X','06S','06E','07X','07S','07E','08X','08S','08E','09X','09S','09E'))");
+            $oCriteria->setExpresion($filter);
             $oCargoManager =  ManagerFactory::getAlfabeticoManager();
             $oCargos = $oCargoManager->getEntities($oCriteria);
             $cargosArray = new ItemCollection();
@@ -233,6 +235,7 @@ class AddSolicitudInitAction extends EditEntityInitAction {
 				$oProyecto->setDt_ini($oIntegrante->getDt_alta());
 				$dt_hasta = (($oIntegrante->getDt_baja()=='0000-00-00')||($oIntegrante->getDt_baja()=='')||(!$oIntegrante->getDt_baja())||($oIntegrante->getCd_estado()==CYT_ESTADO_INTEGRANTE_BAJA_CREADA)||($oIntegrante->getCd_estado()==CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA))?$oProyecto->getDt_fin():$oIntegrante->getDt_baja();
 				$oProyecto->setDt_fin($dt_hasta);
+                $oProyecto->setDt_fin($dt_hasta);
 				$proyectosArray->addItem($oProyecto);
 			}
 			$oSolicitud->setProyectos( $proyectosArray );

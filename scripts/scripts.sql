@@ -265,27 +265,13 @@ ALTER TABLE `solicitudcategorizacion`
 
 
     ADD COLUMN `ds_scopus` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_experticiaD` TEXT NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveD1` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveD2` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveD3` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveD4` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveD5` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveD6` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_experticiaB` TEXT NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveB1` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveB2` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveB3` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveB4` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveB5` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveB6` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_experticiaC` TEXT NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveC1` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveC2` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveC3` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveC4` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveC5` VARCHAR(255) NULL DEFAULT NULL,
-    ADD COLUMN `ds_claveC6` VARCHAR(255) NULL DEFAULT NULL;
+
+    ADD COLUMN `ds_informe1` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_informe2` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `ds_informe3` VARCHAR(255) NULL DEFAULT NULL,
+    ADD COLUMN `nu_year1` int(11) NULL DEFAULT NULL,
+    ADD COLUMN `nu_year2` int(11) NULL DEFAULT NULL,
+    ADD COLUMN `nu_year3` int(11) NULL DEFAULT NULL;
 
 CREATE TABLE `categoriasicadi` (
                             `cd_categoria` INT(11) NOT NULL AUTO_INCREMENT,
@@ -314,6 +300,7 @@ CREATE TABLE `solicitudcategorizacioncargo` (
                                                    `cd_facultad` INT(11) NULL DEFAULT NULL,
                                                    `bl_seleccionado` BINARY(1) NULL DEFAULT '0',
                                                    `ds_archivo` VARCHAR(255) NULL DEFAULT NULL,
+                                                   `sitaucion` VARCHAR(255) NULL DEFAULT NULL,
                                                    `bl_agregado` BINARY(1) NOT NULL,
                                                    PRIMARY KEY (`cd_solicitudcategorizacioncargo`),
                                                    INDEX `cd_solicitud` (`cd_solicitud`, `cd_cargo`),
@@ -325,3 +312,72 @@ CREATE TABLE `solicitudcategorizacioncargo` (
 ENGINE=InnoDB
 AUTO_INCREMENT=0
 ;
+
+CREATE TABLE `area` (
+                                   `cd_area` INT(11) NOT NULL AUTO_INCREMENT,
+                                   `ds_area` VARCHAR(255) NOT NULL,
+
+                                   PRIMARY KEY (`cd_area`)
+)
+    COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+INSERT INTO `area` (`cd_area`, `ds_area`) VALUES
+                                                                   (1, 'Área Disciplinar de Ciencias Exactas'),
+                                                                   (2, 'Área Disciplinar de Ciencias Naturales'),
+                                                                   (3, 'Área Disciplinar de Ciencias Sociales');
+
+CREATE TABLE `subarea` (
+                        `cd_subarea` INT(11) NOT NULL AUTO_INCREMENT,
+                        `ds_subarea` VARCHAR(255) NOT NULL,
+                        `cd_area` INT(11) NULL DEFAULT 0,
+                        PRIMARY KEY (`cd_subarea`)
+)
+    COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+ALTER TABLE subarea ADD FOREIGN KEY ( cd_area ) REFERENCES area (
+                                                                 cd_area
+    );
+
+INSERT INTO `subarea` (`cd_subarea`, `ds_subarea`,cd_area) VALUES
+                                              (1, 'Ciencias de la Tierra, el Mar y la Atmósfera',1),
+                                              (2, 'Física, Astronomía y Geofísica',1),
+                                              (3, 'Informática',1),
+                                              (4, 'Ingeniería',1),
+                                              (5, 'Matemática',1),
+                                              (6, 'Química, Bioquímica, Biotecnología, Farmacia y Alimentos',1),
+                                              (7, 'Ciencias Agrarias y Forestales',2),
+                                              (8, 'Biología',2),
+                                              (9, 'Ciencias del Ambiente',2),
+                                              (10, 'Ciencias Veterinarias',2),
+                                              (11, 'Medicina y Ciencias de la Salud',2),
+                                              (12, 'Odontología',2),
+                                              (13, 'Antropología (Social, Biológica y Arqueológica)',2),
+                                              (14, 'Arquitectura y Urbanismo',3),
+                                              (15, 'Artes',3),
+                                              (16, 'Derecho y Jurisprudencia',3),
+                                              (17, 'Ciencias Económicas',3),
+                                              (18, 'Educación',3),
+                                              (19, 'Filosofía',3),
+                                              (20, 'Historia y Geografía',3),
+                                              (21, 'Literatura y Lingüística',3),
+                                              (22, 'Trabajo Social',3),
+                                              (23, 'Comunicación',3),
+                                              (24, 'Psicología',3),
+                                              (25, 'Sociología y Ciencias Políticas',3);
+
+ALTER TABLE `solicitudcategorizacion`
+
+
+
+    ADD COLUMN `cd_areabeca` int(11) NULL DEFAULT NULL,
+
+    ADD COLUMN `cd_subareabeca` int(11) NULL DEFAULT NULL,
+ADD COLUMN `cd_areacarrera` int(11) NULL DEFAULT NULL,
+
+    ADD COLUMN `cd_subareacarrera` int(11) NULL DEFAULT NULL;

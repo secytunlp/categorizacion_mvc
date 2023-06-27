@@ -128,6 +128,20 @@ private $ds_claveC4;
 private $ds_claveC5;
 private $ds_claveC6;
 
+    private $ds_informe1;
+    private $ds_informe2;
+    private $ds_informe3;
+
+    private $nu_year1;
+    private $nu_year2;
+    private $nu_year3;
+
+    private $areabeca;
+    private $subareabeca;
+
+    private $areacarrera;
+    private $subareacarrera;
+
 
     public function __construct(){
 
@@ -187,7 +201,7 @@ private $ds_claveC6;
 
         $this->dt_ingreso = '';
         $this->categoria = new Categoria();
-        $this->categoriasolicitada = new Categoria();
+        $this->categoriasolicitada = new Categoriasicadi();
         $this->equivalencia = new Equivalencia();
 
         $this->bl_director = 0;
@@ -209,6 +223,13 @@ private $ds_claveC6;
         $this->cargos= new ItemCollection();
 
         $this->ds_disciplina = "";
+
+        $this->areabeca = new Area();
+        $this->subareabeca = new Subarea();
+
+        $this->areacarrera = new Area();
+        $this->subareacarrera = new Subarea();
+
     }
 
     /**
@@ -1447,5 +1468,168 @@ private $ds_claveC6;
     {
         $this->ds_claveC6 = $ds_claveC6;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_informe1()
+    {
+        return $this->ds_informe1;
+    }
+
+    /**
+     * @param mixed $ds_informe1
+     */
+    public function setDs_informe1($ds_informe1)
+    {
+        $this->ds_informe1 = $ds_informe1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_informe2()
+    {
+        return $this->ds_informe2;
+    }
+
+    /**
+     * @param mixed $ds_informe2
+     */
+    public function setDs_informe2($ds_informe2)
+    {
+        $this->ds_informe2 = $ds_informe2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDs_informe3()
+    {
+        return $this->ds_informe3;
+    }
+
+    /**
+     * @param mixed $ds_informe3
+     */
+    public function setDs_informe3($ds_informe3)
+    {
+        $this->ds_informe3 = $ds_informe3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNu_year1()
+    {
+        return $this->nu_year1;
+    }
+
+    /**
+     * @param mixed $nu_year1
+     */
+    public function setNu_year1($nu_year1)
+    {
+        $this->nu_year1 = $nu_year1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNu_year2()
+    {
+        return $this->nu_year2;
+    }
+
+    /**
+     * @param mixed $nu_year2
+     */
+    public function setNu_year2($nu_year2)
+    {
+        $this->nu_year2 = $nu_year2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNu_year3()
+    {
+        return $this->nu_year3;
+    }
+
+    /**
+     * @param mixed $nu_year3
+     */
+    public function setNu_year3($nu_year3)
+    {
+        $this->nu_year3 = $nu_year3;
+    }
+
+    /**
+     * @return Area
+     */
+    public function getAreabeca(): Area
+    {
+        return $this->areabeca;
+    }
+
+    /**
+     * @param Area $areabeca
+     */
+    public function setAreabeca(Area $areabeca)
+    {
+        $this->areabeca = $areabeca;
+    }
+
+    /**
+     * @return Subarea
+     */
+    public function getSubareabeca(): Subarea
+    {
+        return $this->subareabeca;
+    }
+
+    /**
+     * @param Subarea $subareabeca
+     */
+    public function setSubareabeca(Subarea $subareabeca)
+    {
+        $this->subareabeca = $subareabeca;
+    }
+
+    /**
+     * @return Area
+     */
+    public function getAreacarrera(): Area
+    {
+        return $this->areacarrera;
+    }
+
+    /**
+     * @param Area $areacarrera
+     */
+    public function setAreacarrera(Area $areacarrera)
+    {
+        $this->areacarrera = $areacarrera;
+    }
+
+    /**
+     * @return Subarea
+     */
+    public function getSubareacarrera(): Subarea
+    {
+        return $this->subareacarrera;
+    }
+
+    /**
+     * @param Subarea $subareacarrera
+     */
+    public function setSubareacarrera(Subarea $subareacarrera)
+    {
+        $this->subareacarrera = $subareacarrera;
+    }
+
+
+
 }
 ?>

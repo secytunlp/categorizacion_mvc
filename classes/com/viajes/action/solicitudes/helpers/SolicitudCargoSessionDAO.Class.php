@@ -86,7 +86,7 @@ class SolicitudCargoSessionDAO extends EntityDAO {
 
     /**
      * se selecciona la entity
-     * @param $id identificador de la entity a eliminar.
+     * @param $ id identificador de la entity a eliminar.
      */
     public function selectEntity($oid,$checked, $idConn=0) {
 

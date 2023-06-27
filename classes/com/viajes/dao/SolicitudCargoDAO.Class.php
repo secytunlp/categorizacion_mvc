@@ -29,6 +29,7 @@ class SolicitudCargoDAO extends EntityDAO {
 
         $fieldsValues["ds_archivo"] = $this->formatString( $entity->getDs_archivo() );
         $fieldsValues["bl_seleccionado"] = $this->formatIfNull( $entity->getBl_seleccionado(),0 );
+        $fieldsValues["situacion"] = $this->formatString( $entity->getSituacion() );
 		return $fieldsValues;
 		
 	}

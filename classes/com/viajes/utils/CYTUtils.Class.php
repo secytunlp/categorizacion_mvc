@@ -27,6 +27,24 @@ class CYTUtils {
 
     }
 
+    public static function getAreasItems() {
+
+        return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getAreaManager(), "oid", "ds_area");
+
+    }
+
+    public static function getSubareasItems($cd_area) {
+
+        $oCriteria = new CdtSearchCriteria();
+        if ($cd_area!=null){
+            $oCriteria->addFilter('cd_area', $cd_area, '=');
+        }
+
+
+        return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getSubareaManager(), "oid", "ds_subarea","","","","cd_subarea",$oCriteria);
+
+    }
+
 
     public static function getCategoriasItems($mostradas="") {
         if ($mostradas) {
@@ -36,6 +54,19 @@ class CYTUtils {
         }
 
         return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getCategoriasicadiManager(), "oid", "ds_categoria","","","","cd_categoria",$oCriteria);
+
+    }
+
+
+    public static function getYearItems() {
+        $years = array();
+        for($i = date("Y"); $i >= date("Y") - 15; $i--){
+
+            $years[$i] = $i;
+        }
+        return $years;
+
+
 
     }
 

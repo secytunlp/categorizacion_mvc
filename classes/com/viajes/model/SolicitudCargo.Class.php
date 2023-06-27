@@ -26,6 +26,8 @@ class SolicitudCargo extends Entity{
 	private $bl_agregado;
 
     private $bl_seleccionado;
+
+    private $situacion;
 	
 
 
@@ -172,6 +174,22 @@ class SolicitudCargo extends Entity{
     public function setBl_seleccionado(int $bl_seleccionado)
     {
         $this->bl_seleccionado = $bl_seleccionado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSituacion()
+    {
+        return $this->situacion;
+    }
+
+    /**
+     * @param mixed $situacion
+     */
+    public function setSituacion($situacion)
+    {
+        $this->situacion = $situacion;
     }
 
 

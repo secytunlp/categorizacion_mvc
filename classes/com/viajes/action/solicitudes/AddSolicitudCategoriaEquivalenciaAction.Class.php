@@ -45,13 +45,13 @@ class AddSolicitudCategoriaEquivalenciaAction extends CdtAction{
                     $catssicadi=9;
                     break;
                 case '7':
-                    $catssicadi=10;
+                    $catssicadi=9;
                     break;
                 case '8':
                     $catssicadi=10;
                     break;
                 case '9':
-                    $catssicadi=10;
+                    $catssicadi=6;
                     break;
             }
 			
@@ -63,7 +63,6 @@ class AddSolicitudCategoriaEquivalenciaAction extends CdtAction{
 			$result['error'] = $ex->getMessage();
 			
 		}
-
 		echo json_encode( $result ); 
 		return null;
 	}

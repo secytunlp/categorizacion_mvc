@@ -66,7 +66,7 @@ class SolicitudManager extends EntityManager{
 			$oSolicitudCargo->setDeddoc($oCargo->getDeddoc());
 			$oSolicitudCargo->setFacultad($oCargo->getFacultad());
 			$oSolicitudCargo->setDt_fecha($oCargo->getDt_fecha());
-
+			$oSolicitudCargo->setSituacion($oCargo->getSituacion());
 			$managerCargo = ManagerFactory::getSolicitudCargoManager();
 			$managerCargo->add($oSolicitudCargo);
 
@@ -86,6 +86,7 @@ class SolicitudManager extends EntityManager{
 			$oOtrosProyecto->setDs_codigo($oProyecto->getDs_codigo());
 			$oOtrosProyecto->setDs_director($oProyecto->getDirector()->getDs_apellido().', '.$oProyecto->getDirector()->getDs_nombre());
 			$oOtrosProyecto->setDs_titulo($oProyecto->getDs_titulo());
+			$oOtrosProyecto->setDs_organismo('UNLP');
 			$managerProyecto = ManagerFactory::getOtrosProyectoManager();
 			$managerProyecto->add($oOtrosProyecto);
 			
@@ -142,7 +143,7 @@ class SolicitudManager extends EntityManager{
 			$oSolicitudCargo->setDeddoc($oCargo->getDeddoc());
 			$oSolicitudCargo->setFacultad($oCargo->getFacultad());
 			$oSolicitudCargo->setDt_fecha($oCargo->getDt_fecha());
-
+			$oSolicitudCargo->setSituacion($oCargo->getSituacion());
 			$managerCargo = ManagerFactory::getSolicitudCargoManager();
 			$managerCargo->add($oSolicitudCargo);
 
@@ -530,6 +531,22 @@ class SolicitudManager extends EntityManager{
 		$oEstado = new Estado();
 		$oEstado->setOid(CYT_ESTADO_SOLICITUD_RECIBIDA);
 		$this->cambiarEstado($oSolicitud, $oEstado, '');
+
+		if ($oSolicitud->getEquivalencia()->getOid()!=5){
+			$dir = CYT_PATH_PDFS.'/'.CYT_PERIODO_YEAR.'/';
+
+			$oUser = CdtSecureUtils::getUserLogged();
+			$separarCUIL = explode('-',trim($oUser->getDs_username()));
+			$dir .= $separarCUIL[1].'/';
+
+			$handle=opendir($dir);
+			while ($archivo = readdir($handle)){
+				if ((is_file($dir.$archivo))&&(strchr($archivo,'INFO'))){
+					unlink($dir.$archivo);
+				}
+			}
+			closedir($handle);
+		}
 		
 		/*
 		 $pdf = new ViewSolicitudPDF();
@@ -688,7 +705,7 @@ class SolicitudManager extends EntityManager{
 		if ((!$entity->getDs_calle())||(!$entity->getNu_nro())||(!$entity->getNu_cp())||(!$entity->getDs_mail())||(!$entity->getNu_telefono())||(!$entity->getDt_nacimiento())||(!$entity->getDs_orcid())||(!$entity->getDs_sedici())||(!$entity->getDs_scholar())) {
 			$error .= CYT_MSG_CAMPOS_REQUERIDOS.' '.CYT_MSG_SOLICITUD_TAB_DOMICILIO.'<br>';
 		}
-		if ((!$entity->getDs_titulogrado())||(!$entity->getDt_egresogrado())||(!$entity->getLugarTrabajo()->getOid())||(!$entity->getFacultad()->getOid())) {
+		if ((!$entity->getDs_titulogrado())||(!$entity->getDt_egresogrado())||(!$entity->getLugarTrabajo()->getOid())) {
 			$error .= CYT_MSG_CAMPOS_REQUERIDOS.' '.CYT_MSG_SOLICITUD_TAB_UNIVERSIDAD.'<br>';
 		}
 		/*if (($entity->getBl_becario())&&($entity->getBl_carrera())){
@@ -730,6 +747,10 @@ class SolicitudManager extends EntityManager{
 		$okResbeca=0;
 		$okRescarrera=0;
 		$okArchivoproyecto=0;
+		$okArchivoinfo1=0;
+		$okArchivoinfo2=0;
+		$okArchivoinfo3=0;
+
 
 		$handle=opendir($dir);
 		while ($archivo = readdir($handle))
@@ -750,6 +771,19 @@ class SolicitudManager extends EntityManager{
 			{
 				$okArchivoproyecto=1;
 			}
+			if ((is_file($dir.$archivo))&&(strchr($archivo,'INFO1_')))
+			{
+				$okArchivoinfo1=1;
+			}
+			if ((is_file($dir.$archivo))&&(strchr($archivo,'INFO2_')))
+			{
+				$okArchivoinfo2=1;
+			}
+			if ((is_file($dir.$archivo))&&(strchr($archivo,'INFO3_')))
+			{
+				$okArchivoinfo3=1;
+			}
+
 
 		}
 
@@ -827,6 +861,15 @@ class SolicitudManager extends EntityManager{
 						$error .= CYT_MSG_SOLICITUD_SPU_DISTINTA.'<br>';
 					}
 					break;
+				case CYT_EQUIVALENCIA_EMERITO:
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_SUPERIOR))){
+						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_INDEPENDIENTE_MENOR.'<br>';
+					}
+
+					if ($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_INDEPENDIENTE) {
+						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
+					}
+					break;
 				case CYT_EQUIVALENCIA_INDEPENDIENTE:
 					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_INDEPENDIENTE))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_INDEPENDIENTE_MENOR.'<br>';
@@ -863,6 +906,19 @@ class SolicitudManager extends EntityManager{
 					if (($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_ADJUNTO)&&($entity->getCarrerainv()->getOid()!=CYT_CARRERAINV_CD_ASISTENTE)) {
 						$error .= CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_CARRERAINV.'<br>';
 					}
+					if (!$okArchivoinfo1){
+						$error .=CYT_MSG_SOLICITUD_INFO1_PROBLEMA.'<br />';
+					}
+					if (!$okArchivoinfo2){
+						$error .=CYT_MSG_SOLICITUD_INFO2_PROBLEMA.'<br />';
+					}
+					if (!$okArchivoinfo3){
+						$error .=CYT_MSG_SOLICITUD_INFO3_PROBLEMA.'<br />';
+					}
+					if (($entity->getNu_year1()==$entity->getNu_year2())||($entity->getNu_year1()==$entity->getNu_year3())||($entity->getNu_year2()==$entity->getNu_year3())) {
+						$error .= CYT_MSG_SOLICITUD_INFORMES_PROBLEMA.'<br>';
+					}
+
 					break;
 				case CYT_EQUIVALENCIA_ASISTENTE_CPA:
 					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
@@ -892,12 +948,42 @@ class SolicitudManager extends EntityManager{
 
 					}
 					break;
-				case CYT_EQUIVALENCIA_POSTDOCTORAL:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_POSTDOCTORAL))){
+				case CYT_EQUIVALENCIA_BECARIO_POSTDOCTORAL:
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_POSTDOCTORAL_MENOR.'<br>';
 					}
 
-					if (!(strchr($entity->getDs_tipobeca(),'postdoc'))) {
+					if (!(strchr($entity->getDs_tipobeca(),'Posdoc'))) {
+						$error .= CYT_MSG_SOLICITUD_CAT_BECA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_BECARIO.'<br>';
+					}
+					if ($entity->getLugarTrabajoBeca()->getOid()) {
+						if ($entity->getBl_becario()) {
+							$managerLugarTrabajo = CYTSecureManagerFactory::getLugarTrabajoManager();
+							$oLugarTrabajo = $managerLugarTrabajo->getObjectByCode($entity->getLugarTrabajoBeca()->getOid());
+							$encontre = 0;
+							while((!$encontre)&&($oLugarTrabajo->getPadre()->getOid()!=0)){
+								if ((!$encontre)&&(($oLugarTrabajo->getPadre()->getOid()==CYT_CD_LUGAR_TRABAJO_UNLP_CONICET)||($oLugarTrabajo->getPadre()->getOid()==CYT_CD_LUGAR_TRABAJO_UNLP))){
+
+									$encontre = 1;
+								}
+								$oLugarTrabajo = $managerLugarTrabajo->getObjectByCode($oLugarTrabajo->getPadre()->getOid());
+							}
+							if (!$encontre) {
+								$error .= CYT_MSG_SOLICITUD_LUGAR_TRABAJO_BECA_NO_UNLP.'<br>';
+							}
+						}
+
+					}
+					break;
+				case CYT_EQUIVALENCIA_BECARIO_DOCTORAL:
+					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_DOCTORAL))){
+						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_DOCTORAL_MENOR.'<br>';
+					}
+
+					if (!$entity->getDs_tipobeca()) {
+						$error .= CYT_MSG_SOLICITUD_CAT_BECA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_BECARIO.'<br>';
+					}
+					if ((strchr($entity->getDs_tipobeca(),'Posdoc'))) {
 						$error .= CYT_MSG_SOLICITUD_CAT_BECA_ERROR.' '.CYT_MSG_SOLICITUD_TAB_BECARIO.'<br>';
 					}
 					if ($entity->getLugarTrabajoBeca()->getOid()) {

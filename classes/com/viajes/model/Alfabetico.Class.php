@@ -24,12 +24,12 @@ class Alfabetico extends Entity{
 	private $deddoc;
 	
 	private $facultad;
-	  
 
+    private $clase;
 	  
-	private $ds_escalafon;
+	private $escalafon;
 	
-	private $ds_situacion;
+	private $situacion;
 	
 
 	public function __construct(){
@@ -129,34 +129,52 @@ class Alfabetico extends Entity{
     /**
      * @return mixed
      */
-    public function getDs_escalafon()
+    public function getClase()
     {
-        return $this->ds_escalafon;
+        return $this->clase;
     }
 
     /**
-     * @param mixed $ds_escalafon
+     * @param mixed $clase
      */
-    public function setDs_escalafon($ds_escalafon)
+    public function setClase($clase)
     {
-        $this->ds_escalafon = $ds_escalafon;
+        $this->clase = $clase;
     }
 
     /**
      * @return mixed
      */
-    public function getDs_situacion()
+    public function getEscalafon()
     {
-        return $this->ds_situacion;
+        return $this->escalafon;
     }
 
     /**
-     * @param mixed $ds_situacion
+     * @param mixed $escalafon
      */
-    public function setDs_situacion($ds_situacion)
+    public function setEscalafon($escalafon)
     {
-        $this->ds_situacion = $ds_situacion;
+        $this->escalafon = $escalafon;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSituacion()
+    {
+        return $this->situacion;
+    }
+
+    /**
+     * @param mixed $situacion
+     */
+    public function setSituacion($situacion)
+    {
+        $this->situacion = $situacion;
+    }
+
+
 
 
 

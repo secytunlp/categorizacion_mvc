@@ -75,8 +75,8 @@ class SolicitudFactory extends CdtGenericFactory {
         $factory->setAlias( CYT_TABLE_CATEGORIA . "_" );
         $solicitud->setCategoria( $factory->build($next) );
 
-        $factory = new CategoriaFactory();
-        $factory->setAlias( "Categoriasolicitada_" );
+        $factory = new CategoriasicadiFactory();
+        $factory->setAlias( CYT_TABLE_CATEGORIA_SICADI. "_" );
         $solicitud->setCategoriasolicitada( $factory->build($next) );
 
 
@@ -93,7 +93,21 @@ class SolicitudFactory extends CdtGenericFactory {
         $factory->setAlias( "Tituloposgrado_" );
         $solicitud->setTituloposgrado( $factory->build($next) );
 
-        
+        $factory = new AreaFactory();
+        $factory->setAlias( CYT_TABLE_AREA . "_" );
+        $solicitud->setAreabeca( $factory->build($next) );
+
+        $factory = new AreaFactory();
+        $factory->setAlias( "Areacarrera_" );
+        $solicitud->setAreacarrera( $factory->build($next) );
+
+        $factory = new SubareaFactory();
+        $factory->setAlias( CYT_TABLE_SUBAREA . "_" );
+        $solicitud->setSubareabeca( $factory->build($next) );
+
+        $factory = new SubareaFactory();
+        $factory->setAlias( "Subareacarrera_" );
+        $solicitud->setSubareacarrera( $factory->build($next) );
 
         return $solicitud;
     }

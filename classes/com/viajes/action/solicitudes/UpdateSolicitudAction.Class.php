@@ -78,6 +78,18 @@ class UpdateSolicitudAction extends UpdateEntityAction{
                         $extenciones_permitidas = CYT_EXTENSIONES_PERMITIDAS_IMG;
 
                         break;
+                    case 'ds_informe1':
+                        $nombre = CYT_LBL_SOLICITUD_A_INFORME1;
+                        $sigla = CYT_LBL_SOLICITUD_A_INFORME1_SIGLA;
+                        break;
+                    case 'ds_informe2':
+                        $nombre = CYT_LBL_SOLICITUD_A_INFORME2;
+                        $sigla = CYT_LBL_SOLICITUD_A_INFORME2_SIGLA;
+                        break;
+                    case 'ds_informe3':
+                        $nombre = CYT_LBL_SOLICITUD_A_INFORME3;
+                        $sigla = CYT_LBL_SOLICITUD_A_INFORME3_SIGLA;
+                        break;
 
                 }
             		

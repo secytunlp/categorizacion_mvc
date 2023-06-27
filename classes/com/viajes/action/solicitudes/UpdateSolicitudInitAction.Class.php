@@ -72,7 +72,7 @@ class UpdateSolicitudInitAction extends UpdateEntityInitAction {
 			$oProyecto->setDirector($oDirector);
 			$oProyecto->setDt_ini($oProyectoSolicitud->getDt_desdeproyecto());
 			$oProyecto->setDt_fin($oProyectoSolicitud->getDt_hastaproyecto());
-		
+
 			
 			
 			$proyectos->addItem($oProyecto);

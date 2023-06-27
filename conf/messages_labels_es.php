@@ -51,6 +51,8 @@ define('CYT_LBL_SOLICITUD_DEDICACION', 'Dedicación', true);
 define('CYT_LBL_SOLICITUD_FACULTAD', 'U. Académica', true);
 define('CYT_LBL_SOLICITUD_FACULTAD_PLANILLA', 'Unidad Académica por la que presenta la solicitud', true);
 
+define('CYT_LBL_SOLICITUD_CARGO_SITUACION', 'Situación', true);
+
 define('CYT_LBL_SOLICITUD_EXPERTICIA_DOCENTE', 'Experticia en Docencia', true);
 
 define('CYT_LBL_SOLICITUD_CATEGORIA', 'Cat. Actual - SPU', true);
@@ -87,7 +89,7 @@ define('CYT_LBL_SOLICITUD_BECA_HASTA', 'F. hasta', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA', 'Lugar de Trabajo', true);
 define('CYT_LBL_SOLICITUD_BECA_RESOLUCION', 'Cert. Beca', true);
 define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SIGLA', 'RES', true);
-define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SPEECH', 'IMPORTANTE: Las/los Becarias/os que no son UNLP deberán adjuntar una certificación de tareas como becaria/o emitida por la entidad otorgante de la beca correspondiente al mes de la convocatoria. Alternativamente se aceptará el recibo de estipendio de la beca correspondiente al mes de la convocatoria.<br>
+define('CYT_LBL_SOLICITUD_BECA_RESOLUCION_SPEECH', 'IMPORTANTE: Las/los Becarias/os que no son UNLP deberán adjuntar una certificación de tareas como becaria/o emitida por la entidad otorgante<br> de la beca correspondiente al mes de la convocatoria. Alternativamente se aceptará el recibo de estipendio de la beca correspondiente al mes de la convocatoria.<br>
 No se aceptará una Resolución de adjudicación de la beca', true);
 define('CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION', 'Experticia en Investigación', true);
 define('CYT_LBL_SOLICITUD_INSTITUCION_CARRERAINV', 'Institución', true);
@@ -96,10 +98,11 @@ define('CYT_LBL_SOLICITUD_INGRESO_CARRERAINV', 'Ingreso', true);
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_CARRERAINV', 'Lugar de Trabajo', true);
 define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION', 'Cert. Carrera', true);
 define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SIGLA', 'CARR', true);
-define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SPEECH', 'IMPORTANTE: Se deberá adjuntar una certificación de tareas como Investigador/a o CPA, emitida por la entidad otorgante.<br>
-No se aceptarán:<br>
-Recibo de sueldo<br>
-Resolución de ingreso', true);
+define('CYT_LBL_SOLICITUD_CARRERA_RESOLUCION_SPEECH', 'IMPORTANTE: IMPORTANTE: Se deberá adjuntar una certificación de trabajo como Investigador/a o CPA, emitida por su empleador emitida en el mes de la convocatoria.<br> Alternativamente se aceptará el recibo de sueldo correspondiente al mes de la convocatoria.<br>
+No se aceptará una Resolución de Ingreso
+', true);
+define('CYT_LBL_SOLICITUD_AREA', 'Area', true);
+define('CYT_LBL_SOLICITUD_SUBAREA', 'Subarea', true);
 
 
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ASISTENTE_CONICET', 'Investigador Asistente');
@@ -107,9 +110,9 @@ define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ADJUNTO_CONICET', 'Investigador A
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_INDEPENDIENTE_CONICET', 'Investigador Independiente');
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_PRINCIPAL_CONICET', 'Investigador Principal');
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_SUPERIOR_CONICET', 'Investigador Superior');
-define('CYT_LBL_SOLICITUD_CARRERA_PROFECIONAL_ASISTENTE_CONICET', 'Profesional Asistente');
-define('CYT_LBL_SOLICITUD_CARRERA_PROFECIONAL_ADJUNTO_CONICET', 'Profesional Adjunto');
-define('CYT_LBL_SOLICITUD_CARRERA_PROFECIONAL_PRINCIPAL_CONICET', 'Profesional Principal');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFESIONAL_ASISTENTE_CONICET', 'Profesional Asistente');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFESIONAL_ADJUNTO_CONICET', 'Profesional Adjunto');
+define('CYT_LBL_SOLICITUD_CARRERA_PROFESIONAL_PRINCIPAL_CONICET', 'Profesional Principal');
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ASISTENTE_CIC', 'Investigador Asistente');
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_ADJUNTO_CIC', 'Investigador Adjunto');
 define('CYT_LBL_SOLICITUD_CARRERA_INVESTIGADOR_INDEPENDIENTE_CIC', 'Investigador Independiente');
@@ -125,10 +128,22 @@ define('CYT_LBL_SOLICITUD_DISCIPLINA', 'Disciplina', true);
 define('CYT_LBL_SOLICITUD_ARCHIVO_SIZE', 'IMPORTANTE: los archivos a subir no deben superar los 8 Mb de tamaño', true);
 define('CYT_LBL_SOLICITUD_OBJETIVO_ANTERIOR', 'Breve descripción de las actividades de I/D que plantea en el marco del proyecto en que se desempeña el solicitante', true);
 define('CYT_LBL_SOLICITUD_OBJETIVO', 'Breve descripción de las actividades de I/D que plantea en el marco del proyecto en que se desempeña el solicitante', true);
-define('CYT_LBL_SOLICITUD_A_CURRICULUM_SIGEVA', 'IMPORTANTE: EL CV deberá ser el generado (pdf/doc) por el sistema SIGEVA-UNLP (banco de datos de<br>actividades de ciencia y técnica)', true);
+define('CYT_LBL_SOLICITUD_A_CURRICULUM_SIGEVA', 'IMPORTANTE: EL CV deberá ser el generado por el sistema SIGEVA-UNLP<br> (banco de datos de
+actividades de ciencia y técnica) o plataforma CVar', true);
 define('CYT_LBL_SOLICITUD_A_CURRICULUM', 'Curriculum', true);
 define('CYT_LBL_SOLICITUD_A_CURRICULUM_SIGLA', 'CV', true);
 define('CYT_LBL_SOLICITUD_BL_DIRECTOR', 'Es o ha sido DIR./CODIR. de proyectos de acreditación', true);
+
+define('CYT_LBL_SOLICITUD_A_INFORME1', 'Informe año 1', true);
+define('CYT_LBL_SOLICITUD_A_INFORME1_SIGLA', 'INFO1', true);
+define('CYT_LBL_SOLICITUD_A_INFORME2', 'Informe año 2', true);
+define('CYT_LBL_SOLICITUD_A_INFORME2_SIGLA', 'INFO2', true);
+define('CYT_LBL_SOLICITUD_A_INFORME3', 'Informe año 3', true);
+define('CYT_LBL_SOLICITUD_A_INFORME3_SIGLA', 'INFO3', true);
+
+define('CYT_LBL_SOLICITUD_YEAR1', 'Año 1', true);
+define('CYT_LBL_SOLICITUD_YEAR2', 'Año 2', true);
+define('CYT_LBL_SOLICITUD_YEAR3', 'Año 3', true);
 
 define('CYT_LBL_SOLICITUD_JUSTIFICACION', 'Justificar el pedido de fondos detallado en el presupuesto preliminar', true);
 define('CYT_LBL_SOLICITUD_JUSTIFICACION_2017_PDF', 'Justificar el pedido de fondos detallado en el presupuesto preliminar. Además, para cada ítem que solicita en el presupuesto preliminar debera a) detallar el mismo y b) justificar su pedido. En el caso de solicitar bibliografía deberá indicar título, autor, editorial, etc.', true);

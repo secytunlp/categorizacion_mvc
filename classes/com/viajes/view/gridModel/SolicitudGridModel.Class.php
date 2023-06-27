@@ -51,8 +51,8 @@ class SolicitudGridModel extends GridModel {
         $column = GridModelBuilder::buildColumn( "Equivalencia.ds_equivalencia", CYT_LBL_SOLICITUD_EQUIVALENCIA, 40, CDT_CMP_GRID_TEXTALIGN_LEFT, "Equivalencia.ds_equivalencia" );
         $this->addColumn( $column );
 
-
-        $column = GridModelBuilder::buildColumn( "Categoriasolicitada.ds_categoria", CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, 40, CDT_CMP_GRID_TEXTALIGN_CENTER, "Categoriasolicitada.ds_categoria" );
+        $tCategoriasicadi = DAOFactory::getCategoriasicadiDAO()->getTableName();
+        $column = GridModelBuilder::buildColumn( "categoriasicadi.ds_categoria", CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, 40, CDT_CMP_GRID_TEXTALIGN_CENTER, "$tCategoriasicadi.ds_categoria" );
         $this->addColumn( $column );
 		
 		

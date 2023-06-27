@@ -147,7 +147,17 @@ class CMPSolicitudForm extends CMPForm{
 		
 		$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA, "", "solicitud_filter_lugarTrabajoBeca_oid", "lugarTrabajoBeca.oid","solicitud_filter_lugarTrabajoBeca_change");
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
+
 		$fieldset->addField( $findLugarTrabajo );
+
+		$fieldArea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_AREA, "areabeca.oid",CYTUtils::getAreasItems(), "", null, null, "--seleccionar--", "areabeca_oid" );
+		//$fieldCategoria->getInput()->setIsEditable(false);
+		$fieldArea->getInput()->addProperty( 'onChange', 'seleccionarAreaBeca(this)' );
+		$fieldset->addField( $fieldArea );
+
+		$fieldSubarea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_SUBAREA, "subareabeca.oid",CYTUtils::getSubareasItems(null), "", null, null, "--seleccionar--", "subareabeca_oid" );
+
+		$fieldset->addField( $fieldSubarea );
 
 		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaB","","",8,110);
 		$fieldset->addField( $input );
@@ -161,12 +171,13 @@ class CMPSolicitudForm extends CMPForm{
 
 
 		$fieldOrganismo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_INSTITUCION_CARRERAINV, "organismo.oid", CYTSecureUtils::getOrganismosItems(CYT_ORGANISMO_MOSTRADAS), "", null, null, "--seleccionar--", "organismo_oid" );
-		$fieldOrganismo->getInput()->addProperty( 'onChange', 'seleccionarOrganismon(this)' );
+		$fieldOrganismo->getInput()->addProperty( 'onChange', 'seleccionarOrganismo(this)' );
 		$fieldset->addField( $fieldOrganismo );
 
-		//$fieldCarreraInv = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV, "carrerainv.oid", Carrera::getItems('2'), "", null, null, "--seleccionar--", "carrerainv.oid" );
+		$fieldCarreraInv = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV, "carrerainv.oid", Carrera::getItems('2'), "", null, null, "--seleccionar--", "carrerainv_oid" );
 
-		$fieldCarreraInv = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV, "carrerainv.oid", CYTSecureUtils::getCarreraInvsItems(CYT_CARRERAINV_MOSTRADAS), "", null, null, "--seleccionar--", "carrerainv_oid" );
+
+		//$fieldCarreraInv = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_CARRERAINV, "carrerainv.oid", CYTSecureUtils::getCarreraInvsItems(CYT_CARRERAINV_MOSTRADAS), "", null, null, "--seleccionar--", "carrerainv_oid" );
 		$fieldset->addField( $fieldCarreraInv );
 		
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_INGRESO_CARRERAINV, "dt_ingreso") );
@@ -174,6 +185,15 @@ class CMPSolicitudForm extends CMPForm{
 		$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_CARRERAINV, "", "solicitud_filter_lugarTrabajoCarrerainv_oid", "lugarTrabajoCarrera.oid","solicitud_filter_lugarTrabajoCarrerainv_change");
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $findLugarTrabajo );
+
+		$fieldArea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_AREA, "areacarrera.oid",CYTUtils::getAreasItems(), "", null, null, "--seleccionar--", "areacarrera_oid" );
+		//$fieldCategoria->getInput()->setIsEditable(false);
+		$fieldArea->getInput()->addProperty( 'onChange', 'seleccionarAreaCarrera(this)' );
+		$fieldset->addField( $fieldArea );
+
+		$fieldSubarea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_SUBAREA, "subareacarrera.oid",CYTUtils::getSubareasItems(null), "", null, null, "--seleccionar--", "subareacarrera_oid" );
+
+		$fieldset->addField( $fieldSubarea );
 
 		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaC","","",8,110);
 		$fieldset->addField( $input );
@@ -186,8 +206,15 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldText ( "", "ds_claveC6", "","",20) );*/
 
 		
-		$fieldFacultadplanilla = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD_PLANILLA, "facultadplanilla.oid", CYTSecureUtils::getFacultadesItems(), "", null, null, "--seleccionar--", "facultadplanilla_oid" );
+		$fieldFacultadplanilla = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD_PLANILLA, "facultadplanilla.oid", CYTSecureUtils::getFacultadesItems('165,167,168,169,170,171,172,173,174,175,176,177,179,180,181,187,1220'), "", null, null, "--seleccionar--", "facultadplanilla_oid" );
 		$fieldset->addField( $fieldFacultadplanilla );
+
+		$fieldYear = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_YEAR1, "nu_year1",CYTUtils::getYearItems() , "", null, null, null, "nu_year1" );
+		$fieldset->addField( $fieldYear );
+		$fieldYear = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_YEAR2, "nu_year2",CYTUtils::getYearItems() , "", null, null, null, "nu_year2" );
+		$fieldset->addField( $fieldYear );
+		$fieldYear = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_YEAR3, "nu_year3",CYTUtils::getYearItems() , "", null, null, null, "nu_year3" );
+		$fieldset->addField( $fieldYear );
 		
 		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_DISCIPLINA, "ds_disciplina") );
 
@@ -223,6 +250,9 @@ class CMPSolicitudForm extends CMPForm{
 		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_rescarrera", "") );
 		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_archivo", "") );
 		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_foto", "") );
+		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_informe1", "") );
+		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_informe2", "") );
+		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_informe3", "") );
 		
 		
 
@@ -235,7 +265,7 @@ class CMPSolicitudForm extends CMPForm{
 		//$this->setOnSuccessCallback("successTest");
 		//$this->setUseAjaxCallback( true );
 		//$this->setIdAjaxCallback( "content-left" );
-		
+		$this->setCustomHTML('<script> $(function() {$("#organismo_oid").change();$("#ds_orgbeca").change();$("#equivalencia_oid").change();$("#areabeca_oid").change();$("#areacarrera_oid").change();});</script>');
 	}
 
 

@@ -44,17 +44,19 @@ define('CYT_MSG_SOLICITUD_TAB_UNIVERSIDAD', "Datos Académicos", true);
 define('CYT_MSG_SOLICITUD_TAB_BECARIO', "Becario/a", true);
 define('CYT_MSG_SOLICITUD_TAB_CARRERAINV', "Investigador/a  o Profesional de Apoyo", true);
 define('CYT_MSG_SOLICITUD_TAB_PROYECTOS', "Proyectos", true);
-define('CYT_MSG_SOLICITUD_TAB_DESCRIPCION', "Categorización", true);
+define('CYT_MSG_SOLICITUD_TAB_DESCRIPCION', "Categorización por Equivalencia", true);
 define('CYT_MSG_SOLICITUD_TIPO_INVESTIGADOR_TITULO', "Debe seleccionar la Unidad Académica donde Ud. realiza la actividad de I+D", true);
 define('CYT_MSG_SOLICITUD_OTROS_PROYECTOS_REQUERIDOS', "Complete todos los campos del proyecto de otra entidad", true);
 
 define('CYT_MSG_SOLICITUD_BECAS_TAB', "Becas Anteriores", true);
 define('CYT_MSG_SOLICITUD_BECARIO_TITULO', "Espacio a ser completado únicamente por aquellas personas que estén desempeñándose en la actualidad como becarios/as", true);
-define('CYT_MSG_SOLICITUD_PROYECTOS_TITULO', "En caso de participar en un proyecto de investigación de UNLP, los datos del mismo aparecerán pre-cargados y no se deberá indicar más información.<br>
-De no participar en ningún proyecto UNLP se podrá cargar un solo proyecto de otra institución científica reconocida por la UNLP.  
+define('CYT_MSG_SOLICITUD_PROYECTOS_TITULO', "IMPORTANTE: Para ser categorizado/a en el programa SiCaDi debe participar en al menos un Proyecto de Investigación<br> reconocido por la UNLP vigente. A continuación, se listan los proyectos en cuales Ud está participando.  
 ", true);
 define('CYT_MSG_SOLICITUD_TAB_PROYECTOS_ANTERIORES', "Proy. Otras Entidades", true);
-define('CYT_MSG_SOLICITUD_PROYECTOS_ANTERIORES_TITULO', "PROYECTO ACREDITADO EN OTRA ENTIDAD EN EL QUE PARTICIPA ACTUALMENTE", true);
+define('CYT_MSG_SOLICITUD_PROYECTOS_ANTERIORES_TITULO', "IMPORTANTE: Si no se encuentran proyectos registrados en la base de datos, en los cuales Ud esté participando<br> activamente, podrá cargar un proyecto a continuación. Se deberá adjuntar una certificación de participación en<br> proyecto indicado, emitida por la entidad administradora del mismo en el mes de la corriente presentación.<br>
+No se aceptará resolución de otorgamiento del proyecto.<br>
+La participación como colaborador en un proyecto no se considera como pertenencia al mismo.
+", true);
 
 define('CYT_MSG_SOLICITUD_TAB_PRESUPUESTOS', "Presupuesto", true);
 define('CYT_MSG_SOLICITUD_PRESUPUESTOS_TIPO_1_TITULO', "BIENES DE CONSUMO", true);
@@ -70,18 +72,18 @@ define('CYT_MSG_SOLICITUD_FUE_DIRCODIR', 'No se pueden presentar los Directores 
 
 
 define('CYT_MSG_SOLICITUD_CREADA', 'Sólo se puede crear una solicitud por período', true);
-define('CYT_MSG_SOLICITUD_LUGAR_TRABAJO_BECA_NO_UNLP', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_POSTODOCTORAL."\" el lugar de trabajo de la beca debe ser en la U.N.L.P..", true);
-define('CYT_MSG_SOLICITUD_LUGAR_TRABAJO_CARRERA_NO_UNLP', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_CPA."\" el lugar de trabajo de la carrera de investigador debe ser en la U.N.L.P..", true);
+define('CYT_MSG_SOLICITUD_LUGAR_TRABAJO_BECA_NO_UNLP', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_POSTODOCTORAL."\" el lugar de trabajo de la beca debe ser en la UNLP.", true);
+define('CYT_MSG_SOLICITUD_LUGAR_TRABAJO_CARRERA_NO_UNLP', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_CPA."\" el lugar de trabajo de la carrera de investigador debe ser en la UNLP.", true);
 define('CYT_MSG_SOLICITUD_DOCTORADO_ANTERIOR', 'Doctorado anterior al ', true);
 define('CYT_MSG_SOLICITUD_INGRESO_A_LA_CARRERA_ANTERIOR', 'Ingreso a la carrera anterior al ', true);
 define('CYT_MSG_SOLICITUD_INGRESO_A_LA_CARRERA', 'Ingreso a la carrera posterior a la fecha de cierre de la convocatoria', true);
-define('CYT_MSG_SOLICITUD_EDAD_MAYOR', 'Solicitante no menor a $1 años al $2 y no Becario U.N.L.P.', true);
+define('CYT_MSG_SOLICITUD_EDAD_MAYOR', 'Solicitante no menor a $1 años al $2 y no Becario UNLP', true);
 define('CYT_MSG_SOLICITUD_MENOR_YEAR', 'Menos de $1 años de participación en proyectos UNLP / Beca UNLP', true);
 define('CYT_MSG_SOLICITUD_MONTO_MAXIMO', 'El monto máximo es de', true);
 define('CYT_MSG_SOLICITUD_MONTO_DECLARAR', 'El total de la pestaña presupuesto debe ser mayor que 0 (cero) y no superar los ', true);
 define('CYT_MSG_SOLICITUD_TAB_CAMPOS_REQUERIDOS', "Complete todos los campos de la pestaña", true);
 
-define('CYT_MSG_SOLICITUD_EQUIVALENCIA_HELP', 'Los Docentes de la UNLP pertenecientes a la Carrera del Investigador Científico Tecnológico y Carrera Profesional de Apoyo con lugar de trabajo en la UNLP, podrán solicitar el reconocimiento de las siguientes categorías: <br><strong>DI1</strong>: quienes posean categoría de Investigador/a Principal o Superior<br>
+define('CYT_MSG_SOLICITUD_EQUIVALENCIA_HELP', 'Los Docentes de la UNLP pertenecientes a la Carrera del Investigador Científico Tecnológico y Carrera Profesional de Apoyo con lugar de trabajo en la UNLP, podrán solicitar el reconocimiento de las siguientes categorías: <br><strong>DI1</strong>: quienes posean categoría de Investigador/a Principal o Superior o sean Profesores Eméritos<br>
 <strong>DI2</strong>: quienes posean categoría de Investigador/a Independiente <br>
 <strong>DI3</strong>: quienes posean categoría de Investigador/a Adjunto/a o posean categoría de Investigador Asistente con tres (3) o más informes aprobados (como Investigador/a Asistente)<br>
 <strong>DI4</strong>: quienes posean categoría de Investigador/a Asistente o quienes posean categoría de Profesional de Apoyo. Quienes sean becarios/as postdoctorales con lugar de trabajo en la UNLP<br>
@@ -94,6 +96,8 @@ define('CYT_MSG_SOLICITUD_CAT_CARRERA_ERROR', "Error en \"".CYT_LBL_SOLICITUD_CA
 
 define('CYT_MSG_SOLICITUD_EQUIVALENCIA_PRINCIPAL_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_PRINCIPAL."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_SUPERIOR."\"", true);
 
+define('CYT_MSG_SOLICITUD_EQUIVALENCIA_EMERITO_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_EMERITO."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_SUPERIOR."\"", true);
+
 define('CYT_MSG_SOLICITUD_EQUIVALENCIA_SUPERIOR_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_SUPERIOR."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_INDEPENDIENTE."\"", true);
 
 define('CYT_MSG_SOLICITUD_EQUIVALENCIA_ADJUNTO_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_ADJUNTO."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_ADJUNTO."\"", true);
@@ -102,8 +106,10 @@ define('CYT_MSG_SOLICITUD_EQUIVALENCIA_ASISTENTE_MENOR', "Por equivalencia \"".C
 
 define('CYT_MSG_SOLICITUD_EQUIVALENCIA_P_ASISTENTE_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_CPA."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_ASISTENTE."\"", true);
 
-define('CYT_MSG_SOLICITUD_EQUIVALENCIA_POSTDOCTORAL_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_POSTODOCTORAL."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_POSTDOCTORAL."\"", true);
+define('CYT_MSG_SOLICITUD_EQUIVALENCIA_POSTDOCTORAL_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_POSTDOCTORAL."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_ASISTENTE."\"", true);
 define('CYT_MSG_SOLICITUD_CAT_BECA_ERROR', "Error en el \"".CYT_LBL_SOLICITUD_BECA_NIVEL."\" en la pestaña ", true);
+
+define('CYT_MSG_SOLICITUD_EQUIVALENCIA_DOCTORAL_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_DOCTORAL."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_DOCTORAL."\"", true);
 
 /* BECAS*/
 define('CYT_MSG_BECA_TIPO_REQUIRED', CYT_LBL_SOLICITUD_TIPO_BECA . ' es requerido', true);
@@ -118,7 +124,7 @@ define('CYT_MSG_BECAS', "Indique las becas", true);
 
 define('CYT_MSG_BECA_DESDE_MAYOR', CYT_LBL_SOLICITUD_BECA_DESDE . ' es mayor que '.CYT_LBL_SOLICITUD_BECA_HASTA, true);
 define('CYT_MSG_BECA_NO_VIGENTE', 'Beca no vigente', true);
-define('CYT_MSG_BECA_FUERA_RANGO', 'Solo se pueden agregar becas U.N.L.P. que comenzaron antes del '.CYT_BECA_RANGO_FIN, true);
+define('CYT_MSG_BECA_FUERA_RANGO', 'Solo se pueden agregar becas UNLP que comenzaron antes del '.CYT_BECA_RANGO_FIN, true);
 
 
 /* PROYECTOS*/
@@ -212,4 +218,8 @@ define('CYT_MSG_INTEGRANTE_CV_PROBLEMA', 'Hubo un error al subir el Curriculum, 
 define('CYT_MSG_SOLICITUD_RES_PROBLEMA', 'Hubo un error al subir la resolución de la beca, intente nuevamente, si el problema persiste envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
 define('CYT_MSG_SOLICITUD_CARR_PROBLEMA', 'Hubo un error al subir la certificación de la carrera, intente nuevamente, si el problema persiste envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
 define('CYT_MSG_SOLICITUD_PROY_PROBLEMA', 'Hubo un error al subir la certificación del proyecto de otro entidad, intente nuevamente, si el problema persiste envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
+define('CYT_MSG_SOLICITUD_INFO1_PROBLEMA', 'Hubo un error al subir el Informe 1, intente nuevamente, si el problema persiste envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
+define('CYT_MSG_SOLICITUD_INFO2_PROBLEMA', 'Hubo un error al subir el Informe 2, intente nuevamente, si el problema persiste envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
+define('CYT_MSG_SOLICITUD_INFO3_PROBLEMA', 'Hubo un error al subir el Informe 3, intente nuevamente, si el problema persiste envíenos un mail a categorizacion1@presi.unlp.edu.ar', true);
+define('CYT_MSG_SOLICITUD_INFORMES_PROBLEMA', 'Los años a informar deben ser distintos', true);
 ?>

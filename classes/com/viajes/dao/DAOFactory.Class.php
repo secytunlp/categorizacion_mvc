@@ -136,5 +136,13 @@ class DAOFactory{
 	public static function getSolicitudCargoDAO(){
 		return new SolicitudCargoDAO();
 	}
+
+	public static function getAreaDAO(){
+		return new AreaDAO();
+	}
+
+	public static function getSubareaDAO(){
+		return new SubareaDAO();
+	}
 }
 ?>

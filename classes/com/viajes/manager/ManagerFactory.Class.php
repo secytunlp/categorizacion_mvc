@@ -25,6 +25,14 @@ class ManagerFactory{
         return new CategoriasicadiManager();
     }
 
+    public static function getAreaManager(){
+        return new AreaManager();
+    }
+
+    public static function getSubareaManager(){
+        return new SubareaManager();
+    }
+
     public static function getAlfabeticoManager(){
         return new AlfabeticoManager();
     }

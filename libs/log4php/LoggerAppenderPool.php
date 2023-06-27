@@ -69,7 +69,7 @@ class LoggerAppenderPool {
 	 * Removes an appender from the pool by name.
 	 * @param string $name Name of the appender to remove.
 	 */
-	public static function delete($name) {
+	public static function elete($name) {
 		unset(self::$appenders[$name]);
 	}
 
