@@ -603,35 +603,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_resbeca");
 
-            $fieldAreabeca = $fields['areabeca_oid'];
-            $input = $fieldAreabeca->getInput();
-            $label = $fieldAreabeca->getLabel();
-            $this->renderLabelTab( $label, $input, $xtpl );
-            $this->renderInputTab( $input, $xtpl );
-            $xtpl->assign("minWidth", $fieldAreabeca->getMinWidth());
 
-            if( $input->getIsVisible() ){
-                $xtpl->assign("display", 'block');
-
-            }
-            else $xtpl->assign("display", 'none');
-
-            $xtpl->parse("main.areabeca_oid");
-
-            $fieldSubareabeca = $fields['subareabeca_oid'];
-            $input = $fieldSubareabeca->getInput();
-            $label = $fieldSubareabeca->getLabel();
-            $this->renderLabelTab( $label, $input, $xtpl );
-            $this->renderInputTab( $input, $xtpl );
-            $xtpl->assign("minWidth", $fieldSubareabeca->getMinWidth());
-
-            if( $input->getIsVisible() ){
-                $xtpl->assign("display", 'block');
-
-            }
-            else $xtpl->assign("display", 'none');
-
-            $xtpl->parse("main.subareabeca_oid");
 
 
             $xtpl->assign("carrerainv_tab", CYT_MSG_SOLICITUD_TAB_CARRERAINV);
@@ -713,35 +685,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_rescarrera");
 
-            $fieldAreacarrera = $fields['areacarrera_oid'];
-            $input = $fieldAreacarrera->getInput();
-            $label = $fieldAreacarrera->getLabel();
-            $this->renderLabelTab( $label, $input, $xtpl );
-            $this->renderInputTab( $input, $xtpl );
-            $xtpl->assign("minWidth", $fieldAreacarrera->getMinWidth());
 
-            if( $input->getIsVisible() ){
-                $xtpl->assign("display", 'block');
-
-            }
-            else $xtpl->assign("display", 'none');
-
-            $xtpl->parse("main.areacarrera_oid");
-
-            $fieldSubareacarrera = $fields['subareacarrera_oid'];
-            $input = $fieldSubareacarrera->getInput();
-            $label = $fieldSubareacarrera->getLabel();
-            $this->renderLabelTab( $label, $input, $xtpl );
-            $this->renderInputTab( $input, $xtpl );
-            $xtpl->assign("minWidth", $fieldSubareacarrera->getMinWidth());
-
-            if( $input->getIsVisible() ){
-                $xtpl->assign("display", 'block');
-
-            }
-            else $xtpl->assign("display", 'none');
-
-            $xtpl->parse("main.subareacarrera_oid");
 
             $xtpl->assign("proyectos_tab", CYT_MSG_SOLICITUD_TAB_PROYECTOS);
 
@@ -1036,7 +980,35 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             $xtpl->parse("main.ds_informe3");
 
+            $fieldAreacarrera = $fields['areacarrera_oid'];
+            $input = $fieldAreacarrera->getInput();
+            $label = $fieldAreacarrera->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldAreacarrera->getMinWidth());
 
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.areacarrera_oid");
+
+            $fieldSubareacarrera = $fields['subareacarrera_oid'];
+            $input = $fieldSubareacarrera->getInput();
+            $label = $fieldSubareacarrera->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldSubareacarrera->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.subareacarrera_oid");
         }
         $xtpl->assign( "customHTML",$form->getCustomHTML());
     }

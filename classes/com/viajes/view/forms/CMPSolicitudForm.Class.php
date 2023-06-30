@@ -150,14 +150,7 @@ class CMPSolicitudForm extends CMPForm{
 
 		$fieldset->addField( $findLugarTrabajo );
 
-		$fieldArea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_AREA, "areabeca.oid",CYTUtils::getAreasItems(), "", null, null, "--seleccionar--", "areabeca_oid" );
-		//$fieldCategoria->getInput()->setIsEditable(false);
-		$fieldArea->getInput()->addProperty( 'onChange', 'seleccionarAreaBeca(this)' );
-		$fieldset->addField( $fieldArea );
 
-		$fieldSubarea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_SUBAREA, "subareabeca.oid",CYTUtils::getSubareasItems(null), "", null, null, "--seleccionar--", "subareabeca_oid" );
-
-		$fieldset->addField( $fieldSubarea );
 
 		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaB","","",8,110);
 		$fieldset->addField( $input );

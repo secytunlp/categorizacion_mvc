@@ -375,9 +375,7 @@ ALTER TABLE `solicitudcategorizacion`
 
 
 
-    ADD COLUMN `cd_areabeca` int(11) NULL DEFAULT NULL,
 
-    ADD COLUMN `cd_subareabeca` int(11) NULL DEFAULT NULL,
 ADD COLUMN `cd_areacarrera` int(11) NULL DEFAULT NULL,
 
     ADD COLUMN `cd_subareacarrera` int(11) NULL DEFAULT NULL;

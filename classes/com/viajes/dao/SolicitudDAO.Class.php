@@ -77,27 +77,7 @@ class SolicitudDAO extends EntityDAO {
 		$fieldsValues["ds_disciplina"] = $this->formatString( $entity->getDs_disciplina() );
 
         $fieldsValues["ds_scopus"] = $this->formatString( $entity->getDs_scopus() );
-        $fieldsValues["ds_experticiaD"] = $this->formatString( $entity->getDs_experticiaD() );
-        $fieldsValues["ds_claveD1"] = $this->formatString( $entity->getDs_claveD1() );
-        $fieldsValues["ds_claveD2"] = $this->formatString( $entity->getDs_claveD2() );
-        $fieldsValues["ds_claveD3"] = $this->formatString( $entity->getDs_claveD3() );
-        $fieldsValues["ds_claveD4"] = $this->formatString( $entity->getDs_claveD4() );
-        $fieldsValues["ds_claveD5"] = $this->formatString( $entity->getDs_claveD5() );
-        $fieldsValues["ds_claveD6"] = $this->formatString( $entity->getDs_claveD6() );
-        $fieldsValues["ds_experticiaB"] = $this->formatString( $entity->getDs_experticiaB() );
-        $fieldsValues["ds_claveB1"] = $this->formatString( $entity->getDs_claveB1() );
-        $fieldsValues["ds_claveB2"] = $this->formatString( $entity->getDs_claveB2() );
-        $fieldsValues["ds_claveB3"] = $this->formatString( $entity->getDs_claveB3() );
-        $fieldsValues["ds_claveB4"] = $this->formatString( $entity->getDs_claveB4() );
-        $fieldsValues["ds_claveB5"] = $this->formatString( $entity->getDs_claveB5() );
-        $fieldsValues["ds_claveB6"] = $this->formatString( $entity->getDs_claveB6() );
-        $fieldsValues["ds_experticiaC"] = $this->formatString( $entity->getDs_experticiaC() );
-        $fieldsValues["ds_claveC1"] = $this->formatString( $entity->getDs_claveC1() );
-        $fieldsValues["ds_claveC2"] = $this->formatString( $entity->getDs_claveC2() );
-        $fieldsValues["ds_claveC3"] = $this->formatString( $entity->getDs_claveC3() );
-        $fieldsValues["ds_claveC4"] = $this->formatString( $entity->getDs_claveC4() );
-        $fieldsValues["ds_claveC5"] = $this->formatString( $entity->getDs_claveC5() );
-        $fieldsValues["ds_claveC6"] = $this->formatString( $entity->getDs_claveC6() );
+
         $fieldsValues["ds_informe1"] = $this->formatString( $entity->getDs_informe1() );
         $fieldsValues["ds_informe2"] = $this->formatString( $entity->getDs_informe2() );
         $fieldsValues["ds_informe3"] = $this->formatString( $entity->getDs_informe3() );
@@ -105,8 +85,7 @@ class SolicitudDAO extends EntityDAO {
         $fieldsValues["nu_year2"] = $this->formatString( $entity->getNu_year2() );
         $fieldsValues["nu_year3"] = $this->formatString( $entity->getNu_year3() );
 
-        $fieldsValues["cd_areabeca"] = $this->formatIfNull( $entity->getAreabeca()->getOid(), 'null' );
-        $fieldsValues["cd_subareabeca"] = $this->formatIfNull( $entity->getSubareabeca()->getOid(), 'null' );
+
         $fieldsValues["cd_areacarrera"] = $this->formatIfNull( $entity->getAreacarrera()->getOid(), 'null' );
         $fieldsValues["cd_subareacarrera"] = $this->formatIfNull( $entity->getSubareacarrera()->getOid(), 'null' );
 		
@@ -178,27 +157,7 @@ class SolicitudDAO extends EntityDAO {
 		$fieldsValues["ds_disciplina"] = $this->formatString( $entity->getDs_disciplina() );
 
         $fieldsValues["ds_scopus"] = $this->formatString( $entity->getDs_scopus() );
-        $fieldsValues["ds_experticiaD"] = $this->formatString( $entity->getDs_experticiaD() );
-        $fieldsValues["ds_claveD1"] = $this->formatString( $entity->getDs_claveD1() );
-        $fieldsValues["ds_claveD2"] = $this->formatString( $entity->getDs_claveD2() );
-        $fieldsValues["ds_claveD3"] = $this->formatString( $entity->getDs_claveD3() );
-        $fieldsValues["ds_claveD4"] = $this->formatString( $entity->getDs_claveD4() );
-        $fieldsValues["ds_claveD5"] = $this->formatString( $entity->getDs_claveD5() );
-        $fieldsValues["ds_claveD6"] = $this->formatString( $entity->getDs_claveD6() );
-        $fieldsValues["ds_experticiaB"] = $this->formatString( $entity->getDs_experticiaB() );
-        $fieldsValues["ds_claveB1"] = $this->formatString( $entity->getDs_claveB1() );
-        $fieldsValues["ds_claveB2"] = $this->formatString( $entity->getDs_claveB2() );
-        $fieldsValues["ds_claveB3"] = $this->formatString( $entity->getDs_claveB3() );
-        $fieldsValues["ds_claveB4"] = $this->formatString( $entity->getDs_claveB4() );
-        $fieldsValues["ds_claveB5"] = $this->formatString( $entity->getDs_claveB5() );
-        $fieldsValues["ds_claveB6"] = $this->formatString( $entity->getDs_claveB6() );
-        $fieldsValues["ds_experticiaC"] = $this->formatString( $entity->getDs_experticiaC() );
-        $fieldsValues["ds_claveC1"] = $this->formatString( $entity->getDs_claveC1() );
-        $fieldsValues["ds_claveC2"] = $this->formatString( $entity->getDs_claveC2() );
-        $fieldsValues["ds_claveC3"] = $this->formatString( $entity->getDs_claveC3() );
-        $fieldsValues["ds_claveC4"] = $this->formatString( $entity->getDs_claveC4() );
-        $fieldsValues["ds_claveC5"] = $this->formatString( $entity->getDs_claveC5() );
-        $fieldsValues["ds_claveC6"] = $this->formatString( $entity->getDs_claveC6() );
+
         $fieldsValues["nu_year1"] = $this->formatString( $entity->getNu_year1() );
         $fieldsValues["nu_year2"] = $this->formatString( $entity->getNu_year2() );
         $fieldsValues["nu_year3"] = $this->formatString( $entity->getNu_year3() );
@@ -206,8 +165,7 @@ class SolicitudDAO extends EntityDAO {
         $fieldsValues["ds_informe2"] = $this->formatString( $entity->getDs_informe2() );
         $fieldsValues["ds_informe3"] = $this->formatString( $entity->getDs_informe3() );
 
-        $fieldsValues["cd_areabeca"] = $this->formatIfNull( $entity->getAreabeca()->getOid(), 'null' );
-        $fieldsValues["cd_subareabeca"] = $this->formatIfNull( $entity->getSubareabeca()->getOid(), 'null' );
+
         $fieldsValues["cd_areacarrera"] = $this->formatIfNull( $entity->getAreacarrera()->getOid(), 'null' );
         $fieldsValues["cd_subareacarrera"] = $this->formatIfNull( $entity->getSubareacarrera()->getOid(), 'null' );
 
@@ -272,11 +230,10 @@ class SolicitudDAO extends EntityDAO {
         $sql .= " LEFT JOIN " . $tTitulo . " ON($tSolicitud.cd_titulogrado = $tTitulo.cd_titulo)";
         $sql .= " LEFT JOIN " . $tTitulo . " Tituloposgrado ON($tSolicitud.cd_tituloposgrado = Tituloposgrado.cd_titulo)";
 
-        $sql .= " LEFT JOIN " . $tArea . " ON($tSolicitud.cd_areabeca = $tArea.cd_area)";
-        $sql .= " LEFT JOIN " . $tSubarea . " ON($tSolicitud.cd_subareabeca = $tSubarea.cd_subarea)";
+        $sql .= " LEFT JOIN " . $tArea . " ON($tSolicitud.cd_areacarrera = $tArea.cd_area)";
+        $sql .= " LEFT JOIN " . $tSubarea . " ON($tSolicitud.cd_subareacarrera = $tSubarea.cd_subarea)";
 
-        $sql .= " LEFT JOIN " . $tArea . " Areacarrera ON($tSolicitud.cd_areacarrera = Areacarrera.cd_area)";
-        $sql .= " LEFT JOIN " . $tSubarea . " Subareacarrera ON($tSolicitud.cd_subareacarrera = Subareacarrera.cd_subarea)";
+
 
         
         
@@ -387,12 +344,7 @@ class SolicitudDAO extends EntityDAO {
         $fields[] = "$tSubarea.cd_subarea as " . $tSubarea . "_oid ";
         $fields[] = "$tSubarea.ds_subarea as " . $tSubarea . "_ds_subarea ";
 
-        $fields[] = "Areacarrera.cd_area as Areacarrera_oid ";
-        $fields[] = "Areacarrera.ds_area as Areacarrera_ds_area ";
 
-        $fields[] = "Subareacarrera.cd_subarea as Subareacarrera_oid ";
-        $fields[] = "Subareacarrera.ds_subarea as Subareacarrera_ds_subarea ";
-        
         return $fields;
 	}
 	
