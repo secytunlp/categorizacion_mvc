@@ -757,51 +757,69 @@ function successDefault_{form_id}(data ){
 	</div>
 
 	<div id="tabs-2" style="position:relative;">
+		<div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: solicitud_filter_titulo_oid -->
-					<div class="item tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
+					<div class="form-row tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
 
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: solicitud_filter_titulo_oid -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: dt_egresogrado -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: dt_egresogrado -->
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: solicitud_filter_tituloposgrado_oid -->
-		<div class="item tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
+		<div class="form-row tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</div>
 		<!-- END: solicitud_filter_tituloposgrado_oid -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: dt_egresoposgrado -->
 					<span class="form-row">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</span>
 		<!-- END: dt_egresoposgrado -->
+			</div>
+		</div>
 		<!-- BEGIN: bl_doctorado -->
 					<span class="form-row"   >
 					    
@@ -852,15 +870,19 @@ function successDefault_{form_id}(data ){
 		{HTMLCargos}
 
 		<br><br>
+
 		<!-- BEGIN: solicitud_filter_lugarTrabajo_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *</label><br>
+					    <label for="{input_name}">{value}</label><br>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: solicitud_filter_lugarTrabajo_oid -->
 
