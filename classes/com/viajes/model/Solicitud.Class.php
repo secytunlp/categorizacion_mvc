@@ -1568,7 +1568,7 @@ private $ds_claveC6;
     /**
      * @return Area
      */
-    public function getAreabeca(): Area
+    public function getAreabeca()
     {
         return $this->areabeca;
     }
@@ -1576,7 +1576,7 @@ private $ds_claveC6;
     /**
      * @param Area $areabeca
      */
-    public function setAreabeca(Area $areabeca)
+    public function setAreabeca($areabeca)
     {
         $this->areabeca = $areabeca;
     }
@@ -1584,7 +1584,7 @@ private $ds_claveC6;
     /**
      * @return Subarea
      */
-    public function getSubareabeca(): Subarea
+    public function getSubareabeca()
     {
         return $this->subareabeca;
     }
@@ -1592,7 +1592,7 @@ private $ds_claveC6;
     /**
      * @param Subarea $subareabeca
      */
-    public function setSubareabeca(Subarea $subareabeca)
+    public function setSubareabeca($subareabeca)
     {
         $this->subareabeca = $subareabeca;
     }
@@ -1600,7 +1600,7 @@ private $ds_claveC6;
     /**
      * @return Area
      */
-    public function getAreacarrera(): Area
+    public function getAreacarrera()
     {
         return $this->areacarrera;
     }
@@ -1608,7 +1608,7 @@ private $ds_claveC6;
     /**
      * @param Area $areacarrera
      */
-    public function setAreacarrera(Area $areacarrera)
+    public function setAreacarrera($areacarrera)
     {
         $this->areacarrera = $areacarrera;
     }
@@ -1616,7 +1616,7 @@ private $ds_claveC6;
     /**
      * @return Subarea
      */
-    public function getSubareacarrera(): Subarea
+    public function getSubareacarrera()
     {
         return $this->subareacarrera;
     }
@@ -1624,7 +1624,7 @@ private $ds_claveC6;
     /**
      * @param Subarea $subareacarrera
      */
-    public function setSubareacarrera(Subarea $subareacarrera)
+    public function setSubareacarrera( $subareacarrera)
     {
         $this->subareacarrera = $subareacarrera;
     }

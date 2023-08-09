@@ -313,7 +313,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_scopus");
 
-            $fieldInstagram = $fields['ds_instagram'];
+            /*$fieldInstagram = $fields['ds_instagram'];
             $input = $fieldInstagram->getInput();
             $label = $fieldInstagram->getLabel();
             $this->renderLabelTab( $label, $input, $xtpl );
@@ -354,7 +354,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             else $xtpl->assign("display", 'none');
 
-            $xtpl->parse("main.ds_facebook");
+            $xtpl->parse("main.ds_facebook");*/
 
 
 
@@ -878,7 +878,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
 
 
-            $xtpl->assign("value", CYT_LBL_SOLICITUD_A_CURRICULUM );
+            /*$xtpl->assign("value", CYT_LBL_SOLICITUD_A_CURRICULUM );
             $xtpl->assign("required", "*" );
             $xtpl->parse("main.ds_curriculum.label");
             $xtpl->assign("actionFile", "doAction?action=add_file_session" );
@@ -891,7 +891,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             if ($hiddenDs_curriculum->getInputValue()) {
                 $xtpl->assign("ds_curriculum_cargado", '<span style="color:#009900; font-weight:bold">'.CYT_MSG_FILE_UPLOAD_EXITO.$hiddenDs_curriculum->getInputValue().'</span>');
             }
-            $xtpl->parse("main.ds_curriculum");
+            $xtpl->parse("main.ds_curriculum");*/
 
             $fieldYear1 = $fields['nu_year1'];
             $input = $fieldYear1->getInput();
@@ -1030,15 +1030,21 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
         //mostrar las proyectos actuales.
         //$xtpl_proyectos->assign('proyectos_title', CYT_MSG_UNIDAD_FACULTAD );
 
-        //TODO parsear labels.
-        $this->parseProyectosLabels($xtpl_proyectos);
 
         //recuperamos las proyectos de la unidad desde la sesiÃ³n.
         $manager = new SolicitudProyectoSessionManager();
         $proyectos = $manager->getEntities( new CdtSearchCriteria() );
 
-        //parseamos los proyectos.
-        $this->parseProyectos($proyectos, $xtpl_proyectos);
+        if ($proyectos->size()>0){
+            //TODO parsear labels.
+            $this->parseProyectosLabels($xtpl_proyectos);
+
+
+
+            //parseamos los proyectos.
+            $this->parseProyectos($proyectos, $xtpl_proyectos);
+        }
+
 
 
         $xtpl_proyectos->parse("main");

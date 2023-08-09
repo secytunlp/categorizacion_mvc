@@ -16,7 +16,7 @@ define('DB_CLASS', 'MySQL');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'viajes');
+define('DB_NAME', 'viajes_new');
 define('ROW_PER_PAGE', 25);
 define('DB_DEFAULT_DATE_FORMAT', "Y-m-d");
 define('DB_DEFAULT_DATETIME_FORMAT', "Y-m-d H:i:s");

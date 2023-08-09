@@ -111,6 +111,14 @@ define('CYT_MSG_SOLICITUD_CAT_BECA_ERROR', "Error en el \"".CYT_LBL_SOLICITUD_BE
 
 define('CYT_MSG_SOLICITUD_EQUIVALENCIA_DOCTORAL_MENOR', "Por equivalencia \"".CYT_EQUIVALENCIA_DS_DOCTORAL."\" la \"".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."\" debe ser \"".CYT_EQUIVALENCIA_CATS_DOCTORAL."\"", true);
 
+define('CYT_MSG_SOLICITUD_SEND_FINAL_PREGUNTA', '¿Está seguro de pasar a envío definitivo?', true);
+define('CYT_MSG_SOLICITUD_RECTIFY_PREGUNTA', '¿Está seguro de rectificar?', true);
+
+define('CYT_MSG_SOLICITUD_RECTIFICAR', 'Rectificar solicitud', true);
+
+define('CYT_MSG_SOLICITUD_ADMITIR_PROHIBIDO', 'Sólo se pueden admitir/rechazar las solicitudes con estado ENVIADA-DEFINITIVA', true);
+define('CYT_MSG_SOLICITUD_RECTIFICAR_PROHIBIDO', 'Sólo se pueden enviar/rectificar las solicitudes con estado ENVIADA', true);
+
 /* BECAS*/
 define('CYT_MSG_BECA_TIPO_REQUIRED', CYT_LBL_SOLICITUD_TIPO_BECA . ' es requerido', true);
 

@@ -162,7 +162,7 @@ AUTO_INCREMENT=0
 
 INSERT INTO `estadocategorizacion` (`cd_estado`, `ds_estado`) VALUES
                                                     (1, 'Creada'),
-                                                    (2, 'Recibida'),
+                                                    (2, 'Enviada'),
                                                     (3, 'Admitida'),
                                                     (4, 'No Admitida'),
                                                     (5, 'Otorgada-No-Notificada'),
@@ -170,7 +170,8 @@ INSERT INTO `estadocategorizacion` (`cd_estado`, `ds_estado`) VALUES
                                                     (7, 'No otorgada'),
                                                     (8, 'Evaluada'),
                                                     (9, 'Otorgada-Notificada'),
-                                                    (10, 'Retirada')
+                                                    (10, 'Retirada'),
+                                                    (11, 'Enviada-Definitiva')
                                                     ;
 
 

@@ -155,7 +155,7 @@ define('CYT_LBL_SOLICITUD_MONTO', 'Monto', true);
 define('CYT_LBL_SOLICITUD_ESTADO', 'Estado', true);
 define('CYT_LBL_SOLICITUD_LUGAR', 'Lugar', true);
 
-define('CYT_LBL_SOLICITUD_MAIL_SUBJECT', 'Solicitud de Subsidios para Jóvenes Investigadores', true);
+define('CYT_LBL_SOLICITUD_MAIL_SUBJECT', 'Solicitud de Categoriación - SICADI', true);
 define('CYT_LBL_SOLICITUD_MAIL_YEAR', 'A&ntilde;o', true);
 define('CYT_LBL_SOLICITUD_MAIL_INVESTIGADOR', 'Investigador', true);
 
@@ -181,7 +181,7 @@ define('CYT_LBL_SOLICITUD_CARRERA_LUGAR_TRABAJO', 'Lugar de trabajo', true);
 define('CYT_LBL_SOLICITUD_CATEGORIA_PDF', 'Categoría de Docente Investigador', true);
 define('CYT_LBL_SOLICITUD_POSTULANTE', 'Postulante', true);
 
-define('CYT_LBL_SOLICITUD_XLS_NOMBRE', 'Solicitud_Jovenes', true);
+define('CYT_LBL_SOLICITUD_XLS_NOMBRE', 'Solicitud_SICADI', true);
 
 //Solicitud proyectos
 define('CYT_LBL_SOLICITUD_PROYECTOS_CODIGO', 'Código', true);
@@ -194,11 +194,17 @@ define('CYT_LBL_SOLICITUD_PROYECTOS_ESPECIALIDAD', 'Especialidad', true);
 define('CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD', 'Institución', true);
 define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO', 'Certificación', true);
 define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SIGLA', 'PROY', true);
-define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SPEECH', 'IMPORTANTE: Si se ingresó un proyecto externo a la UNLP, se deberá adjuntar una certificación de participación en proyecto indicado, emitida por la entidad administradora del proyecto a la fecha de la corriente presentación.No se aceptará resolución de otorgamiento del proyecto.<br>
+define('CYT_LBL_SOLICITUD_PROYECTOS_ARCHIVO_SPEECH', 'IMPORTANTE: Si se ingresó un proyecto externo a la UNLP, se deberá adjuntar una certificación de participación en proyecto indicado,<br> emitida por la entidad administradora del proyecto a la fecha de la corriente presentación.No se aceptará resolución de otorgamiento del proyecto.<br>
 No se aceptará resolución de otorgamiento', true);
 
 
+define('CYT_LBL_ENVIO_DEFINITIVO', 'Envío_Definitivo', true);
+define('CYT_LBL_RECTIFICAR', 'Rectificar', true);
 
+define('CYT_LBL_SOLICITUD_RECTIFY_COMMENT', 'Motivos de la rectificación', true);
+
+define('CYT_LBL_SOLICITUD_DEFINITIVO', 'Envío definitivo de ', true);
+define('CYT_LBL_SOLICITUD_DEFINITIVO_COMMENT', 'La solicitud fue enviada para su proceso de admisión', true);
 
 
 

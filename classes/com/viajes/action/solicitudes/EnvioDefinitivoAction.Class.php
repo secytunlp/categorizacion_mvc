@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Acción para admitir una solicitud.
+ * Acción para envío definitivo.
  *
  * @author Marcos
  * @since 21-03-2014
  *
  */
-class AdmitSolicitudAction extends CdtEditAsyncAction {
+class EnvioDefinitivoAction extends CdtEditAsyncAction {
 
 	
     protected function getEntity() {
@@ -49,16 +49,9 @@ class AdmitSolicitudAction extends CdtEditAsyncAction {
      */
     protected function edit($entities) {
     	foreach ($entities as $entity) {
-	    	$oCriteria = new CdtSearchCriteria();
-			$oCriteria->addFilter('solicitud_oid', $entity->getOid(), '=');
-			$oCriteria->addNull('fechaHasta');
-			$managerSolicitudEstado =  CYTSecureManagerFactory::getSolicitudEstadoManager();
-			$oSolicitudEstado = $managerSolicitudEstado->getEntity($oCriteria);
-			$confirmar = (($oSolicitudEstado->getEstado()->getOid()==11)||($oSolicitudEstado->getEstado()->getOid()==CYT_ESTADO_SOLICITUD_EVALUADA))?1:0;
-			if ($confirmar) {
-				$estado = ($oSolicitudEstado->getEstado()->getOid()==11)?CYT_ESTADO_SOLICITUD_ADMITIDA:CYT_ESTADO_SOLICITUD_OTORGADA;
-				$this->getEntityManager()->confirm($entity,$estado);
-			}
+
+				$this->getEntityManager()->confirm($entity,11);
+
     			
     	}
         

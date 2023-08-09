@@ -67,7 +67,7 @@ class SolicitudCargo extends Entity{
     /**
      * @return Solicitud
      */
-    public function getSolicitud(): Solicitud
+    public function getSolicitud()
     {
         return $this->solicitud;
     }
@@ -75,7 +75,7 @@ class SolicitudCargo extends Entity{
     /**
      * @param Solicitud $solicitud
      */
-    public function setSolicitud(Solicitud $solicitud)
+    public function setSolicitud($solicitud)
     {
         $this->solicitud = $solicitud;
     }
@@ -83,7 +83,7 @@ class SolicitudCargo extends Entity{
     /**
      * @return Cargo
      */
-    public function getCargo(): Cargo
+    public function getCargo()
     {
         return $this->cargo;
     }
@@ -91,7 +91,7 @@ class SolicitudCargo extends Entity{
     /**
      * @param Cargo $cargo
      */
-    public function setCargo(Cargo $cargo)
+    public function setCargo($cargo)
     {
         $this->cargo = $cargo;
     }
@@ -99,7 +99,7 @@ class SolicitudCargo extends Entity{
     /**
      * @return Deddoc
      */
-    public function getDeddoc(): Deddoc
+    public function getDeddoc()
     {
         return $this->deddoc;
     }
@@ -107,7 +107,7 @@ class SolicitudCargo extends Entity{
     /**
      * @param Deddoc $deddoc
      */
-    public function setDeddoc(Deddoc $deddoc)
+    public function setDeddoc($deddoc)
     {
         $this->deddoc = $deddoc;
     }
@@ -115,7 +115,7 @@ class SolicitudCargo extends Entity{
     /**
      * @return Facultad
      */
-    public function getFacultad(): Facultad
+    public function getFacultad()
     {
         return $this->facultad;
     }
@@ -123,7 +123,7 @@ class SolicitudCargo extends Entity{
     /**
      * @param Facultad $facultad
      */
-    public function setFacultad(Facultad $facultad)
+    public function setFacultad($facultad)
     {
         $this->facultad = $facultad;
     }
@@ -147,7 +147,7 @@ class SolicitudCargo extends Entity{
     /**
      * @return int
      */
-    public function getBl_agregado(): int
+    public function getBl_agregado()
     {
         return $this->bl_agregado;
     }
@@ -155,7 +155,7 @@ class SolicitudCargo extends Entity{
     /**
      * @param int $bl_agregado
      */
-    public function setBl_agregado(int $bl_agregado)
+    public function setBl_agregado( $bl_agregado)
     {
         $this->bl_agregado = $bl_agregado;
     }
@@ -163,7 +163,7 @@ class SolicitudCargo extends Entity{
     /**
      * @return int
      */
-    public function getBl_seleccionado(): int
+    public function getBl_seleccionado()
     {
         return $this->bl_seleccionado;
     }
@@ -171,7 +171,7 @@ class SolicitudCargo extends Entity{
     /**
      * @param int $bl_seleccionado
      */
-    public function setBl_seleccionado(int $bl_seleccionado)
+    public function setBl_seleccionado($bl_seleccionado)
     {
         $this->bl_seleccionado = $bl_seleccionado;
     }

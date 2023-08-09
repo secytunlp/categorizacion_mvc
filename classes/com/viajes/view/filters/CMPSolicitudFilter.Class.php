@@ -67,16 +67,25 @@ class CMPSolicitudFilter extends CMPFilter{
             $fieldCodigo = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SOLICITANTE, "solicitante"  );
             $this->addField( $fieldCodigo );
 
-            $fieldCat = FieldBuilder::buildFieldSelect (CYT_LBL_CAT, "cat.oid", CYTSecureUtils::getCatsItems(), '', null, null, "--seleccionar--", "cat_oid" );
-            $this->addField( $fieldCat );
+            /*$fieldCat = FieldBuilder::buildFieldSelect (CYT_LBL_CAT, "cat.oid", CYTSecureUtils::getCatsItems(), '', null, null, "--seleccionar--", "cat_oid" );
+            $this->addField( $fieldCat );*/
+
+            if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_ENVIO_DEFINITIVO )) {
+                $fieldEstado = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_ESTADO, "estado.oid", CYTSecureUtils::getEstadosItems(), '', null, null, "--seleccionar--", "estado_oid" );
+                $this->addField( $fieldEstado);
+
+            }
+            else{
+                $fieldFacultad = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD, "facultad.oid", CYTSecureUtils::getFacultadesItems('165,167,168,169,170,171,172,173,174,175,176,177,179,180,181,187,1220'), '', null, null, "--seleccionar--", "facultad_oid" );
+                $fieldFacultad->getInput()->addProperty('style','width:250px;');
+                $fieldFacultad->getInput()->addProperty('donde','gggg');
+                $this->addField( $fieldFacultad );
 
 
-            $fieldFacultad = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_FACULTAD, "facultad.oid", CYTSecureUtils::getFacultadesItems(), '', null, null, "--seleccionar--", "facultad_oid" );
-            $fieldFacultad->getInput()->addProperty('style','width:250px;');
-            $this->addField( $fieldFacultad );
+                $fieldEstado = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_ESTADO, "estado.oid", CYTSecureUtils::getEstadosItems(), '', null, null, "--seleccionar--", "estado_oid" );
+                $this->addField( $fieldEstado,2 );
+            }
 
-            $fieldEstado = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_ESTADO, "estado.oid", CYTSecureUtils::getEstadosItems(), '', null, null, "--seleccionar--", "estado_oid" );
-            $this->addField( $fieldEstado,2 );
 
             $fieldPeriodo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_PERIODO, "periodo.oid", CYTSecureUtils::getPeriodosItems(), '', null, null, "--seleccionar--", "periodo_oid" );
             $this->addField( $fieldPeriodo,2 );
@@ -174,6 +183,15 @@ class CMPSolicitudFilter extends CMPFilter{
         	$oPeriodoManager = CYTSecureManagerFactory::getPeriodoManager();
 			$oPerioActual = $oPeriodoManager->getPeriodoActual(CYT_PERIODO_YEAR);
         	$criteria->addFilter("cd_periodo", $oPerioActual->getOid(), "=" );
+        }
+        if ($oUser->getCd_usergroup()==19) {
+            $userManager = CYTSecureManagerFactory::getUserManager();
+            $oUsuario = $userManager->getObjectByCode($oUser->getCd_user());
+            //print_r($oUsuario);
+
+            $criteria->addFilter("cd_facultadPlanilla", $oUsuario->getFacultad()->getOid(), "=");
+
+
         }
 		
 		$criteria->addNull('fechaHasta');

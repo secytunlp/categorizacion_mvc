@@ -15,11 +15,12 @@ class LayoutCYT extends LayoutSmile {
 
 		//$this->addStyle( WEB_PATH . "css/entitygrid/entitygrid.css");
 		$this->addStyle( WEB_PATH . "css/filter/filter.css");
-		$this->addStyle( WEB_PATH . "css/form/form.css");
+		//$this->addStyle( WEB_PATH . "css/form/form.css");
 		
 		$this->addStyle( WEB_PATH . "css/fancybox/jquery.fancybox.css?v=2.1.4" );
 		
-		$this->addStyle( WEB_PATH . "css/viajes.css");
+		//$this->addStyle( WEB_PATH . "css/viajes.css");
+        $this->addStyle( WEB_PATH . "css/styles.css");
 	}
 	 
 	protected function initScripts(){

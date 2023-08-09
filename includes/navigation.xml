@@ -295,6 +295,11 @@
 	<action name='admit_solicitud' class='AdmitSolicitudAction' />
 	<action name='deny_solicitud_init' class='DenySolicitudInitAction' />
 	<action name='deny_solicitud' class='DenySolicitudAction' />
+
+
+	<action name='envio_definitivo' class='EnvioDefinitivoAction' />
+	<action name='rectify_solicitud_init' class='RectifySolicitudInitAction' />
+	<action name='rectify_solicitud' class='RectifySolicitudAction' />
 	
 	<action name='export_solicitud_xls' class='ExportSolicitudXLSAction' />
 	

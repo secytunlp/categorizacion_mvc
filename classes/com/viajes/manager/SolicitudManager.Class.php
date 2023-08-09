@@ -1010,9 +1010,9 @@ class SolicitudManager extends EntityManager{
 		}
 
 		
-		if (!$okCv){
+		/*if (!$okCv){
 			$error .=CYT_MSG_INTEGRANTE_CV_PROBLEMA.'<br />';
-		}
+		}*/
 		
 		if ($entity->getFacultadplanilla()->getOid()==CYT_FACULTAD_NO_DECLARADA){
 			$error .= CYT_MSG_FACULTAD_NO_DECLARADA.' '.CYT_MSG_SOLICITUD_TAB_DESCRIPCION.'<br>';
@@ -1148,6 +1148,14 @@ class SolicitudManager extends EntityManager{
 				$ds_subjet = '';
 				$ds_comment = '<strong>'.htmlspecialchars(CYT_LBL_SOLICITUD_NO_ADMISION_COMMENT).'</strong>: '.htmlspecialchars($motivo);
 			break;
+			case 11:
+				$ds_subjet = CYT_LBL_SOLICITUD_DEFINITIVO;
+				$ds_comment = CYT_LBL_SOLICITUD_DEFINITIVO_COMMENT;
+				break;
+			case 1:
+				$ds_subjet = '';
+				$ds_comment = '<strong>'.htmlspecialchars(CYT_LBL_SOLICITUD_RECTIFY_COMMENT).'</strong>: '.htmlspecialchars($motivo);
+				break;
 			
 		}
 		

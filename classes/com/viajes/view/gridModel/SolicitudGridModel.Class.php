@@ -52,7 +52,7 @@ class SolicitudGridModel extends GridModel {
         $this->addColumn( $column );
 
         $tCategoriasicadi = DAOFactory::getCategoriasicadiDAO()->getTableName();
-        $column = GridModelBuilder::buildColumn( "categoriasicadi.ds_categoria", CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, 40, CDT_CMP_GRID_TEXTALIGN_CENTER, "$tCategoriasicadi.ds_categoria" );
+        $column = GridModelBuilder::buildColumn( "Categoriasolicitada.ds_categoria", CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, 40, CDT_CMP_GRID_TEXTALIGN_CENTER, "$tCategoriasicadi.ds_categoria" );
         $this->addColumn( $column );
 		
 		
@@ -78,12 +78,16 @@ class SolicitudGridModel extends GridModel {
 		}
 		$column = GridModelBuilder::buildColumn( "oid", CYT_LBL_SOLICITUD_ARCHIVOS, 60, CDT_CMP_GRID_TEXTALIGN_RIGHT,"",new GridFilesValueFormat() ) ;
 		$this->addColumn( $column );
-		
-		$oUser = CdtSecureUtils::getUserLogged();
+
+
+
 		if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_AGREGAR_SOLICITUD )) {
 			//acciones sobre la lista
 			$this->buildAction("add_solicitud_init", "add_solicitud_init", CYT_MSG_SOLICITUD_TITLE_ADD, "image", "add");
 		}
+        else{
+            $this->buildAction( "export_solicitud_xls", "xls", CDT_UI_LBL_EXPORT_XLS, "image", "excel", false, "delete_items('export_solicitud_xls')" );
+        }
 	}
 
 	/**
@@ -117,13 +121,13 @@ class SolicitudGridModel extends GridModel {
 			$actions->addItem( $action );
 		}*/
 		$oUser = CdtSecureUtils::getUserLogged();
-		
-		if (!CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_EVALUAR_SOLICITUD )) {
+
+        if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_AGREGAR_SOLICITUD )) {
 			$action = $this->buildRowAction( "update_solicitud_init", "update_solicitud_init", CDT_CMP_GRID_MSG_EDIT . " ".CYT_LBL_SOLICITUD, CDT_UI_IMG_EDIT, "edit") ;
 			$actions->addItem( $action );
 		}
-		
-		if (!CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_EVALUAR_SOLICITUD )) {
+
+        if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_AGREGAR_SOLICITUD )) {
 			$action =  $this->buildDeleteAction( $item, "solicitud", CYT_LBL_SOLICITUD, $this->getMsgConfirmDelete( $item ), false ) ;
 			$actions->addItem( $action );
 		}
@@ -141,7 +145,19 @@ class SolicitudGridModel extends GridModel {
 			$action =  $this->buildRowAction( "send_solicitud", "send_solicitud", CYT_LBL_ENVIAR, CDT_UI_IMG_SEARCH, "view", "delete_items('send_solicitud')", false, $this->getMsgConfirmSend(CYT_MSG_SOLICITUD_ENVIAR_PREGUNTA)) ;
 			$actions->addItem( $action );
 		}
-		
+
+        if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_ENVIO_DEFINITIVO)) {
+            $action =  $this->buildRowAction( "envio_definitivo", "envio_definitivo", CYT_LBL_ENVIO_DEFINITIVO, CDT_UI_IMG_SEARCH, "view", "delete_items('envio_definitivo')", true, $this->getMsgConfirmSendFinal()) ;
+            $actions->addItem( $action );
+        }
+
+        if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_ENVIO_DEFINITIVO )) {
+
+            $action =  $this->buildRowAction( "rectify_solicitud_init", "rectify_solicitud_init", CYT_LBL_RECTIFICAR, CDT_UI_IMG_SEARCH, "view") ;
+            $actions->addItem( $action );
+        }
+
+
 		if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_ADMITIR_SOLICITUD )) {
 			$action =  $this->buildRowAction( "admit_solicitud", "admit_solicitud", CYT_LBL_ADMITIR, CDT_UI_IMG_SEARCH, "view", "delete_items('admit_solicitud')", true, $this->getMsgConfirmAdmit()) ;
 			$actions->addItem( $action );
@@ -194,5 +210,17 @@ class SolicitudGridModel extends GridModel {
 		$msg = CYT_MSG_SOLICITUD_ADMITIR_PREGUNTA;
 		return CdtFormatUtils::quitarEnters($msg);
 	}
+
+    protected function getMsgConfirmSendFinal(  ){
+
+        $msg = CYT_MSG_SOLICITUD_SEND_FINAL_PREGUNTA;
+        return CdtFormatUtils::quitarEnters($msg);
+    }
+
+    protected function getMsgConfirmRectify(  ){
+
+        $msg = CYT_MSG_SOLICITUD_RECTIFY_PREGUNTA;
+        return CdtFormatUtils::quitarEnters($msg);
+    }
 }
 ?>

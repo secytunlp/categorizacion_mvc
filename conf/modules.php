@@ -17,11 +17,11 @@ define('CYT_PATH_TEST', APP_PATH . '/unit_test/');
 
 
 /* mvc */
-define('MVC_CYT_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/cyt_mvc/');
+define('MVC_CYT_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/cyt_mvc_sicadi/');
 define('CYT_SECURE_PATH', MVC_CYT_PATH .   'cyt_secure/');
 include_once (CYT_SECURE_PATH . 'conf/init.php');
 
-define('MVC_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/codnet_mvc/');
+define('MVC_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/codnet_mvc_sicadi/');
 
 
 define('CDT_CORE_PATH', MVC_PATH .   'codnet_core/');

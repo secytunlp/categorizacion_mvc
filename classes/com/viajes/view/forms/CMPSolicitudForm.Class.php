@@ -55,17 +55,17 @@ class CMPSolicitudForm extends CMPForm{
 		//$field->getInput()->addProperty("placeholder", "https://scholar.google.com/citations?user=...=es");
 		$fieldset->addField( $field );
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_INSTAGRAM, "ds_instagram","","",60) );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_INSTAGRAM, "ds_instagram", "","",60);
+		/*$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_INSTAGRAM, "ds_instagram", "","",60);
 		$field->getInput()->addProperty("placeholder", "https://www.instagram.com/...");
-		$fieldset->addField( $field );
+		$fieldset->addField( $field );*/
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_TWITTER, "ds_twitter","","",60) );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_TWITTER, "ds_twitter", "","",60);
+		/*$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_TWITTER, "ds_twitter", "","",60);
 		$field->getInput()->addProperty("placeholder", "https://twitter.com/...");
-		$fieldset->addField( $field );
+		$fieldset->addField( $field );*/
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_FACEBOOK, "ds_facebook","","",60) );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_FACEBOOK, "ds_facebook", "","",60);
+		/*$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_FACEBOOK, "ds_facebook", "","",60);
 		$field->getInput()->addProperty("placeholder", "https://www.facebook.com/...");
-		$fieldset->addField( $field );
+		$fieldset->addField( $field );*/
 
 
 
@@ -238,7 +238,7 @@ class CMPSolicitudForm extends CMPForm{
 		$this->addHidden( FieldBuilder::buildInputHidden ( "bl_unlp", "") );
 		$this->addHidden( FieldBuilder::buildInputHidden ( "categoria.oid", "") );
 
-		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_curriculum", "") );
+		//$this->addHidden( FieldBuilder::buildInputHidden ( "ds_curriculum", "") );
 		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_resbeca", "") );
 		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_rescarrera", "") );
 		$this->addHidden( FieldBuilder::buildInputHidden ( "ds_archivo", "") );

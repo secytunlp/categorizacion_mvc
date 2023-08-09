@@ -402,15 +402,15 @@ function successDefault_{form_id}(data ){
 	    <!-- BEGIN: legend -->
 		<legend>{value}</legend>
 		<!-- END: legend -->
-			<div style="position:relative;display: flex;align-items: center;">
+			<div class="form-flex">
 
 				<!-- BEGIN:column -->
-			<div style="position: relative; float: left; width: 30%;">
+				<div class="form-right">
 					<!-- BEGIN: ds_investigador -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value} {required}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -418,21 +418,21 @@ function successDefault_{form_id}(data ){
 					</div>
 					<!-- END: ds_investigador -->
 					<!-- BEGIN: nu_cuil -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value} {required}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</div>
 					<!-- END: nu_cuil -->
-			</div>
-			<div style="position: relative; float: left; width: 50%;">
+				</div>
+				<div class="form-left">
 				<!-- BEGIN: ds_foto -->
 
-				<div class="item" style="min-width: {minWidth};display:{display};text-align: right;"  id="item-div-ds_foto">
+				<div class="form-row" style="min-width: {minWidth};display:{display};text-align: right;"  id="item-div-ds_foto">
 
 
 					<br>
@@ -473,78 +473,111 @@ function successDefault_{form_id}(data ){
 <fieldset>	
 
 	
-	<div id="tabs-1" style="position:relative;">
-
+	<div id="tabs-1" style="position:relative;padding: 0 25%;">
+		<div class="form-flex">
+			<div class="form-right">
 		{titulo_domicilio}
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
+
+
 		<!-- BEGIN: ds_calle -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: ds_calle -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: nu_nro -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
-
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: nu_nro -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: nu_piso -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</div>
 		<!-- END: nu_piso -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_depto -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</div>
 		<!-- END: ds_depto -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: nu_cp -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: nu_cp -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_mail -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: ds_mail -->
+			</div>
+				</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: bl_notificacion -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: input -->
 					     {value}{input}
@@ -554,134 +587,175 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: bl_notificacion -->
+				</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_otromail -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
 		</div>
 		<!-- END: ds_otromail -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: ds_genero -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
 		</div>
 		<!-- END: ds_genero -->
-
+			</div>
+			<div class="form-left">
 
 		<!-- BEGIN: nu_telefono -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: nu_telefono -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: dt_nacimiento -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} *:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
+						<div class="obligatorio">
+							<h3>*</h3>
+						</div>
 					</div>
 		<!-- END: dt_nacimiento -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_orcid -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} *:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
+			<div class="obligatorio">
+				<h3>*</h3>
+			</div>
 		</div>
 		<!-- END: ds_orcid -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: ds_sedici -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} *:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
+			<div class="obligatorio">
+				<h3>*</h3>
+			</div>
 		</div>
 		<!-- END: ds_sedici -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_scholar -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} *:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
+			<div class="obligatorio">
+				<h3>*</h3>
+			</div>
 		</div>
 		<!-- END: ds_scholar -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: ds_scopus -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
 		</div>
 		<!-- END: ds_scopus -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_instagram -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
 		</div>
 		<!-- END: ds_instagram -->
+			</div>
+			</div><div class="form-flex">
+			<div class="form-right">
 			<!-- BEGIN: ds_twitter -->
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 				<!-- BEGIN: label -->
-				<label for="{input_name}">{value}:</label>
+				<label for="{input_name}">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				{input}
 				<!-- END: input -->
 			</div>
 			<!-- END: ds_twitter -->
+			</div>
+			<div class="form-left">
 			<!-- BEGIN: ds_facebook -->
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 				<!-- BEGIN: label -->
-				<label for="{input_name}">{value}:</label>
+				<label for="{input_name}">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				{input}
 				<!-- END: input -->
 			</div>
 			<!-- END: ds_facebook -->
+			</div>
 
-
-
-
+</div>
 	</div>
+
 	<div id="tabs-2" style="position:relative;">
 		<!-- BEGIN: solicitud_filter_titulo_oid -->
 					<div class="item tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
@@ -696,7 +770,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: solicitud_filter_titulo_oid -->
 		<!-- BEGIN: dt_egresogrado -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} *:</label>
@@ -718,7 +792,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: solicitud_filter_tituloposgrado_oid -->
 		<!-- BEGIN: dt_egresoposgrado -->
-					<span class="item">
+					<span class="form-row">
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -729,7 +803,7 @@ function successDefault_{form_id}(data ){
 					</span>
 		<!-- END: dt_egresoposgrado -->
 		<!-- BEGIN: bl_doctorado -->
-					<span class="item"   >
+					<span class="form-row"   >
 					    
 					 <!-- BEGIN: input -->
 					     {value}{input}
@@ -753,7 +827,7 @@ function successDefault_{form_id}(data ){
 					<!-- </div> -->
 		<!-- END: cargo_oid -->
 		<!-- BEGIN: deddoc_oid -->
-		<!--<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}"> -->
+		<!--<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}"> -->
 
             <!-- BEGIN: label -->
 		<!--  <label for="{input_name}">{value} {required}:</label> -->
@@ -764,7 +838,7 @@ function successDefault_{form_id}(data ){
 		<!-- </div> -->
 <!-- END: deddoc_oid -->
 		<!-- BEGIN: facultad_oid -->
-		<!-- <div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}"> -->
+		<!-- <div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}"> -->
 
             <!-- BEGIN: label -->
 		<!--    <label for="{input_name}">{value} *:</label> -->
@@ -779,7 +853,7 @@ function successDefault_{form_id}(data ){
 
 		<br><br>
 		<!-- BEGIN: solicitud_filter_lugarTrabajo_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} *</label><br>
@@ -791,7 +865,7 @@ function successDefault_{form_id}(data ){
 		<!-- END: solicitud_filter_lugarTrabajo_oid -->
 
 		<!-- BEGIN: ds_experticiaD -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value}:</label>
@@ -803,7 +877,7 @@ function successDefault_{form_id}(data ){
 		<!-- END: ds_experticiaD -->
 
 
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 			<!-- <label for="claves">Palabras claves:</label>
 			<br> -->
 			<!-- BEGIN: ds_claveD1 -->
@@ -845,7 +919,7 @@ function successDefault_{form_id}(data ){
 	<div id="tabs-3" style="position:relative;">
 		<div style="color:#A43B3B; font-weight:bold">{titulo_becario}</div>
 		<!-- BEGIN: ds_orgbeca -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -859,7 +933,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: ds_orgbeca -->
 		<!-- BEGIN: ds_tipobeca -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -873,7 +947,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: ds_tipobeca -->
 		<!-- BEGIN: dt_becadesde -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -887,7 +961,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: dt_becadesde -->
 		<!-- BEGIN: dt_becahasta -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -901,7 +975,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: dt_becahasta -->
 		<!-- BEGIN: solicitud_filter_lugarTrabajoBeca_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -916,7 +990,7 @@ function successDefault_{form_id}(data ){
 		<!-- END: solicitud_filter_lugarTrabajoBeca_oid -->
 		<!-- BEGIN: ds_resbeca -->
 
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-ds_resbeca">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_resbeca">
 
 			<!-- BEGIN: label -->
 			<label for="ds_resbeca">{value}:</label>
@@ -935,7 +1009,7 @@ function successDefault_{form_id}(data ){
 
 
 		<!-- BEGIN: ds_experticiaB -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value}:</label>
@@ -947,7 +1021,7 @@ function successDefault_{form_id}(data ){
 		<!-- END: ds_experticiaB -->
 
 
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 			<!-- <label for="claves">Palabras claves:</label>
 			<br>-->
 			<!-- BEGIN: ds_claveB1 -->
@@ -986,7 +1060,7 @@ function successDefault_{form_id}(data ){
 	</div>
 	<div id="tabs-4" style="position:relative;">
 		<!-- BEGIN: organismo_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -1000,7 +1074,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: organismo_oid -->
 		<!-- BEGIN: carrerainv_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -1014,7 +1088,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: carrerainv_oid -->
 		<!-- BEGIN: dt_ingreso -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -1028,7 +1102,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: dt_ingreso -->
 		<!-- BEGIN: solicitud_filter_lugarTrabajoCarrerainv_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
 					    <label for="{input_name}">{value} {required}:</label>
@@ -1044,7 +1118,7 @@ function successDefault_{form_id}(data ){
 
 		<!-- BEGIN: ds_rescarrera -->
 
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-ds_rescarrera">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_rescarrera">
 
 			<!-- BEGIN: label -->
 			<label for="ds_rescarrera">{value}:</label>
@@ -1063,7 +1137,7 @@ function successDefault_{form_id}(data ){
 
 
 		<!-- BEGIN: ds_experticiaC -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value}:</label>
@@ -1075,7 +1149,7 @@ function successDefault_{form_id}(data ){
 		<!-- END: ds_experticiaC -->
 
 
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 			<!--<label for="claves">Palabras claves:</label>-->
 			<br>
 			<!-- BEGIN: ds_claveC1 -->
@@ -1118,7 +1192,7 @@ function successDefault_{form_id}(data ){
 		{fieldsetopen}
 		{otrosProyectos_title}
 		<!-- BEGIN: ds_organismoproyecto -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} {required}:</label>
@@ -1132,7 +1206,7 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: ds_organismoproyecto -->
 		<!-- BEGIN: ds_codigoproyecto -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} {required}:</label>
@@ -1146,7 +1220,7 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: ds_codigoproyecto -->
 			<!-- BEGIN: ds_directorproyecto -->
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 				<!-- BEGIN: label -->
 				<label for="{input_name}">{value} {required}:</label>
@@ -1160,7 +1234,7 @@ function successDefault_{form_id}(data ){
 			</div>
 			<!-- END: ds_directorproyecto -->
 			<!-- BEGIN: ds_tituloproyecto -->
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 				<!-- BEGIN: label -->
 				<label for="{input_name}">{value} {required}:</label>
@@ -1174,7 +1248,7 @@ function successDefault_{form_id}(data ){
 			</div>
 			<!-- END: ds_tituloproyecto -->
 		<!-- BEGIN: dt_proyectodesde -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} {required}:</label>
@@ -1188,7 +1262,7 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: dt_proyectodesde -->
 		<!-- BEGIN: dt_proyectohasta -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} {required}:</label>
@@ -1203,7 +1277,7 @@ function successDefault_{form_id}(data ){
 		<!-- END: dt_proyectohasta -->
 			<!-- BEGIN: ds_archivo -->
 
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-ds_archivo">
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_archivo">
 
 				<!-- BEGIN: label -->
 				<label for="ds_archivo">{value}:</label>
@@ -1224,7 +1298,7 @@ function successDefault_{form_id}(data ){
 		{titulo_tipo_investigador}
 		<div style="position: relative; float: left; width: 70%;">
 		<!-- BEGIN: facultadplanilla_oid -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} *:</label>
@@ -1235,7 +1309,7 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: facultadplanilla_oid -->
 		<!-- BEGIN: categoria_oid -->
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
 					    <label for="{input_name}">{value}:</label>
@@ -1246,7 +1320,7 @@ function successDefault_{form_id}(data ){
 					</div>
 		<!-- END: categoria_oid -->
 		<!-- BEGIN: equivalencia_oid -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} *:</label>
@@ -1257,7 +1331,7 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: equivalencia_oid -->
 		<!-- BEGIN: categoriasolicitada_oid -->
-		<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
 			<label for="{input_name}">{value} *:</label>
@@ -1270,7 +1344,7 @@ function successDefault_{form_id}(data ){
 
 		<!-- BEGIN: ds_curriculum -->
 					
-					<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-ds_curriculum">
+					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_curriculum">
 					    
 					     <!-- BEGIN: label -->
 					    <label for="ds_curriculum">{value} *:</label>
@@ -1364,7 +1438,7 @@ function successDefault_{form_id}(data ){
 			</fieldset>
 		</div>
 			<!-- BEGIN: areacarrera_oid -->
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 				<!-- BEGIN: label -->
 				<label for="{input_name}">{value}:</label>
@@ -1376,7 +1450,7 @@ function successDefault_{form_id}(data ){
 			<!-- END: areacarrera_oid -->
 
 			<!-- BEGIN: subareacarrera_oid -->
-			<div class="item" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
+			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 				<!-- BEGIN: label -->
 				<label for="{input_name}">{value}:</label>
@@ -1393,7 +1467,10 @@ function successDefault_{form_id}(data ){
 		</div>
 		
 	</div>
-</fieldset>	
+	<div class="campos-requeridos">
+		<h4> (*) {msg_required_fields} </h4>
+	</div>
+</fieldset>
 </div>
 	</div>
 
@@ -1423,7 +1500,8 @@ function successDefault_{form_id}(data ){
 		<input type="button" value="{lbl_cancel}" id="{form_id}_input_cancel" onclick="javascript: {function};">
 		<!-- END: cancel -->
 		
-		<div class="camposRequeridos">(*) {msg_required_fields}</div>	
+
+
 	</fieldset>
 </form>	
 <!-- END: buttons -->

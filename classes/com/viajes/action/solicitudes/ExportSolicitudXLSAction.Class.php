@@ -18,7 +18,7 @@ class ExportSolicitudXLSAction extends CdtAction{
          $layout->setFilename($nombre);
 
          try{
-			$html .= "<table border=1'><tr><th>".CYT_LBL_SOLICITUD_PERIODO."</th><th>".CYT_LBL_SOLICITUD_SOLICITANTE."</th><th>".CYT_LBL_SOLICITUD_CUIL."</th><th>".CYT_LBL_SOLICITUD_EDAD."</th><th>".CYT_LBL_SOLICITUD_MAIL."</th><th>".CYT_LBL_SOLICITUD_FECHA."</th><th>".CYT_LBL_SOLICITUD_ESTADO."</th><th>".CYT_LBL_CAT."</th><th>".CYT_LBL_SOLICITUD_FACULTAD."</th><th>".CYT_LBL_SOLICITUD_DISCIPLINA."</th><th>".CYT_LBL_PROYECTO."</th><th>".CYT_LBL_SOLICITUD_MONTO."</th><th>".CYT_LBL_SOLICITUD_EVALUADORES."</th><th>".CYT_LBL_SOLICITUD_DIFERENCIA."</th><th>".CYT_LBL_SOLICITUD_PUNTAJE."</th></tr>";
+			$html .= "<table border=1'><tr><th>".CYT_LBL_SOLICITUD_PERIODO."</th><th>".CYT_LBL_SOLICITUD_SOLICITANTE."</th><th>".CYT_LBL_SOLICITUD_CUIL."</th><th>".CYT_LBL_SOLICITUD_MAIL."</th><th>".CYT_LBL_SOLICITUD_FECHA."</th><th>".CYT_LBL_SOLICITUD_ESTADO."</th><th>".CYT_LBL_SOLICITUD_FACULTAD."</th><th>".CYT_LBL_SOLICITUD_CATEGORIA."</th><th>".CYT_LBL_SOLICITUD_EQUIVALENCIA."</th><th>".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."</th></tr>";
 			$filtro = new CMPSolicitudFilter();
 			$filtro->fillSavedProperties();			
 		
@@ -47,11 +47,7 @@ class ExportSolicitudXLSAction extends CdtAction{
 				$tSolicitudEstado = CYTSecureDAOFactory::getSolicitudEstadoDAO()->getTableName();
 				$oCriteria->addFilter("$tSolicitudEstado.estado_oid", $estado->getOid(), "=" );
 			}
-			$cat = $filtro->getCat();
-			if($cat!=null && $cat->getOid()!=null){
-				$oCriteria->addFilter("FacultadPlanilla.cd_cat", $cat->getOid(), "=" );
-			}
-			
+
 			$periodo = $filtro->getPeriodo();
 			if($periodo!=null && $periodo->getOid()!=null){
 				$oCriteria->addFilter("cd_periodo", $filtro->getPeriodo()->getOid(), "=" );
@@ -103,6 +99,15 @@ class ExportSolicitudXLSAction extends CdtAction{
 				$oCriteria->setExpresion($filter);
 	        	
 	        }
+             if ($oUser->getCd_usergroup()==19) {
+                 $userManager = CYTSecureManagerFactory::getUserManager();
+                 $oUsuario = $userManager->getObjectByCode($oUser->getCd_user());
+                 //print_r($oUsuario);
+
+                 $oCriteria->addFilter("cd_facultadPlanilla", $oUsuario->getFacultad()->getOid(), "=");
+
+
+             }
 			
 			
 			$oCriteria->addNull('fechaHasta');
@@ -113,10 +118,10 @@ class ExportSolicitudXLSAction extends CdtAction{
 			
 			foreach ($solicitudes as $oSolicitud) {
 				$fecha = CYTSecureUtils::formatDateTimeToView($oSolicitud->getDt_fecha());
-				$edad = CYTSecureUtils::edad(CYT_PERIODO_YEAR.CYT_DIA_MES_EDAD,CYTSecureUtils::formatDateToPersist($oSolicitud->getDt_nacimiento()));
+				//$edad = CYTSecureUtils::edad(CYT_PERIODO_YEAR.CYT_DIA_MES_EDAD,CYTSecureUtils::formatDateToPersist($oSolicitud->getDt_nacimiento()));
 				
 				
-				$oCriteria = new CdtSearchCriteria();
+				/*$oCriteria = new CdtSearchCriteria();
 				$oCriteria->addFilter('cd_solicitud', $oSolicitud->getOid(), '=');
 				$proyectosManager = ManagerFactory::getSolicitudProyectoManager();
 				$oProyectos= $proyectosManager->getEntities($oCriteria);
@@ -138,65 +143,32 @@ class ExportSolicitudXLSAction extends CdtAction{
 				
 				
 				
-				$oCriteria = new CdtSearchCriteria();
-				$oCriteria->addFilter('cd_solicitud', $oSolicitud->getOid(), '=');
-				$presupuestoManager = ManagerFactory::getPresupuestoManager();
-				$oPresupuestos = $presupuestoManager->getEntities($oCriteria);
-				$monto = 0;
-				foreach ($oPresupuestos as $oPresupuesto) {
-					$monto += $oPresupuesto->getNu_montopresupuesto();
-				}
-				$monto = CYTSecureUtils::formatMontoToView($monto);
-				
-				/*$oCriteria = new CdtSearchCriteria();
-				$oCriteria->addFilter('cd_solicitud', $oSolicitud->getOid(), '=');
-				$oCriteria->addNull('fechaHasta');
-				
-				$interno = '';
-				
-				$oCriteria->addFilter('bl_interno', 1, '=');*/
+
 				$managerEvaluacion = ManagerFactory::getEvaluacionManager();
-				/*$oEvaluacion = $managerEvaluacion->getEntity($oCriteria);
-				if (!empty($oEvaluacion)) {
-					$interno = $oEvaluacion->getUser()->getDs_username().' / '.$oEvaluacion->getEstado()->getDs_estado().' / P. '.number_format ( $oEvaluacion->getNu_puntaje() , CYT_DECIMALES , CYT_SEPARADOR_DECIMAL, CYT_SEPARADOR_MILES );
-				}*/
+
 				
 				$oCriteria = new CdtSearchCriteria();
 				$oCriteria->addFilter('cd_solicitud', $oSolicitud->getOid(), '=');
 				$oCriteria->addNull('fechaHasta');
 				
-				/*$externo = '';
-				$tercero = '';
-				$oTercero = '';
-				$oExterno = '';
-				$oCriteria->addFilter('bl_interno', 0, '=');*/
+
 				$oEvaluaciones = $managerEvaluacion->getEntities($oCriteria);
 				$count=1;
 				$evals = '';
 				foreach ($oEvaluaciones as $oEval) {
-					/*if ($count == 1) {
-						$oExterno=$oEval;
-					}
-					else $oTercero=$oEval;
-					$count++;*/
+
 					$strInterno = ($oEval->getBl_interno())?'Interno':'Externo';
 					$evals .= $oEval->getUser()->getDs_username().' / '.$strInterno.' / '.$oEval->getEstado()->getDs_estado().' / P. '.number_format ( $oEval->getNu_puntaje() , CYT_DECIMALES , CYT_SEPARADOR_DECIMAL, CYT_SEPARADOR_MILES ).'---';
-				}
-				
-				/*if (!empty($oExterno)) {
-					$externo = $oExterno->getUser()->getDs_username().' / '.$oExterno->getEstado()->getDs_estado().' / P. '.number_format ( $oExterno->getNu_puntaje() , CYT_DECIMALES , CYT_SEPARADOR_DECIMAL, CYT_SEPARADOR_MILES );
-				}
-				
-				if (!empty($oTercero)) {
-					$tercero = $oTercero->getUser()->getDs_username().' / '.$oTercero->getEstado()->getDs_estado().' / P. '.number_format ( $oTercero->getNu_puntaje() , CYT_DECIMALES , CYT_SEPARADOR_DECIMAL, CYT_SEPARADOR_MILES );
 				}*/
 				
-				$html .= "<tr><td>".$oSolicitud->getPeriodo()->getDs_periodo()."</td><td>".$oSolicitud->getDocente()->getDs_apellido().', '.$oSolicitud->getDocente()->getDs_nombre()."</td><td>".$oSolicitud->getDocente()->getNu_precuil().'-'.$oSolicitud->getDocente()->getNu_documento().'-'.$oSolicitud->getDocente()->getNu_postcuil()."</td><td>".$edad."</td><td>".$oSolicitud->getDs_mail()."</td><td>".$fecha."</td><td>".$oSolicitud->getEstado()->getDs_estado()."</td><td>".$oSolicitud->getCat()->getDs_cat()."</td><td>".$oSolicitud->getFacultadplanilla()->getDs_facultad()."</td><td>".$oSolicitud->getDs_disciplina()."</td><td>".$proyectos."</td><td>".$monto."</td><td>".$evals."</td><td>".number_format ( $oSolicitud->getNu_diferencia() , CYT_DECIMALES , CYT_SEPARADOR_DECIMAL, CYT_SEPARADOR_MILES )."</td><td>".number_format ( $oSolicitud->getNu_puntaje() , CYT_DECIMALES , CYT_SEPARADOR_DECIMAL, CYT_SEPARADOR_MILES )."</td></tr>";
+
+				
+				$html .= "<tr><td>".$oSolicitud->getPeriodo()->getDs_periodo()."</td><td>".$oSolicitud->getDocente()->getDs_apellido().', '.$oSolicitud->getDocente()->getDs_nombre()."</td><td>".$oSolicitud->getDocente()->getNu_precuil().'-'.$oSolicitud->getDocente()->getNu_documento().'-'.$oSolicitud->getDocente()->getNu_postcuil()."</td><td>".$oSolicitud->getDs_mail()."</td><td>".$fecha."</td><td>".$oSolicitud->getEstado()->getDs_estado()."</td><td>".$oSolicitud->getFacultadplanilla()->getDs_facultad()."</td><td>".$oSolicitud->getCategoria()->getDs_categoria()."</td><td>".$oSolicitud->getEquivalencia()->getDs_equivalencia()."</td><td>".$oSolicitud->getCategoriasolicitada()->getDs_categoria()."</td></tr>";
 				$cant++;
 
 				
 			}
-            $html .= "<tr><td colspan='5'></td></tr><tr><td colspan='5'>".CYT_LBL_PRESUPUESTO_TOTAL.": ".$cant."</td></tr></table>"; 
+           // $html .= "<tr><td colspan='5'></td></tr><tr><td colspan='5'>".CYT_LBL_PRESUPUESTO_TOTAL.": ".$cant."</td></tr></table>";
              
 
              //armamos el layout.
