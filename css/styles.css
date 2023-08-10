@@ -427,6 +427,12 @@ ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
 
 }
 
-button, input[type="submit"], input[type="reset"] {
+button, input[type="submit"], input[type="reset"], input[type="button"] {
     cursor: pointer;
+}
+
+button:hover,INPUT[type=button]:hover,INPUT[type=submit]:hover,INPUT[type=reset]:hover
+{
+    cursor: pointer;
+    background: #005F61;
 }

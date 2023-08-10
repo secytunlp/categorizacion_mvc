@@ -213,3 +213,7 @@ ul.grid_actions li.pdf a {
 .searching {
 	background-image: url(loading.gif);
 }
+
+tbody tr[selected] {
+	background-color: #0E3460 !important;
+}

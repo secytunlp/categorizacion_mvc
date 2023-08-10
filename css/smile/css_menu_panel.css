@@ -320,7 +320,7 @@ td.message ul {
 	margin: 0 18px 10px 0;*/
 	width: 100%;
 	min-height: 550px;
-	background: #F2F2F2;
+	background: #FFFFFF;
 	float: left;
 }
 
@@ -2600,7 +2600,7 @@ th.tools,td.tools {
 .block,.block a,.block h1,.block .headline_lone h2,.block .tablemenue,.block .addmenue,.block p.tags-miles
 	{
 	border-color: #365a76;
-	color: #365a76;
+	color: #FFFFFF;
 }
 
 .block td.finished,.block td.finished a,.tasks .datepick .cal,.block_in_wrapper h2

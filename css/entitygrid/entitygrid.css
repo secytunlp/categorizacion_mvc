@@ -16,7 +16,7 @@
     padding: 0 0 0 6px;
 }
 .block th {
-    background: none;
+    background: #005F61;
 }
 
 .tablaSummaryHeader {
@@ -67,3 +67,4 @@
 .rich_option_item_view {
     
 }
+
