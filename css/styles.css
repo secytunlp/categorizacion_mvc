@@ -247,6 +247,13 @@ select::placeholder{
     font-weight: 500;
 }
 
+.inputSignup{
+
+    width: 30rem;
+
+}
+
+
 
 .form-flex{
     padding-bottom: 3rem;
@@ -411,4 +418,15 @@ a:hover {
 ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
     font-family: 'Roboto', sans-serif !important;
     font-size: 1em !important;
+}
+
+.titulo-container h3{
+    color: #005F61;
+    padding: 2.6rem 39.5rem;
+    margin: 0;
+
+}
+
+button, input[type="submit"], input[type="reset"] {
+    cursor: pointer;
 }
