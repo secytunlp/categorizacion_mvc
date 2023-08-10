@@ -1477,12 +1477,15 @@ function successDefault_{form_id}(data ){
 			<fieldset>
 
 				<legend>3 informes</legend>
-				<div>
+				<div class="form-flex">
+					<div class="form-row">
 			<!-- BEGIN: nu_year1 -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
 			<!-- END: nu_year1 -->
+					</div>
+					<div class="form-row">
 			<!-- BEGIN: ds_informe1 -->
 
 
@@ -1501,16 +1504,19 @@ function successDefault_{form_id}(data ){
 
 			<!-- END: ds_informe1 -->
 				</div>
-				<div>
+				</div >
+				<div class="form-flex">
+				<div class="form-row">
 				<!-- BEGIN: nu_year2 -->
 				<!-- BEGIN: input -->
 				{input}
 				<!-- END: input -->
 				<!-- END: nu_year2 -->
+				</div>
 				<!-- BEGIN: ds_informe2 -->
 
 
-
+<div class="form-row">
 				<!-- BEGIN: label -->
 				<label for="ds_informe2">{value}</label>
 				<!-- END: label -->
@@ -1525,12 +1531,16 @@ function successDefault_{form_id}(data ){
 
 				<!-- END: ds_informe2 -->
 					</div>
-						<div>
+				</div>
+				<div class="form-flex">
+						<div class="form-row">
 				<!-- BEGIN: nu_year3 -->
 				<!-- BEGIN: input -->
 				{input}
 				<!-- END: input -->
 				<!-- END: nu_year3 -->
+						</div>
+					<div class="form-row">
 				<!-- BEGIN: ds_informe3 -->
 
 
@@ -1549,6 +1559,7 @@ function successDefault_{form_id}(data ){
 
 				<!-- END: ds_informe3 -->
 						</div>
+				</div>
 			</fieldset>
 		</div>
 			</div>

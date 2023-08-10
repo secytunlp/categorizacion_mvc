@@ -22,8 +22,8 @@ class CMPSolicitudForm extends CMPForm{
 		parent::__construct($id);
 
 		$fieldset = new FormFieldset( "" );
-		$fieldset->addField( FieldBuilder::buildFieldReadOnly ( CYT_LBL_SOLICITUD_SOLICITANTE, "ds_investigador", ""  ) );
-		$fieldset->addField( FieldBuilder::buildFieldReadOnly ( CYT_LBL_SOLICITUD_CUIL, "nu_cuil", ""  ) );
+		$fieldset->addField( FieldBuilder::buildFieldDisabled ( CYT_LBL_SOLICITUD_SOLICITANTE, "ds_investigador", ""  ) );
+		$fieldset->addField( FieldBuilder::buildFieldDisabled ( CYT_LBL_SOLICITUD_CUIL, "nu_cuil", ""  ) );
 		
 		
 		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CALLE, "ds_calle", "","",23) );
