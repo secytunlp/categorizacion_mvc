@@ -26,32 +26,34 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldReadOnly ( CYT_LBL_SOLICITUD_CUIL, "nu_cuil", ""  ) );
 		
 		
-		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CALLE, "ds_calle") );
-		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CALLE_NRO, "nu_nro", "","",10) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_PISO, "nu_piso","","",10 ) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_DEPTO, "ds_depto","", "",10) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CP, "nu_cp", "","",10) );
-		$fieldset->addField( FieldBuilder::buildFieldEmail ( CYT_LBL_SOLICITUD_MAIL, "ds_mail", "","",40) );
-		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_TELEFONO, "nu_telefono","","",10) );
-		$fieldset->addField( FieldBuilder::buildFieldCheckbox ( CYT_LBL_SOLICITUD_MAIL_ACEPTO, "bl_notificacion", "bl_notificacion") );
-		$fieldset->addField( FieldBuilder::buildFieldEmail ( CYT_LBL_SOLICITUD_OTRO_MAIL, "ds_otromail", "","",40) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CALLE, "ds_calle", "","",23) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CALLE_NRO, "nu_nro", "","",23) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_PISO, "nu_piso","","",23 ) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_DEPTO, "ds_depto","", "",23) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_CP, "nu_cp", "","",23) );
+		$fieldset->addField( FieldBuilder::buildFieldEmail ( CYT_LBL_SOLICITUD_MAIL, "ds_mail", "","",23) );
+		$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_TELEFONO, "nu_telefono","","",23) );
+		$field = FieldBuilder::buildFieldCheckbox ( CYT_LBL_SOLICITUD_MAIL_ACEPTO, "bl_notificacion", "bl_notificacion") ;
+		$field->getInput()->addProperty("style", "width:20px");
+		$fieldset->addField( $field );
+		$fieldset->addField( FieldBuilder::buildFieldEmail ( CYT_LBL_SOLICITUD_OTRO_MAIL, "ds_otromail", "","",23) );
 
 		$fieldGenero = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_GENERO, "ds_genero", Genero::getItems(), "", null, null, "--seleccionar--" );
 		$fieldset->addField( $fieldGenero );
 
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_ORCID, "ds_orcid","","",60) );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_ORCID, "ds_orcid", "","",60);
+		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_ORCID, "ds_orcid", "","",23);
 		$field->getInput()->addProperty("placeholder", "XXXX-XXXX-XXXX-XXXX");
 		$fieldset->addField( $field );
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SEDICI, "ds_sedici","","",60) );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SEDICI, "ds_sedici", "","",60);
+		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SEDICI, "ds_sedici", "","",23);
 		$field->getInput()->addProperty("placeholder", "http://sedici.unlp.edu.ar/browse?authority=...");
 		$fieldset->addField( $field );
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SCHOLAR, "ds_scholar","","",60) );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SCHOLAR, "ds_scholar", "","",60);
+		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SCHOLAR, "ds_scholar", "","",23);
 		$field->getInput()->addProperty("placeholder", "https://scholar.google.com/citations?user=...=es");
 		$fieldset->addField( $field );
-		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SCOPUS, "ds_scopus", "","",60);
+		$field = FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_SCOPUS, "ds_scopus", "","",23);
 		//$field->getInput()->addProperty("placeholder", "https://scholar.google.com/citations?user=...=es");
 		$fieldset->addField( $field );
 		//$fieldset->addField( FieldBuilder::buildFieldText ( CYT_LBL_SOLICITUD_INSTAGRAM, "ds_instagram","","",60) );
@@ -76,13 +78,13 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldTitulo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $fieldTitulo );
 		
-		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_EGRESO_GRADO, "dt_egresogrado") );
+		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_EGRESO_GRADO, "dt_egresogrado", "","d/m/Y","",23) );
 		
 		$fieldTitulo = CYTSecureComponentsFactory::getFindTituloPosgradoWithAdd(new Titulo(), CYT_LBL_SOLICITUD_TITULO_POSGRADO, "", "solicitud_filter_tituloposgrado_oid", "tituloposgrado.oid","solicitud_filter_tituloposgrado_change");
 		$fieldTitulo->getInput()->setInputSize(5,80);
 		$fieldset->addField( $fieldTitulo );
 		
-		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_EGRESO_POSGRADO, "dt_egresoposgrado") );
+		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_EGRESO_POSGRADO, "dt_egresoposgrado", "","d/m/Y","",23) );
 
 		
 		$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO, "", "solicitud_filter_lugarTrabajo_oid", "lugarTrabajo.oid","solicitud_filter_lugarTrabajo_change");
@@ -92,8 +94,8 @@ class CMPSolicitudForm extends CMPForm{
 		
 		
 		
-		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_NACIMIENTO, "dt_nacimiento") );
-		
+		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_NACIMIENTO, "dt_nacimiento", "","d/m/Y","",23) );
+
 		$fieldCargo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CARGO, "cargo.oid", CYTSecureUtils::getCargosItems('1,2,3,4,5,7,8,9,10,11,12,13,14'), "", null, null, "--seleccionar--", "cargo_oid" );
 		$fieldset->addField( $fieldCargo );
 	

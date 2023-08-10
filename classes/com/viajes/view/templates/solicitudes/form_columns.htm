@@ -111,10 +111,10 @@
 
 /* basic styling: has nothing to do with tooltips: */
 h1 {
-	padding-left: 50px;
+	/*padding-left: 50px;*/
 }
 ul {
-	margin-bottom: 40px;
+	/*margin-bottom: 40px;*/
 }
 li {
 	cursor: pointer;
@@ -402,10 +402,10 @@ function successDefault_{form_id}(data ){
 	    <!-- BEGIN: legend -->
 		<legend>{value}</legend>
 		<!-- END: legend -->
-			<div class="form-flex">
+			<div class="form-flex" style="align-items: center;">
 
 				<!-- BEGIN:column -->
-				<div class="form-right">
+				<div class="form-right" style="width: 50%;">
 					<!-- BEGIN: ds_investigador -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -473,7 +473,7 @@ function successDefault_{form_id}(data ){
 <fieldset>	
 
 	
-	<div id="tabs-1" style="position:relative;padding: 0 25%;">
+	<div id="tabs-1" style="position:relative;">
 		<div class="form-flex">
 			<div class="form-right">
 		{titulo_domicilio}
@@ -559,78 +559,83 @@ function successDefault_{form_id}(data ){
 		<!-- END: nu_cp -->
 			</div>
 			<div class="form-left">
-		<!-- BEGIN: ds_mail -->
-					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-					    
-					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}</label>
-					    <!-- END: label -->
-					    <!-- BEGIN: input -->
-					    {input}
-					    <!-- END: input -->
-						<div class="obligatorio">
-							<h3>*</h3>
-						</div>
+				<!-- BEGIN: nu_telefono -->
+				<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+					<!-- BEGIN: label -->
+					<label for="{input_name}">{value}</label>
+					<!-- END: label -->
+					<!-- BEGIN: input -->
+					{input}
+					<!-- END: input -->
+					<div class="obligatorio">
+						<h3>*</h3>
 					</div>
-		<!-- END: ds_mail -->
+				</div>
+				<!-- END: nu_telefono -->
+
 			</div>
-				</div><div class="form-flex">
+				</div>
+		<div class="form-flex">
 			<div class="form-right">
-		<!-- BEGIN: bl_notificacion -->
-					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-					    
-					 <!-- BEGIN: input -->
-					     {value}{input}
-					    <!-- END: input -->
-					    
-					
-					   
+				<!-- BEGIN: ds_mail -->
+				<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+
+					<!-- BEGIN: label -->
+					<label for="{input_name}">{value}</label>
+					<!-- END: label -->
+					<!-- BEGIN: input -->
+					{input}
+					<!-- END: input -->
+					<div class="obligatorio">
+						<h3>*</h3>
 					</div>
-		<!-- END: bl_notificacion -->
+				</div>
+				<!-- END: ds_mail -->
+
 				</div>
 			<div class="form-left">
-		<!-- BEGIN: ds_otromail -->
-		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+				<!-- BEGIN: bl_notificacion -->
+				<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
-			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}</label>
-			<!-- END: label -->
-			<!-- BEGIN: input -->
-			{input}
-			<!-- END: input -->
-		</div>
-		<!-- END: ds_otromail -->
+					<!-- BEGIN: input -->
+					{value}{input}
+					<!-- END: input -->
+
+
+
+				</div>
+				<!-- END: bl_notificacion -->
+
 			</div>
 			</div><div class="form-flex">
 			<div class="form-right">
-		<!-- BEGIN: ds_genero -->
-		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
+				<!-- BEGIN: ds_otromail -->
+				<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
-			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}</label>
-			<!-- END: label -->
-			<!-- BEGIN: input -->
-			{input}
-			<!-- END: input -->
-		</div>
-		<!-- END: ds_genero -->
+					<!-- BEGIN: label -->
+					<label for="{input_name}">{value}</label>
+					<!-- END: label -->
+					<!-- BEGIN: input -->
+					{input}
+					<!-- END: input -->
+				</div>
+				<!-- END: ds_otromail -->
+
 			</div>
 			<div class="form-left">
+				<!-- BEGIN: ds_genero -->
+				<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
-		<!-- BEGIN: nu_telefono -->
-					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
-					    
-					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}</label>
-					    <!-- END: label -->
-					    <!-- BEGIN: input -->
-					    {input}
-					    <!-- END: input -->
-						<div class="obligatorio">
-							<h3>*</h3>
-						</div>
-					</div>
-		<!-- END: nu_telefono -->
+					<!-- BEGIN: label -->
+					<label for="{input_name}">{value}</label>
+					<!-- END: label -->
+					<!-- BEGIN: input -->
+					{input}
+					<!-- END: input -->
+				</div>
+				<!-- END: ds_genero -->
+
 			</div>
 			</div><div class="form-flex">
 			<div class="form-right">
@@ -760,7 +765,7 @@ function successDefault_{form_id}(data ){
 		<div class="form-flex">
 			<div class="form-right">
 		<!-- BEGIN: solicitud_filter_titulo_oid -->
-					<div class="form-row tooltip fade" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" data-title="{input_help}">
+					<div class="form-row tooltip fade" style="min-width: {minWidth};display:{display};z-index: 10;"  id="item-div-{input_name}" data-title="{input_help}">
 
 					    
 					    <!-- BEGIN: label -->
@@ -769,7 +774,7 @@ function successDefault_{form_id}(data ){
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
-						<div class="obligatorio">
+						<div class="obligatorioFind">
 							<h3>*</h3>
 						</div>
 					</div>
@@ -811,7 +816,7 @@ function successDefault_{form_id}(data ){
 					<span class="form-row">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}</label>
+					    <label id="label_egresoposgrado" for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -875,12 +880,12 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}</label><br>
+					    <label id="labelLugarTrabajo" for="{input_name}">{value}</label><br>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
-						<div class="obligatorio">
+						<div class="obligatorioFindLugar">
 							<h3>*</h3>
 						</div>
 					</div>
@@ -939,7 +944,12 @@ function successDefault_{form_id}(data ){
 	</div>
 
 	<div id="tabs-3" style="position:relative;">
+		<div class="form-flex">
+
 		<div style="color:#A43B3B; font-weight:bold">{titulo_becario}</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: ds_orgbeca -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -954,6 +964,8 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: ds_orgbeca -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_tipobeca -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -968,6 +980,10 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: ds_tipobeca -->
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: dt_becadesde -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -982,6 +998,8 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: dt_becadesde -->
+			</div>
+			<div class="form-left">
 		<!-- BEGIN: dt_becahasta -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -996,6 +1014,9 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: dt_becahasta -->
+			</div>
+		</div>
+		<div class="form-flex">
 		<!-- BEGIN: solicitud_filter_lugarTrabajoBeca_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -1010,6 +1031,8 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: solicitud_filter_lugarTrabajoBeca_oid -->
+		</div>
+		<div class="form-flex">
 		<!-- BEGIN: ds_resbeca -->
 
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_resbeca">
@@ -1027,7 +1050,7 @@ function successDefault_{form_id}(data ){
 			<div style="color:#A43B3B; font-weight:bold">{label_resbeca}</div>
 		</div>
 		<!-- END: ds_resbeca -->
-
+		</div>
 
 
 		<!-- BEGIN: ds_experticiaB -->
@@ -1081,6 +1104,8 @@ function successDefault_{form_id}(data ){
 		
 	</div>
 	<div id="tabs-4" style="position:relative;">
+		<div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: organismo_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -1095,6 +1120,8 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: organismo_oid -->
+				</div>
+					<div class="form-left">
 		<!-- BEGIN: carrerainv_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
@@ -1109,11 +1136,15 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: carrerainv_oid -->
+					</div>
+				</div>
+				<div class="form-flex">
+					<div class="form-right">
 		<!-- BEGIN: dt_ingreso -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1123,11 +1154,15 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: dt_ingreso -->
+					</div>
+
+
+					<div class="form-left">
 		<!-- BEGIN: solicitud_filter_lugarTrabajoCarrerainv_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1137,7 +1172,10 @@ function successDefault_{form_id}(data ){
 					   
 					</div>
 		<!-- END: solicitud_filter_lugarTrabajoCarrerainv_oid -->
-
+					</div>
+				</div>
+				<div class="form-flex">
+					<div class="form-right">
 		<!-- BEGIN: ds_rescarrera -->
 
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_rescarrera">
@@ -1156,7 +1194,8 @@ function successDefault_{form_id}(data ){
 		</div>
 		<!-- END: ds_rescarrera -->
 
-
+					</div>
+				</div>
 
 		<!-- BEGIN: ds_experticiaC -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
@@ -1213,11 +1252,13 @@ function successDefault_{form_id}(data ){
 		{HTMLProyectos}
 		{fieldsetopen}
 		{otrosProyectos_title}
+		<div class="form-flex">
+		<div class="form-right">
 		<!-- BEGIN: ds_organismoproyecto -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} {required}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
@@ -1227,11 +1268,13 @@ function successDefault_{form_id}(data ){
 
 		</div>
 		<!-- END: ds_organismoproyecto -->
+		</div>
+			<div class="form-left">
 		<!-- BEGIN: ds_codigoproyecto -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} {required}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
@@ -1241,11 +1284,15 @@ function successDefault_{form_id}(data ){
 
 		</div>
 		<!-- END: ds_codigoproyecto -->
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 			<!-- BEGIN: ds_directorproyecto -->
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 				<!-- BEGIN: label -->
-				<label for="{input_name}">{value} {required}:</label>
+				<label for="{input_name}">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				{input}
@@ -1255,11 +1302,15 @@ function successDefault_{form_id}(data ){
 
 			</div>
 			<!-- END: ds_directorproyecto -->
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 			<!-- BEGIN: ds_tituloproyecto -->
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 				<!-- BEGIN: label -->
-				<label for="{input_name}">{value} {required}:</label>
+				<label for="{input_name}">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				{input}
@@ -1269,11 +1320,15 @@ function successDefault_{form_id}(data ){
 
 			</div>
 			<!-- END: ds_tituloproyecto -->
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 		<!-- BEGIN: dt_proyectodesde -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} {required}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
@@ -1283,11 +1338,13 @@ function successDefault_{form_id}(data ){
 
 		</div>
 		<!-- END: dt_proyectodesde -->
+				</div>
+			<div class="form-left">
 		<!-- BEGIN: dt_proyectohasta -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} {required}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
@@ -1297,12 +1354,16 @@ function successDefault_{form_id}(data ){
 
 		</div>
 		<!-- END: dt_proyectohasta -->
+			</div>
+		</div>
+		<div class="form-flex">
+			<div class="form-right">
 			<!-- BEGIN: ds_archivo -->
 
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_archivo">
 
 				<!-- BEGIN: label -->
-				<label for="ds_archivo">{value}:</label>
+				<label for="ds_archivo">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				<input id="ds_archivo" type="file" value="" size="32" name="ds_archivo" onChange="uploadAjax(this,'{actionFile}','ds_archivo')">
@@ -1314,56 +1375,84 @@ function successDefault_{form_id}(data ){
 				<div style="color:#A43B3B; font-weight:bold">{label_archivo}</div>
 			</div>
 			<!-- END: ds_archivo -->
+			</div>
+		</div>
 		{fieldsetclose}
 	</div>
 	<div id="tabs-6" style="position:relative;">
 		{titulo_tipo_investigador}
 		<div style="position: relative; float: left; width: 70%;">
+			<div class="form-flex">
+				<div class="form-right">
 		<!-- BEGIN: facultadplanilla_oid -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} *:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
-			<br>{input}
+			{input}
 			<!-- END: input -->
+			<div class="obligatorioFacultad">
+				<h3>*</h3>
+			</div>
 		</div>
 		<!-- END: facultadplanilla_oid -->
+				</div>
+			</div>
+			<div class="form-flex">
+				<div class="form-right">
 		<!-- BEGIN: categoria_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
-					    <label for="{input_name}">{value}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
 					    <!-- END: input -->
 					</div>
 		<!-- END: categoria_oid -->
+				</div>
+			</div>
+			<div class="form-flex">
+				<div class="form-right">
 		<!-- BEGIN: equivalencia_oid -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} *:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
+			<div class="obligatorioEquivalencia">
+				<h3>*</h3>
+			</div>
 		</div>
 		<!-- END: equivalencia_oid -->
+				</div>
+			</div>
+			<div class="form-flex">
+				<div class="form-right">
 		<!-- BEGIN: categoriasolicitada_oid -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value} *:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			{input}
 			<!-- END: input -->
+			<div class="obligatorioSolicitada">
+				<h3>*</h3>
+			</div>
 		</div>
 		<!-- END: categoriasolicitada_oid -->
-
+				</div>
+			</div>
+			<div class="form-flex">
+				<div class="form-right">
 		<!-- BEGIN: ds_curriculum -->
 					
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_curriculum">
@@ -1381,6 +1470,9 @@ function successDefault_{form_id}(data ){
 					   <div style="color:#A43B3B; font-weight:bold">{label_curriculum}</div> 
 					</div>
 		<!-- END: ds_curriculum -->
+				</div>
+			</div>
+			<div class="form-flex">
 		<div id="informes">
 			<fieldset>
 
@@ -1396,7 +1488,7 @@ function successDefault_{form_id}(data ){
 
 
 				<!-- BEGIN: label -->
-				<label for="ds_informe1">{value}:</label>
+				<label for="ds_informe1">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				<input id="ds_informe1" type="file" value="" size="32" name="ds_informe1" onChange="uploadAjax(this,'{actionFile}','ds_informe1')">
@@ -1420,7 +1512,7 @@ function successDefault_{form_id}(data ){
 
 
 				<!-- BEGIN: label -->
-				<label for="ds_informe2">{value}:</label>
+				<label for="ds_informe2">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				<input id="ds_informe2" type="file" value="" size="32" name="ds_informe2" onChange="uploadAjax(this,'{actionFile}','ds_informe2')">
@@ -1444,7 +1536,7 @@ function successDefault_{form_id}(data ){
 
 
 				<!-- BEGIN: label -->
-				<label for="ds_informe3">{value}:</label>
+				<label for="ds_informe3">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				<input id="ds_informe3" type="file" value="" size="32" name="ds_informe3" onChange="uploadAjax(this,'{actionFile}','ds_informe3')">
@@ -1459,29 +1551,35 @@ function successDefault_{form_id}(data ){
 						</div>
 			</fieldset>
 		</div>
+			</div>
+			<div class="form-flex">
+				<div class="form-right">
 			<!-- BEGIN: areacarrera_oid -->
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 				<!-- BEGIN: label -->
-				<label for="{input_name}">{value}:</label>
+				<label for="{input_name}">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				{input}
 				<!-- END: input -->
 			</div>
 			<!-- END: areacarrera_oid -->
-
+				</div>
+				<div class="form-left">
 			<!-- BEGIN: subareacarrera_oid -->
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
 				<!-- BEGIN: label -->
-				<label for="{input_name}">{value}:</label>
+				<label for="{input_name}">{value}</label>
 				<!-- END: label -->
 				<!-- BEGIN: input -->
 				{input}
 				<!-- END: input -->
 			</div>
 			<!-- END: subareacarrera_oid -->
+				</div>
+			</div>
 		</div>
 
 		<div style="position: relative; float: left; width: 30%;">
@@ -1489,9 +1587,7 @@ function successDefault_{form_id}(data ){
 		</div>
 		
 	</div>
-	<div class="campos-requeridos">
-		<h4> (*) {msg_required_fields} </h4>
-	</div>
+
 </fieldset>
 </div>
 	</div>
@@ -1521,8 +1617,10 @@ function successDefault_{form_id}(data ){
 		<!-- BEGIN: cancel -->
 		<input type="button" value="{lbl_cancel}" id="{form_id}_input_cancel" onclick="javascript: {function};">
 		<!-- END: cancel -->
-		
 
+		<div class="campos-requeridos">
+			<h4> (*) {msg_required_fields} </h4>
+		</div>
 
 	</fieldset>
 </form>	

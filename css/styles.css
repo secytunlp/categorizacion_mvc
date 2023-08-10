@@ -3,7 +3,7 @@ Defino tipografías y propiedades básicas del documento
 ********/
 html{
     font-size: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; !important;
   }
 body{
     margin: 0;
@@ -210,9 +210,19 @@ label {
     padding: 0 0.4rem; /* Ajusta el padding para que el label no se superponga directamente al texto del input */
     z-index: 1; /* label por encima del input */
 }
+#label_egresoposgrado {
+
+    top: -2.5rem !important;
+
+}
+#labelLugarTrabajo {
+
+    top: -3rem !important;
+
+}
 input{
     color: #005F61;
-    width: 30rem;
+    /*width: 30rem;*/
     padding: 1.2rem;
     border: 0.2rem solid #005F61;
 
@@ -225,7 +235,7 @@ input::placeholder{
 
 select{
     color: #005F61;
-    width: 30rem;
+    /*width: 30rem;*/
     padding: 1.2rem;
     border: 0.2rem solid #005F61;
     background-color: #fff;
@@ -242,7 +252,7 @@ select::placeholder{
     padding-bottom: 3rem;
     display: flex;
     gap: 15rem;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 .campos-requeridos h4{
     text-align: right;
@@ -307,7 +317,7 @@ select::placeholder{
 }
 
 footer{
-    height: 120px; /* Ajusta la altura*/
+    /*height: 120px;*/ /* Ajusta la altura*/
     padding: 3rem 2rem;
     background-image: linear-gradient(to right, #EB0089, #D10B84, #AD197E, #802B77, #603871, #3F466C, #165665, #015F61); /*es el gradiente*/
 }
@@ -361,4 +371,44 @@ a:hover {
     position: absolute;
     top: -1.5rem;
     left: 31rem;
+}
+
+
+.obligatorioFind{
+    position: absolute;
+    top: -1.5rem;
+    left: 110rem;
+}
+
+.obligatorioFindLugar{
+    position: absolute;
+    top: 1rem;
+    left: 110rem;
+}
+
+.obligatorioFacultad{
+    position: absolute;
+    top: -1.5rem;
+    left: 61rem;
+}
+
+.obligatorioEquivalencia{
+    position: absolute;
+    top: -1.5rem;
+    left: 39rem;
+}
+
+#categoria_oid, #categoriasolicitada_oid{
+    width: 210px;
+}
+
+.obligatorioSolicitada{
+    position: absolute;
+    top: -1.5rem;
+    left: 22rem;
+}
+
+ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1em !important;
 }

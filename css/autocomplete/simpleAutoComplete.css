@@ -14,7 +14,8 @@ div.autocomplete {
 	background-color: #FEFEFE;
 	border: 1px solid #7C7C7C;;
 	font-size: 11px;
-	font-family: 'arial';
+	font-family: 'Roboto', sans-serif;
+	z-index: 10;
 }
 
 div.autocomplete ul {
