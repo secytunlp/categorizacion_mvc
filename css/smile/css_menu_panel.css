@@ -43,12 +43,12 @@ img {
 }
 
 ::selection {
-	background: #001e40;
+	background: #0FBABA;
 	color: #fff;
 }
 
 ::-moz-selection {
-	background: #001e40;
+	background: #0FBABA;
 	color: #fff;
 }
 
@@ -659,7 +659,7 @@ td.message ul {
 	top: -34px;
 	right: 0;
 	z-index: 9;
-	color: #001e40;
+	color: #0FBABA;
 	font-size: 12px;
 	background: #fff;
 	padding: 0 7px 0 7px;
@@ -1868,13 +1868,13 @@ ul.panellateral li.reportes a {
 /* ## MODALs ######################################## */
 #modal_container {
 	overflow: auto;
-	color: #001e40;
+	color: #0FBABA;
 	background: none;
 	text-align: left;
 }
 
 #modal_container.tasksmodal,#modal_container.milesmodal {
-	background: #203d56;
+	background: #0FBABA;
 	color: #365a76;
 	min-height: 150px;
 	width: 500px;
@@ -1901,7 +1901,7 @@ ul.panellateral li.reportes a {
 }
 
 #modal_overlay {
-	background-color: #001e40;
+	background-color: #0FBABA;
 }
 
 #modal_overlay.useroverlay {
@@ -1909,7 +1909,7 @@ ul.panellateral li.reportes a {
 }
 
 #modal_overlay.tasksoverlay {
-	background: #869cad;
+	background: #0FBABA;
 }
 
 #modal_overlay.milesoverlay {
@@ -2550,7 +2550,7 @@ th.tools,td.tools {
 }
 
 .tasks h1 span,.tasks h1 span a,.tasks .datepick td.wrong {
-	color: #869cad;
+	color: #0FBABA;
 }
 
 .task h1 span a {
@@ -2559,13 +2559,13 @@ th.tools,td.tools {
 
 .tasks form,.tasks form input,.tasks form select,.tasks form textarea,.tasks form .row .editor,.tasks .statuswrapper li
 	{
-	border-color: #869cad;
+	border-color: #0FBABA;
 	color: #365a76;
 }
 
 .tasks a.butn_link:hover,.tasks button:hover,.tasks form .fileinput:hover button,.tasks a.butn_link_active,.tasks .datepick .picker
 	{
-	background: #203d56;
+	background: #0FBABA;
 }
 
 /* TABLE para todos los index*/
@@ -2609,7 +2609,7 @@ th.tools,td.tools {
 }
 
 .block h1 span,.block h1 span a,.block .datepick td.wrong {
-	color: #869cad;
+	color: #0FBABA;
 }
 
 .block h1 span a {
@@ -2618,13 +2618,13 @@ th.tools,td.tools {
 
 .block form,.block form input,.block form select,.block form textarea,.block form .row .editor,.block .statuswrapper li
 	{
-	border-color: #869cad;
+	border-color: #0FBABA;
 	color: #365a76;
 }
 
 .block a.butn_link:hover,.block button:hover,.block form .fileinput:hover button,.block a.butn_link_active,.block .datepick .picker
 	{
-	background: #203d56;
+	background: #0FBABA;
 }
 
 /* TABLE para todos los index*/
@@ -2672,7 +2672,7 @@ th.tools,td.tools {
 }
 
 .index h1 span,.index h1 span a,.index .datepick td.wrong {
-	color: #869cad;
+	color: #0FBABA;
 }
 
 .index h1 span a {
@@ -2681,13 +2681,13 @@ th.tools,td.tools {
 
 .index form,.index form input,.index form select,.index form textarea,.index form .row .editor,.index .statuswrapper li
 	{
-	border-color: #869cad;
+	border-color: #0FBABA;
 	color: #365a76;
 }
 
 .index a.butn_link:hover,.index button:hover,.index form .fileinput:hover button,.index a.butn_link_active,.index .datepick .picker
 	{
-	background: #203d56;
+	background: #0FBABA;
 }
 
 /* MESSAGES COLORS #################################*/
@@ -3009,13 +3009,13 @@ th.tools,td.tools {
 
 .files .block,.files .blockwrapper,.files a,.files h1,.files .tablemenue,.files .addmenue,.files p.tags-miles
 	{
-	border-color: #484f64;
-	color: #484f64;
+	border-color: #0FBABA;
+	color: #0FBABA;
 }
 
 .files .block td.finished,.files .block td.finished a,.files .datepick .cal,.files .block_in_wrapper h2
 	{
-	color: #484f64;
+	color: #0FBABA;
 }
 
 .files h1 span,.files h1 span a,.files .datepick td.wrong {
@@ -3023,13 +3023,13 @@ th.tools,td.tools {
 }
 
 .files h1 span a {
-	border-color: #484f64;
+	border-color: #0FBABA;
 }
 
 .files form,.files form input,.files form select,.files form textarea,.files form .row .editor
 	{
 	border-color: #9195a2;
-	color: #484f64;
+	color: #0FBABA;
 }
 
 .files a.butn_link:hover,.files button:hover,.files form .fileinput:hover button,.files a.butn_link_active,.files .datepick .picker
@@ -4075,11 +4075,11 @@ ul.panellateral li.registraciones a {
 
 
 #editar input[type=password]:hover,  input[type=password]:hover,#editar input[type=password]:focus,  input[type=password]:focus{
- border: 1px solid #4D90FE;
+ border: 1px solid #0FBABA;
 }
 
 #editar input[type=text]:hover,  input[type=text]:hover,#editar input[type=text]:focus,  input[type=text]:focus{
- border: 1px solid #4D90FE;
+ border: 1px solid #0FBABA;
 }
 
 #editar input[type=text]{
@@ -4121,7 +4121,7 @@ ul.panellateral li.registraciones a {
 }
 
 #editar textarea:focus,  textarea:focus{
- border: 1px solid #4D90FE;
+ border: 1px solid #0FBABA;
 }
 
 #editar textarea {
@@ -4142,7 +4142,7 @@ ul.panellateral li.registraciones a {
 }
 
 #editar select:focus,  select:focus{
- border: 1px solid #4D90FE;
+ border: 1px solid #0FBABA;
 }
 
 #editar select {

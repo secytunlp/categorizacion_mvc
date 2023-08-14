@@ -16,6 +16,7 @@ define('CYT_PATH', APP_PATH . '/classes/com/viajes/');
 define('CYT_PATH_TEST', APP_PATH . '/unit_test/');
 
 
+
 /* mvc */
 define('MVC_CYT_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/cyt_mvc_sicadi/');
 define('CYT_SECURE_PATH', MVC_CYT_PATH .   'cyt_secure/');
@@ -27,6 +28,7 @@ define('MVC_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/codnet_mvc_sicadi/');
 define('CDT_CORE_PATH', MVC_PATH .   'codnet_core/');
 //define('CDT_CORE_PATH', MVC_PATH .   'codnet_core_2_0_6/');
 include_once (CDT_CORE_PATH . 'conf/init.php');
+
 define('DEFAULT_MENU', 'Menu');
 define('APP_NAME', 'SeCyT');
 define('CDT_MVC_APP_TITLE', 'SeCyT');
@@ -41,7 +43,7 @@ define("CDT_MESSAGE_LOG", 1);
 
 //configuramos log4php
 define( "CDT_LOG4PHP_PATH", CDT_EXTERNAL_LIB_PATH . "log4php") ;
-define( "CDT_LOG4PHP_CONFIG_FILE", APP_PATH . "/conf/log4php.xml", true );
+define( "CDT_LOG4PHP_CONFIG_FILE", APP_PATH . "/conf/log4php.xml");
 require_once( CDT_LOG4PHP_PATH . '/Logger.php' );
 
 
@@ -94,6 +96,7 @@ define("CDT_SECURE_FORGOT_PASSWORD_ACTION", 'doAction?action=forgot_password');
 //define('CDT_UI_SMILE_PATH', MVC_PATH  . 'codnet_ui_smile_0_2_2/');
 define('CDT_UI_SMILE_PATH', MVC_PATH  . 'codnet_ui_smile/');
 include_once (CDT_UI_SMILE_PATH . 'conf/init.php');
+
 define ( 'DEFAULT_LAYOUT', 'LayoutCYT' );
 define ( 'DEFAULT_PANEL_LAYOUT', 'LayoutCYT');
 define ( 'DEFAULT_EDIT_LAYOUT', 'LayoutCYT' );
