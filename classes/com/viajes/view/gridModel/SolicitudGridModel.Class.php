@@ -170,7 +170,7 @@ class SolicitudGridModel extends GridModel {
 		
 		if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_LISTAR_ESTADO )) {
 			
-			$action = $this->buildRowAction("list_solicitudesEstado", "list_solicitudesEstado", CYT_MSG_SOLICITUD_ESTADO_TITLE_LIST, CDT_CMP_GRID_MSG_VIEWCDT_UI_IMG_SEARCH, "attach" ) ;
+			$action = $this->buildRowAction("list_solicitudesEstado", "list_solicitudesEstado", CYT_MSG_SOLICITUD_ESTADO_TITLE_LIST, CDT_UI_IMG_SEARCH, "attach" ) ;
 			$actions->addItem( $action );
 			
 		}

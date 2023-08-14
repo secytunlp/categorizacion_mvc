@@ -28,7 +28,13 @@ define('CYT_TABLE_SUBAREA', 'subarea');
 /*define('CYT_TABLE_EVALUACION', 'evaluacionjovenes');*/
 define('CYT_TABLE_SOLICITUD_PROYECTO', 'solicitudcategorizacionproyecto');
 define('CYT_TABLE_SOLICITUD_CARGO', 'solicitudcategorizacioncargo');
+
+define('CYT_TABLE_PROYECTO_AGENCIA', 'proyecto_agencia');
+define('CYT_TABLE_INTEGRANTE_AGENCIA', 'integrante_agencia');
+
+
 /*define('CYT_TABLE_JOVENES_BECA', 'solicitudjovenesbeca');
+
 
 define('CYT_TABLE_PRESUPUESTO', 'presupuestojovenes');
 

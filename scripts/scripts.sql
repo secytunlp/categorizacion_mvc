@@ -380,3 +380,45 @@ ALTER TABLE `solicitudcategorizacion`
 ADD COLUMN `cd_areacarrera` int(11) NULL DEFAULT NULL,
 
     ADD COLUMN `cd_subareacarrera` int(11) NULL DEFAULT NULL;
+
+CREATE TABLE `proyecto_agencia` (
+                            `cd_proyecto` INT(8) NOT NULL AUTO_INCREMENT,
+                            `ds_codigo` VARCHAR(50) NULL DEFAULT NULL,
+                            `ds_titulo` VARCHAR(254) NULL DEFAULT NULL,
+                            `dt_ini` DATE NULL DEFAULT NULL,
+                            `dt_fin` DATE NULL DEFAULT NULL,
+
+                            `ds_institucion` VARCHAR(255) NULL DEFAULT NULL,
+
+                            PRIMARY KEY (`cd_proyecto`)
+
+)
+    COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+CREATE TABLE `integrante_agencia` (
+                              `oid` INT(11) NOT NULL AUTO_INCREMENT,
+                              `nu_documento` INT(11) NOT NULL,
+                              `cd_proyecto` INT(11) NOT NULL,
+                              `cd_tipoinvestigador` INT(11) NOT NULL,
+                              `dt_alta` DATE NULL DEFAULT NULL,
+                              `dt_baja` DATE NULL DEFAULT NULL,
+
+                              `ds_tipo` VARCHAR(255) NULL DEFAULT NULL,
+
+                              PRIMARY KEY (`oid`),
+                              UNIQUE INDEX `cd_docente_cd_proyecto` (`nu_documento`, `cd_proyecto`),
+                              INDEX `cd_tipoinvestigador` (`cd_tipoinvestigador`)
+
+)
+    COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+############################Insertar los integrantes###################################################
+    INSERT INTO integrante_agencia (nu_documento, cd_proyecto, cd_tipoinvestigador, dt_alta, dt_baja, ds_tipo)
+SELECT aux_integrante_agencia.nu_documento, proyecto_agencia.cd_proyecto, CASE aux_integrante_agencia.ds_tipo WHEN 'IR' THEN 1 END, aux_integrante_agencia.dt_alta, aux_integrante_agencia.dt_baja, aux_integrante_agencia.ds_tipo FROM `aux_integrante_agencia` INNER JOIN proyecto_agencia ON aux_integrante_agencia.ds_codigo = proyecto_agencia.ds_codigo;
+

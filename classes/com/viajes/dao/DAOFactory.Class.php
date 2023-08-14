@@ -17,6 +17,14 @@ class DAOFactory{
 	public static function getOtrosProyectoDAO(){
 		return new OtrosProyectoDAO();
 	}
+
+	public static function getProyectoAgenciaDAO(){
+		return new ProyectoAgenciaDAO();
+	}
+
+	public static function getIntegranteAgenciaDAO(){
+		return new IntegranteAgenciaDAO();
+	}
 	
 	public static function getPresupuestoDAO(){
 		return new PresupuestoDAO();

@@ -41,6 +41,15 @@ class ManagerFactory{
         return new SolicitudCargoManager();
     }
 
+
+    public static function getProyectoAgenciaManager(){
+        return new ProyectoAgenciaManager();
+    }
+
+    public static function getIntegranteAgenciaManager(){
+        return new IntegranteAgenciaManager();
+    }
+
 	public static function getPresupuestoManager(){
 		return new PresupuestoManager();
 	}

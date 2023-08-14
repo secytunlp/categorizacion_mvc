@@ -913,7 +913,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             $xtpl->assign("actionFile", "doAction?action=add_file_session" );
             $xtpl->parse("main.ds_informe1.input");
             $xtpl->assign("display", 'block');
-            $xtpl->assign("label_informe1", CYT_LBL_SOLICITUD_A_INFORME1_SIGEVA);
+            //$xtpl->assign("label_informe1", CYT_LBL_SOLICITUD_A_INFORME1_SIGEVA);
             $hiddens = $form->getHiddens();
             $hiddenDs_informe1 = $hiddens['ds_informe1'];
 
@@ -942,7 +942,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             $xtpl->assign("actionFile", "doAction?action=add_file_session" );
             $xtpl->parse("main.ds_informe2.input");
             $xtpl->assign("display", 'block');
-            $xtpl->assign("label_informe2", CYT_LBL_SOLICITUD_A_INFORME2_SIGEVA);
+            //$xtpl->assign("label_informe2", CYT_LBL_SOLICITUD_A_INFORME2_SIGEVA);
             $hiddens = $form->getHiddens();
             $hiddenDs_informe2 = $hiddens['ds_informe2'];
 
@@ -971,7 +971,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             $xtpl->assign("actionFile", "doAction?action=add_file_session" );
             $xtpl->parse("main.ds_informe3.input");
             $xtpl->assign("display", 'block');
-            $xtpl->assign("label_informe3", CYT_LBL_SOLICITUD_A_INFORME3_SIGEVA);
+            //$xtpl->assign("label_informe3", CYT_LBL_SOLICITUD_A_INFORME3_SIGEVA);
             $hiddens = $form->getHiddens();
             $hiddenDs_informe3 = $hiddens['ds_informe3'];
 

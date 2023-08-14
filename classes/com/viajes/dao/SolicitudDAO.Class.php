@@ -301,13 +301,13 @@ class SolicitudDAO extends EntityDAO {
         $fields[] = "$tFacultad.ds_facultad as " . $tFacultad . "_ds_facultad ";
         
         
-        $fields[] = "LugarTrabajoBeca.cd_unidad as " . LugarTrabajoBeca . "_oid ";
-        $fields[] = "LugarTrabajoBeca.ds_unidad as " . LugarTrabajoBeca . "_ds_unidad ";
-        $fields[] = "LugarTrabajoBeca.ds_sigla as " . LugarTrabajoBeca . "_ds_sigla ";
+        $fields[] = "LugarTrabajoBeca.cd_unidad as LugarTrabajoBeca_oid ";
+        $fields[] = "LugarTrabajoBeca.ds_unidad as LugarTrabajoBeca_ds_unidad ";
+        $fields[] = "LugarTrabajoBeca.ds_sigla as LugarTrabajoBeca_ds_sigla ";
         
-        $fields[] = "LugarTrabajoCarrera.cd_unidad as " . LugarTrabajoCarrera . "_oid ";
-        $fields[] = "LugarTrabajoCarrera.ds_unidad as " . LugarTrabajoCarrera . "_ds_unidad ";
-        $fields[] = "LugarTrabajoCarrera.ds_sigla as " . LugarTrabajoCarrera . "_ds_sigla ";
+        $fields[] = "LugarTrabajoCarrera.cd_unidad as LugarTrabajoCarrera_oid ";
+        $fields[] = "LugarTrabajoCarrera.ds_unidad as LugarTrabajoCarrera_ds_unidad ";
+        $fields[] = "LugarTrabajoCarrera.ds_sigla as LugarTrabajoCarrera_ds_sigla ";
         
         $tCarrerainv = CYTSecureDAOFactory::getCarrerainvDAO()->getTableName();
         $fields[] = "$tCarrerainv.cd_carrerainv as " . $tCarrerainv . "_oid ";

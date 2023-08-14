@@ -13,7 +13,7 @@ class LayoutCYT extends LayoutSmile {
 	protected function initStyles(){
 		parent::initStyles();
 
-		//$this->addStyle( WEB_PATH . "css/entitygrid/entitygrid.css");
+		$this->addStyle( WEB_PATH . "css/entitygrid/entitygrid.css");
 		$this->addStyle( WEB_PATH . "css/filter/filter.css");
 		//$this->addStyle( WEB_PATH . "css/form/form.css");
 		
