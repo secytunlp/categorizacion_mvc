@@ -388,7 +388,7 @@ CREATE TABLE `proyecto_agencia` (
                             `dt_ini` DATE NULL DEFAULT NULL,
                             `dt_fin` DATE NULL DEFAULT NULL,
 
-                            `ds_institucion` VARCHAR(255) NULL DEFAULT NULL,
+                            `ds_organismo` VARCHAR(255) NULL DEFAULT NULL,
 
                             PRIMARY KEY (`cd_proyecto`)
 

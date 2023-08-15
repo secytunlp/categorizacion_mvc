@@ -20,9 +20,9 @@ class ProyectoAgencia extends Entity{
 	
 	private $ds_titulo;
 	
-	private $ds_director;
+	private $director;
 
-    private $ds_institucion;
+    private $ds_organismo;
 	
 
 
@@ -38,9 +38,9 @@ class ProyectoAgencia extends Entity{
 		
 		$this->ds_titulo = "";
 
-        $this->ds_institucion = "";
+        $this->ds_organismo = "";
 		
-		$this->ds_director = "";
+		$this->director = new Docente();
 
 
 		
@@ -50,7 +50,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDtIni()
+    public function getDt_ini()
     {
         return $this->dt_ini;
     }
@@ -58,7 +58,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @param $dt_ini
      */
-    public function setDtIni($dt_ini)
+    public function setDt_ini($dt_ini)
     {
         $this->dt_ini = $dt_ini;
     }
@@ -66,7 +66,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDtFin()
+    public function getDt_fin()
     {
         return $this->dt_fin;
     }
@@ -74,7 +74,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @param $dt_fin
      */
-    public function setDtFin($dt_fin)
+    public function setDt_fin($dt_fin)
     {
         $this->dt_fin = $dt_fin;
     }
@@ -82,7 +82,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDsCodigo()
+    public function getDs_codigo()
     {
         return $this->ds_codigo;
     }
@@ -90,7 +90,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @param $ds_codigo
      */
-    public function setDsCodigo($ds_codigo)
+    public function setDs_codigo($ds_codigo)
     {
         $this->ds_codigo = $ds_codigo;
     }
@@ -98,7 +98,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDsTitulo()
+    public function getDs_titulo()
     {
         return $this->ds_titulo;
     }
@@ -106,7 +106,7 @@ class ProyectoAgencia extends Entity{
     /**
      * @param $ds_titulo
      */
-    public function setDsTitulo($ds_titulo)
+    public function setDs_titulo($ds_titulo)
     {
         $this->ds_titulo = $ds_titulo;
     }
@@ -114,33 +114,33 @@ class ProyectoAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDsDirector()
+    public function getDirector()
     {
-        return $this->ds_director;
+        return $this->director;
     }
 
     /**
      * @param $ds_director
      */
-    public function setDsDirector($ds_director)
+    public function setDirector($director)
     {
-        $this->ds_director = $ds_director;
+        $this->director = $director;
     }
 
     /**
      * @return string
      */
-    public function getDsInstitucion()
+    public function getDs_organismo()
     {
-        return $this->ds_institucion;
+        return $this->ds_organismo;
     }
 
     /**
-     * @param $ds_institucion
+     * @param $ds_organismo
      */
-    public function setDsInstitucion($ds_institucion)
+    public function setDs_organismo($ds_organismo)
     {
-        $this->ds_institucion = $ds_institucion;
+        $this->ds_organismo = $ds_organismo;
     }
 
 

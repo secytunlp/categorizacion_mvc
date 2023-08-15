@@ -169,7 +169,34 @@ class AddSolicitudAction extends AddEntityAction{
 				$proyectosArray->addItem($oProyecto);
 		}
 		$entity->setProyectos( $proyectosArray );
-		
+
+        $oCriteria = new CdtSearchCriteria();
+        $tIntegrante = DAOFactory::getIntegranteAgenciaDAO()->getTableName();
+        $oCriteria->addFilter("$tIntegrante.nu_documento", $oDocente->getNu_documento(), '=');
+        $oCriteria->addFilter('DIR.cd_tipoinvestigador', CYT_INTEGRANTE_DIRECTOR, '=');
+
+        $oCriteria->addFilter('dt_fin', $oneYearAgo.CYT_DIA_MES_PROYECTO_FIN, '>', new CdtCriteriaFormatStringValue());
+
+        //proyectos.
+        $proyectosManager = ManagerFactory::getProyectoAgenciaManager();
+        $proyectos = $proyectosManager->getEntities($oCriteria);
+
+        //$proyectosArray = new ItemCollection();
+        foreach ($proyectos as $oProyecto) {
+            //CDTUtils::log('Proyecto:');
+
+            $oCriteriaIntegrante = new CdtSearchCriteria();
+            $oCriteriaIntegrante->addFilter("$tIntegrante.nu_documento", $oDocente->getNu_documento(), '=');
+            $oCriteriaIntegrante->addFilter("cd_proyecto", $oProyecto->getOid(), '=');
+            $integrantesManager = ManagerFactory::getIntegranteAgenciaManager();
+            $oIntegrante = $integrantesManager->getEntity($oCriteriaIntegrante);
+            $oProyecto->setDt_ini($oIntegrante->getDt_alta());
+            $dt_hasta = (($oIntegrante->getDt_baja()=='0000-00-00')||($oIntegrante->getDt_baja()=='')||(!$oIntegrante->getDt_baja()))?$oProyecto->getDt_fin():$oIntegrante->getDt_baja();
+            $oProyecto->setDt_fin($dt_hasta);
+            //CYTSecureUtils::logObject($oProyecto);
+            $proyectosArray->addItem($oProyecto);
+        }
+        $entity->setProyectos( $proyectosArray );
 
 		$solicitudProyectosManager = new SolicitudProyectoSessionManager();
 		$entity->setOtrosProyectos( $solicitudProyectosManager->getEntities(new CdtSearchCriteria()) );

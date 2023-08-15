@@ -10,7 +10,7 @@ class IntegranteAgenciaFactory extends CdtGenericFactory {
 
     public function build($next) {
 
-        $this->setClassName('Integrante');
+        $this->setClassName('IntegranteAgencia');
         $integrante = parent::build($next);
 
 

@@ -10,7 +10,7 @@ class ProyectoAgenciaFactory extends CdtGenericFactory {
 
     public function build($next) {
 
-        $this->setClassName('Proyecto');
+        $this->setClassName('ProyectoAgencia');
         $proyecto = parent::build($next);
         if(array_key_exists('cd_proyecto',$next)){
             $proyecto->setOid( $next["cd_proyecto"] );
@@ -18,7 +18,7 @@ class ProyectoAgenciaFactory extends CdtGenericFactory {
 
         $factory = new DocenteFactory();
         $factory->setAlias("DOCDIR_" );
-        $proyecto->setDsDirector( $factory->build($next) );
+        $proyecto->setDirector( $factory->build($next) );
 
 
 

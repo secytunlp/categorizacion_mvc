@@ -59,7 +59,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDtAlta()
+    public function getDt_alta()
     {
         return $this->dt_alta;
     }
@@ -67,7 +67,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @param $dt_alta
      */
-    public function setDtAlta($dt_alta)
+    public function setDt_alta($dt_alta)
     {
         $this->dt_alta = $dt_alta;
     }
@@ -75,7 +75,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @return string
      */
-    public function getDtBaja()
+    public function getDt_baja()
     {
         return $this->dt_baja;
     }
@@ -83,7 +83,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @param $dt_baja
      */
-    public function setDtBaja($dt_baja)
+    public function setDt_baja($dt_baja)
     {
         $this->dt_baja = $dt_baja;
     }
@@ -107,7 +107,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @return mixed
      */
-    public function getNuDocumento()
+    public function getNu_documento()
     {
         return $this->nu_documento;
     }
@@ -115,7 +115,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @param mixed $nu_documento
      */
-    public function setNuDocumento($nu_documento)
+    public function setNu_documento($nu_documento)
     {
         $this->nu_documento = $nu_documento;
     }
@@ -123,7 +123,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @return mixed
      */
-    public function getDsTipo()
+    public function getDs_tipo()
     {
         return $this->ds_tipo;
     }
@@ -131,7 +131,7 @@ class IntegranteAgencia extends Entity{
     /**
      * @param mixed $ds_tipo
      */
-    public function setDsTipo($ds_tipo)
+    public function setDs_tipo($ds_tipo)
     {
         $this->ds_tipo = $ds_tipo;
     }

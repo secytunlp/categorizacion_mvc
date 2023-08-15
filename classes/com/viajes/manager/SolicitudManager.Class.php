@@ -76,7 +76,7 @@ class SolicitudManager extends EntityManager{
 		//proyectos
 		$proyectos = $entity->getProyectos();
 		foreach ($proyectos as $oProyecto) {
-			
+			$nombreDeClase = get_class($oProyecto);
 			$oOtrosProyecto = new OtrosProyecto();
 			$oOtrosProyecto->setSolicitud( $entity );
 			$oOtrosProyecto->setProyecto($oProyecto);
@@ -86,7 +86,7 @@ class SolicitudManager extends EntityManager{
 			$oOtrosProyecto->setDs_codigo($oProyecto->getDs_codigo());
 			$oOtrosProyecto->setDs_director($oProyecto->getDirector()->getDs_apellido().', '.$oProyecto->getDirector()->getDs_nombre());
 			$oOtrosProyecto->setDs_titulo($oProyecto->getDs_titulo());
-			$oOtrosProyecto->setDs_organismo('UNLP');
+			$oOtrosProyecto->setDs_organismo(($nombreDeClase=='ProyectoAgencia')?$oProyecto->getDs_organismo():'UNLP');
 			$managerProyecto = ManagerFactory::getOtrosProyectoManager();
 			$managerProyecto->add($oOtrosProyecto);
 			
@@ -163,6 +163,7 @@ class SolicitudManager extends EntityManager{
 		
     	$proyectos = $entity->getProyectos();
 		foreach ($proyectos as $oProyecto) {
+			CYTSecureUtils::logObject($oProyecto);
 			$oOtrosProyecto = new OtrosProyecto();
 			$oOtrosProyecto->setSolicitud( $entity );
 			$oOtrosProyecto->setProyecto($oProyecto);
@@ -172,6 +173,7 @@ class SolicitudManager extends EntityManager{
 			$oOtrosProyecto->setDs_codigo($oProyecto->getDs_codigo());
 			$oOtrosProyecto->setDs_director($oProyecto->getDirector()->getDs_apellido().', '.$oProyecto->getDirector()->getDs_nombre());
 			$oOtrosProyecto->setDs_titulo($oProyecto->getDs_titulo());
+			$oOtrosProyecto->setDs_organismo($oProyecto->getDs_organismo());
 			$managerProyecto = ManagerFactory::getOtrosProyectoManager();
 			$managerProyecto->add($oOtrosProyecto);
 			

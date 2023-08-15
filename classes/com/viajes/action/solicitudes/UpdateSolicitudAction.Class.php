@@ -137,40 +137,34 @@ class UpdateSolicitudAction extends UpdateEntityAction{
         }
         $entity->setCargos( $cargosArray );
 
-		
-		$oCriteria = new CdtSearchCriteria();
-		$tDocente = CYTSecureDAOFactory::getDocenteDAO()->getTableName();
-		$tIntegrante = CYTSecureDAOFactory::getIntegranteDAO()->getTableName();
-		$tProyecto = CYTSecureDAOFactory::getProyectoDAO()->getTableName();
-		$oCriteria->addFilter("$tDocente.cd_docente", $oDocente->getOid(), '=');
-		$oCriteria->addFilter('DIR.cd_tipoinvestigador', CYT_INTEGRANTE_DIRECTOR, '=');
-		$oCriteria->addFilter("$tIntegrante.cd_tipoinvestigador", CYT_INTEGRANTE_COLABORADOR, '<>');
-		//$oCriteria->addFilter("$tIntegrante.cd_estado", CYT_ESTADO_INTEGRANTE_ADMITIDO, '=');
-		
-		//$filter = new CdtSimpleExpression("(".$tProyecto.".cd_estado =".CYT_ESTADO_PROYECTO_ADMITIDO." OR ".$tProyecto.".cd_estado=".CYT_ESTADO_PROYECTO_ACREDITADO." OR ".$tProyecto.".cd_estado=".CYT_ESTADO_PROYECTO_EN_EVALUACION." OR ".$tProyecto.".cd_estado=".CYT_ESTADO_PROYECTO_EVALUADO.") AND (".$tIntegrante.".dt_baja > '".date('Y-m-d')."' OR ".$tIntegrante.".dt_baja IS NULL OR ".$tIntegrante.".dt_baja = '0000-00-00')");
-		//$filter = new CdtSimpleExpression("(".$tProyecto.".cd_estado=".CYT_ESTADO_PROYECTO_ACREDITADO.") AND (".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_ADMITIDO." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_CREADA." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_CAMBIO_HS_CREADO." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_CAMBIO_HS_RECIBIDO.") AND ((".$tIntegrante.".cd_estado != ".CYT_ESTADO_INTEGRANTE_BAJA_CREADA." AND ".$tIntegrante.".cd_estado != ".CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA." AND ".$tIntegrante.".dt_baja > '".date('Y-m-d')."') OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_CREADA." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA." OR ".$tIntegrante.".dt_baja IS NULL OR ".$tIntegrante.".dt_baja = '0000-00-00')");
-		//quitar esta linea y poner la de arriba (con esta se muestran lo sproyectos en evaluacion)
-		$filter = new CdtSimpleExpression("(".$tProyecto.".cd_estado=".CYT_ESTADO_PROYECTO_ACREDITADO." OR ".$tProyecto.".cd_estado=".CYT_ESTADO_PROYECTO_EN_EVALUACION.") AND (".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_ADMITIDO." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_CREADA." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_CAMBIO_HS_CREADO." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_CAMBIO_HS_RECIBIDO.") AND ((".$tIntegrante.".cd_estado != ".CYT_ESTADO_INTEGRANTE_BAJA_CREADA." AND ".$tIntegrante.".cd_estado != ".CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA." AND ".$tIntegrante.".dt_baja > '".date('Y-m-d')."') OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_CREADA." OR ".$tIntegrante.".cd_estado = ".CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA." OR ".$tIntegrante.".dt_baja IS NULL OR ".$tIntegrante.".dt_baja = '0000-00-00')");
-		$oCriteria->setExpresion($filter);
-		$oneYearAgo = intval(CYT_PERIODO_YEAR)-1;
-		$oCriteria->addFilter('dt_fin', $oneYearAgo.CYT_DIA_MES_PROYECTO_FIN, '>', new CdtCriteriaFormatStringValue());
-		
-		//proyectos.
-		$proyectosManager = CYTSecureManagerFactory::getProyectoManager();
-		$proyectos = $proyectosManager->getEntities($oCriteria);
-		$proyectosArray = new ItemCollection();
-		foreach ($proyectos as $oProyecto) {
-				$oCriteriaIntegrante = new CdtSearchCriteria();
-				$oCriteriaIntegrante->addFilter("$tDocente.cd_docente", $oDocente->getOid(), '=');
-				$oCriteriaIntegrante->addFilter("cd_proyecto", $oProyecto->getOid(), '=');
-				$integrantesManager = CYTSecureManagerFactory::getIntegranteManager();
-				$oIntegrante = $integrantesManager->getEntity($oCriteriaIntegrante);
-				$oProyecto->setDt_ini($oIntegrante->getDt_alta());
-				$dt_hasta = (($oIntegrante->getDt_baja()=='0000-00-00')||($oIntegrante->getDt_baja()=='')||(!$oIntegrante->getDt_baja())||($oIntegrante->getCd_estado()==CYT_ESTADO_INTEGRANTE_BAJA_CREADA)||($oIntegrante->getCd_estado()==CYT_ESTADO_INTEGRANTE_BAJA_RECIBIDA))?$oProyecto->getDt_fin():$oIntegrante->getDt_baja();
-				$oProyecto->setDt_fin($dt_hasta);
-				$proyectosArray->addItem($oProyecto);
-		}
-		$entity->setProyectos( $proyectosArray );
+
+        //proyectos.
+        $oCriteria = new CdtSearchCriteria();
+        $oCriteria->addFilter('cd_solicitud', $entity->getOid(), '=');
+        $oCriteria->addFilter('bl_agregado', 0, '=');
+        /*$filter = new CdtSimpleExpression("(dt_hasta > '".date('Y-m-d')."' OR dt_hasta IS NULL OR dt_hasta = '0000-00-00')");
+        $oCriteria->setExpresion($filter);*/
+        $proyectosActualesManager = ManagerFactory::getOtrosProyectoManager();
+        $proyectosActuales = $proyectosActualesManager->getEntities($oCriteria);
+        $proyectos = new ItemCollection();
+        foreach ($proyectosActuales as $oProyectoSolicitud) {
+
+            $oProyecto = new ProyectoAgencia();
+            $oProyecto->setOid($oProyectoSolicitud->getProyecto()->getoid());
+            $oProyecto->setDs_titulo($oProyectoSolicitud->getDs_titulo());
+            $oProyecto->setDs_codigo($oProyectoSolicitud->getDs_codigo());
+            $oDirector = new Docente();
+            $oDirector->setDs_apellido($oProyectoSolicitud->getDs_director());
+            $oProyecto->setDirector($oDirector);
+            $oProyecto->setDt_ini($oProyectoSolicitud->getDt_desdeproyecto());
+            $oProyecto->setDt_fin($oProyectoSolicitud->getDt_hastaproyecto());
+            $oProyecto->setDs_organismo($oProyectoSolicitud->getDs_organismo());
+
+
+            $proyectos->addItem($oProyecto);
+        }
+
+        $entity->setProyectos( $proyectos );
 		
 		/*$otrosProyectosManager = new OtrosProyectoSessionManager();
 		$entity->setOtrosProyectos( $otrosProyectosManager->getEntities(new CdtSearchCriteria()) );*/

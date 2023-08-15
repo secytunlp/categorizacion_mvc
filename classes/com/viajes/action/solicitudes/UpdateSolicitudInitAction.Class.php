@@ -63,7 +63,7 @@ class UpdateSolicitudInitAction extends UpdateEntityInitAction {
 		$proyectos = new ItemCollection();
 		foreach ($proyectosActuales as $oProyectoSolicitud) {
 			
-			$oProyecto = new Proyecto();
+			$oProyecto = new ProyectoAgencia();
 			$oProyecto->setOid($oProyectoSolicitud->getProyecto()->getoid());
 			$oProyecto->setDs_titulo($oProyectoSolicitud->getDs_titulo());
 			$oProyecto->setDs_codigo($oProyectoSolicitud->getDs_codigo());
@@ -72,7 +72,7 @@ class UpdateSolicitudInitAction extends UpdateEntityInitAction {
 			$oProyecto->setDirector($oDirector);
 			$oProyecto->setDt_ini($oProyectoSolicitud->getDt_desdeproyecto());
 			$oProyecto->setDt_fin($oProyectoSolicitud->getDt_hastaproyecto());
-
+            $oProyecto->setDs_organismo($oProyectoSolicitud->getDs_organismo());
 			
 			
 			$proyectos->addItem($oProyecto);

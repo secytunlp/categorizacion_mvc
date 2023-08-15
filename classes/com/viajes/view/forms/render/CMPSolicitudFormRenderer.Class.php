@@ -1192,7 +1192,9 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * armamos un array con los datos del proyecto.
      * @param Proyecto $solicitudProyecto
      */
-    public function buildArrayProyecto(Proyecto $solicitudProyecto){
+    public function buildArrayProyecto($solicitudProyecto){
+        //CYTSecureUtils::logObject($solicitudProyecto);
+        $nombreDeClase = get_class($solicitudProyecto);
 
         $array_proyecto = array();
 
@@ -1203,14 +1205,14 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
         $oCriteria->addFilter('DIR.cd_tipoinvestigador', CYT_INTEGRANTE_DIRECTOR, '=');
         $managerProyecto =  CYTSecureManagerFactory::getProyectoManager();
         $oProyecto = $managerProyecto->getEntity($oCriteria);*/
-        $array_proyecto["ds_organismo"] = 'UNLP';
+        $array_proyecto["ds_organismo"] = ($nombreDeClase=='ProyectoAgencia')?$solicitudProyecto->getDs_organismo():'UNLP';
         $array_proyecto["ds_codigo"] = $solicitudProyecto->getDs_codigo();
         $array_proyecto["ds_director"] = $solicitudProyecto->getDirector()->getDs_apellido().', '.$solicitudProyecto->getDirector()->getDs_nombre();
         $array_proyecto["ds_titulo"] = $solicitudProyecto->getDs_titulo();
         $array_proyecto["dt_inicio"] = CYTSecureUtils::formatDateToView($solicitudProyecto->getDt_ini());
         $array_proyecto["dt_fin"] = CYTSecureUtils::formatDateToView($solicitudProyecto->getDt_fin());
         //$array_proyecto["ds_estado"] = $solicitudProyecto->getTipoEstadoProyecto()->getDs_estado();
-
+        //CYTSecureUtils::logObject($array_proyecto);
         return $array_proyecto;
 
     }
@@ -1286,7 +1288,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
      * @param UnidadFacultad $proyecto
      * @param XTemplate $xtpl_proyectos
      */
-    protected function parseProyecto(Proyecto $solicitudProyecto, XTemplate $xtpl_proyectos){
+    protected function parseProyecto($solicitudProyecto, XTemplate $xtpl_proyectos){
 
         $columns = $this->getProyectoColumns();
         $aligns = $this->getProyectoColumnsAlign();

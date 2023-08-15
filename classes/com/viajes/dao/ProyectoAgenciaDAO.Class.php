@@ -34,7 +34,7 @@ class ProyectoAgenciaDAO extends EntityDAO {
 
         $tDocente = CYTSecureDAOFactory::getDocenteDAO()->getTableName();
 
-        $tIntegrante = CYTSecureDAOFactory::getIntegranteDAO()->getTableName();
+        $tIntegrante = DAOFactory::getIntegranteAgenciaDAO()->getTableName();
 
 
 

@@ -76,6 +76,8 @@ class Solicitud extends Entity{
 
     private $proyectos;
 
+    private $proyectosAgencia;
+
     private $cargos;
 
     private $becas;
@@ -217,6 +219,7 @@ private $ds_claveC6;
 
 
         $this->proyectos= new ItemCollection();
+        $this->proyectosAgencia= new ItemCollection();
         $this->becas= new ItemCollection();
         $this->otrosProyectos= new ItemCollection();
 
@@ -1627,6 +1630,22 @@ private $ds_claveC6;
     public function setSubareacarrera( $subareacarrera)
     {
         $this->subareacarrera = $subareacarrera;
+    }
+
+    /**
+     * @return ItemCollection
+     */
+    public function getProyectosAgencia()
+    {
+        return $this->proyectosAgencia;
+    }
+
+    /**
+     * @param ItemCollection $proyectosAgencia
+     */
+    public function setProyectosAgencia( $proyectosAgencia)
+    {
+        $this->proyectosAgencia = $proyectosAgencia;
     }
 
 
