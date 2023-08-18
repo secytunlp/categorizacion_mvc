@@ -18,7 +18,7 @@ class ExportSolicitudXLSAction extends CdtAction{
          $layout->setFilename($nombre);
 
          try{
-			$html .= "<table border=1'><tr><th>".CYT_LBL_SOLICITUD_PERIODO."</th><th>".CYT_LBL_SOLICITUD_SOLICITANTE."</th><th>".CYT_LBL_SOLICITUD_CUIL."</th><th>".CYT_LBL_SOLICITUD_MAIL."</th><th>".CYT_LBL_SOLICITUD_FECHA."</th><th>".CYT_LBL_SOLICITUD_ESTADO."</th><th>".CYT_LBL_SOLICITUD_FACULTAD."</th><th>".CYT_LBL_SOLICITUD_CATEGORIA."</th><th>".CYT_LBL_SOLICITUD_EQUIVALENCIA."</th><th>".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."</th></tr>";
+			$html = "<table><tr><th rowspan='5'><img src='".WEB_PATH."css/smile/images/sicadi_little.png' alt='logo' style='width: 10px; height: 10px;'></th></tr></table><table border=1'><tr><th>".CYT_LBL_SOLICITUD_PERIODO."</th><th>".CYT_LBL_SOLICITUD_SOLICITANTE."</th><th>".CYT_LBL_SOLICITUD_CUIL."</th><th>".CYT_LBL_SOLICITUD_MAIL."</th><th>".CYT_LBL_SOLICITUD_ESTADO."</th><th>".CYT_LBL_SOLICITUD_FACULTAD."</th><th>".CYT_LBL_SOLICITUD_CATEGORIA."</th><th>".CYT_LBL_SOLICITUD_EQUIVALENCIA."</th><th>".CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA."</th><th>".CYT_MSG_SOLICITUD_PDF_HEADER_TITLE."</th></tr>";
 			$filtro = new CMPSolicitudFilter();
 			$filtro->fillSavedProperties();			
 		
@@ -163,7 +163,7 @@ class ExportSolicitudXLSAction extends CdtAction{
 				
 
 				
-				$html .= "<tr><td>".$oSolicitud->getPeriodo()->getDs_periodo()."</td><td>".$oSolicitud->getDocente()->getDs_apellido().', '.$oSolicitud->getDocente()->getDs_nombre()."</td><td>".$oSolicitud->getDocente()->getNu_precuil().'-'.$oSolicitud->getDocente()->getNu_documento().'-'.$oSolicitud->getDocente()->getNu_postcuil()."</td><td>".$oSolicitud->getDs_mail()."</td><td>".$fecha."</td><td>".$oSolicitud->getEstado()->getDs_estado()."</td><td>".$oSolicitud->getFacultadplanilla()->getDs_facultad()."</td><td>".$oSolicitud->getCategoria()->getDs_categoria()."</td><td>".$oSolicitud->getEquivalencia()->getDs_equivalencia()."</td><td>".$oSolicitud->getCategoriasolicitada()->getDs_categoria()."</td></tr>";
+				$html .= "<tr><td>".$oSolicitud->getPeriodo()->getDs_periodo()."</td><td>".$oSolicitud->getDocente()->getDs_apellido().', '.$oSolicitud->getDocente()->getDs_nombre()."</td><td>".$oSolicitud->getDocente()->getNu_precuil().'-'.$oSolicitud->getDocente()->getNu_documento().'-'.$oSolicitud->getDocente()->getNu_postcuil()."</td><td>".$oSolicitud->getDs_mail()."</td><td>".$oSolicitud->getEstado()->getDs_estado()."</td><td>".$oSolicitud->getFacultadplanilla()->getDs_facultad()."</td><td>".$oSolicitud->getCategoria()->getDs_categoria()."</td><td>".$oSolicitud->getEquivalencia()->getDs_equivalencia()."</td><td>".$oSolicitud->getCategoriasolicitada()->getDs_categoria()."</td><td>'".$oSolicitud->getDt_fecha()."</td></tr>";
 				$cant++;
 
 				

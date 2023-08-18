@@ -44,7 +44,7 @@ class ViewSolicitudPDFAction extends CdtAction{
 		if ((!CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_VER_ANTERIORES ))&&($oPeriodo->getOid()!=$oPeriodoActual->getOid())) {
 			throw new GenericException( CYT_MSG_SOLICITUD_ANTERIORES_PROHIBIDO );
 		}
-		
+		$pdf->setDt_fecha($oSolicitud->getDt_fecha());
 		
 		$pdf->setDs_investigador($oSolicitud->getDocente()->getDs_apellido().', '.$oSolicitud->getDocente()->getDs_nombre());
 		$pdf->setNu_cuil($oSolicitud->getDocente()->getNu_precuil().'-'.str_pad($oSolicitud->getDocente()->getNu_documento(), 8, "0", STR_PAD_LEFT).'-'.$oSolicitud->getDocente()->getNu_postcuil());
@@ -73,9 +73,9 @@ class ViewSolicitudPDFAction extends CdtAction{
 		
 		
 		
-		$pdf->setDs_cargo($oSolicitud->getCargo()->getDs_cargo());
+		/*$pdf->setDs_cargo($oSolicitud->getCargo()->getDs_cargo());
 		$pdf->setDs_deddoc($oSolicitud->getDeddoc()->getDs_deddoc());
-		$pdf->setDs_facultad($oSolicitud->getFacultad()->getDs_facultad());
+		$pdf->setDs_facultad($oSolicitud->getFacultad()->getDs_facultad());*/
 		//$pdf->setDs_disciplina($oSolicitud->getDs_disciplina());
 		
 		$pdf->setBl_becario($oSolicitud->getBl_becario());
@@ -97,7 +97,15 @@ class ViewSolicitudPDFAction extends CdtAction{
         $pdf->setDs_equivalencia($oSolicitud->getEquivalencia()->getDs_equivalencia());
         //CYTSecureUtils::logObject($oSolicitud);
         $pdf->setDs_categoriasolicitada($oSolicitud->getCategoriasolicitada()->getDs_categoria());
-		
+
+
+        //cargos
+        $oCriteria = new CdtSearchCriteria();
+        $oCriteria->addFilter('cd_solicitud', $oSolicitud->getOid(), '=');
+
+        $oCargoManager =  ManagerFactory::getSolicitudCargoManager();
+        $pdf->setCargos( $oCargoManager->getEntities($oCriteria) );
+
 		//proyectos.
 		$oCriteria = new CdtSearchCriteria();
 		$oCriteria->addFilter('cd_solicitud', $oSolicitud->getOid(), '=');

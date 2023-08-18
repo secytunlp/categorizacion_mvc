@@ -46,11 +46,44 @@ class ViewSolicitudPDF extends CdtPDFPrint{
   	private $ds_carrerainv = "";	
 	private $ds_organismo = "";	
 	private $ds_lugarTrabajoCarrera = "";	
-	private $dt_ingreso = "";	
-		
-	
+	private $dt_ingreso = "";
+
+    private $dt_fecha = "";
 	private $proyectos;	
 	private $solicitudProyectos;
+    private $cargos;
+
+    /**
+     * @return string
+     */
+    public function getDt_fecha()
+    {
+        return $this->dt_fecha;
+    }
+
+    /**
+     * @param string $dt_fecha
+     */
+    public function setDt_fecha($dt_fecha)
+    {
+        $this->dt_fecha = $dt_fecha;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCargos()
+    {
+        return $this->cargos;
+    }
+
+    /**
+     * @param mixed $cargos
+     */
+    public function setCargos($cargos)
+    {
+        $this->cargos = $cargos;
+    }
 
     /**
      * @return string
@@ -112,6 +145,7 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		
 		parent::__construct();
 		$this->setProyectos(new ItemCollection());
+        $this->setCargos(new ItemCollection());
 		//$this->setJovenesBecas(new ItemCollection());
 		$this->setSolicitudProyectos(new ItemCollection());
 
@@ -130,15 +164,17 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		}
 		$this->titulo();
 		$this->unidad();
-		$this->cargo();
-		//if ($this->getBl_becario()){
+		//$this->cargo();
+        $this->separador(CYT_MSG_SOLICITUD_CARGOS_ACTUALES);
+        $this->CargosActuales();
+		if ($this->getBl_becario()){
 			$this->separador(CYT_MSG_SOLICITUD_BECARIO);
 			$this->becario();	
-		//}
-		//if ($this->getBl_carrera()){
+		}
+		if ($this->getBl_carrera()){
 			$this->separador(CYT_MSG_SOLICITUD_INVESTIGADOR_CARRERA);
 			$this->carrera();	
-		//}
+		}
 		
 
 
@@ -197,17 +233,17 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		$this->SetY(13);
 		
 		$this->SetTextColor(0, 0, 0);
-		$this->Image(APP_PATH . 'css/images/unlp.png',12,16,85,16);
+		$this->Image(APP_PATH . 'css/smile/images/sicadi.png',12,16,85,16);
 	
 		$this->SetFont ( 'Arial', '', 13 );
 		
 		
 		
-		$this->Cell ( $this->getMaxWidth(), 10, $this->encodeCharacters(CYT_MSG_SOLICITUD_PDF_HEADER_TITLE)." ".$this->getYear(), 'LRT',0,'R');
+		$this->Cell ( $this->getMaxWidth(), 10, $this->encodeCharacters(CYT_MSG_SOLICITUD_PDF_HEADER_TITLE), 'LRT',0,'R');
 		$this->ln(5);
 		
 		$this->SetFont ( 'Arial', '', 12 );
-		$this->Cell ( $this->getMaxWidth(), 10, $this->encodeCharacters(CYT_MSG_SOLICITUD_PDF_HEADER_TITLE_2), 'LR',0,'R');
+		$this->Cell ( $this->getMaxWidth(), 10, $this->getDt_fecha(), 'LR',0,'R');
 		$this->ln(5);
 		
 		$this->SetFont ( 'Arial', '', 12 );
@@ -461,12 +497,52 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 
 		$this->ln(10);
 	}
-	
+
+    function CargosActuales(){
+
+        $this->ln(-4);
+        $tabla .= '<table width="100%" border="1" cellpadding="0" cellspacing="0">
+		<thead><tr>
+		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_DOCENTE_CARGO).'</td>	
+                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_DOCENTE_DEDDOC).'</td>
+                
+                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_DOCENTE_FACULTAD).'</td>
+                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_FECHA).'</td>
+                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_CARGO_SITUACION).'</td>
+                </tr></thead><tbody>';
+        foreach ($this->getCargos() as $oCargo) {
+
+            $tabla .= '<tr>';
+            $bgcolor= '';
+
+            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getCargo()->getDs_cargo()).'</td>';
+            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getDeddoc()->getDs_deddoc()).'</td>';
+            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getFacultad()->getDs_facultad()).'</td>';
+            $tabla .= '<td '.$bgcolor.'>'.CYTSecureUtils::formatDateToView($oCargo->getDt_fecha()).'</td>';
+            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getSituacion()).'</td>';
+
+
+
+
+
+
+        }
+
+        $tabla .= '</tbody></table>';
+        $this->WriteHTML($tabla);
+        $this->ln(5);
+
+
+        //$this->SetFont ( 'times', '', 12 );
+    }
+
+
 	function ProyectosActuales(){
 		
 		$this->ln(-4);
 		$tabla .= '<table width="100%" border="1" cellpadding="0" cellspacing="0">
 		<thead><tr>
+		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD).'</td>
 		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_CODIGO).'</td>	
                 <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_TITULO).'</td>
                 
@@ -478,7 +554,7 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 			
 			$tabla .= '<tr>';
 			$bgcolor= ($oProyecto->getBl_agregado())?'bgcolor="#CCCCCC"':'';
-			
+            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_organismo()).'</td>';
 			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_codigo()).'</td>';
 			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_titulo()).'</td>';
 			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_director()).'</td>';
@@ -561,7 +637,7 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		$this->Cell ( $this->getMaxWidth()-130, 8, CYT_MSG_SOLICITUD_FIRMA_LUGAR, '', 0, 'C');
 		$this->Cell ( $this->getMaxWidth()-160, 8);
 		$this->Cell ( $this->getMaxWidth()-130, 8, $this->encodeCharacters(CYT_MSG_SOLICITUD_FIRMA_ACLARACION), '', 0, 'C');
-		$this->ln(10);
+		/*$this->ln(10);
 		$this->SetFont ( 'Arial', 'B', 10 );
 		$this->Cell ( $this->getMaxWidth()-180, 8);
 		$this->Cell ( $this->getMaxWidth()-130, 8, '', 'B');
@@ -573,7 +649,7 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		$this->Cell ( $this->getMaxWidth()-160, 8);
 		//$this->Cell ( $this->getMaxWidth()-130, 8, $this->encodeCharacters(CYT_MSG_SOLICITUD_FIRMA_AVAL.$this->getDs_facultadplanilla()), '', 0, 'C');
 		$this->Cell ( $this->getMaxWidth()-130, 8, $this->encodeCharacters(CYT_MSG_SOLICITUD_FIRMA_AVAL), '', 0, 'C');
-		$this->ln(10);
+		$this->ln(10);*/
 		
 	}
 	

@@ -260,6 +260,7 @@ private function _makePageSize(){
 		$html=str_replace("&rarr;","->",$html);
 		$html=str_replace("&raquo;","»",$html); 
 		$html=str_replace("&ugrave;","ù",$html); 
+
 		
 		return $html;
 	}
@@ -339,6 +340,7 @@ private function _makePageSize(){
     }*/
     
      $html =str_replace('background-color','bgcolor', $html);
+	
     $html = $this->trimespecialchar($html);
     $start = strpos(strtolower($html), '<table');
     $end = strpos(strtolower($html), '</table');

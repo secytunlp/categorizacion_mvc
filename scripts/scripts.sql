@@ -419,6 +419,12 @@ AUTO_INCREMENT=0
 ;
 
 ############################Insertar los integrantes###################################################
-    INSERT INTO integrante_agencia (nu_documento, cd_proyecto, cd_tipoinvestigador, dt_alta, dt_baja, ds_tipo)
+    INSERT IGNORE INTO integrante_agencia (nu_documento, cd_proyecto, cd_tipoinvestigador, dt_alta, dt_baja, ds_tipo)
 SELECT aux_integrante_agencia.nu_documento, proyecto_agencia.cd_proyecto, CASE aux_integrante_agencia.ds_tipo WHEN 'IR' THEN 1 END, aux_integrante_agencia.dt_alta, aux_integrante_agencia.dt_baja, aux_integrante_agencia.ds_tipo FROM `aux_integrante_agencia` INNER JOIN proyecto_agencia ON aux_integrante_agencia.ds_codigo = proyecto_agencia.ds_codigo;
+
+SELECT * FROM aux_integrante_agencia WHERE NOT EXISTS (SELECT proyecto_agencia.ds_codigo FROM `proyecto_agencia` WHERE proyecto_agencia.ds_codigo = aux_integrante_agencia.ds_codigo);
+
+SELECT proyecto_agencia.ds_codigo, integrante_agencia.* FROM proyecto_agencia INNER JOIN integrante_agencia ON proyecto_agencia.cd_proyecto = integrante_agencia.cd_proyecto WHERE integrante_agencia.nu_documento = 0;
+
+UPDATE `proyecto_agencia` SET `ds_organismo` = 'Agencia I+D+i' WHERE `ds_organismo` LIKE '%fon%'
 

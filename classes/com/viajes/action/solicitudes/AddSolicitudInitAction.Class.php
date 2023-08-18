@@ -253,8 +253,8 @@ class AddSolicitudInitAction extends EditEntityInitAction {
 
             //$proyectosArray = new ItemCollection();
             foreach ($proyectos as $oProyecto) {
-                //CDTUtils::log('Proyecto:');
-
+                CDTUtils::log('Proyecto:');
+                CYTSecureUtils::logObject($oProyecto);
                 $oCriteriaIntegrante = new CdtSearchCriteria();
                 $oCriteriaIntegrante->addFilter("$tIntegrante.nu_documento", $oDocente->getNu_documento(), '=');
                 $oCriteriaIntegrante->addFilter("cd_proyecto", $oProyecto->getOid(), '=');
