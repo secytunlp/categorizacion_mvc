@@ -189,7 +189,7 @@ class AddSolicitudInitAction extends EditEntityInitAction {
             $oCriteria = new CdtSearchCriteria();
             $oCriteria->addFilter('dni', $oDocente->getNu_documento(), '=');
             $oCriteria->addFilter('escalafon', 'Docente', '=', new CdtCriteriaFormatStringValue());
-            $filter = new CdtSimpleExpression("(clase in ('05X','05S','05E','06X','06S','06E','07X','07S','07E','08X','08S','08E','09X','09S','09E'))");
+            $filter = new CdtSimpleExpression("(clase in ('05X','05S','05E','06X','06S','06E','07X','07S','07E','08X','08S','08E','09X','09S','09E') AND (situacion IN ('Trabajando','Licencia por maternidad')))");
             $oCriteria->setExpresion($filter);
             $oCargoManager =  ManagerFactory::getAlfabeticoManager();
             $oCargos = $oCargoManager->getEntities($oCriteria);
