@@ -39,7 +39,7 @@ define('CYT_MSG_SOLICITUD_RESUMEN_PALABRAS', 'Palabras');
 
 
 define('CYT_MSG_SOLICITUD_TAB_DOMICILIO', "Datos Personales");
-define('CYT_MSG_SOLICITUD_DOMICILIO_TITULO', "Domicilio de notificación (Dentro del Radio Urbano de La Plata, Art. 20 Ord. 101)");
+define('CYT_MSG_SOLICITUD_DOMICILIO_TITULO', "Domicilio de residencia");
 define('CYT_MSG_SOLICITUD_TAB_UNIVERSIDAD', "Datos Académicos");
 define('CYT_MSG_SOLICITUD_TAB_BECARIO', "Becario/a");
 define('CYT_MSG_SOLICITUD_TAB_CARRERAINV', "Investigador/a  o Profesional de Apoyo");
@@ -82,6 +82,8 @@ define('CYT_MSG_SOLICITUD_MENOR_YEAR', 'Menos de $1 años de participación en p
 define('CYT_MSG_SOLICITUD_MONTO_MAXIMO', 'El monto máximo es de');
 define('CYT_MSG_SOLICITUD_MONTO_DECLARAR', 'El total de la pestaña presupuesto debe ser mayor que 0 (cero) y no superar los ');
 define('CYT_MSG_SOLICITUD_TAB_CAMPOS_REQUERIDOS', "Complete todos los campos de la pestaña");
+
+define('CYT_MSG_SOLICITUD_CARRERA_TITULO', "Espacio a ser completado únicamente por aquellas personas que estén desempeñándose en la actualidad como Investigadoras/es o Profesionales de Apoyo");
 
 define('CYT_MSG_SOLICITUD_EQUIVALENCIA_HELP', 'Los Docentes de la UNLP pertenecientes a la Carrera del Investigador Científico Tecnológico y Carrera Profesional de Apoyo con lugar de trabajo en la UNLP, podrán solicitar el reconocimiento de las siguientes categorías: <br><strong>DI1</strong>: quienes posean categoría de Investigador/a Principal o Superior o sean Profesores Eméritos<br>
 <strong>DI2</strong>: quienes posean categoría de Investigador/a Independiente <br>
@@ -161,7 +163,7 @@ define('CYT_MSG_SOLICITUD_PDF_HEADER_TITLE_2', 'Solicitud de Categorización');
 
 define('CYT_MSG_SOLICITUD_PDF_MES_1', 'Junio');
 define('CYT_MSG_SOLICITUD_PDF_MES_2', 'Julio');
-define('CYT_MSG_SOLICITUD_SEPARADOR_DOMICILIO', 'Domicilio de notificación (Dentro del Radio Urbano de La Plata, Art. 20 Ord. 101)');
+define('CYT_MSG_SOLICITUD_SEPARADOR_DOMICILIO', 'Domicilio de residencia');
 define('CYT_MSG_SOLICITUD_PROYECTOS_ACTUALES', 'PROYECTO/S ACREDITADO/S EN EL/LOS QUE PARTICIPA ACTUALMENTE');
 define('CYT_MSG_SOLICITUD_CARGOS_ACTUALES', 'CARGOS VIGENTES');
 define('CYT_MSG_SOLICITUD_PROYECTOS_ANTERIORES', 'PROYECTO ACREDITADO POR OTRA ENTIDAD');

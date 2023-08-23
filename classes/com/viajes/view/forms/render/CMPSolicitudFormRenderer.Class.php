@@ -17,6 +17,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
     protected function renderFieldset(CMPForm $form, XTemplate $xtpl){
         $xtpl->assign("titulo_domicilio", CYT_MSG_SOLICITUD_DOMICILIO_TITULO);
         $xtpl->assign("titulo_becario", CYT_MSG_SOLICITUD_BECARIO_TITULO);
+        $xtpl->assign("titulo_carrera", CYT_MSG_SOLICITUD_CARRERA_TITULO);
         $xtpl->assign("titulo_proyectos", CYT_MSG_SOLICITUD_PROYECTOS_TITULO);
         $xtpl->assign("label_equivalencia_help", CYT_MSG_SOLICITUD_EQUIVALENCIA_HELP);
         //$xtpl->assign("titulo_tipo_investigador", CYT_MSG_SOLICITUD_TIPO_INVESTIGADOR_TITULO);
@@ -356,7 +357,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.ds_facebook");*/
 
-
+            $xtpl->assign("label_resguardo", CYT_LBL_SOLICITUD_RESGUARDO_SPEECH);
 
             $xtpl->assign("universidad_tab", CYT_MSG_SOLICITUD_TAB_UNIVERSIDAD);
 

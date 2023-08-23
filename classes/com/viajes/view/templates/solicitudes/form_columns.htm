@@ -194,6 +194,7 @@ function  seleccionarInstitucion(ds_institucion){
 }
 
 function  seleccionarOrganismo(cd_organismo){
+	//console.log('ffff'+$('#carrerainv_oid').val());
 	$("#item-div-organismo_oid").append("<span id='iconoLoading' style='position:absolute;'><img src='css/grid/loading.gif' /></span>")
 	jQuery.ajax({
 		url:"doAction?action=add_solicitud_carrera&cd_organismo=" + cd_organismo.value,
@@ -209,12 +210,27 @@ function  seleccionarOrganismo(cd_organismo){
 			else{
 				$("#edit_solicitud_input_submit_ajax").show();
 				var carrera = $("#carrerainv_oid").val();
-				$("#carrerainv_oid").empty();
-				console.log(data);
-				$.each(data, function(k,v){
 
-					$("#carrerainv_oid").append("<option value=\""+v+"\">"+k+"</option>");
+				$("#carrerainv_oid").empty();
+				// Definir el orden deseado de las constantes
+				const ordenDeseado = [
+					'6',
+					'12',
+					'3',
+					'2',
+					'1',
+					'13',
+					'9',
+					'8'
+					// ... Agregar más valores según sea necesario
+				];
+				// Agregar opciones al select en el orden deseado
+				ordenDeseado.forEach(function(valor) {
+					if (data[valor]) {
+						$("#carrerainv_oid").append("<option value=\"" + valor + "\">" + data[valor] + "</option>");
+					}
 				});
+
 				$("#carrerainv_oid").val(carrera);
 			}
 			$("#iconoLoading").remove();
@@ -759,6 +775,7 @@ function successDefault_{form_id}(data ){
 			</div>
 
 </div>
+		<div style="color:#A43B3B; font-weight:bold">{label_resguardo}</div>
 	</div>
 
 	<div id="tabs-2" style="position:relative;">
@@ -1104,6 +1121,10 @@ function successDefault_{form_id}(data ){
 		
 	</div>
 	<div id="tabs-4" style="position:relative;">
+		<div class="form-flex">
+
+			<div style="color:#A43B3B; font-weight:bold">{titulo_carrera}</div>
+		</div>
 		<div class="form-flex">
 			<div class="form-right">
 		<!-- BEGIN: organismo_oid -->

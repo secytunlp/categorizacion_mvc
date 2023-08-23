@@ -36,14 +36,15 @@ define('CYT_LBL_SOLICITUD_FOTO_SPEECH', 'Adjuntar foto personal');
 
 define('CYT_LBL_SOLICITUD_FOTO_SIGLA', 'FOTO');
 
+define('CYT_LBL_SOLICITUD_RESGUARDO_SPEECH', 'La información vertida en los campos de dirección, teléfono, fecha de nacimiento y correos electrónicos<br>se preservará y no se divulgará a terceras partes.<br><br>La foto personal en conjunto con los perfiles de las redes académicas será empleada para la construcción<br>de un micro-portal personal dentro de la UNLP, con el objetivo de generar un perfil académico individual de los DI.');
+
 define('CYT_LBL_SOLICITUD_TITULO', 'Título de grado');
 define('CYT_LBL_SOLICITUD_EGRESO_GRADO', 'F. Egreso');
 define('CYT_LBL_SOLICITUD_TITULO_POSGRADO', 'Título de posgrado');
 define('CYT_LBL_SOLICITUD_EGRESO_POSGRADO', 'F. Egreso');
 define('CYT_LBL_SOLICITUD_DOCTORADO', 'Obtuvo el doctorado?');
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO', 'L. de Trab. en la UNLP');
-define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO', 'Lugar de trabajo en la UNLP en donde realiza sus tareas de investigación y por la cual desea ser categorizado/a (Instituto, Centro de Investigación, Laboratorio, etc.). 
-');
+define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO', 'Lugar de trabajo en la UNLP en donde realiza sus tareas de investigación.');
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_DIRECCION', 'Dirección');
 define('CYT_LBL_SOLICITUD_LUGAR_TRABAJO_TELEFONO', 'Teléfono');
 define('CYT_LBL_SOLICITUD_CARGO', 'Cargo docente');
