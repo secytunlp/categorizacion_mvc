@@ -49,11 +49,11 @@ class CYTUtils {
     public static function getCategoriasItems($mostradas="") {
         if ($mostradas) {
             $oCriteria = new CdtSearchCriteria();
-            $filter = new CdtSimpleExpression("cd_categoria in (".$mostradas.")");
+            $filter = new CdtSimpleExpression("cd_categoriasicadi in (".$mostradas.")");
             $oCriteria->setExpresion($filter);
         }
 
-        return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getCategoriasicadiManager(), "oid", "ds_categoria","","","","cd_categoria",$oCriteria);
+        return CYTSecureUtils::getFilterOptionItems( ManagerFactory::getCategoriasicadiManager(), "oid", "ds_categoriasicadi","","","","cd_categoriasicadi",$oCriteria);
 
     }
 
