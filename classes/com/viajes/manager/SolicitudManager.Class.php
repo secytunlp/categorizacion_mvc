@@ -847,7 +847,7 @@ class SolicitudManager extends EntityManager{
 		/*if ($entity->getBl_director()) {
 			$error .= CYT_MSG_SOLICITUD_FUE_DIRCODIR.'<br>';
 		}*/
-		if ((!$entity->getFacultadplanilla()->getOid())||(!$entity->getEquivalencia()->getOid())||(!$entity->getCategoriaSolicitada()->getOid())) {
+		if ((!$entity->getFacultadplanilla()->getOid())||(!$entity->getEquivalencia()->getOid())||(!$entity->getCategoriasicadi()->getOid())) {
 			$error .= CYT_MSG_CAMPOS_REQUERIDOS.' '.CYT_MSG_SOLICITUD_TAB_DESCRIPCION.'<br>';
 		}
 
@@ -859,12 +859,12 @@ class SolicitudManager extends EntityManager{
 					if (!in_array($entity->getCategoria()->getOid(),explode(",",CYT_CATS_SPU))){
 						$error .= CYT_MSG_SOLICITUD_SIN_SPU.'<br>';
 					}
-					if ($entity->getCategoria()->getOid()!=$entity->getCategoriasolicitada()->getOid()) {
+					if ($entity->getCategoria()->getOid()!=$entity->getCategoriasicadi()->getOid()) {
 						$error .= CYT_MSG_SOLICITUD_SPU_DISTINTA.'<br>';
 					}
 					break;
 				case CYT_EQUIVALENCIA_EMERITO:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_SUPERIOR))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_SUPERIOR))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_INDEPENDIENTE_MENOR.'<br>';
 					}
 
@@ -873,7 +873,7 @@ class SolicitudManager extends EntityManager{
 					}
 					break;
 				case CYT_EQUIVALENCIA_INDEPENDIENTE:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_INDEPENDIENTE))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_INDEPENDIENTE))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_INDEPENDIENTE_MENOR.'<br>';
 					}
 
@@ -883,7 +883,7 @@ class SolicitudManager extends EntityManager{
 					break;
 
 				case CYT_EQUIVALENCIA_SUPERIOR:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_SUPERIOR))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_SUPERIOR))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_SUPERIOR_MENOR.'<br>';
 					}
 
@@ -892,7 +892,7 @@ class SolicitudManager extends EntityManager{
 					}
 					break;
 				case CYT_EQUIVALENCIA_ADJUNTO:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ADJUNTO))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_ADJUNTO))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_ADJUNTO_MENOR.'<br>';
 					}
 
@@ -901,7 +901,7 @@ class SolicitudManager extends EntityManager{
 					}
 					break;
 				case CYT_EQUIVALENCIA_ASISTENTE_3:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ADJUNTO))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_ADJUNTO))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_ASISTENTE_MENOR.'<br>';
 					}
 
@@ -923,7 +923,7 @@ class SolicitudManager extends EntityManager{
 
 					break;
 				case CYT_EQUIVALENCIA_ASISTENTE_CPA:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_P_ASISTENTE_MENOR.'<br>';
 					}
 
@@ -951,7 +951,7 @@ class SolicitudManager extends EntityManager{
 					}
 					break;
 				case CYT_EQUIVALENCIA_BECARIO_POSTDOCTORAL:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_ASISTENTE))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_POSTDOCTORAL_MENOR.'<br>';
 					}
 
@@ -978,7 +978,7 @@ class SolicitudManager extends EntityManager{
 					}
 					break;
 				case CYT_EQUIVALENCIA_BECARIO_DOCTORAL:
-					if (!in_array($entity->getCategoriaSolicitada()->getOid(),explode(",",CYT_CATS_DOCTORAL))){
+					if (!in_array($entity->getCategoriasicadi()->getOid(),explode(",",CYT_CATS_DOCTORAL))){
 						$error .= CYT_MSG_SOLICITUD_EQUIVALENCIA_DOCTORAL_MENOR.'<br>';
 					}
 

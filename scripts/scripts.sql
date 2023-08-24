@@ -74,7 +74,7 @@ CREATE TABLE `solicitudcategorizacion` (
 
 
                                     `cd_comision` INT(11) NULL DEFAULT NULL,
-                                    `cd_categoriasolicitada` INT(11) NULL DEFAULT NULL,
+                                    `cd_categoriasicadi` INT(11) NULL DEFAULT NULL,
                                     `ds_curriculum` VARCHAR(255) NULL DEFAULT NULL,
                                     `ds_resbeca` VARCHAR(255) NULL DEFAULT NULL,
                                     `ds_rescarrera` VARCHAR(255) NULL DEFAULT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `solicitudcategorizacion` (
 
                                     PRIMARY KEY (`cd_solicitud`),
                                     UNIQUE INDEX `periodo_docente_unique` (`cd_periodo`, `cd_docente`),
-                                    INDEX `cd_docente` (`cd_docente`, `cd_periodo`, `cd_unidad`, `cd_cargo`, `cd_deddoc`, `cd_facultad`, `cd_facultadplanilla`, `cd_carrerainv`, `cd_organismo`, `cd_categoria`, `cd_comision`, `cd_categoriasolicitada`),
+                                    INDEX `cd_docente` (`cd_docente`, `cd_periodo`, `cd_unidad`, `cd_cargo`, `cd_deddoc`, `cd_facultad`, `cd_facultadplanilla`, `cd_carrerainv`, `cd_organismo`, `cd_categoria`, `cd_comision`, `cd_categoriasicadi`),
                                     INDEX `cd_estado` (`cd_estado`),
                                     INDEX `cd_titulogrado` (`cd_titulogrado`),
                                     INDEX `cd_tituloposgrado` (`cd_tituloposgrado`)
@@ -275,9 +275,9 @@ ALTER TABLE `solicitudcategorizacion`
     ADD COLUMN `nu_year3` int(11) NULL DEFAULT NULL;
 
 CREATE TABLE `categoriasicadi` (
-                            `cd_categoria` INT(11) NOT NULL AUTO_INCREMENT,
-                            `ds_categoria` VARCHAR(30) NOT NULL,
-                            PRIMARY KEY (`cd_categoria`)
+                            `cd_categoriasicadi` INT(11) NOT NULL AUTO_INCREMENT,
+                            `ds_categoriasicadi` VARCHAR(30) NOT NULL,
+                            PRIMARY KEY (`cd_categoriasicadi`)
 )
     COLLATE='utf8_general_ci'
 ENGINE=InnoDB

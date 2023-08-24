@@ -859,13 +859,13 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.equivalencia_oid");
 
-            $fieldCategoriasolicitada = $fields['categoriasolicitada_oid'];
-            //CYTSecureUtils::logObject($fieldCategoriasolicitada);
-            $input = $fieldCategoriasolicitada->getInput();
-            $label = $fieldCategoriasolicitada->getLabel();
+            $fieldCategoriasicadi = $fields['categoriasicadi_oid'];
+            //CYTSecureUtils::logObject($fieldCategoriasicadi);
+            $input = $fieldCategoriasicadi->getInput();
+            $label = $fieldCategoriasicadi->getLabel();
             $this->renderLabelTab( $label, $input, $xtpl );
             $this->renderInputTab( $input, $xtpl );
-            $xtpl->assign("minWidth", $fieldCategoriasolicitada->getMinWidth());
+            $xtpl->assign("minWidth", $fieldCategoriasicadi->getMinWidth());
 
             if( $input->getIsVisible() ){
                 $xtpl->assign("display", 'block');
@@ -873,7 +873,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             else $xtpl->assign("display", 'none');
 
-            $xtpl->parse("main.categoriasolicitada_oid");
+            $xtpl->parse("main.categoriasicadi_oid");
 
 
 

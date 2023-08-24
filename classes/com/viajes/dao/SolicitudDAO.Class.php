@@ -67,7 +67,7 @@ class SolicitudDAO extends EntityDAO {
 		$fieldsValues["dt_ingreso"] = $this->formatDate( $entity->getDt_ingreso() );
 		$fieldsValues["cd_categoria"] = $this->formatIfNull( $entity->getCategoria()->getOid(), 'null' );
         $fieldsValues["cd_equivalencia"] = $this->formatIfNull( $entity->getEquivalencia()->getOid(), 'null' );
-        $fieldsValues["cd_categoriasolicitada"] = $this->formatIfNull( $entity->getCategoriasolicitada()->getOid(), 'null' );
+        $fieldsValues["cd_categoriasicadi"] = $this->formatIfNull( $entity->getCategoriasicadi()->getOid(), 'null' );
 		/*$fieldsValues["bl_director"] = $this->formatIfNull( $entity->getBl_director(), '0' );
 		$fieldsValues["ds_objetivo"] = $this->formatString( $entity->getDs_objetivo() );*/
 		
@@ -144,7 +144,7 @@ class SolicitudDAO extends EntityDAO {
 		$fieldsValues["dt_ingreso"] = $this->formatDate( $entity->getDt_ingreso() );
 		$fieldsValues["cd_categoria"] = $this->formatIfNull( $entity->getCategoria()->getOid(), 'null' );
         $fieldsValues["cd_equivalencia"] = $this->formatIfNull( $entity->getEquivalencia()->getOid(), 'null' );
-        $fieldsValues["cd_categoriasolicitada"] = $this->formatIfNull( $entity->getCategoriasolicitada()->getOid(), 'null' );
+        $fieldsValues["cd_categoriasicadi"] = $this->formatIfNull( $entity->getCategoriasicadi()->getOid(), 'null' );
 		/*$fieldsValues["bl_director"] = $this->formatIfNull( $entity->getBl_director(), '0' );
 		$fieldsValues["ds_objetivo"] = $this->formatString( $entity->getDs_objetivo() );*/
 		
@@ -225,7 +225,7 @@ class SolicitudDAO extends EntityDAO {
        	$sql .= " LEFT JOIN " . $tCarrerainv . " ON($tSolicitud.cd_carrerainv = $tCarrerainv.cd_carrerainv)";
        	$sql .= " LEFT JOIN " . $tCategoria . " ON($tSolicitud.cd_categoria = $tCategoria.cd_categoria)";
         $sql .= " LEFT JOIN " . $tEquivalencia . " ON($tSolicitud.cd_equivalencia = $tEquivalencia.cd_equivalencia)";
-        $sql .= " LEFT JOIN " . $tCategoriasicadi . " ON($tSolicitud.cd_categoriasolicitada = $tCategoriasicadi.cd_categoria)";
+        $sql .= " LEFT JOIN " . $tCategoriasicadi . " ON($tSolicitud.cd_categoriasicadi = $tCategoriasicadi.cd_categoriasicadi)";
        
         $sql .= " LEFT JOIN " . $tTitulo . " ON($tSolicitud.cd_titulogrado = $tTitulo.cd_titulo)";
         $sql .= " LEFT JOIN " . $tTitulo . " Tituloposgrado ON($tSolicitud.cd_tituloposgrado = Tituloposgrado.cd_titulo)";
@@ -326,8 +326,8 @@ class SolicitudDAO extends EntityDAO {
         $fields[] = "$tEquivalencia.ds_equivalencia as " . $tEquivalencia . "_ds_equivalencia ";
 
         $tCategoriasicadi = DAOFactory::getCategoriasicadiDAO()->getTableName();
-        $fields[] = "$tCategoriasicadi.cd_categoria as " . $tCategoriasicadi . "_oid ";
-        $fields[] = "$tCategoriasicadi.ds_categoria as " . $tCategoriasicadi . "_ds_categoria ";
+        $fields[] = "$tCategoriasicadi.cd_categoriasicadi as " . $tCategoriasicadi . "_oid ";
+        $fields[] = "$tCategoriasicadi.ds_categoriasicadi as " . $tCategoriasicadi . "_ds_categoriasicadi ";
         
         $tTitulo = CYTSecureDAOFactory::getTituloDAO()->getTableName();
         $fields[] = "$tTitulo.cd_titulo as " . $tTitulo . "_oid ";

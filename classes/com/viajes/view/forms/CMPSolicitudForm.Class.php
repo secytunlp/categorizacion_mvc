@@ -122,10 +122,10 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldCategoria->getInput()->setIsEditable(false);
 		$fieldset->addField( $fieldCategoria );
 
-		$fieldCategoriasolicitada = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, "categoriasolicitada.oid", CYTUtils::getCategoriasItems(), "", null, null, "--seleccionar--", "categoriasolicitada_oid" );
+		$fieldCategoriasicadi = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA, "categoriasicadi.oid", CYTUtils::getCategoriasItems(), "", null, null, "--seleccionar--", "categoriasicadi_oid" );
 		//$fieldCategoria->getInput()->setIsEditable(false);
 
-		$fieldset->addField( $fieldCategoriasolicitada );
+		$fieldset->addField( $fieldCategoriasicadi );
 
 		$fieldEquivalencia = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_EQUIVALENCIA, "equivalencia.oid",CYTUtils::getEquivalenciasItems(), "", null, null, "--seleccionar--", "equivalencia_oid" );
 		//$fieldCategoria->getInput()->setIsEditable(false);

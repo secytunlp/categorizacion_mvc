@@ -24,7 +24,7 @@ class CategoriasicadiDAO extends EntityDAO {
 	
 	
 	public function getIdFieldName(){
-		return "cd_categoria";
+		return "cd_categoriasicadi";
 	}
 	
 	

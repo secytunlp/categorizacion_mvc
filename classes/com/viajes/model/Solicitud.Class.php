@@ -58,7 +58,7 @@ class Solicitud extends Entity{
 
     private $categoria;
     private $equivalencia;
-    private $categoriasolicitada;
+    private $categoriasicadi;
     private $bl_director;
 
 
@@ -203,7 +203,7 @@ private $ds_claveC6;
 
         $this->dt_ingreso = '';
         $this->categoria = new Categoria();
-        $this->categoriasolicitada = new Categoriasicadi();
+        $this->categoriasicadi = new Categoriasicadi();
         $this->equivalencia = new Equivalencia();
 
         $this->bl_director = 0;
@@ -962,18 +962,18 @@ private $ds_claveC6;
     /**
      * @return mixed
      */
-    public function getCategoriasolicitada()
+    public function getCategoriasicadi()
     {
-        return $this->categoriasolicitada;
+        return $this->categoriasicadi;
     }
 
     /**
-     * @param mixed $categoriasolicitada
+     * @param mixed $categoriasicadi
      */
-    public function setCategoriasolicitada($categoriasolicitada)
+    public function setCategoriasicadi($categoriasicadi)
     {
-        //CYTSecureUtils::logObject($categoriasolicitada);
-        $this->categoriasolicitada = $categoriasolicitada;
+        //CYTSecureUtils::logObject($categoriasicadi);
+        $this->categoriasicadi = $categoriasicadi;
     }
 
     /**

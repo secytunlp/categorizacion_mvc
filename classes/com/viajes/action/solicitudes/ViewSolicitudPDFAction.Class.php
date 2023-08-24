@@ -96,7 +96,7 @@ class ViewSolicitudPDFAction extends CdtAction{
         $pdf->setDs_categoria($oSolicitud->getCategoria()->getDs_categoria());
         $pdf->setDs_equivalencia($oSolicitud->getEquivalencia()->getDs_equivalencia());
         //CYTSecureUtils::logObject($oSolicitud);
-        $pdf->setDs_categoriasolicitada($oSolicitud->getCategoriasolicitada()->getDs_categoria());
+        $pdf->setDs_categoriasicadi($oSolicitud->getCategoriasicadi()->getDs_categoriasicadi());
 
 
         //cargos

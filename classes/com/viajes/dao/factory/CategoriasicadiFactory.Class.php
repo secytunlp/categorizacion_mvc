@@ -15,16 +15,10 @@ class CategoriasicadiFactory extends CdtGenericFactory {
 
 		$this->setClassName('Categoriasicadi');
 		$cat = parent::build($next);
-		if(array_key_exists('cd_categoria',$next)){
-			$alias = $this->getAlias();
-			switch ($alias) {
-				case 'Categoriasolicitada_':
-					$cat->setOid( $next["cd_categoriasolicitada"] );
-					break;
-				default:
-					$cat->setOid( $next["cd_categoria"] );
-					break;
-			}
+		if(array_key_exists('cd_categoriasicadi',$next)){
+
+					$cat->setOid( $next["cd_categoriasicadi"] );
+
 		}
 
 		return $cat;

@@ -77,7 +77,7 @@ class SolicitudFactory extends CdtGenericFactory {
 
         $factory = new CategoriasicadiFactory();
         $factory->setAlias( CYT_TABLE_CATEGORIA_SICADI. "_" );
-        $solicitud->setCategoriasolicitada( $factory->build($next) );
+        $solicitud->setCategoriasicadi( $factory->build($next) );
 
 
         $factory = new EquivalenciaFactory();

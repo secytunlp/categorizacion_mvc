@@ -120,22 +120,22 @@ class ViewSolicitudPDF extends CdtPDFPrint{
     /**
      * @return string
      */
-    public function getDs_categoriasolicitada()
+    public function getDs_categoriasicadi()
     {
-        return $this->ds_categoriasolicitada;
+        return $this->ds_categoriasicadi;
     }
 
     /**
-     * @param string $ds_categoriasolicitada
+     * @param string $ds_categoriasicadi
      */
-    public function setDs_categoriasolicitada($ds_categoriasolicitada)
+    public function setDs_categoriasicadi($ds_categoriasicadi)
     {
-        $this->ds_categoriasolicitada = $ds_categoriasolicitada;
+        $this->ds_categoriasicadi = $ds_categoriasicadi;
     }
 
     private $ds_categoria = "";
     private $ds_equivalencia = "";
-    private $ds_categoriasolicitada = "";
+    private $ds_categoriasicadi = "";
 
 
 	
@@ -302,7 +302,7 @@ class ViewSolicitudPDF extends CdtPDFPrint{
         $this->SetFillColor(255,255,255);
         $this->Cell ( $this->getMaxWidth()-160, 8, $this->encodeCharacters(CYT_LBL_SOLICITUD_CATEGORIA_SOLICITADA).":");
         $this->SetFillColor(225,225,225);
-        $this->Cell ( $this->getMaxWidth()-175, 8, $this->encodeCharacters($this->getDs_categoriasolicitada()), 'LTBR',0,'L',1);
+        $this->Cell ( $this->getMaxWidth()-175, 8, $this->encodeCharacters($this->getDs_categoriasicadi()), 'LTBR',0,'L',1);
         $this->ln(10);
     }
 

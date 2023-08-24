@@ -255,12 +255,12 @@ function  seleccionarEquivalencia(cd_equivalencia){
 
 			else{
 				$("#edit_solicitud_input_submit_ajax").show();
-				var categoriasolicitada_oid = $("#categoriasolicitada_oid").val();
-				$("#categoriasolicitada_oid").empty();
+				var categoriasicadi_oid = $("#categoriasicadi_oid").val();
+				$("#categoriasicadi_oid").empty();
 				$.each(data, function(k,v){
-					$("#categoriasolicitada_oid").append("<option value=\""+k+"\">"+v+"</option>");
+					$("#categoriasicadi_oid").append("<option value=\""+k+"\">"+v+"</option>");
 				});
-				$("#categoriasolicitada_oid").val(categoriasolicitada_oid);
+				$("#categoriasicadi_oid").val(categoriasicadi_oid);
 				if (cd_equivalencia.value==5){
 					$("#informes").show();
 				}
@@ -1456,7 +1456,7 @@ function successDefault_{form_id}(data ){
 			</div>
 			<div class="form-flex">
 				<div class="form-right">
-		<!-- BEGIN: categoriasolicitada_oid -->
+		<!-- BEGIN: categoriasicadi_oid -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
@@ -1469,7 +1469,7 @@ function successDefault_{form_id}(data ){
 				<h3>*</h3>
 			</div>
 		</div>
-		<!-- END: categoriasolicitada_oid -->
+		<!-- END: categoriasicadi_oid -->
 				</div>
 			</div>
 			<div class="form-flex">

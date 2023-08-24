@@ -12,28 +12,28 @@ class Categoriasicadi  extends Entity{
 
     //variables de instancia.
 
-    private $ds_categoria;
+    private $ds_categoriasicadi;
     
 
     public function __construct(){
     	
-    	$this->ds_categoria = "";
+    	$this->ds_categoriasicadi = "";
     }
     
     
-    public function getDs_categoria()
+    public function getDs_categoriasicadi()
     {
-        return $this->ds_categoria;
+        return $this->ds_categoriasicadi;
     }
 
-    public function setDs_categoria($ds_categoria)
+    public function setDs_categoriasicadi($ds_categoriasicadi)
     {
-        $this->ds_categoria = $ds_categoria;
+        $this->ds_categoriasicadi = $ds_categoriasicadi;
     }
     
 	public function __toString(){
 		
-		return $this->getDs_categoria();
+		return $this->getDs_categoriasicadi();
 	}
 
 }
