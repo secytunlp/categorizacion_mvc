@@ -2,35 +2,35 @@
 
 	<appender name="loggerDebug" class="LoggerAppenderDailyFile"
 		threshold="DEBUG">
-		<layout class="LoggerLayoutTTCC" />
+		<layout class="LoggerLayoutPattern" />
 		<param name="file" value="D:/Documents/Mis Webs/categorizacion_mvc/logs/file-%s-debug.log" />
 		<param name="datePattern" value="Y-m-d" />
 	</appender>
 
 	<appender name="loggerInfo" class="LoggerAppenderDailyFile"
 		threshold="INFO">
-		<layout class="LoggerLayoutTTCC" />
+		<layout class="LoggerLayoutPattern" />
 		<param name="file" value="D:/Documents/Mis Webs/categorizacion_mvc/logs/file-%s-info.log" />
 		<param name="datePattern" value="Y-m-d" />
 	</appender>
 
 	<appender name="loggerWarn" class="LoggerAppenderDailyFile"
 		threshold="WARN">
-		<layout class="LoggerLayoutTTCC" />
+		<layout class="LoggerLayoutPattern" />
 		<param name="file" value="D:/Documents/Mis Webs/categorizacion_mvc/logs/file-%s-warn.log" />
 		<param name="datePattern" value="Y-m-d" />
 	</appender>
 
 	<appender name="loggerError" class="LoggerAppenderDailyFile"
 		threshold="ERROR">
-		<layout class="LoggerLayoutTTCC" />
+		<layout class="LoggerLayoutPattern" />
 		<param name="file" value="D:/Documents/Mis Webs/categorizacion_mvc/logs/file-%s-error.log" />
 		<param name="datePattern" value="Y-m-d" />
 	</appender>
 
 	<appender name="loggerErrorMail" class="LoggerAppenderMailEvent"
 		threshold="TRACE">
-		<layout class="LoggerLayoutTTCC" />
+		<layout class="LoggerLayoutPattern" />
 		<param name="to" value="marcosp@presi.unlp.edu.ar" />
 		<param name="from" value="marcosp@presi.unlp.edu.ar" />
 	</appender>

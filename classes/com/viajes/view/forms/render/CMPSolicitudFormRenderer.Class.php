@@ -421,7 +421,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             $xtpl->parse("main.dt_egresoposgrado");
 
 
-            $fieldLugarTrabajo = $fields['solicitud_filter_lugarTrabajo_oid'];
+            $fieldLugarTrabajo = $fields['lugarTrabajo_oid'];
             $input = $fieldLugarTrabajo->getInput();
             $label = $fieldLugarTrabajo->getLabel();
             $this->renderLabelTab( $label, $input, $xtpl );
@@ -434,7 +434,9 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             else $xtpl->assign("display", 'none');
 
-            $xtpl->parse("main.solicitud_filter_lugarTrabajo_oid");
+            $xtpl->parse("main.lugarTrabajo_oid");
+
+
 
 
             /*$fieldCargo = $fields['cargo_oid'];
@@ -571,7 +573,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.dt_becahasta");
 
-            $fieldLugarTrabajoBeca = $fields['solicitud_filter_lugarTrabajoBeca_oid'];
+            /*$fieldLugarTrabajoBeca = $fields['solicitud_filter_lugarTrabajoBeca_oid'];
             //CYTSecureUtils::logObject($fieldLugarTrabajoBeca);
             $input = $fieldLugarTrabajoBeca->getInput();
             $label = $fieldLugarTrabajoBeca->getLabel();
@@ -585,7 +587,22 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             else $xtpl->assign("display", 'none');
 
-            $xtpl->parse("main.solicitud_filter_lugarTrabajoBeca_oid");
+            $xtpl->parse("main.solicitud_filter_lugarTrabajoBeca_oid");*/
+
+            $fieldLugartrabajobeca = $fields['lugarTrabajoBeca_oid'];
+            $input = $fieldLugartrabajobeca->getInput();
+            $label = $fieldLugartrabajobeca->getLabel();
+            $this->renderLabelTab( $label, $input, $xtpl );
+            $this->renderInputTab( $input, $xtpl );
+            $xtpl->assign("minWidth", $fieldLugartrabajobeca->getMinWidth());
+
+            if( $input->getIsVisible() ){
+                $xtpl->assign("display", 'block');
+
+            }
+            else $xtpl->assign("display", 'none');
+
+            $xtpl->parse("main.lugarTrabajoBeca_oid");
 
             $xtpl->assign("value", CYT_LBL_SOLICITUD_BECA_RESOLUCION );
 
@@ -654,7 +671,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
 
             $xtpl->parse("main.dt_ingreso");
 
-            $fieldLugarTrabajoCarrerainv = $fields['solicitud_filter_lugarTrabajoCarrerainv_oid'];
+            $fieldLugarTrabajoCarrerainv = $fields['lugarTrabajoCarrera_oid'];
             $input = $fieldLugarTrabajoCarrerainv->getInput();
             $label = $fieldLugarTrabajoCarrerainv->getLabel();
             $this->renderLabelTab( $label, $input, $xtpl );
@@ -667,7 +684,7 @@ class CMPSolicitudFormRenderer extends DefaultFormRenderer {
             }
             else $xtpl->assign("display", 'none');
 
-            $xtpl->parse("main.solicitud_filter_lugarTrabajoCarrerainv_oid");
+            $xtpl->parse("main.lugarTrabajoCarrera_oid");
 
             $xtpl->assign("value", CYT_LBL_SOLICITUD_CARRERA_RESOLUCION );
 

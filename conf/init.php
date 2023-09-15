@@ -9,7 +9,6 @@
  */
 include ('constants.php');
 include ('modules.php');
-include ('tables.php');
 include ('bbdd_config.php');
 include ('tables.php');
 include ('templates.php');

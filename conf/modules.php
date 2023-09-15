@@ -12,6 +12,19 @@
 define('CLASS_LOADER_FROM_SESSION', 1);
 define('CACHE_ID', "SICADI");
 
+
+define('CDT_EXTERNAL_LIB_PATH_2', APP_PATH . '/libs/');
+//para manejar los errores de la pantalla.
+
+define("CDT_DEBUG_LOG", 1);
+define("CDT_ERROR_LOG", 1);
+define("CDT_MESSAGE_LOG", 1);
+
+//configuramos log4php
+define( "CDT_LOG4PHP_PATH", CDT_EXTERNAL_LIB_PATH_2 . "log4php") ;
+define( "CDT_LOG4PHP_CONFIG_FILE", APP_PATH . "/conf/log4php.xml");
+require_once( CDT_LOG4PHP_PATH . '/Logger.php' );
+
 define('CYT_PATH', APP_PATH . '/classes/com/viajes/');
 define('CYT_PATH_TEST', APP_PATH . '/unit_test/');
 
@@ -34,17 +47,7 @@ define('APP_NAME', 'SeCyT');
 define('CDT_MVC_APP_TITLE', 'SeCyT');
 define('CDT_MVC_APP_SUBTITLE', 'SICADI');
 
-define('CDT_EXTERNAL_LIB_PATH', APP_PATH . '/libs/');
-//para manejar los errores de la pantalla.
 
-define("CDT_DEBUG_LOG", 1);
-define("CDT_ERROR_LOG", 1);
-define("CDT_MESSAGE_LOG", 1);
-
-//configuramos log4php
-define( "CDT_LOG4PHP_PATH", CDT_EXTERNAL_LIB_PATH . "log4php") ;
-define( "CDT_LOG4PHP_CONFIG_FILE", APP_PATH . "/conf/log4php.xml");
-require_once( CDT_LOG4PHP_PATH . '/Logger.php' );
 
 
 //restore_error_handler();

@@ -154,7 +154,9 @@ class UpdateSolicitudAction extends UpdateEntityAction{
             $oProyecto->setDs_titulo($oProyectoSolicitud->getDs_titulo());
             $oProyecto->setDs_codigo($oProyectoSolicitud->getDs_codigo());
             $oDirector = new Docente();
-            $oDirector->setDs_apellido($oProyectoSolicitud->getDs_director());
+            $directorArray = explode(',',$oProyectoSolicitud->getDs_director());
+            $oDirector->setDs_apellido($directorArray[0]);
+            $oDirector->setDs_nombre($directorArray[1]);
             $oProyecto->setDirector($oDirector);
             $oProyecto->setDt_ini($oProyectoSolicitud->getDt_desdeproyecto());
             $oProyecto->setDt_fin($oProyectoSolicitud->getDt_hastaproyecto());

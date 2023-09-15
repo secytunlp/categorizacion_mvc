@@ -170,10 +170,10 @@ private $ds_claveC6;
         $this->nu_cp = '';
         $this->ds_titulogrado = '';
         $this->titulo = new Titulo();
-        $this->dt_grado = '';
+        //$this->dt_grado = '';
         $this->tituloposgrado = new Titulo();
         $this->ds_tituloposgrado = '';
-        $this->dt_posgrado = '';
+        //$this->dt_posgrado = '';
         $this->bl_doctorado = 0;
         $this->lugarTrabajo = new LugarTrabajo();
 

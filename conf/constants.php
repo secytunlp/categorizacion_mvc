@@ -14,9 +14,7 @@ define('CDT_POP_MAIL_USERNAME', 'marcosp');
 define('CDT_POP_MAIL_PASSWORD', 'elMaster1');
 define('CDT_MAIL_ENVIO_POP', true);
 
-define("CDT_DEBUG_LOG", true);
-define("CDT_ERROR_LOG", true);
-define("CDT_MESSAGE_LOG", true);
+
 define("CDT_TEST_MODE", true);
 
 define('CYT_DATE_FORMAT', 'd/m/Y');

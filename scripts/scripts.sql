@@ -284,7 +284,7 @@ ENGINE=InnoDB
 AUTO_INCREMENT=0
 ;
 
-INSERT INTO `categoriasicadi` (`cd_categoria`, `ds_categoria`) VALUES
+INSERT INTO `categoriasicadi` (`cd_categoriasicadi`, `ds_categoriasicadi`) VALUES
                                                                       (6, 'DI1'),
                                                                       (7, 'DI2'),
                                                                       (8, 'DI3'),
@@ -418,6 +418,14 @@ ENGINE=InnoDB
 AUTO_INCREMENT=0
 ;
 
+ALTER TABLE `unidad`
+
+
+
+
+    ADD COLUMN `bl_activa` BINARY(1) NOT NULL DEFAULT '0';
+
+
 ############################Insertar los integrantes###################################################
     INSERT IGNORE INTO integrante_agencia (nu_documento, cd_proyecto, cd_tipoinvestigador, dt_alta, dt_baja, ds_tipo)
 SELECT aux_integrante_agencia.nu_documento, proyecto_agencia.cd_proyecto, CASE aux_integrante_agencia.ds_tipo WHEN 'IR' THEN 1 END, aux_integrante_agencia.dt_alta, aux_integrante_agencia.dt_baja, aux_integrante_agencia.ds_tipo FROM `aux_integrante_agencia` INNER JOIN proyecto_agencia ON aux_integrante_agencia.ds_codigo = proyecto_agencia.ds_codigo;
@@ -426,5 +434,30 @@ SELECT * FROM aux_integrante_agencia WHERE NOT EXISTS (SELECT proyecto_agencia.d
 
 SELECT proyecto_agencia.ds_codigo, integrante_agencia.* FROM proyecto_agencia INNER JOIN integrante_agencia ON proyecto_agencia.cd_proyecto = integrante_agencia.cd_proyecto WHERE integrante_agencia.nu_documento = 0;
 
-UPDATE `proyecto_agencia` SET `ds_organismo` = 'Agencia I+D+i' WHERE `ds_organismo` LIKE '%fon%'
+UPDATE `proyecto_agencia` SET `ds_organismo` = 'Agencia I+D+i' WHERE `ds_organismo` LIKE '%fon%';
 
+############################Activar unidades###################################################
+
+SELECT *
+FROM aux_unidades t1
+WHERE NOT EXISTS (
+        SELECT *
+        FROM unidad t2
+        WHERE t2.ds_unidad LIKE CONCAT('%', t1.ds_unidad, '%')
+    );
+
+SELECT *
+FROM unidad t1
+WHERE EXISTS (
+        SELECT *
+        FROM aux_unidades t2
+        WHERE t1.ds_unidad LIKE CONCAT('%', t2.ds_unidad, '%')
+    );
+
+UPDATE unidad t1
+SET t1.bl_activa = 1
+WHERE EXISTS (
+              SELECT *
+              FROM aux_unidades t2
+              WHERE t1.ds_unidad LIKE CONCAT('%', t2.ds_unidad, '%')
+          );

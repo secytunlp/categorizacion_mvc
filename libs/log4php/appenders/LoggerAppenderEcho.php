@@ -14,42 +14,37 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package log4php
  */
 
 /**
- * LoggerAppenderEcho uses {@link PHP_MANUAL#echo echo} function to output events.
+ * LoggerAppenderEcho uses the PHP echo() function to output events. 
+ * 
+ * This appender uses a layout.
+ * 
+ * ## Configurable parameters: ##
+ * 
+ * - **htmlLineBreaks** - If set to true, a <br /> element will be inserted 
+ *     before each line break in the logged message. Default is false.
  *
- * <p>This appender requires a layout.</p>
- *
- * An example php file:
- *
- * {@example ../../examples/php/appender_echo.php 19}
- *
- * An example configuration file:
- *
- * {@example ../../examples/resources/appender_echo.properties 18}
- *
- * The above example would print the following:
- * <pre>
- *    Tue Sep  8 22:44:55 2009,812 [6783] DEBUG appender_echo - Hello World!
- * </pre>
- *
- * @version $Revision: 1213283 $
+ * @version $Revision: 1337820 $
  * @package log4php
  * @subpackage appenders
+ * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
+ * @link http://logging.apache.org/log4php/docs/appenders/echo.html Appender documentation
  */
 class LoggerAppenderEcho extends LoggerAppender {
-	/** boolean used internally to mark first append */
+	/** 
+	 * Used to mark first append. Set to false after first append.
+	 * @var boolean 
+	 */
 	protected $firstAppend = true;
-
-	/**
+	
+	/** 
 	 * If set to true, a <br /> element will be inserted before each line
-	 * break in the logged message. Default value is false. @var boolean
+	 * break in the logged message. Default value is false. @var boolean 
 	 */
 	protected $htmlLineBreaks = false;
-
+	
 	public function close() {
 		if($this->closed != true) {
 			if(!$this->firstAppend) {
@@ -66,18 +61,26 @@ class LoggerAppenderEcho extends LoggerAppender {
 				$this->firstAppend = false;
 			}
 			$text = $this->layout->format($event);
-				
+			
 			if ($this->htmlLineBreaks) {
 				$text = nl2br($text);
 			}
 			echo $text;
-		}
+		} 
 	}
-
+	
+	/**
+	 * Sets the 'htmlLineBreaks' parameter.
+	 * @param boolean $value
+	 */
 	public function setHtmlLineBreaks($value) {
 		$this->setBoolean('htmlLineBreaks', $value);
 	}
-
+	
+	/**
+	 * Returns the 'htmlLineBreaks' parameter.
+	 * @returns boolean
+	 */
 	public function getHtmlLineBreaks() {
 		return $this->htmlLineBreaks;
 	}

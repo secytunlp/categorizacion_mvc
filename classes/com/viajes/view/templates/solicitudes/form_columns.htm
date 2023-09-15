@@ -124,7 +124,10 @@ li {
 </style>
 <script type="text/javascript">
 
+	$(document).ready(function() {
 
+		$('.js-example-basic-single').select2();
+	});
 
 $(function() {
 
@@ -893,7 +896,7 @@ function successDefault_{form_id}(data ){
 
 		<br><br>
 
-		<!-- BEGIN: solicitud_filter_lugarTrabajo_oid -->
+		<!-- BEGIN: lugarTrabajo_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					    <!-- BEGIN: label -->
@@ -906,7 +909,7 @@ function successDefault_{form_id}(data ){
 							<h3>*</h3>
 						</div>
 					</div>
-		<!-- END: solicitud_filter_lugarTrabajo_oid -->
+		<!-- END: lugarTrabajo_oid -->
 
 		<!-- BEGIN: ds_experticiaD -->
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
@@ -971,7 +974,7 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -987,7 +990,7 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1005,7 +1008,7 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1021,7 +1024,7 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					 <!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1034,11 +1037,11 @@ function successDefault_{form_id}(data ){
 			</div>
 		</div>
 		<div class="form-flex">
-		<!-- BEGIN: solicitud_filter_lugarTrabajoBeca_oid -->
+		<!-- BEGIN: lugarTrabajoBeca_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1047,7 +1050,7 @@ function successDefault_{form_id}(data ){
 					
 					   
 					</div>
-		<!-- END: solicitud_filter_lugarTrabajoBeca_oid -->
+		<!-- END: lugarTrabajoBeca_oid -->
 		</div>
 		<div class="form-flex">
 		<!-- BEGIN: ds_resbeca -->
@@ -1074,7 +1077,7 @@ function successDefault_{form_id}(data ){
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 
 			<!-- BEGIN: label -->
-			<label for="{input_name}">{value}:</label>
+			<label for="{input_name}">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			<br><br>{input}
@@ -1131,7 +1134,7 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1147,7 +1150,7 @@ function successDefault_{form_id}(data ){
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
-					    <label for="{input_name}">{value} {required}:</label>
+					    <label for="{input_name}">{value}</label>
 					    <!-- END: label -->
 					    <!-- BEGIN: input -->
 					    {input}
@@ -1179,7 +1182,7 @@ function successDefault_{form_id}(data ){
 
 
 					<div class="form-left">
-		<!-- BEGIN: solicitud_filter_lugarTrabajoCarrerainv_oid -->
+		<!-- BEGIN: lugarTrabajoCarrera_oid -->
 					<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}">
 					    
 					<!-- BEGIN: label -->
@@ -1192,7 +1195,7 @@ function successDefault_{form_id}(data ){
 					
 					   
 					</div>
-		<!-- END: solicitud_filter_lugarTrabajoCarrerainv_oid -->
+		<!-- END: lugarTrabajoCarrera_oid -->
 					</div>
 				</div>
 				<div class="form-flex">
@@ -1202,7 +1205,7 @@ function successDefault_{form_id}(data ){
 		<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-ds_rescarrera">
 
 			<!-- BEGIN: label -->
-			<label for="ds_rescarrera">{value}:</label>
+			<label for="ds_rescarrera">{value}</label>
 			<!-- END: label -->
 			<!-- BEGIN: input -->
 			<input id="ds_rescarrera" type="file" value="" size="32" name="ds_rescarrera" onChange="uploadAjax(this,'{actionFile}','ds_rescarrera')">
@@ -1585,7 +1588,7 @@ function successDefault_{form_id}(data ){
 		</div>
 			</div>
 			<div class="form-flex">
-				<div class="form-right">
+
 			<!-- BEGIN: areacarrera_oid -->
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
@@ -1598,7 +1601,7 @@ function successDefault_{form_id}(data ){
 			</div>
 			<!-- END: areacarrera_oid -->
 				</div>
-				<div class="form-left">
+			<div class="form-flex">
 			<!-- BEGIN: subareacarrera_oid -->
 			<div class="form-row" style="min-width: {minWidth};display:{display}"  id="item-div-{input_name}" >
 
@@ -1612,7 +1615,7 @@ function successDefault_{form_id}(data ){
 			<!-- END: subareacarrera_oid -->
 				</div>
 			</div>
-		</div>
+
 
 		<div style="position: relative; float: left; width: 30%;">
 			<div style="color:gray">{label_equivalencia_help}</div>

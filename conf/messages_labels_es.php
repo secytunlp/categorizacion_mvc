@@ -9,7 +9,7 @@
  */
 
 //solicitud
-define('CYT_LBL_SOLICITUD', 'Solicitud');
+//define('CYT_LBL_SOLICITUD', 'Solicitud');
 define('CYT_LBL_SOLICITUD_SOLICITANTE', 'Solicitante');
 define('CYT_LBL_SOLICITUD_CUIL', 'C.U.I.L.');
 define('CYT_LBL_SOLICITUD_EDAD', 'Edad');

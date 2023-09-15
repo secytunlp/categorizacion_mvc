@@ -57,6 +57,17 @@ class CYTUtils {
 
     }
 
+    public static function getLugarTrabajoItems() {
+
+        $oCriteria = new CdtSearchCriteria();
+
+            $oCriteria->addFilter('bl_activa', 1, '=');
+        $oCriteria->addOrder('ds_unidad','ASC');
+
+
+        return CYTSecureUtils::getFilterOptionItems( CYTSecureManagerFactory::getLugarTrabajoManager(), "oid", "ds_completo","","","","cd_unidad",$oCriteria);
+
+    }
 
     public static function getYearItems() {
         $years = array();

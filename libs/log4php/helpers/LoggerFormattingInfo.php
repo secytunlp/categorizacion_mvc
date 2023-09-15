@@ -21,30 +21,34 @@
 /**
  * This class encapsulates the information obtained when parsing
  * formatting modifiers in conversion modifiers.
- *
+ * 
  * @package log4php
  * @subpackage helpers
  * @since 0.3
  */
 class LoggerFormattingInfo {
-
-	public $min = -1;
-	public $max = 0x7FFFFFFF;
-	public $leftAlign = false;
-
-	/**
-	 * Constructor
+	
+	/** 
+	 * Minimal output length. If output is shorter than this value, it will be
+	 * padded with spaces. 
 	 */
-	public function __construct() {}
-
-	public function reset() {
-		$this->min = -1;
-		$this->max = 0x7FFFFFFF;
-		$this->leftAlign = false;
-	}
-
-	public function dump() {
-		// TODO: other option to dump?
-		// LoggerLog::debug("LoggerFormattingInfo::dump() min={$this->min}, max={$this->max}, leftAlign={$this->leftAlign}");
-	}
+	public $min = 0;
+	
+	/** 
+	 * Maximum output length. If output is longer than this value, it will be 
+	 * trimmed.
+	 */
+	public $max = PHP_INT_MAX;
+	
+	/**
+	 * Whether to pad the string from the left. If set to false, the string 
+	 * will be padded from the right. 
+	 */
+	public $padLeft = true;
+	
+	/**
+	 * Whether to trim the string from the left. If set to false, the string
+	 * will be trimmed from the right.
+	 */
+	public $trimLeft = false;
 }

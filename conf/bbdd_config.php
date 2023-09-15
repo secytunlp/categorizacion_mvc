@@ -17,7 +17,7 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'viajes_new');
-define('ROW_PER_PAGE', 25);
+define('ROW_PER_PAGE', 10);
 define('DB_DEFAULT_DATE_FORMAT', "Y-m-d");
 define('DB_DEFAULT_DATETIME_FORMAT', "Y-m-d H:i:s");
 define('DB_FILE_DATETIME_FORMAT', "YmdHis");

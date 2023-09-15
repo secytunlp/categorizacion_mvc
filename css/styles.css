@@ -247,6 +247,35 @@ select::placeholder{
     font-weight: 500;
 }
 
+/* Establece el ancho automático en función del contenido del ítem más largo */
+.select2-container .select2-selection--single .select2-selection__rendered {
+    white-space: nowrap; /* Evita el desbordamiento del texto */
+    width: auto !important; /* Ancho automático */
+}
+
+/* Opcionalmente, puedes limitar el ancho máximo */
+.select2-container .select2-selection--single .select2-selection__rendered {
+    max-width: 100%; /* Puedes ajustar el valor según tus necesidades */
+}
+
+/* Estilo para la lista desplegable */
+.select2-selection__rendered {
+    color: #005F61;
+    /*width: 30rem;*/
+    padding: 1.2rem;
+    border: 0.2rem solid #005F61;
+    background-color: #fff;
+}
+
+/* Aplicar un ancho uniforme a las opciones */
+.select2-container .select2-selection--single .select2-selection__rendered,
+.select2-container .select2-dropdown .select2-results__option {
+    white-space: nowrap; /* Evitará que el texto se rompa */
+    overflow: hidden; /* Ocultará el desbordamiento del texto */
+    text-overflow: ellipsis; /* Mostrará puntos suspensivos si el texto es demasiado largo */
+    width: 100%; /* Ancho uniforme */
+}
+
 .inputSignup{
 
     width: 30rem;

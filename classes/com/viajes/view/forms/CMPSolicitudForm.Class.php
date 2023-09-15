@@ -87,12 +87,14 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_EGRESO_POSGRADO, "dt_egresoposgrado", "","d/m/Y","",23) );
 
 		
-		$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO, "", "solicitud_filter_lugarTrabajo_oid", "lugarTrabajo.oid","solicitud_filter_lugarTrabajo_change");
+		/*$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO, "", "solicitud_filter_lugarTrabajo_oid", "lugarTrabajo.oid","solicitud_filter_lugarTrabajo_change");
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
 		//$findLugarTrabajo->getInput()->setFunctionCallback("editSolicitud_lugarTrabajoCallback");
+		$fieldset->addField( $findLugarTrabajo );*/
+
+		$findLugarTrabajo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_LUGAR_TRABAJO_EXTENDIDO, "lugarTrabajo.oid", CYTUtils::getLugarTrabajoItems(), "", null, null, "--seleccionar--", "lugarTrabajo_oid" );
+		$findLugarTrabajo->getInput()->addProperty( 'class', 'js-example-basic-single' );
 		$fieldset->addField( $findLugarTrabajo );
-		
-		
 		
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_NACIMIENTO, "dt_nacimiento", "","d/m/Y","",23) );
 
@@ -147,11 +149,14 @@ class CMPSolicitudForm extends CMPForm{
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_BECA_DESDE, "dt_becadesde") );
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_BECA_HASTA, "dt_becahasta") );
 		
-		$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA, "", "solicitud_filter_lugarTrabajoBeca_oid", "lugarTrabajoBeca.oid","solicitud_filter_lugarTrabajoBeca_change");
+		/*$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA, "", "solicitud_filter_lugarTrabajoBeca_oid", "lugarTrabajoBeca.oid","solicitud_filter_lugarTrabajoBeca_change");
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
 
-		$fieldset->addField( $findLugarTrabajo );
+		$fieldset->addField( $findLugarTrabajo );*/
 
+		$findLugarTrabajo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_LUGAR_TRABAJO_BECA, "lugarTrabajoBeca.oid", CYTUtils::getLugarTrabajoItems(), "", null, null, "--seleccionar--", "lugarTrabajoBeca_oid" );
+		$findLugarTrabajo->getInput()->addProperty( 'class', 'js-example-basic-single' );
+		$fieldset->addField( $findLugarTrabajo );
 
 
 		/*$input = FieldBuilder::buildFieldTextArea ( CYT_LBL_SOLICITUD_EXPERTICIA_INVESTIGACION, "ds_experticiaB","","",8,110);
@@ -177,8 +182,12 @@ class CMPSolicitudForm extends CMPForm{
 		
 		$fieldset->addField( FieldBuilder::buildFieldDate ( CYT_LBL_SOLICITUD_INGRESO_CARRERAINV, "dt_ingreso") );
 		
-		$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_CARRERAINV, "", "solicitud_filter_lugarTrabajoCarrerainv_oid", "lugarTrabajoCarrera.oid","solicitud_filter_lugarTrabajoCarrerainv_change");
+		/*$findLugarTrabajo = CYTSecureComponentsFactory::getFindLugarTrabajo(new LugarTrabajo(), CYT_LBL_SOLICITUD_LUGAR_TRABAJO_CARRERAINV, "", "solicitud_filter_lugarTrabajoCarrerainv_oid", "lugarTrabajoCarrera.oid","solicitud_filter_lugarTrabajoCarrerainv_change");
 		$findLugarTrabajo->getInput()->setInputSize(5,80);
+		$fieldset->addField( $findLugarTrabajo );*/
+
+		$findLugarTrabajo = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_LUGAR_TRABAJO_CARRERAINV, "lugarTrabajoCarrera.oid", CYTUtils::getLugarTrabajoItems(), "", null, null, "--seleccionar--", "lugarTrabajoCarrera_oid" );
+		$findLugarTrabajo->getInput()->addProperty( 'class', 'js-example-basic-single' );
 		$fieldset->addField( $findLugarTrabajo );
 
 		$fieldArea = FieldBuilder::buildFieldSelect (CYT_LBL_SOLICITUD_AREA, "areacarrera.oid",CYTUtils::getAreasItems(), "", null, null, "--seleccionar--", "areacarrera_oid" );
