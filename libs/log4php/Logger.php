@@ -20,6 +20,7 @@
 
 require dirname(__FILE__) . '/LoggerAutoloader.php';
 
+
 /**
  * This is the central class in the log4php package. All logging operations 
  * are done through this class.

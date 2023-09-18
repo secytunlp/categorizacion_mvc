@@ -66,6 +66,24 @@ class HTMLParser {
     var $iHtmlTextIndex = 0;
     var $iHtmlCurrentChar;
 
+    protected $iCurrentChar;
+
+    /**
+     * @return mixed
+     */
+    public function getICurrentChar()
+    {
+        return $this->iCurrentChar;
+    }
+
+    /**
+     * @param mixed $iCurrentChar
+     */
+    public function setICurrentChar($iCurrentChar)
+    {
+        $this->iCurrentChar = $iCurrentChar;
+    }
+
     /**
      * Constructor.
      * Constructs an HTMLParser instance with
@@ -101,7 +119,7 @@ class HTMLParser {
 
     function readTag() {
     	global $HTML_ATTRIBUTE_STAND_ALONE;
-        if ($this->iCurrentChar != "<") {
+        if ($this->getICurrentChar() != "<") {
             $this->iNodeType = NODE_TYPE_DONE;
             return false;
         }
@@ -153,7 +171,7 @@ class HTMLParser {
 					$this->iNodeAttributes[$attrName] = 1;
 				}else{
 	                $this->skipBlanksInTag();
-	                if ($this->iCurrentChar == "=") {
+	                if ($this->getICurrentChar() == "=") {
 	                    $this->skipEqualsInTag();
 	                    $this->skipBlanksInTag();
 	                    $value = $this->readValueInTag();
@@ -189,7 +207,7 @@ class HTMLParser {
     }
 
     function readValueInTag() {
-        $ch = $this->iCurrentChar;
+        $ch = $this->getICurrentChar();
         $value = "";
         if ($ch == "\"") {
             $this->skipInTag (array ( "\"" ));
@@ -210,10 +228,10 @@ class HTMLParser {
     function setTextIndex ($index) {
         $this->iHtmlTextIndex = $index;
         if ($index >= $this->iHtmlTextLength) {
-            $this->iCurrentChar = -1;
+            $this->setICurrentChar(-1);
         }
         else {
-            $this->iCurrentChar = $this->iHtmlText{$index};
+            $this->setICurrentChar($this->iHtmlText[$index]);
         }
     }
 
@@ -229,7 +247,7 @@ class HTMLParser {
 
     function skipEndOfTag() {
         $sb = "";
-        if (($ch = $this->iCurrentChar) !== -1) {
+        if (($ch = $this->getICurrentChar()) !== -1) {
             $match = ($ch == ">");
             if (!$match) {
                 return $sb;
@@ -242,7 +260,7 @@ class HTMLParser {
 
     function skipInTag ($chars) {
         $sb = "";
-        while (($ch = $this->iCurrentChar) !== -1) {
+        while (($ch = $this->getICurrentChar()) !== -1) {
             if ($ch == ">") {
                 return $sb;
             } else {
@@ -257,7 +275,7 @@ class HTMLParser {
 
     function skipToInTag ($chars) {
         $sb = "";
-        while (($ch = $this->iCurrentChar) !== -1) {
+        while (($ch = $this->getICurrentChar()) !== -1) {
         	if ($ch == '>' || array_search($ch,$chars) !== false)
                	return $sb;
             $sb .= $ch;
@@ -268,7 +286,7 @@ class HTMLParser {
 
     function skipToElement() {
         $sb = "";
-        while (($ch = $this->iCurrentChar) !== -1) {
+        while (($ch = $this->getICurrentChar()) !== -1) {
             if ($ch == "<") {
                 return $sb;
             }

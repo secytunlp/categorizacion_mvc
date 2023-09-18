@@ -133,16 +133,18 @@ class LoggerAppenderFile extends LoggerAppender {
 	}
 	
 	protected function writeWithLocking($string) {
-		if(flock($this->fp, LOCK_EX)) {
-			if(fwrite($this->fp, $string) === false) {
+		if ($string !== null) {
+		if (flock($this->fp, LOCK_EX)) {
+			if (fwrite($this->fp, $string) === false) {
 				$this->warn("Failed writing to file. Closing appender.");
-				$this->closed = true;				
+				$this->closed = true;
 			}
 			flock($this->fp, LOCK_UN);
 		} else {
 			$this->warn("Failed locking file for writing. Closing appender.");
 			$this->closed = true;
 		}
+	}
 	}
 	
 	protected function writeWithoutLocking($string) {

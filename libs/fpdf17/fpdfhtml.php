@@ -283,7 +283,7 @@ private function _makePageSize(){
         else
         {
             //Tag
-            if($e{0}=='/')
+            if($e[0]=='/')
                 $this->CloseTag(strtoupper(substr($e, 1)));
             else
             {
@@ -986,8 +986,8 @@ private function _getResolution($path)
 	fseek($f,13,SEEK_SET);
 	$info = fread($f,3);
     fclose($f);
-    $iUnit = ord($info{0});
-    $iX = ord($info{1}) * 256 + ord($info{2});
+    $iUnit = ord($info[0]);
+    $iX = ord($info[1]) * 256 + ord($info[2]);
     return array($iUnit, $iX);
 }
 private function _html2text($text){

@@ -135,6 +135,7 @@ class LoggerAutoloader {
 	 * @param string $className The name of the class to load.
 	 */
 	public static function autoload($className) {
+		
 		if(isset(self::$classes[$className])) {
 			include dirname(__FILE__) . self::$classes[$className];
 		}

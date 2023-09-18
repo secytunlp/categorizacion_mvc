@@ -25,7 +25,7 @@ define( "CDT_LOG4PHP_PATH", CDT_EXTERNAL_LIB_PATH_2 . "log4php") ;
 define( "CDT_LOG4PHP_CONFIG_FILE", APP_PATH . "/conf/log4php.xml");
 require_once( CDT_LOG4PHP_PATH . '/Logger.php' );
 
-define('CYT_PATH', APP_PATH . '/classes/com/viajes/');
+define('CYT_PATH', APP_PATH . '/classes/com/sicadi/');
 define('CYT_PATH_TEST', APP_PATH . '/unit_test/');
 
 
