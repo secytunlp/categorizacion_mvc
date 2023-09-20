@@ -12,6 +12,7 @@ class SolicitudGridModel extends GridModel {
 
 		parent::__construct();
 		$this->initModel();
+
 	}
 
 	protected function initModel() {
@@ -60,6 +61,7 @@ class SolicitudGridModel extends GridModel {
 		$column = GridModelBuilder::buildColumn( "oid", CYT_LBL_SOLICITUD_OBSEVACIONES, 80, CDT_CMP_GRID_TEXTALIGN_LEFT,"",new GridObservacionesValueFormat() ) ;
 		$this->addColumn( $column );
 		$oUser = CdtSecureUtils::getUserLogged();
+		
 		if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_VER_PUNTAJE )) {
 			/*$column = GridModelBuilder::buildColumn( "oid", CYT_LBL_SOLICITUD_EVALUADORES, 40, CDT_CMP_GRID_TEXTALIGN_LEFT,"",new GridEvaluacionValueFormat(1) ) ;
 			$this->addColumn( $column );*/

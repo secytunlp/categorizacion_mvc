@@ -87,108 +87,22 @@ class fpdfhtmlHelper extends FPDF {
 		$this->headerTable = $this->footerTable = '';
 	}
 	
-	function SetPadding($s=1){
-	$this->paddingCell = $s;
-	$this->paddingCell2 = 2*$s;
-}
-function SetSpacing($linespacing=1,$paragraphspacing=2){
-	$this->spacingLine = $linespacing;
-	$this->spacingParagraph = $paragraphspacing;
-}
-function SetMargins($left,$top,$right=null,$bottom=null){
-	parent::SetMargins($left, $top, $right);
-	$this->bMargin = $bottom?$bottom:$top;
-	$this->_makePageSize();
-}
-
-function SetLeftMargin($margin){
-	parent::SetLeftMargin($margin);
-	$this->_makePageSize();
-}
-
-function SetRightMargin($margin){
-	parent::SetRightMargin($margin);
-	$this->_makePageSize();
-}
-
-function SetHeaderFooter($header='',$footer=''){
-	if ($header) $this->headerTable = $header;
-	if ($footer) $this->footerTable = $footer;
-}
-function Header(){
-	$this->_makePageSize();
-	if ($this->headerTable){
-		$this->x = $this->left;
-		$this->y = 0;
-		$this->htmltable($this->headerTable,0);
-	}
-}
-function Footer(){
-	if ($this->footerTable){
-		$this->x = $this->left;
-		$this->y = $this->bottom;
-		$this->htmltable($this->footerTable,0);
-	}
-}
-private function _makePageSize(){
-	$this->left		= $this->lMargin;
-	$this->right	= $this->w - $this->rMargin;
-	$this->top		= $this->tMargin;
-	$this->bottom	= $this->h - $this->bMargin;
-	$this->width	= $this->right - $this->left;
-	$this->height	= $this->bottom - $this->tMargin;
-}
-	/**
-    * Allows you to control how the pdf is returned to the user, most of the time in CakePHP you probably want the string
-    *
-    * @param string $name name of the file.
-    * @param string $destination where to send the document values: I, D, F, S
-    * @return string if the $destination is S
-    */
-	function fpdfOutput ($name = 'page.pdf', $destination = 's') {
-		// I: send the file inline to the browser. The plug-in is used if available.
-		//    The name given by name is used when one selects the "Save as" option on the link generating the PDF.
-		// D: send to the browser and force a file download with the name given by name.
-		// F: save to a local file with the name given by name.
-		// S: return the document as a string. name is ignored.
-		return $this->Output($name, $destination);
-	}
-
-	function findAlign($html){
-		if(ereg("justify", $html)){
-			$this->ALIGN='J';
-		}elseif(ereg("center", $html)){
-			$this->ALIGN='C';
-		}elseif(ereg("right", $html)){
-			$this->ALIGN='R';
-		}elseif(ereg("left", $html)){
-			$this->ALIGN='L';
-		}
-	}
-
-	function findUnderline($style){
-		if(ereg("underline", $style)){
-			$this->U=1;
-		}
-	}
-
-
-	function trimespecialchar($html){
+function trimespecialchar($html){
 
 		//Reemplazo de caracteres especiales
-		$html=str_replace("&aacute;",'√°',$html);
-		$html=str_replace("&eacute;",'√©',$html);
-		$html=str_replace("&iacute;",'√≠',$html);
-		$html=str_replace("&oacute;",'√≥',$html);
-		$html=str_replace("&uacute;",'√∫',$html);
-		$html=str_replace("&Aacute;",'√Å',$html);
-		$html=str_replace("&Eacute;",'√â',$html);
-		$html=str_replace("&Iacute;",'√ç',$html);
-		$html=str_replace("&Oacute;",'√ì',$html);
-		$html=str_replace("&Uacute;",'√ö',$html);
-		$html=str_replace("&ordm;",'¬∫',$html);
-		$html=str_replace("&ntilde;",'√±',$html);
-		$html=str_replace("&Ntilde;",'√ë',$html);
+		$html=str_replace("&aacute;",'·',$html);
+		$html=str_replace("&eacute;",'È',$html);
+		$html=str_replace("&iacute;",'Ì',$html);
+		$html=str_replace("&oacute;",'Û',$html);
+		$html=str_replace("&uacute;",'˙',$html);
+		$html=str_replace("&Aacute;",'¡',$html);
+		$html=str_replace("&Eacute;",'…',$html);
+		$html=str_replace("&Iacute;",'Õ',$html);
+		$html=str_replace("&Oacute;",'”',$html);
+		$html=str_replace("&Uacute;",'⁄',$html);
+		$html=str_replace("&ordm;",'∫',$html);
+		$html=str_replace("&ntilde;",'Ò',$html);
+		$html=str_replace("&Ntilde;",'—',$html);
 		$html=str_replace("&nbsp;",' ',$html);
 		$html=str_replace("&lt;",'<',$html);
 		$html=str_replace("&gt;",'>',$html);
@@ -196,83 +110,85 @@ private function _makePageSize(){
 		$html=str_replace("&quot;",'"',$html);
 		$html=str_replace("&ldquo;",'"',$html);
 		$html=str_replace("&rdquo;",'"',$html);
-		$html=str_replace("&Agrave;",'√Ä',$html);
-		$html=str_replace("&Egrave;",'√à',$html);
-		$html=str_replace("&Igrave;",'√å',$html);
-		$html=str_replace("&Ograve;",'√í',$html);
-		$html=str_replace("&Ugrave;",'√ô',$html);
-		$html=str_replace("&agrave;",'√†',$html);
-		$html=str_replace("&egrave;",'√®',$html);
-		$html=str_replace("&igrave;",'√¨',$html);
-		$html=str_replace("&ograve;",'√≤',$html);
-		$html=str_replace("&ugrave; ",'√π',$html);
-		$html=str_replace("&Auml;",'√Ñ',$html);
-		$html=str_replace("&Euml;",'√ã',$html);
-		$html=str_replace("&Iuml;",'√è',$html);
-		$html=str_replace("&Ouml;",'√ñ',$html);
-		$html=str_replace("&Uuml;",'√ú',$html);
-		$html=str_replace("&Acirc;",'√Ç',$html);
-		$html=str_replace("&Ecirc;",'√ä',$html);
-		$html=str_replace("&Icirc;",'√é',$html);
-		$html=str_replace("&Ocirc;",'√î',$html);
-		$html=str_replace("&Ucirc;",'√õ',$html);
-		$html=str_replace("&acirc;",'√¢',$html);
-		$html=str_replace("&ecirc;",'√™',$html);
-		$html=str_replace("&icirc;",'√Æ',$html);
-		$html=str_replace("&ocirc;",'√¥',$html);
-		$html=str_replace("&ucirc;",'√ª',$html);
-		$html=str_replace("&auml;",'√§',$html);
-		$html=str_replace("&euml;",'√´',$html);
-		$html=str_replace("&iuml;",'√Ø',$html);
-		$html=str_replace("&ouml;",'√∂',$html);
-		$html=str_replace("&uuml;",'√º',$html);
-		$html=str_replace("&Atilde;",'√É',$html);
-		$html=str_replace("&Otilde;",'√ï',$html);
-		$html=str_replace("&atilde;",'√£',$html);
-		$html=str_replace("&otilde;",'√µ',$html);
-		$html=str_replace("&aring;",'√•',$html);
-		$html=str_replace("&Aring;",'√Ö',$html);
-		$html=str_replace("&Ccedil;",'√á',$html);
-		$html=str_replace("&ccedil;",'√ß',$html);
-		$html=str_replace("&Yacute;",'√ù',$html);
-		$html=str_replace("&yacute;",'√Ω',$html);
-		$html=str_replace("&yuml;",'√ø',$html);
-		$html=str_replace("&iquest;",'¬ø',$html);
+		$html=str_replace("&Agrave;",'¿',$html);
+		$html=str_replace("&Egrave;",'»',$html);
+		$html=str_replace("&Igrave;",'Ã',$html);
+		$html=str_replace("&Ograve;",'“',$html);
+		$html=str_replace("&Ugrave;",'Ÿ',$html);
+		$html=str_replace("&agrave;",'‡',$html);
+		$html=str_replace("&egrave;",'Ë',$html);
+		$html=str_replace("&igrave;",'Ï',$html);
+		$html=str_replace("&ograve;",'Ú',$html);
+		$html=str_replace("&ugrave; ",'˘',$html);
+		$html=str_replace("&Auml;",'ƒ',$html);
+		$html=str_replace("&Euml;",'À',$html);
+		$html=str_replace("&Iuml;",'œ',$html);
+		$html=str_replace("&Ouml;",'÷',$html);
+		$html=str_replace("&Uuml;",'‹',$html);
+		$html=str_replace("&Acirc;",'¬',$html);
+		$html=str_replace("&Ecirc;",' ',$html);
+		$html=str_replace("&Icirc;",'Œ',$html);
+		$html=str_replace("&Ocirc;",'‘',$html);
+		$html=str_replace("&Ucirc;",'€',$html);
+		$html=str_replace("&acirc;",'‚',$html);
+		$html=str_replace("&ecirc;",'Í',$html);
+		$html=str_replace("&icirc;",'Ó',$html);
+		$html=str_replace("&ocirc;",'Ù',$html);
+		$html=str_replace("&ucirc;",'˚',$html);
+		$html=str_replace("&auml;",'‰',$html);
+		$html=str_replace("&euml;",'Î',$html);
+		$html=str_replace("&iuml;",'Ô',$html);
+		$html=str_replace("&ouml;",'ˆ',$html);
+		$html=str_replace("&uuml;",'¸',$html);
+		$html=str_replace("&Atilde;",'√',$html);
+		$html=str_replace("&Otilde;",'’',$html);
+		$html=str_replace("&atilde;",'„',$html);
+		$html=str_replace("&otilde;",'ı',$html);
+		$html=str_replace("&aring;",'Â',$html);
+		$html=str_replace("&Aring;",'≈',$html);
+		$html=str_replace("&Ccedil;",'«',$html);
+		$html=str_replace("&ccedil;",'Á',$html);
+		$html=str_replace("&Yacute;",'›',$html);
+		$html=str_replace("&yacute;",'˝',$html);
+		$html=str_replace("&yuml;",'ˇ',$html);
+		$html=str_replace("&iquest;",'ø',$html);
 		$html=str_replace("&ndash;",'-',$html);
-		$html=str_replace("&iexcl;",'¬°',$html);
-		$html=str_replace("&middot;",'¬∑',$html);
+		$html=str_replace("&iexcl;",'°',$html);
+		$html=str_replace("&middot;",'∑',$html);
 		$html=str_replace("&hellip;",'...',$html);
 		$html=str_replace("&rsquo;","'",$html);
 		$html=str_replace("&acute;","'",$html);
 		$html=str_replace("&lsquo;","'",$html);
 		$html=str_replace("&#39;","'",$html);
-		$html=str_replace("&mu;","¬µ",$html);
-		$html=str_replace("&micro;","¬µ",$html);
-		$html=str_replace("&deg;","¬∞",$html);
+		$html=str_replace("&mu;","µ",$html);
+		$html=str_replace("&micro;","µ",$html);
+		$html=str_replace("&deg;","∞",$html);
 		$html=str_replace("&prime;","'",$html); 
-		$html=str_replace("&times;","√ó",$html); 
-		$html=str_replace("&oslash;","√∏",$html); 
-		$html=str_replace("&reg;","¬Æ",$html); 
-		$html=str_replace("&beta;","√ü",$html); 
+		$html=str_replace("&times;","◊",$html); 
+		$html=str_replace("&oslash;","¯",$html); 
+		$html=str_replace("&reg;","Æ",$html); 
+		$html=str_replace("&beta;","ﬂ",$html); 
 		$html=str_replace("&alpha;","a",$html); 
-		$html=str_replace("&laquo;","¬´",$html); 
+		$html=str_replace("&laquo;","´",$html); 
 		$html=str_replace("&mdash;","-",$html);
 		$html=str_replace("&rarr;","->",$html);
-		$html=str_replace("&raquo;","¬ª",$html); 
-		$html=str_replace("&ugrave;","√π",$html); 
+		$html=str_replace("&raquo;","ª",$html); 
+		$html=str_replace("&ugrave;","˘",$html); 
 
 		
 		return $html;
 	}
-	
+
 	function WriteHTML2($html)
 {
     //HTML parser
     $html=str_replace("\n", ' ', $html);
     $a=preg_split('/<(.*)>/U', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+
     foreach($a as $i=>$e)
     {
-        if($i%2==0)
+
+		if($i%2==0)
         {
             //Text
             if($this->HREF)
@@ -326,82 +242,10 @@ private function _makePageSize(){
     }
 }
 
-	function WriteHTML($html)
-{
-    $html=strip_tags($html, "<b><u><ul><li><i><a><img><p><strong><em><tr><blockquote><hr><td><tr><table><sup>"); //remove all unsupported tags
-    $html=str_replace("\n", '', $html); //replace carriage returns by spaces
-    $html=str_replace("\t", '', $html); //replace carriage returns by spaces
-    
-    /*$rgbpos = strpos($html,'rgb(');
-    if($rgbpos){
-    	$rgbfin = strpos($html,')');
-    	$rgb = substr($html,$rgbpos,$rgbfin);
-    	$html =str_replace($rgb,trim($rgb), $html);
-    }*/
-    
-     $html =str_replace('background-color','bgcolor', $html);
-	
-    $html = $this->trimespecialchar($html);
-    $start = strpos(strtolower($html), '<table');
-    $end = strpos(strtolower($html), '</table');
-    if($start!==false && $end!==false)
-    {
-        $this->WriteHTML2(substr($html, 0, $start).'<BR>');
-		
-        $tableVar = substr($html, $start, $end-$start).'</table>';
-       
-        $tableVar =str_replace('px', '', $tableVar);
-        $styleini = strpos($tableVar,'style=');
-        while($styleini){
-        	$primero = strpos($tableVar,'"',$styleini+1);
-	    	$stylefin = strpos($tableVar,'"',$primero+1);
-	    	$style = substr($tableVar,$styleini,$stylefin-$styleini+2);
-	    	$attrs = str_replace('style="','', $style);
-	    	$attrs = str_replace(';"','', $attrs);
-	    	$attrs = str_replace(': ','=', $attrs);
-	    	$attrs = trim($attrs);
-	    	$attrs = str_replace(';',' ', $attrs);
-	    	$attrs = str_replace('width','name', $attrs);
-	    	$rgbpos = strpos($attrs,'rgb(');
-		    if($rgbpos){
-		    	$rgbfin = strpos($attrs,')');
-		    	$rgb = substr($attrs,$rgbpos,$rgbfin-$rgbpos);
-		    	$rgbarray = explode(',',$rgb);
-		    	$rgbtrim = trim($rgbarray[0]).','.trim($rgbarray[1]).','.trim($rgbarray[2]);
-		    	$attrs =str_replace($rgb,$rgbtrim, $attrs);
-		    }
-	    	$tableVar =str_replace($style, $attrs, $tableVar);
-	    	//$html =str_replace($rgb,trim($rgb), $html);
-	    	
-	    	$styleini = strpos($tableVar,'style=');
-	    }
-        $tableVar =str_replace('"', '', $tableVar);
-        
-        $this->htmltable($tableVar);
-         $htmlR = substr($html, $end+8, strlen($html));
-        $this->WriteHTML($htmlR);
-        /*$tableData = $this->ParseTable($tableVar);
-        for($i=1;$i<=count($tableData[0]);$i++)
-        {
-            if($this->CurOrientation=='L')
-                $w[] = abs(120/(count($tableData[0])-1))+24;
-            else
-                $w[] = abs(120/(count($tableData[0])-1))+5;
-        }
-        $this->WriteTable($tableData, $w);
-
-        $this->WriteHTML2(substr($html, $end+8, strlen($html)-1).'<BR>');*/
-    }
-    else
-    {
-        $this->WriteHTML2($html);
-    }
-
-}
-
 function OpenTag($tag, $attr)
 {
     //Opening tag
+	
     switch($tag){
 
         case 'SUP':
@@ -416,7 +260,7 @@ function OpenTag($tag, $attr)
 		case 'LI':
                 $this->Ln(5);
                 //$this->SetTextColor(190, 0, 0);
-                $this->Write(5, '     ¬ª ');
+                $this->Write(5, '     ª ');
                // $this->mySetTextColor(-1);
                 break;
         case 'TABLE': // TABLE-BEGIN
@@ -564,890 +408,275 @@ function CloseTag($tag)
 
 function SetStyle($tag, $enable)
 {
-    //Modify style and select corresponding font
-    $this->$tag+=($enable ? 1 : -1);
-    $style='';
-    foreach(array('B', 'I', 'U') as $s)
-        if($this->$s>0)
-            $style.=$s;
-    $this->SetFont('', $style);
+	//Modify style and select corresponding font
+	$this->$tag+=($enable ? 1 : -1);
+	$style='';
+	foreach(array('B','I','U') as $s)
+		if($this->$s>0)
+			$style.=$s;
+	$this->SetFont('',$style);
 }
 
 function PutLink($URL, $txt)
 {
-    //Put a hyperlink
-    $this->SetTextColor(0, 0, 255);
-    $this->SetStyle('U', true);
-    $this->Write(5, $txt, $URL);
-    $this->SetStyle('U', false);
+	//Put a hyperlink
+	$this->SetTextColor(0,0,255);
+	$this->SetStyle('U',true);
+	$this->Write(5,$txt,$URL);
+	$this->SetStyle('U',false);
+	$this->SetTextColor(0);
+}
+
+// Esta funciÛn establece el color de relleno a partir de un cÛdigo hexadecimal
+    public function SetFillColorFromHex($hexColor)
+    {
+        $hexColor = ltrim($hexColor, '#');
+        $r = hexdec(substr($hexColor, 0, 2));
+        $g = hexdec(substr($hexColor, 2, 2));
+        $b = hexdec(substr($hexColor, 4, 2));
+        $this->SetFillColor($r, $g, $b);
+    }
+
+function WriteTable($data, $totalWidth)
+{
+    $this->SetLineWidth(.3);
+    $this->SetFillColor(255, 255, 255);
     $this->SetTextColor(0);
-}
-	
-	var $widths;
-	var $aligns;
-	
-	function SetWidths($w)
-	{
-	    //Set the array of column widths
-	    $this->widths=$w;
-	}
-	
-	function SetAligns($a)
-	{
-	    //Set the array of column alignments
-	    $this->aligns=$a;
-	}
-	
-	function Row($data)
-	{
-	    //Calculate the height of the row
-	    $nb=0;
-	    for($i=0;$i<count($data);$i++)
-	        $nb=max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-	    $h=5*$nb;
-	    //Issue a page break first if needed
-	    $this->CheckPageBreak($h);
-	    //Draw the cells of the row
-	    for($i=0;$i<count($data);$i++)
-	    {
-	        $w=$this->widths[$i];
-	        $a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
-	        //Save the current position
-	        $x=$this->GetX();
-	        $y=$this->GetY();
-	        //Draw the border
-	        $this->Rect($x, $y, $w, $h);
-	        //Print the text
-	        $this->MultiCell($w, 5, $data[$i], 0, $a);
-	        //Put the position to the right of the cell
-	        $this->SetXY($x+$w, $y);
-	    }
-	    //Go to the next line
-	    $this->Ln($h);
-	}
-	
-	function CheckPageBreak($h)
-	{
-	    //If the height h would cause an overflow, add a new page immediately
-	    if($this->GetY()+$h>$this->PageBreakTrigger)
-	        $this->AddPage($this->CurOrientation);
-	}
-	
-	function NbLines($w, $txt)
-	{
-	    //Computes the number of lines a MultiCell of width w will take
-	    $cw=&$this->CurrentFont['cw'];
-	    if($w==0)
-	        $w=$this->w-$this->rMargin-$this->x;
-	    $wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
-	    $s=str_replace("\r", '', $txt);
-	    $nb=strlen($s);
-	    if($nb>0 and $s[$nb-1]=="\n")
-	        $nb--;
-	    $sep=-1;
-	    $i=0;
-	    $j=0;
-	    $l=0;
-	    $nl=1;
-	    while($i<$nb)
-	    {
-	        $c=$s[$i];
-	        if($c=="\n")
-	        {
-	            $i++;
-	            $sep=-1;
-	            $j=$i;
-	            $l=0;
-	            $nl++;
-	            continue;
-	        }
-	        if($c==' ')
-	            $sep=$i;
-	        $l+=$cw[$c];
-	        if($l>$wmax)
-	        {
-	            if($sep==-1)
-	            {
-	                if($i==$j)
-	                    $i++;
-	            }
-	            else
-	                $i=$sep+1;
-	            $sep=-1;
-	            $j=$i;
-	            $l=0;
-	            $nl++;
-	        }
-	        else
-	            $i++;
-	    }
-	    return $nl;
-	}
-	
+    $this->SetFont('');
 
+    foreach ($data as $row) {
+        $nb = 0;
+        $columnWidths = array(); // Arreglo para almacenar los anchos de las columnas en unidades absolutas
 
-/**
- * @return int
- * Tra ve chieu cao cua 1 dong theo font hien hanh
- */
-function getLineHeight($fontSize = 0){
-	if ($fontSize == 0) $fontSize = $this->FontSizePt;
-	return $fontSize*2/$this->k;
-}
-
-private function _cellHeight(&$c){
-	$maxw = $c['w0']-$this->paddingCell;
-	$h = 0;
-	$x = $this->paddingCell;
-	$countline = 0;
-	$maxline = 0;
-	$c['hline'] = array();
-	$c['wlinet'] = array(array(0,0));
-	$c['wlines'] = array(0);
-	$space = 0;
-	foreach ($c['font'] as &$f){
-		$this->_setFontText($f);
-		$hl = $this->getLineHeight();
-		if ($maxline<$hl || $x==$this->paddingCell) $maxline=$hl;
-		if (!isset($f['space'])) continue;
-		$space = $f['space'];
-		foreach ($f['line'] as $i=>&$l){
-			if ($x!=$this->paddingCell) $x+=$space;
-			if (isset($l['str'])&&is_array($l['str']))
-			foreach ($l['str'] as &$t){
-				if (!is_array($t)) continue;
-				if ($x==$this->paddingCell||$x+$t[1]<$maxw){
-					$c['wlinet'][$countline][0] += $t[1];
-					$c['wlinet'][$countline][1]++;
-					$x += $t[1]+(($x>$this->paddingCell)?$space:0);
-				}else{//auto break line
-					$h+=$maxline*FHR + $this->spacingLine;
-					$c['hline'][] = $maxline*FHR + $this->spacingLine;
-					$c['wlines'][$countline] = $x-$this->paddingCell;
-					$c['autobr'][$countline] = 1;
-					$maxline=$hl;$countline++;$x = $t[1]+$space;
-					$c['wlinet'][$countline] = array($t[1],1);
-				}
-				$t[2] = $countline;
-			}
-			if ($l=='br'){
-				$h+=$maxline*FHR + max($this->spacingLine,$this->spacingParagraph);
-				$c['hline'][] = $maxline*FHR + $this->spacingLine;
-				$c['wlines'][$countline] = $x-$this->paddingCell;
-				$maxline=$hl;$countline++;$x = $this->paddingCell;
-				$c['wlinet'][$countline] = array(0,0);
-			}
-		}
-	}
-	$c['wlines'][$countline] = $x-$space-$this->paddingCell;
-	if ($maxline){
-		$h+=$maxline;
-		$c['hline'][] = $maxline*FHR;
-	}
-	$c['maxh'] = $h;
-	return $h;
-}
-private function _drawCellAligned($x0,$y0,&$c){
-	$maxh = $c['h0'];
-	$maxw = $c['w0']-$this->paddingCell2;
-	$curh = $c['maxh'];
-	$x=$y=0;//Top by default
-	if ($c['va']=='M') $y = ($maxh-$curh)/2;//Middle
-	elseif ($c['va']=='B') $y = $maxh-$curh;//Bottom
-	$curline = 0;
-	$morespace = 0;
-	$cl = $c['hline'][$curline];
-	$this->_cellHorzAlignLine($c,$curline,$maxw,$x,$morespace);
-	foreach ($c['font'] as &$f){
-		$this->_setFontText($f);
-		if (isset($f['color'])){
-			$color = Color::HEX2RGB($f['color']);
-			$this->SetTextColor($color[0],$color[1],$color[2]);
-		}else unset($color);
-		$hl = $this->getLineHeight();
-		if (!isset($f['space'])) continue;
-		$space = $f['space'];
-		foreach ($f['line'] as $i=>&$l){
-			if (isset($l['str'])&&is_array($l['str']))
-			foreach ($l['str'] as &$t){
-				if ($t[2]!=$curline){
-					$y += $cl;$curline++;$cl = $c['hline'][$curline];
-					$this->_cellHorzAlignLine($c,$curline,$maxw,$x,$morespace);
-				}
-				$this->x = $x+$x0;
-				$this->y = $y+$y0+$cl;
-				$this->Cell($t[1],0,$t[0]);
-				$x += $t[1]+$space+$morespace;
-			}
-			if ($l=='br'){
-				$y += $cl;$curline++;$cl = $c['hline'][$curline];
-				$this->_cellHorzAlignLine($c,$curline,$maxw,$x,$morespace);
-			}
-		}
-		if (isset($color))
-			$this->SetTextColor(0);
-	}
-}
-private function _cellHorzAlignLine(&$c,$line,$maxw,&$x,&$morespace){
-	$morespace = 0;
-	$x = $this->paddingCell;//Left by default
-	if (!isset($c['wlines'][$line])) return ;
-	if ($c['a']=='C'){//Center
-		$x = ($maxw-$c['wlines'][$line])/2;
-	}elseif ($c['a']=='R'){
-		$x = $maxw-$c['wlines'][$line];
-	}elseif ($c['a']=='J' && $c['wlinet'][$line][1]>1
-		&& isset($c['autobr'][$line])){//Justify
-		$morespace = ($maxw-$c['wlines'][$line])/($c['wlinet'][$line][1]-1);
-	}
-}
-
-private function _calWidth($w)
-{
-	$p = strpos($w,'%');
-	if ($p!==false){
-		return intval(substr($w,0,$p)*$this->width/100);
-	}else return intval($w);
-}	
-
-private function _tableParser(&$html){
-	$t = new TreeHTML(new HTMLParser($html), 0);
-	$row	= $col	= -1;
-	$table['nc'] = $table['nr'] = 0;
-	$table['repeat'] = array();
-	$cell   = array();
-	$fontopen = false;
-	$tdopen = false;
-	foreach ($t->name as $i=>$element){
-		if ($fontopen && $t->type[$i]==NODE_TYPE_ENDELEMENT
-			&& (in_array($element,array('table','tr','td','font'))))
-				$fontopen = false;
-		if ($tdopen && $t->type[$i]==NODE_TYPE_ENDELEMENT
-			&& (in_array($element,array('table','tr','td')))
-			&& !isset($cell[$row][$col]['miw'])){
-				$c = &$cell[$row][$col];
-				$c['miw'] = $c['maw'] = 0;
-				$tdopen = false;
-		}
-		if ($t->type[$i] != NODE_TYPE_ELEMENT && $t->type[$i] != NODE_TYPE_TEXT) continue;
-		switch ($element){
-			case 'table':
-				$tdopen = 0;
-				$a	= &$t->attribute[$i];
-				if (isset($a['width']))		$table['w']	= $this->_calWidth($a['width']);
-				if (isset($a['height']))	$table['h']	= intval($a['height']);
-				if (isset($a['align']))		$table['a']	= $align[strtolower($a['align'])];
-				$table['border'] = (isset($a['border']))?	$a['border']: 0;
-				if (isset($a['bgcolor']))	$table['bgcolor'][-1]	= $a['bgcolor'];
-				$table['nobreak'] = isset($a['nobreak']);
-				break;
-			case 'tr':
-				$tdopen = 0;
-				$row++;
-				$table['nr']++;
-				$col = -1;
-				$a	= &$t->attribute[$i];
-				if (isset($a['bgcolor']))	$table['bgcolor'][$row]	= $a['bgcolor'];
-				if (isset($a['repeat']))	$table['repeat'][]		= $row;
-				break;
-			case 'td':
-				$tdopen = 1;
-				$col++;while (isset($cell[$row][$col])) $col++;
-				//Update number column
-				if ($table['nc'] < $col+1)		$table['nc']		= $col+1;
-				$cell[$row][$col] = array();
-				$c = &$cell[$row][$col];
-				$a	= &$t->attribute[$i];
-				if (isset($a['width']))		$c['w']		= intval($a['width']);
-				if (isset($a['height']))	$c['h']		= intval($a['height']);
-				$c['a'] = isset($a['align'])?$this->getAlign($a['align']):'L';
-				$c['va']= isset($a['valign'])?$this->getVAlign($a['valign']):'T';
-				if (isset($a['border']))	$c['border']	= $a['border'];
-					else					$c['border']	= $table['border'];
-				if (isset($a['bgcolor']))	$c['bgcolor']	= $a['bgcolor'];
-				$cs = $rs = 1;
-				if (isset($a['colspan']) && $a['colspan']>1)	$cs = $c['colspan']	= intval($a['colspan']);
-				if (isset($a['rowspan']) && $a['rowspan']>1)	$rs = $c['rowspan']	= intval($a['rowspan']);
-				if (isset($a['size']))		$c['font'][0]['size']   	= $a['size'];
-				if (isset($a['family']))	$c['font'][0]['family'] 	= $a['family'];
-				if (isset($a['style'])){
-					$STYLE     = explode(",", strtoupper($a['style']));
-					$fontStyle = '';
-					foreach($STYLE AS $style)  $fontStyle .= substr(trim($style), 0, 1);
-					$c['font'][0]['style'] = $fontStyle;
-				}
-				if (isset($a['color']))		$c['font'][0]['color'] 		= $a['color'];
-				//Chiem dung vi tri de danh cho cell span
-				for ($k=$row;$k<$row+$rs;$k++) for($l=$col;$l<$col+$cs;$l++){
-					if ($k-$row || $l-$col)
-						$cell[$k][$l] = 0;
-				}
-				if (isset($a['nowrap']))	$c['nowrap']= 1;
-				$fontopen = true;
-				if (!isset($c['font'])) $c['font'][] = array();
-				break;
-			case 'Text':
-				$c = &$cell[$row][$col];
-				if (!$fontopen || !isset($c['font'])) $c['font'][] = array();
-				$f = &$c['font'][count($c['font'])-1];
-				$this->_setTextAndSize($c,$f,$this->_html2text($t->value[$i]));
-				break;
-			case 'font':
-				$a	= &$t->attribute[$i];
-				$c = &$cell[$row][$col];
-				$c['font'][] = array();
-				$f = &$c['font'][count($c['font'])-1];
-				if (isset($a['size']))		$f['size']   	= $a['size'];
-				if (isset($a['family']))	$f['family'] 	= $a['family'];
-				if (isset($a['style'])){
-					$STYLE     = explode(",", strtoupper($a['style']));
-					$fontStyle = '';
-					foreach($STYLE AS $style)  $fontStyle .= substr(trim($style), 0, 1);
-					$f['style'] = $fontStyle;
-				}
-				if (isset($a['color']))		$f['color'] 		= $a['color'];
-				break;
-			case 'img':
-				$a	= &$t->attribute[$i];
-				if (isset($a['src'])){
-					$this->_setImage($c,$a);
-				}
-				break;
-			case 'br':
-				$c = &$cell[$row][$col];
-				$cn = isset($c['font'])?count($c['font'])-1:0;
-				$c['font'][$cn]['line'][] = 'br';
-				break;
-		}
-	}
-	$table['cells'] = $cell;
-	$table['wc']	= array_pad(array(),$table['nc'],array('miw'=>0,'maw'=>0));
-	$table['hr']	= array_pad(array(),$table['nr'],0);
-	return $table;
-}
-
-private function _setTextAndSize(&$cell,&$f, $text){
-	if ($text=='') return;
-	$this->_setFontText($f);
-	if (!isset($f['line'][0])){
-		$f['line'][0]['min'] = $f['line'][0]['max'] = 0;
-	}
-	$text = preg_split('/[\s]+/',$text,-1, PREG_SPLIT_NO_EMPTY);
-	$l = &$f['line'][count($f['line'])-1];
-	if ($l=='br'){
-		$f['line'][] = array('min'=>0,'max'=>0,'str'=>array());
-		$l = &$f['line'][count($f['line'])-1];
-	}
-	if (!isset($f['space'])) $f['space'] = $this->GetStringWidth(' ');
-	$ct = count($text);
-	foreach ($text as $item){
-		$s = $this->GetStringWidth($item);
-		if ($l['min']<$s) $l['min']=$s;
-		$l['max'] += $s;
-		if ($ct>1) $l['max'] += $f['space'];
-		$l['str'][] =  array($item,$s);
-	}
-	if (isset($cell['nowrap'])) $l['min'] = $l['max'];
-	if (!isset($cell['miw']) || $cell['miw']-$this->paddingCell2<$l['min'])
-		$cell['miw']=$l['min']+$this->paddingCell2;
-	if (!isset($cell['maw']) || $cell['maw']-$this->paddingCell2<$l['max'])
-		$cell['maw']=$l['max']+$this->paddingCell2;
-}
-
-private function _setImage(&$c, &$a){
-	$path = $a['src'];
-	if (!is_file($path)){
-		$this->Error('Image is not exists: '.$path);
-	}else{
-		list($u,$d) = $this->_getResolution($path);
-		$c['img'] = $path;
-		list($c['w'],$c['h'],) = getimagesize($path);
-		if (isset($a['width'])) $c['w'] = $a['width'];
-		if (isset($a['height'])) $c['h'] = $a['height'];
-		$scale = 1;
-		if ($u==1) $scale = 25.4/$d;
-		elseif ($u==2) $scale = 10/$d;
-		$c['w'] = intval($c['w']*$scale);
-		$c['h'] = intval($c['h']*$scale);
-	}
-}
-private function _getResolution($path)
-{
-	$pos=strrpos($path,'.');
-	if(!$pos)
-		$this->Error('Image file has no extension and no type was specified: '.$path);
-	$type=substr($path,$pos+1);
-	$type=strtolower($type);
-	if($type=='jpeg')
-		$type='jpg';
-	if ($type!='jpg')
-		$this->Error('Unsupported image type: '.$path);
-	$f = fopen($path,'r');
-	fseek($f,13,SEEK_SET);
-	$info = fread($f,3);
-    fclose($f);
-    $iUnit = ord($info[0]);
-    $iX = ord($info[1]) * 256 + ord($info[2]);
-    return array($iUnit, $iX);
-}
-private function _html2text($text){
-	$text = str_replace('&nbsp;',' ',$text);
-	$text = str_replace('&lt;','<',$text);
-	return $text;
-}
-
-/**
- * table	Array of (w, h, bc, nr, wc, hr, cells)
- * w		Width of table
- * h		Height of table
- * bc		Number column
- * nr		Number row
- * hr		List of height of each row
- * wc		List of width of each column
- * cells	List of cells of each rows, cells[i][j] is a cell in table
- */
-private function _tableColumnWidth(&$table){
-	$cs = &$table['cells'];
-	$nc = $table['nc'];
-	$nr = $table['nr'];
-	$listspan = array();
-	//Xac dinh do rong cua cac cell va cac cot tuong ung
-	for ($j=0;$j<$nc;$j++){
-		$wc = &$table['wc'][$j];
-		for ($i=0;$i<$nr;$i++){
-			if (isset($cs[$i][$j]['miw'])){
-				$c   = &$cs[$i][$j];
-				if (isset($c['nowrap'])) $c['miw'] = $c['maw'];
-				if (isset($c['w'])){
-					if ($c['miw']<$c['w']) $c['miw'] = $c['w'];
-					elseif ($c['miw']>$c['w']) $c['w'] = $c['miw']+$this->paddingCell2;
-					if (!isset($wc['w'])) $wc['w'] = 1;
-				}
-				if ($c['maw']<$c['miw']) $c['maw'] = $c['miw'];
-				if (!isset($c['colspan'])){
-					if ($wc['miw'] < $c['miw']) $wc['miw']=$c['miw'];
-					if ($wc['maw'] < $c['maw']) $wc['maw']=$c['maw'];
-					if (isset($wc['w']) && $wc['w'] < $wc['miw'])
-						$wc['w']=$wc['miw'];
-				}else $listspan[] = array($i,$j);
-			}
-		}
-	}
-	//Xac dinh su anh huong cua cac cell colspan len cac cot va nguoc lai
-	$wc = &$table['wc'];
-	foreach ($listspan as $span){
-		list($i,$j) = $span;
-		$c = &$cs[$i][$j];
-		$lc = $j + $c['colspan'];
-		if ($lc > $nc) $lc = $nc;
-
-		$wis = $wisa = 0;
-		$was = $wasa = 0;
-		$list = array();
-		for($k=$j;$k<$lc;$k++){
-			$wis += $wc[$k]['miw'];
-			$was += $wc[$k]['maw'];
-			if (!isset($c['w'])){
-				$list[] = $k;
-				$wisa += $wc[$k]['miw'];
-				$wasa += $wc[$k]['maw'];
-			}
-		}
-		if ($c['miw'] > $wis){
-			if (!$wis){//Cac cot chua co kich thuoc => chia deu
-				for($k=$j;$k<$lc;$k++) $wc[$k]['miw'] = $c['miw']/$c['colspan'];
-			}elseif (!count($list)){//Khong co cot nao co kich thuoc auto => chia deu phan du cho tat ca
-				$wi = $c['miw'] - $wis;
-				for($k=$j;$k<$lc;$k++)
-					$wc[$k]['miw'] += ($wc[$k]['miw']/$wis)*$wi;
-			}else{//Co mot so cot co kich thuoc auto => chia deu phan du cho cac cot auto
-				$wi = $c['miw'] - $wis;
-				foreach ($list as $_z2=>$k)
-					$wc[$k]['miw'] += ($wc[$k]['miw']/$wisa)*$wi;
-			}
-		}
-		if ($c['maw'] > $was){
-			if (!$wis){//Cac cot chua co kich thuoc => chia deu
-				for($k=$j;$k<$lc;$k++) $wc[$k]['maw'] = $c['maw']/$c['colspan'];
-			}elseif (!count($list)){//Khong co cot nao co kich thuoc auto => chia deu phan du cho tat ca
-				$wi = $c['maw'] - $was;
-				for($k=$j;$k<$lc;$k++)
-					$wc[$k]['maw'] += ($wc[$k]['maw']/$was)*$wi;
-			}else{//Co mot so cot co kich thuoc auto => chia deu phan du cho cac cot auto
-				$wi = $c['maw'] - $was;
-				foreach ($list as $_z2=>$k)
-					$wc[$k]['maw'] += ($wc[$k]['maw']/$wasa)*$wi;
-			}
-		}
-	}
-}
-
-/**
- * @desc Xac dinh chieu rong cua table
- */
-private function _tableWidth(&$table){
-	$wc = &$table['wc'];
-	$nc = $table['nc'];
-	$a = 0;
-	for ($i=0;$i<$nc;$i++){
-		$a += isset($wc[$i]['w']) ? $wc[$i]['miw'] : $wc[$i]['maw'];
-	}
-	if ($a > $this->width) $table['w'] = $this->width;
-
-	if (isset($table['w'])){
-		$wis = $wisa = 0;
-		$list = array();
-		for ($i=0;$i<$nc;$i++){
-			$wis += $wc[$i]['miw'];
-			if (!isset($wc[$i]['w'])){ $list[] = $i;$wisa += $wc[$i]['miw'];}
-		}
-		if ($table['w'] > $wis){
-			if (!count($list)){
-				//Khong co cot nao co kich thuoc auto => chia deu phan du cho tat ca
-				$wi = ($table['w'] - $wis)/$nc;
-				for($k=0;$k<$nc;$k++)
-					$wc[$k]['miw'] += $wi;
-			}else{
-				//Co mot so cot co kich thuoc auto => chia deu phan du cho cac cot auto
-				$wi = ($table['w'] - $wis)/count($list);
-				foreach ($list as $k)
-					$wc[$k]['miw'] += $wi;
-			}
-		}
-		for ($i=0;$i<$nc;$i++){
-			$a = $wc[$i]['miw'];
-			unset($wc[$i]);
-			$wc[$i] = $a;
-		}
-	}else{
-		$table['w'] = $a;
-		for ($i=0;$i<$nc;$i++){
-			$a = isset($wc[$i]['w']) ? $wc[$i]['miw'] : $wc[$i]['maw'];
-			unset($wc[$i]);
-			$wc[$i] = $a;
-		}
-	}
-	$table['w'] = array_sum($wc);
-}
-
-private function _tableHeight(&$table){
-	$cs = &$table['cells'];
-	$nc = $table['nc'];
-	$nr = $table['nr'];
-	$listspan = array();
-	for ($i=0;$i<$nr;$i++){
-		$hr = &$table['hr'][$i];
-		for ($j=0;$j<$nc;$j++){
-			if (isset($cs[$i][$j]['miw'])){
-				$c = &$cs[$i][$j];
-				$this->_tableGetWCell($table, $i,$j);//create $c['x0'], $c['w0']
-
-				$ch = $this->_cellHeight($c);
-				$c['ch'] = $ch;
-
-				if (isset($c['h']) && $c['h'] > $ch) $ch = $c['h'];
-
-				if (isset($c['rowspan'])) $listspan[] = array($i,$j);
-				elseif ($hr < $ch) $hr = $ch;
-				$c['mih'] = $ch;
-			}
-		}
-	}
-	$hr = &$table['hr'];
-	foreach ($listspan as $span){
-		list($i,$j) = $span;
-		$c = &$cs[$i][$j];
-		$lr = $i + $c['rowspan'];
-		if ($lr > $nr) $lr = $nr;
-		$hs = $hsa = 0;
-		$list = array();
-		for($k=$i;$k<$lr;$k++){
-			$hs += $hr[$k];
-			if (!isset($c['h'])){
-				$list[] = $k;
-				$hsa += $hr[$k];
-			}
-		}
-		if ($c['mih'] > $hs){
-			if (!$hs){//Cac dong chua co kich thuoc => chia deu
-				for($k=$i;$k<$lr;$k++) $hr[$k] = $c['mih']/$c['rowspan'];
-			}elseif (!count($list)){
-				//Khong co dong nao co kich thuoc auto => chia deu phan du cho tat ca
-				$hi = $c['mih'] - $hs;
-				for($k=$i;$k<$lr;$k++)
-					$hr[$k] += ($hr[$k]/$hs)*$hi;
-			}else{
-				//Co mot so dong co kich thuoc auto => chia deu phan du cho cac dong auto
-				$hi = $c['mih'] - $hsa;
-				foreach ($list as $k)
-					$hr[$k] += ($hr[$k]/$hsa)*$hi;
-			}
-		}
-	}
-	$table['repeatH'] = 0;
-	if (count($table['repeat'])){
-		foreach ($table['repeat'] as $i) $table['repeatH'] += $hr[$i];
-	}else $table['repeat'] = 0;
-	$tth = 0;
-	foreach ($hr as $v) $tth+=$v;
-	$table['tth'] = $tth;
-}
-
-/**
- * @desc Xac dinh toa do va do rong cua mot cell
- */
-private function _tableGetWCell(&$table, $i,$j){
-	$c = &$table['cells'][$i][$j];
-	if ($c){
-		if (isset($c['x0'])) return array($c['x0'], $c['w0']);
-		$x = 0;
-		$wc = &$table['wc'];
-		for ($k=0;$k<$j;$k++) $x += $wc[$k];
-		$w = $wc[$j];
-		if (isset($c['colspan'])){
-			for ($k=$j+$c['colspan']-1;$k>$j;$k--)
-				$w += $wc[$k];
-		}
-		$c['x0'] = $x;
-		$c['w0'] = $w;
-		return array($x, $w);
-	}
-	return array(0,0);
-}
-
-private function _tableGetHCell(&$table, $i,$j){
-	$c = &$table['cells'][$i][$j];
-	if ($c){
-		if (isset($c['h0'])) return $c['h0'];
-		$hr = &$table['hr'];
-		$h = $hr[$i];
-		if (isset($c['rowspan'])){
-			for ($k=$i+$c['rowspan']-1;$k>$i;$k--)
-				$h += $hr[$k];
-		}
-		$c['h0'] = $h;
-		return $h;
-	}
-	return 0;
-}
-
-private function _tableRect($x, $y, $w, $h, $type=1){
-/*
-	if (strlen($type)==4)
-	{
-		$x2 = $x + $w; $y2 = $y + $h;
-		if (intval($type{0})) $this->Line($x , $y , $x2, $y );
-		if (intval($type{1})) $this->Line($x2, $y , $x2, $y2);
-		if (intval($type{2})) $this->Line($x , $y2, $x2, $y2);
-		if (intval($type{3})) $this->Line($x , $y , $x , $y2);
-*/
-	$type4 = explode(",",$type);
-	if (sizeof($type4) > 1) {
-		$width = $this->LineWidth;
-		$x2 = $x + $w; $y2 = $y + $h;
-		if (floatval($type4[0])) {
-			$this->SetLineWidth(floatval($type4[0]));
-			$this->Line($x , $y , $x2, $y );
-		}
-		if (floatval($type4[1])) {
-			$this->SetLineWidth(floatval($type4[1]));
-			$this->Line($x2, $y , $x2, $y2);
-		}
-		if (floatval($type4[2])) {
-			$this->SetLineWidth(floatval($type4[2]));
-			$this->Line($x , $y2, $x2, $y2);
-		}
-		if (floatval($type4[3])) {
-			$this->SetLineWidth(floatval($type4[3]));
-			$this->Line($x , $y , $x , $y2);
-		}
-		$this->SetLineWidth($width);
-	}
-	elseif ((int)$type===1)
-		$this->Rect($x, $y, $w, $h);
-	elseif ((int)$type>1 && (int)$type<11)
-	{
-		$width = $this->LineWidth;
-		$this->SetLineWidth($type * $this->LineWidth);
-		$this->Rect($x, $y, $w, $h);
-		$this->SetLineWidth($width);
-	}
-}
-
-private function _tableDrawBorder(&$table){
-	//When fill a cell, it overwrite the border of prevous cell, then I have to draw border at the end
-	foreach ($table['listborder'] as $c){
-		list($x,$y,$w,$h,$s) = $c;
-		$this->_tableRect($x,$y,$w,$h,$s);
-	}
-
-	$table['listborder'] = array();
-}
-private function _tableWriteRow(&$table,$i,$x0){
-	$maxh = 0;
-	for ($j=0;$j<$table['nc'];$j++){
-		$h = $this->_tableGetHCell($table, $i, $j);
-		if ($maxh < $h) $maxh = $h;
-	}
-	if ($table['lasty']+$maxh>$this->bottom && $table['multipage']){
-		if ($maxh+$table['repeatH'] > $this->height){
-			$msg = 'Height of this row is greater than page height!';
-			$this->SetFillColor(255,0,0);
-			$h=$this->bottom-$table['lasty'];
-			$this->Rect($this->x, $this->y=$table['lasty'], $table['w'], $h, 'F');
-			$this->MultiCell($table['w'],$h,$msg);
-			$table['lasty'] += $h;
-			return ;
-		}
-		$this->_tableDrawBorder($table);
-		$this->AddPage($this->CurOrientation);
-
-		$table['lasty'] = $this->y;
-		if ($table['repeat']){
-			foreach ($table['repeat'] as $r){
-				if ($r==$i) continue;
-				$this->_tableWriteRow($table,$r,$x0);
-			}
-		}
-	}
-	$y = $table['lasty'];
-	for ($j=0;$j<$table['nc'];$j++){
-		if (isset($table['cells'][$i][$j]['miw'])){
-			$c = &$table['cells'][$i][$j];
-			list($x,$w) = $this->_tableGetWCell($table, $i, $j);
-			$h = $this->_tableGetHCell($table, $i, $j);
-			$x += $x0;
+        foreach ($row as $cell) {
 			
-			//Fill
-			$fill = isset($c['bgcolor']) ? $c['bgcolor']
-				: (isset($table['bgcolor'][$i]) ? $table['bgcolor'][$i]
-				: (isset($table['bgcolor'][-1]) ? $table['bgcolor'][-1] : 0));
-			if ($fill){
-				 if (strchr($fill,'rgb')){
-                	$fill = str_replace('rgb(','',$fill);
-                	$fill = str_replace(')','',$fill);
-                	$color = explode(',',$fill);
-                	
-                }
-                else{
-            		$color = Color::HEX2RGB($fill);
-                }
-				
-				$this->SetFillColor($color[0],$color[1],$color[2]);
-				$this->Rect($x, $y, $w, $h, 'F');
-			};
-			//Content
-			if (isset($c['img'])){
-//----------------------------------------------------------------- Center Align
-				$img_x = $x + (($w / 2) - ($c['w'] / 2));
-				$this->Image($c['img'],$img_x,$y,$c['w'],$c['h']);
-			}else{
-				$this->_drawCellAligned($x,$y,$c);
-			}
-			//Border
-			if (isset($c['border'])){
-				$table['listborder'][] = array($x,$y,$w,$h,$c['border']);
-			}elseif (isset($table['border']) && $table['border'])
-				$table['listborder'][] = array($x,$y,$w,$h,$table['border']);
-		}
-	}
-	$table['lasty'] += $table['hr'][$i];
-	$this->y = $table['lasty'];
-}
-function SetFont($family, $style='', $size=0, $default=false)
-{
-	parent::SetFont($family, $style, $size);
-	if ($default||$this->isNotYetSetFont){
-		$this->defaultFontFamily = $family;
-		$this->defaultFontSize = $size;
-		$this->defaultFontStyle = $style;
-		$this->isNotYetSetFont = false;
-	}
-}
-private function _setFontText(&$f){
-	if (isset($f['size']) && ($f['size'] >0)){
-		$fontSize   = $f['size'];
-	}else $fontSize   = $this->defaultFontSize;
-	if (isset($f['family'])){
-		$fontFamily = $f['family'];
-	}else $fontFamily = $this->defaultFontFamily;
-	if (isset($f['style']))
-		$fontStyle  = $f['style'];
-	else $fontStyle = $this->defaultFontStyle;
-	$this->SetFont($fontFamily, $fontStyle, $fontSize);
-	return $fontSize;
-}
-private function _tableWrite(&$table){
-	if ($this->CurOrientation == 'P' && $table['w']>$this->width+5){
-		$this->AddPage('L');
-	}
-	if ($this->x==null)$this->x = $this->lMargin;
-	if ($this->y==null)$this->y = $this->tMargin;
-	$x0 = $this->x;
-	$y0 = $this->y;
-	if (isset($table['a'])){
-		if ($table['a']=='C'){
-			$x0 += (($this->right-$x0) - $table['w'])/2;
-		}elseif ($table['a']=='R'){
-			$x0 = $this->right - $table['w'];
-		}
-	}
-	if (isset($table['nobreak'])&&$table['nobreak']
-		&& $table['tth']+$y0>$this->bottom && $table['multipage']){
-		$this->AddPage($this->CurOrientation);
-		$table['lasty'] = $this->y;
-	}else
-		$table['lasty'] = $y0;
-	
-	$table['listborder'] = array();
-	for ($i=0;$i<$table['nr'];$i++) $this->_tableWriteRow($table, $i, $x0);
-	$this->_tableDrawBorder($table);
-	$this->x = $x0;
+            // Convertir porcentaje a valor absoluto
+            $widthPercentage = floatval($cell['attributes']['width']); // Porcentaje en el atributo 'width'
+			
+            $columnWidths[] = ($widthPercentage / 100) * $totalWidth; // Convertir a unidades absolutas
+            $nb = max($nb, $this->NbLines($columnWidths[count($columnWidths) - 1], trim($cell['content'])));
+        }
+
+        $h = 5 * $nb;
+        $this->CheckPageBreak($h);
+
+        $x = $this->GetX();
+        $y = $this->GetY();
+
+        foreach ($row as $key => $cell) {
+            $bgcolor = isset($cell['attributes']['bgcolor']) ? $cell['attributes']['bgcolor'] : '';
+            $align = 'L';
+
+            $this->SetFillColorFromHex($bgcolor);
+            $this->Rect($x, $y, $columnWidths[$key], $h, 'F');
+            $this->MultiCell($columnWidths[$key], 5, trim($cell['content']), 0, $align);
+            $x += $columnWidths[$key];
+            $this->SetXY($x, $y);
+        }
+
+        $this->Ln($h);
+    }
 }
 
-function htmltable(&$html,$multipage=1){
-	$a = $this->AutoPageBreak;
-	$this->SetAutoPageBreak(0,$this->bMargin);
-	$HTML = explode("<table", $html);
-	foreach ($HTML as $i=>$table)
+
+
+
+
+function NbLines($w, $txt)
+{
+	//Computes the number of lines a MultiCell of width w will take
+	$cw=$this->CurrentFont['cw'];
+	if($w==0)
+		$w=$this->w-$this->rMargin-$this->x;
+	$wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+	$s=str_replace("\r",'',$txt);
+	$nb=strlen($s);
+	if($nb>0 && $s[$nb-1]=="\n")
+		$nb--;
+	$sep=-1;
+	$i=0;
+	$j=0;
+	$l=0;
+	$nl=1;
+	while($i<$nb)
 	{
-		if (strlen($table)<6) continue;
-		$table = '<table' . $table;
-		$table = $this->_tableParser($table);
-		$table['multipage'] = $multipage;
-		$this->_tableColumnWidth($table);
-		$this->_tableWidth($table);
-		$this->_tableHeight($table);
-		$this->_tableWrite($table);
+		$c=$s[$i];
+		if($c=="\n")
+		{
+			$i++;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+			continue;
+		}
+		if($c==' ')
+			$sep=$i;
+		$l+=$cw[$c];
+		if($l>$wmax)
+		{
+			if($sep==-1)
+			{
+				if($i==$j)
+					$i++;
+			}
+			else
+				$i=$sep+1;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+		}
+		else
+			$i++;
 	}
-	$this->SetAutoPageBreak($a,$this->bMargin);
-}
-function _putinfo()
-{
-	$this->_out('/Producer '.$this->_textstring('PDFTable '.
-		PDFTABLE_VERSION.' based on FPDF '.FPDF_VERSION));
-	if(!empty($this->title))
-		$this->_out('/Title '.$this->_textstring($this->title));
-	if(!empty($this->subject))
-		$this->_out('/Subject '.$this->_textstring($this->subject));
-	if(!empty($this->author))
-		$this->_out('/Author '.$this->_textstring($this->author));
-	if(!empty($this->keywords))
-		$this->_out('/Keywords '.$this->_textstring($this->keywords));
-	if(!empty($this->creator))
-		$this->_out('/Creator '.$this->_textstring($this->creator));
-	$this->_out('/CreationDate '.$this->_textstring('D:'.@date('YmdHis')));
-}
-private function getAlign($v){
-	global $PDF_ALIGN;
-	$v = strtolower($v);
-	return isset($PDF_ALIGN[$v])?$PDF_ALIGN[$v]:'L';
-}
-private function getVAlign($v){
-	global $PDF_VALIGN;
-	$v = strtolower($v);
-	return isset($PDF_VALIGN[$v])?$PDF_VALIGN[$v]:'T';
+	return $nl;
 }
 
+function CheckPageBreak($h)
+{
+	//If the height h would cause an overflow, add a new page immediately
+	if($this->GetY()+$h>$this->PageBreakTrigger)
+		$this->AddPage($this->CurOrientation);
+}
+
+function ReplaceHTML($html)
+{
+	$html = str_replace( '<li>', "\n<br> - " , $html );
+	$html = str_replace( '<LI>', "\n - " , $html );
+	$html = str_replace( '</ul>', "\n\n" , $html );
+	$html = str_replace( '<strong>', "<b>" , $html );
+	$html = str_replace( '</strong>', "</b>" , $html );
+	$html = str_replace( '&#160;', "\n" , $html );
+	$html = str_replace( '&nbsp;', " " , $html );
+	$html = str_replace( '&quot;', "\"" , $html ); 
+	$html = str_replace( '&#39;', "'" , $html );
+	return $html;
+}
+
+function ParseTable($Table)
+{
+	CYTSecureUtils::logObject($Table);
+    $data = array();
+    $htmlText = $Table;
+    $parser = new HtmlParser($htmlText);
+
+    $currentRow = array(); // Inicializar el arreglo para la fila actual
+
+    while ($parser->parse()) {
+        $nodeName = strtolower($parser->iNodeName);
+
+        if ($nodeName == 'table') {
+            // Inicio de la tabla
+        }
+
+        if ($nodeName == 'tr') {
+            if ($parser->iNodeType == NODE_TYPE_ENDELEMENT) {
+                // Fin de la fila
+                $data[] = $currentRow; // Agrega la fila actual a los datos
+                $currentRow = array(); // Inicializa el arreglo para la nueva fila
+            } else {
+                // Inicio de la fila
+            }
+        }
+
+        if ($nodeName == 'td') {
+            if ($parser->iNodeType == NODE_TYPE_ENDELEMENT) {
+                // Fin de la celda
+                $cellContent = implode('', $currentCell['content']); // Contenido de la celda
+                $currentRow[] = array(
+                    'content' => $cellContent,
+                    'attributes' => $currentCell['attributes'] // Atributos de la celda
+                );
+                $currentCell = array(); // Reinicia la celda actual
+            } else {
+                // Inicio de la celda
+                $currentCell = array(
+                    'content' => array(),
+                    'attributes' => $parser->iNodeAttributes // Almacena los atributos de la celda
+                );
+            }
+        }
+
+        if ($parser->iNodeName == 'Text' && isset($parser->iNodeValue)) {
+            if (!empty($currentCell)) {
+                // Agrega el contenido al array de la celda actual
+                $currentCell['content'][] = $parser->iNodeValue;
+            }
+        }
+    }
+CYTSecureUtils::logObject($data);
+    return $data;
+}
+
+
+
+
+
+
+function WriteHTML($html)
+{
+	$html=strip_tags($html, "<b><u><ul><li><i><a><img><p><strong><em><tr><blockquote><hr><td><tr><table><sup>"); //remove all unsupported tags
+    $html=str_replace("\n", '', $html); //replace carriage returns by spaces
+    $html=str_replace("\t", '', $html); //replace carriage returns by spaces
+	//$html = $this->ReplaceHTML($html);
+	$html =str_replace('background-color','bgcolor', $html);
+
+    
+	//Search for a table
+	$start = strpos(strtolower($html),'<table');
+	$end = strpos(strtolower($html),'</table');
+	if($start!==false && $end!==false)
+	{
+		$this->WriteHTML2(substr($html,0,$start).'<BR>');
+
+		$tableVar = substr($html, $start, $end-$start).'</table>';
+       
+        $tableVar =str_replace('px', '', $tableVar);
+		$styleini = strpos($tableVar,'style=');
+        while($styleini){
+        	$primero = strpos($tableVar,'"',$styleini+1);
+	    	$stylefin = strpos($tableVar,'"',$primero+1);
+	    	$style = substr($tableVar,$styleini,$stylefin-$styleini+2);
+	    	$attrs = str_replace('style="','', $style);
+	    	$attrs = str_replace(';"','', $attrs);
+	    	$attrs = str_replace(': ','=', $attrs);
+	    	$attrs = trim($attrs);
+	    	$attrs = str_replace(';',' ', $attrs);
+	    	$attrs = str_replace('width','name', $attrs);
+	    	$rgbpos = strpos($attrs,'rgb(');
+		    if($rgbpos){
+		    	$rgbfin = strpos($attrs,')');
+		    	$rgb = substr($attrs,$rgbpos,$rgbfin-$rgbpos);
+		    	$rgbarray = explode(',',$rgb);
+		    	$rgbtrim = trim($rgbarray[0]).','.trim($rgbarray[1]).','.trim($rgbarray[2]);
+		    	$attrs =str_replace($rgb,$rgbtrim, $attrs);
+		    }
+	    	$tableVar =str_replace($style, $attrs, $tableVar);
+	    	//$html =str_replace($rgb,trim($rgb), $html);
+	    	
+	    	$styleini = strpos($tableVar,'style=');
+	    }
+        $tableVar =str_replace('"', '', $tableVar);
+		//CYTSecureUtils::logObject($tableVar);
+		$tableData = $this->ParseTable($tableVar);
+		for($i=1;$i<=count($tableData[0]);$i++)
+		{
+			if($this->CurOrientation=='L')
+				$w[] = abs(120/(count($tableData[0])-1))+24;
+			else
+				$w[] = abs(120/(count($tableData[0])-1))+8;
+		}
+		
+		$this->WriteTable($tableData,190);
+
+		/*$htmlR = substr($html, $end+8, strlen($html));
+        $this->WriteHTML($htmlR);*/
+	}
+	else
+	{
+		$this->WriteHTML2($html);
+	}
+}
 }
 ?>

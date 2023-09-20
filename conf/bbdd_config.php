@@ -13,10 +13,10 @@
 /* DESARROLLO */
 //define('DB_CLASS', 'AuditMySQL');
 define('DB_CLASS', 'MySQL');
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'viajes_new');
+define('DB_HOST', '163.10.8.206');
+define('DB_USER', 'us_cyt');
+define('DB_PASSWORD', '1G56JdvaxN7herasD4');
+define('DB_NAME', 'incentivos');
 define('ROW_PER_PAGE', 10);
 define('DB_DEFAULT_DATE_FORMAT', "Y-m-d");
 define('DB_DEFAULT_DATETIME_FORMAT', "Y-m-d H:i:s");

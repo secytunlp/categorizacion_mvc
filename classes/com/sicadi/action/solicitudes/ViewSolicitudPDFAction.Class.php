@@ -9,7 +9,7 @@
  */
 class ViewSolicitudPDFAction extends CdtAction{
 
-
+	
 	
 	/**
 	 * (non-PHPdoc)
@@ -125,14 +125,14 @@ class ViewSolicitudPDFAction extends CdtAction{
 		$pdf->setFacultadplanilla_oid($oSolicitud->getFacultadplanilla()->getOid());
     	($oSolicitud->getFacultadplanilla()->getOid() != CYT_FACULTAD_NO_DECLARADA)?$pdf->setDs_facultadplanilla($oSolicitud->getFacultadplanilla()->getDs_facultad()):$pdf->setDs_facultadplanilla(CYT_MSG_SOLICITUD_UNIVERSIDAD);;
 		
-
+		
     	
-		$pdf->title = CYT_MSG_SOLICITUD_PDF_TITLE;
+		$pdf->setTitle(CYT_MSG_SOLICITUD_PDF_TITLE);
 		$pdf->SetFont('Arial','', 13);
 		
 		// establecemos los márgenes
 		$pdf->SetMargins(10, 20 , 10);
-        $pdf->setMaxWidth(210 - 10 - 10);
+		$pdf->setMaxWidth(210 - 10 - 10);
 		//$pdf->SetAutoPageBreak(true,90);
 		$pdf->AddPage();
 		$pdf->AliasNbPages();

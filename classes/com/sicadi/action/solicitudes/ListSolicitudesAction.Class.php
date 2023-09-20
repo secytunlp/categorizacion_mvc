@@ -11,6 +11,7 @@ class ListSolicitudesAction extends CMPEntityGridAction{
 
 
 	protected function getComponent() {
+
 		return new CMPSolicitudGrid();
 	}
 
