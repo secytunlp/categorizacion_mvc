@@ -9,14 +9,14 @@ session_start ();
  - Use https throughout to ensure no one can sniff your session id.
  - Store session id, remote IP information and compare for successive pages
  */
-if (! defined ( 'APP_NAME' ))
-define ( 'APP_NAME', '/categorizacion_mvc/' );
+/*if (! defined ( 'APP_NAME' ))
+define ( 'APP_NAME', '/' );*/
 
 if (! defined ( 'APP_PATH' ))
-define ( 'APP_PATH', $_SERVER ['DOCUMENT_ROOT'] . APP_NAME );
+define ( 'APP_PATH', $_SERVER ['DOCUMENT_ROOT'] . '/' );
 
 if (! defined ( 'WEB_PATH' ))
-define ( 'WEB_PATH', 'http://' . $_SERVER ['HTTP_HOST'] . APP_NAME );
+define ( 'WEB_PATH', 'https://' . $_SERVER ['HTTP_HOST'] .  '/' );
 
 
 include_once APP_PATH . 'conf/init.php';

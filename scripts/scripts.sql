@@ -448,7 +448,7 @@ WHERE NOT EXISTS (
 
 SELECT *
 FROM unidad t1
-WHERE EXISTS (
+WHERE t1.bl_activa = 0 AND EXISTS (
         SELECT *
         FROM aux_unidades t2
         WHERE t1.ds_unidad LIKE CONCAT('%', t2.ds_unidad, '%')
@@ -456,7 +456,7 @@ WHERE EXISTS (
 
 UPDATE unidad t1
 SET t1.bl_activa = 1
-WHERE EXISTS (
+WHERE t1.bl_activa = 0 AND EXISTS (
               SELECT *
               FROM aux_unidades t2
               WHERE t1.ds_unidad LIKE CONCAT('%', t2.ds_unidad, '%')

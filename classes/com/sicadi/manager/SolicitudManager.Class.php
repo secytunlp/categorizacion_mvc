@@ -832,17 +832,28 @@ class SolicitudManager extends EntityManager{
 		else{
 			$error .=CYT_MSG_SOLICITUD_SIN_CARGOS.'<br />';
 		}
+		if ($entity->getProyectos()->size()>0) {
 
-		if ($entity->getOtrosproyectos()->size()>0) {
-			if ((!$entity->getDt_proyectodesde())||(!$entity->getDt_proyectohasta())||(!$entity->getDs_codigoproyecto())||(!$entity->getgetDs_organismoproyecto())||(!$entity->getDs_directorproyecto())||(!$entity->getDs_tituloproyecto())||(!$entity->getDs_archivo())) {
-				$error .= CYT_MSG_SOLICITUD_OTROS_PROYECTOS_REQUERIDOS.'<br>';
-			}
-
-			if (!$okArchivoproyecto){
-				$error .=CYT_MSG_SOLICITUD_PROY_PROBLEMA.'<br />';
-			}
 
 		}
+		else{
+			if ($entity->getOtrosproyectos()->size()>0) {
+				if ((!$entity->getDt_proyectodesde())||(!$entity->getDt_proyectohasta())||(!$entity->getDs_codigoproyecto())||(!$entity->getgetDs_organismoproyecto())||(!$entity->getDs_directorproyecto())||(!$entity->getDs_tituloproyecto())||(!$entity->getDs_archivo())) {
+						$error .= CYT_MSG_SOLICITUD_OTROS_PROYECTOS_REQUERIDOS.'<br>';
+					}
+
+					if (!$okArchivoproyecto){
+						$error .=CYT_MSG_SOLICITUD_PROY_PROBLEMA.'<br />';
+					}
+
+			}
+			else{
+				$error .=CYT_MSG_SOLICITUD_SIN_PROYECTOS.'<br />';
+			}
+		}
+		
+		
+		
 
 		/*if ($entity->getBl_director()) {
 			$error .= CYT_MSG_SOLICITUD_FUE_DIRCODIR.'<br>';
@@ -1175,7 +1186,7 @@ class SolicitudManager extends EntityManager{
 		
 		
 		$xtpl = new XTemplate( CYT_TEMPLATE_SOLICITUD_MAIL_ENVIAR );
-		$xtpl->assign ( 'img_logo', WEB_PATH.'css/images/image002.gif' );
+		$xtpl->assign ( 'img_logo', WEB_PATH.'css/smile/images/sicadi_little.png' );
 		$xtpl->assign('solicitud_titulo', $subjectMail);
 		$xtpl->assign('year_label', CYT_LBL_SOLICITUD_MAIL_YEAR);
 		$xtpl->assign('year', $oPeriodo->getDs_periodo());
@@ -1192,7 +1203,7 @@ class SolicitudManager extends EntityManager{
 		
         if ($oSolicitud->getDs_mail() != "") {
 				
-         		CYTSecureUtils::sendMail($oSolicitud->getDocente()->getDs_nombre().' '.$oSolicitud->getDocente()->getDs_apellido(), $oSolicitud->getDs_mail(), $subjectMail, $bodyMail, $attachs);
+         		CYTSecureUtils::sendMail($oSolicitud->getDocente()->getDs_nombre().' '.$oSolicitud->getDocente()->getDs_apellido(), $oSolicitud->getDs_mail(), $subjectMail, $bodyMail);
         }
         
 	}

@@ -5,17 +5,19 @@
 
 
 //desarrollo.
-define('CDT_POP_MAIL_FROM', 'marcosp@presi.unlp.edu.ar');
-define('CDT_POP_MAIL_FROM_NAME', 'Subsidios Ciencia y Técnica U.N.L.P.');
-define('CDT_POP_MAIL_HOST', 'smtp.presi.unlp.edu.ar');
+define('CDT_POP_MAIL_FROM', 'categorizacion1@presi.unlp.edu.ar');
+define('CDT_POP_MAIL_FROM_NAME', 'SICADI');
+define('CDT_POP_MAIL_HOST', 'apps.presi.unlp.edu.ar');
 define('CDT_POP_MAIL_PORT', '465');
 define('CDT_POP_MAIL_SMTP_SECURE', 'ssl');
-define('CDT_POP_MAIL_USERNAME', 'marcosp');
-define('CDT_POP_MAIL_PASSWORD', 'elMaster1');
+define('CDT_POP_MAIL_USERNAME', 'secyt');
+define('CDT_POP_MAIL_PASSWORD', 'S9rg*sdf5g!fh67');
 define('CDT_MAIL_ENVIO_POP', true);
 
 
-define("CDT_TEST_MODE", true);
+define("CDT_TEST_MODE", false);
+
+
 
 define('CYT_DATE_FORMAT', 'd/m/Y');
 define('CYT_DATETIME_FORMAT', 'd/m/Y H:i:s');

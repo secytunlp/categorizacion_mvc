@@ -11,15 +11,9 @@
 
 define('CLASS_LOADER_FROM_SESSION', 1);
 define('CACHE_ID', "SICADI");
-
+define('APP_NAME', 'sicadi');
 
 define('CDT_EXTERNAL_LIB_PATH_2', APP_PATH . '/libs/');
-//para manejar los errores de la pantalla.
-
-define("CDT_DEBUG_LOG", 1);
-define("CDT_ERROR_LOG", 1);
-define("CDT_MESSAGE_LOG", 1);
-
 //configuramos log4php
 define( "CDT_LOG4PHP_PATH", CDT_EXTERNAL_LIB_PATH_2 . "log4php") ;
 define( "CDT_LOG4PHP_CONFIG_FILE", APP_PATH . "/conf/log4php.xml");
@@ -43,9 +37,16 @@ define('CDT_CORE_PATH', MVC_PATH .   'codnet_core/');
 include_once (CDT_CORE_PATH . 'conf/init.php');
 
 define('DEFAULT_MENU', 'Menu');
-define('APP_NAME', 'SeCyT');
+
 define('CDT_MVC_APP_TITLE', 'SeCyT');
 define('CDT_MVC_APP_SUBTITLE', 'SICADI');
+
+
+//para manejar los errores de la pantalla.
+
+define("CDT_DEBUG_LOG", 1);
+define("CDT_ERROR_LOG", 1);
+define("CDT_MESSAGE_LOG", 1);
 
 
 
@@ -65,15 +66,15 @@ include_once (CDT_UI_PATH . 'conf/init.php');
 define('CDT_SECURE_PATH', MVC_PATH . 'codnet_secure/');
 include_once (CDT_SECURE_PATH . 'conf/init.php');
 
-define('CDT_SECURE_LOGIN_TITLE', CDT_MVC_APP_TITLE);
-define('CDT_SECURE_LOGIN_SUBTITLE', CDT_MVC_APP_SUBTITLE);
-define('CDT_SECURE_REGISTER_TITLE', CDT_MVC_APP_TITLE);
-define('CDT_SECURE_REGISTER_SUBTITLE', CDT_MVC_APP_SUBTITLE);
+//define('CDT_SECURE_LOGIN_TITLE', CDT_MVC_APP_TITLE);
+//define('CDT_SECURE_LOGIN_SUBTITLE', CDT_MVC_APP_SUBTITLE);
+//define('CDT_SECURE_REGISTER_TITLE', CDT_MVC_APP_TITLE);
+//define('CDT_SECURE_REGISTER_SUBTITLE', CDT_MVC_APP_SUBTITLE);
 
-define("CDT_SECURE_ACCESS_DENIED_ACTION", 'home');
+//define("CDT_SECURE_ACCESS_DENIED_ACTION", 'home');
 
 //login
-define("CDT_SECURE_LOGIN_ACTION", 'doAction?action=login');
+//define("CDT_SECURE_LOGIN_ACTION", 'doAction?action=login');
 
 
 //registraciones
@@ -107,7 +108,7 @@ define ( 'DEFAULT_LOGIN_LAYOUT', 'LayoutCYTLogin' );
 define ( 'DEFAULT_POPUP_LAYOUT', 'LayoutSmilePopup' );
 
 //define ( 'CDT_UI_SMILE_CHARSET', 'UTF-8' );
-define ( 'CDT_UI_UTF8_ENCODE', true );
+define ( 'CDT_UI_UTF8_ENCODE', false );
 
 
 /*

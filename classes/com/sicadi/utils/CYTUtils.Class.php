@@ -47,9 +47,9 @@ class CYTUtils {
 
 
     public static function getCategoriasItems($mostradas="") {
-        $oCriteria = new CdtSearchCriteria();
+		$oCriteria = new CdtSearchCriteria();
         if ($mostradas) {
-
+            
             $filter = new CdtSimpleExpression("cd_categoriasicadi in (".$mostradas.")");
             $oCriteria->setExpresion($filter);
         }

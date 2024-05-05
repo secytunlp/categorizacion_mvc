@@ -47,6 +47,7 @@ define('CYT_MSG_SOLICITUD_TAB_PROYECTOS', "Proyectos");
 define('CYT_MSG_SOLICITUD_TAB_DESCRIPCION', "Categorización por Equivalencia");
 define('CYT_MSG_SOLICITUD_TIPO_INVESTIGADOR_TITULO', "Debe seleccionar la Unidad Académica donde Ud. realiza la actividad de I+D");
 define('CYT_MSG_SOLICITUD_OTROS_PROYECTOS_REQUERIDOS', "Complete todos los campos del proyecto de otra entidad");
+define('CYT_MSG_SOLICITUD_SIN_PROYECTOS', 'Debe ser integrante de un proyecto vigente');
 
 define('CYT_MSG_SOLICITUD_BECAS_TAB', "Becas Anteriores");
 define('CYT_MSG_SOLICITUD_BECARIO_TITULO', "Espacio a ser completado únicamente por aquellas personas que estén desempeñándose en la actualidad como becarios/as");

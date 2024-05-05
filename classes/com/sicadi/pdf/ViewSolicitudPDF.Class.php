@@ -7,7 +7,7 @@
  * @since 19/11/2103
  */
 class ViewSolicitudPDF extends CdtPDFPrint{
-
+	
 	private $maxWidth = "";	
 
 	
@@ -31,7 +31,7 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 	private $ds_tituloposgrado = "";
 	private $dt_egresoposgrado = "";
 	private $ds_lugarTrabajo = "";
-
+	
 	private $ds_cargo = "";
 	private $ds_deddoc = "";
 	private $ds_facultad = "";
@@ -503,23 +503,23 @@ class ViewSolicitudPDF extends CdtPDFPrint{
         $this->ln(-4);
         $tabla = '<table width="100%" border="1" cellpadding="0" cellspacing="0">
 		<thead><tr>
-		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_DOCENTE_CARGO).'</td>	
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_DOCENTE_DEDDOC).'</td>
+		<td bgcolor="#999999" width="30">'.$this->encodeCharacters(CYT_LBL_DOCENTE_CARGO).'</td>	
+                <td bgcolor="#999999" width="12">'.$this->encodeCharacters(CYT_LBL_DOCENTE_DEDDOC).'</td>
                 
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_DOCENTE_FACULTAD).'</td>
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_FECHA).'</td>
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_CARGO_SITUACION).'</td>
+                <td bgcolor="#999999" width="35">'.$this->encodeCharacters(CYT_LBL_DOCENTE_FACULTAD).'</td>
+                <td bgcolor="#999999" width="11">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_FECHA).'</td>
+                <td bgcolor="#999999" width="12">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_CARGO_SITUACION).'</td>
                 </tr></thead><tbody>';
         foreach ($this->getCargos() as $oCargo) {
 
             $tabla .= '<tr>';
-            $bgcolor= '';
+            $bgcolor= 'bgcolor="#F0F0F0"';
 
-            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getCargo()->getDs_cargo()).'</td>';
-            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getDeddoc()->getDs_deddoc()).'</td>';
-            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getFacultad()->getDs_facultad()).'</td>';
-            $tabla .= '<td '.$bgcolor.'>'.CYTSecureUtils::formatDateToView($oCargo->getDt_fecha()).'</td>';
-            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oCargo->getSituacion()).'</td>';
+            $tabla .= '<td '.$bgcolor.' width="30">'.$this->encodeCharacters($oCargo->getCargo()->getDs_cargo()).'</td>';
+            $tabla .= '<td '.$bgcolor.' width="12">'.$this->encodeCharacters($oCargo->getDeddoc()->getDs_deddoc()).'</td>';
+            $tabla .= '<td '.$bgcolor.' width="35">'.$this->encodeCharacters($oCargo->getFacultad()->getDs_facultad()).'</td>';
+            $tabla .= '<td '.$bgcolor.' width="11">'.CYTSecureUtils::formatDateToView($oCargo->getDt_fecha()).'</td>';
+            $tabla .= '<td '.$bgcolor.' width="12">'.$this->encodeCharacters($oCargo->getSituacion()).'</td></tr>';
 
 
 
@@ -540,26 +540,26 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 	function ProyectosActuales(){
 		
 		$this->ln(-4);
-		$tabla .= '<table width="100%" border="1" cellpadding="0" cellspacing="0">
+		$tabla = '<table width="100" border="1" cellpadding="0" cellspacing="0">
 		<thead><tr>
-		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD).'</td>
-		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_CODIGO).'</td>	
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_TITULO).'</td>
+		<td bgcolor="#999999" width="15">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD).'</td>
+		<td bgcolor="#999999" width="10">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_CODIGO).'</td>	
+                <td bgcolor="#999999" width="33">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_TITULO).'</td>
                 
-                <td bgcolor="#999999">'.CYT_LBL_SOLICITUD_PROYECTOS_DIRECTOR.'</td>
-                <td bgcolor="#999999">'.CYT_LBL_SOLICITUD_PROYECTOS_INICIO.'</td>
-                <td bgcolor="#999999">'.CYT_LBL_SOLICITUD_PROYECTOS_FIN.'</td>
+                <td bgcolor="#999999" width="20">'.CYT_LBL_SOLICITUD_PROYECTOS_DIRECTOR.'</td>
+                <td bgcolor="#999999" width="11">'.CYT_LBL_SOLICITUD_PROYECTOS_INICIO.'</td>
+                <td bgcolor="#999999" width="11">'.CYT_LBL_SOLICITUD_PROYECTOS_FIN.'</td>
                 </tr></thead><tbody>';
 		foreach ($this->getProyectos() as $oProyecto) {
 			
 			$tabla .= '<tr>';
-			$bgcolor= ($oProyecto->getBl_agregado())?'bgcolor="#CCCCCC"':'';
-            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_organismo()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_codigo()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_titulo()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_director()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.CYTSecureUtils::formatDateToView($oProyecto->getDt_desdeproyecto()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.CYTSecureUtils::formatDateToView($oProyecto->getDt_hastaproyecto()).'</td>';
+			$bgcolor= ($oProyecto->getBl_agregado())?'bgcolor="#CCCCCC"':'bgcolor="#F0F0F0"';
+            $tabla .= '<td '.$bgcolor.' width="15">'.$this->encodeCharacters($oProyecto->getDs_organismo()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="10">'.$this->encodeCharacters($oProyecto->getDs_codigo()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="33">'.$this->encodeCharacters($oProyecto->getDs_titulo()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="20">'.$this->encodeCharacters($oProyecto->getDs_director()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="11">'.CYTSecureUtils::formatDateToView($oProyecto->getDt_desdeproyecto()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="11">'.CYTSecureUtils::formatDateToView($oProyecto->getDt_hastaproyecto()).'</td></tr>';
 		}	
 					
 					$tabla .= '</tbody></table>';
@@ -573,27 +573,26 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 	function ProyectosAnteriores(){
 		
 		$this->ln(-4);
-		$tabla .= '<table width="100%" border="1" cellpadding="0" cellspacing="0">
+		$tabla = '<table width="100" border="1" cellpadding="0" cellspacing="0">
 		<thead><tr>
-		<td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_CODIGO).'</td>	
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_TITULO).'</td>
+		<td bgcolor="#999999" width="15">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD).'</td>
+		<td bgcolor="#999999" width="10">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_CODIGO).'</td>	
+                <td bgcolor="#999999" width="33">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_TITULO).'</td>
                 
-                <td bgcolor="#999999">'.CYT_LBL_SOLICITUD_PROYECTOS_DIRECTOR.'</td>
-                <td bgcolor="#999999">'.$this->encodeCharacters(CYT_LBL_SOLICITUD_PROYECTOS_ENTIDAD).'</td>
-                <td bgcolor="#999999">'.CYT_LBL_SOLICITUD_PROYECTOS_INICIO.'</td>
-                <td bgcolor="#999999">'.CYT_LBL_SOLICITUD_PROYECTOS_FIN.'</td>
+                <td bgcolor="#999999" width="20">'.CYT_LBL_SOLICITUD_PROYECTOS_DIRECTOR.'</td>
+                <td bgcolor="#999999" width="11">'.CYT_LBL_SOLICITUD_PROYECTOS_INICIO.'</td>
+                <td bgcolor="#999999" width="11">'.CYT_LBL_SOLICITUD_PROYECTOS_FIN.'</td>
                 </tr></thead><tbody>';
 		foreach ($this->getSolicitudProyectos() as $oProyecto) {
 			
 			$tabla .= '<tr>';
-			$bgcolor= ($oProyecto->getBl_agregado())?'bgcolor="#CCCCCC"':'';
-			
-			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_codigo()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_titulo()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_director()).'</td>';
-            $tabla .= '<td '.$bgcolor.'>'.$this->encodeCharacters($oProyecto->getDs_organismo()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.CYTSecureUtils::formatDateToView($oProyecto->getDt_desdeproyecto()).'</td>';
-			$tabla .= '<td '.$bgcolor.'>'.CYTSecureUtils::formatDateToView($oProyecto->getDt_hastaproyecto()).'</td>';
+			$bgcolor= ($oProyecto->getBl_agregado())?'bgcolor="#CCCCCC"':'bgcolor="#F0F0F0"';
+            $tabla .= '<td '.$bgcolor.' width="15">'.$this->encodeCharacters($oProyecto->getDs_organismo()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="10">'.$this->encodeCharacters($oProyecto->getDs_codigo()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="33">'.$this->encodeCharacters($oProyecto->getDs_titulo()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="20">'.$this->encodeCharacters($oProyecto->getDs_director()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="11">'.CYTSecureUtils::formatDateToView($oProyecto->getDt_desdeproyecto()).'</td>';
+			$tabla .= '<td '.$bgcolor.' width="11">'.CYTSecureUtils::formatDateToView($oProyecto->getDt_hastaproyecto()).'</td></tr>';
 		}	
 					
 					$tabla .= '</tbody></table>';

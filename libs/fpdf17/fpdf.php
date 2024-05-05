@@ -6,7 +6,7 @@
 * Date:    2023-06-25                                                          *
 * Author:  Olivier PLATHEY                                                     *
 *******************************************************************************/
-
+define('FPDF_VERSION','1.86');
 class FPDF
 {
 const VERSION = '1.86';
@@ -67,6 +67,8 @@ protected $LayoutMode;         // layout display mode
 protected $metadata;           // document properties
 protected $CreationDate;       // document creation date
 protected $PDFVersion;         // PDF version number
+
+
 
 /*******************************************************************************
 *                               Public methods                                 *
@@ -479,7 +481,7 @@ function SetFont($family, $style='', $size=0)
 		$family = $this->FontFamily;
 	else
 		$family = strtolower($family);
-	$style = strtoupper($style);
+	$style = ($style !== null)?strtoupper($style):'';
 	if(strpos($style,'U')!==false)
 	{
 		$this->underline = true;

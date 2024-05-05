@@ -49,8 +49,15 @@ class EnvioDefinitivoAction extends CdtEditAsyncAction {
      */
     protected function edit($entities) {
     	foreach ($entities as $entity) {
-
+				$oCriteria = new CdtSearchCriteria();
+			$oCriteria->addFilter('solicitud_oid', $entity->getOid(), '=');
+			$oCriteria->addNull('fechaHasta');
+			$managerSolicitudEstado =  CYTSecureManagerFactory::getSolicitudEstadoManager();
+			$oSolicitudEstado = $managerSolicitudEstado->getEntity($oCriteria);
+			$confirmar = (($oSolicitudEstado->getEstado()->getOid()==CYT_ESTADO_SOLICITUD_RECIBIDA))?1:0;
+			if ($confirmar) {
 				$this->getEntityManager()->confirm($entity,11);
+			}
 
     			
     	}
